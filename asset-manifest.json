@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-node-team-project/static/css/main.7acaea2f.css",
+    "main.js": "/react-node-team-project/static/js/main.07d3183d.js",
+    "index.html": "/react-node-team-project/index.html",
+    "main.7acaea2f.css.map": "/react-node-team-project/static/css/main.7acaea2f.css.map",
+    "main.07d3183d.js.map": "/react-node-team-project/static/js/main.07d3183d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.07d3183d.js"
+  ]
+}
