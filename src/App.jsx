@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import s from './App.module.css';
+// import s from './App.module.css';
 import PablicRoute from 'components/PablicRoute';
 import PrivateRoute from 'components/PrivateRoute';
 import NotFoundPage from 'pages/NotFoundPage';
