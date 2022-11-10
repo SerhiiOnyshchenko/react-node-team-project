@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/155.5e4b79b1.chunk.js","mappings":"uMAGe,SAASA,IACtB,OAAO,yCACR,C","sources":["pages/NoticesPage/index.jsx"],"sourcesContent":["import React from 'react';\n// import s from './index.module.css';\n\nexport default function NoticesPage() {\n  return <div>NoticesPage </div>;\n}\n"],"names":["NoticesPage"],"sourceRoot":""}

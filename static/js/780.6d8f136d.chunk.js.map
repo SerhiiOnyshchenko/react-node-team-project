@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/780.6d8f136d.chunk.js","mappings":"uMAGe,SAASA,IACtB,OAAO,sCACR,C","sources":["pages/NewsPage/index.jsx"],"sourcesContent":["import React from 'react';\n// import s from './index.module.css';\n\nexport default function NewsPage() {\n  return <div>NewsPage </div>;\n}\n"],"names":["NewsPage"],"sourceRoot":""}

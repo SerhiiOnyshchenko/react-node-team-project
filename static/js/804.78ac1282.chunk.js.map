@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/804.78ac1282.chunk.js","mappings":"uMAGe,SAASA,IACtB,OAAO,uCACR,C","sources":["pages/LoginPage/index.jsx"],"sourcesContent":["import React from 'react';\n// import s from './index.module.css';\n\nexport default function LoginPage() {\n  return <div>LoginPage </div>;\n}\n"],"names":["LoginPage"],"sourceRoot":""}

@@ -44,6 +44,20 @@
           (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
           l.hash
       );
+
+      // for netlify
+
+      // var l = window.location;
+      // l.replace(
+      //   l.protocol +
+      //     '//' +
+      //     l.hostname +
+      //     (l.port ? ':' + l.port : '') +
+      //     '?' +
+      //     l.pathname +
+      //     (l.search ? l.search : '') +
+      //     l.hash
+      // );
     </script>
   </head>
   <body></body>
