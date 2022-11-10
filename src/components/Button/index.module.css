@@ -1,7 +1,8 @@
 .Btn {
-	display: flex;
+	display: inline-flex;
 	justify-content: center;
 	align-items: center;
+	padding: 0 28px;
 	width: 180px;
 	height: 44px;
 	font-size: 20px;
@@ -11,10 +12,12 @@
 	background-color: var(--btn-bg-default);
 	transition: var(--transition);
 }
+
 .Btn_active {
-	display: flex;
+	display: inline-flex;
 	justify-content: center;
 	align-items: center;
+	padding: 0 28px;
 	width: 180px;
 	height: 44px;
 	font-size: 20px;
