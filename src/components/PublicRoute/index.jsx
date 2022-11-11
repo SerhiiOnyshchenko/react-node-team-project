@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 // import { useSelector } from 'react-redux';
 // import { AuthSelector } from 'redux/auth';
 
-export default function PablicRoute({ children, restricted = false }) {
+export default function PublicRoute({ children, restricted = false }) {
   const isLoggedIn = false; // useSelector(AuthSelector.getIsLoggedIn);
   const showNavigate = isLoggedIn && restricted;
   return (

@@ -1,7 +1,7 @@
 import { lazy } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Router, Routes } from 'react-router-dom';
 // import s from './App.module.css';
-import PablicRoute from 'components/PablicRoute';
+import PublicRoute from 'components/PublicRoute';
 import PrivateRoute from 'components/PrivateRoute';
 import NotFoundPage from 'pages/NotFoundPage';
 import Header from 'pages/Header';
@@ -19,8 +19,7 @@ export default function App() {
     <div>
       <Header />
       <Routes>
-        <Route
-          exact
+        <Router
           path="/"
           element={
             <PrivateRoute>
@@ -39,41 +38,41 @@ export default function App() {
         <Route
           path="login"
           element={
-            <PablicRoute restricted>
+            <PublicRoute restricted>
               <LoginPage />
-            </PablicRoute>
+            </PublicRoute>
           }
         />
         <Route
           path="register"
           element={
-            <PablicRoute restricted>
+            <PublicRoute restricted>
               <RegisterPage />
-            </PablicRoute>
+            </PublicRoute>
           }
         />
         <Route
           path="news"
           element={
-            <PablicRoute restricted>
+            <PublicRoute restricted>
               <NewsPage />
-            </PablicRoute>
+            </PublicRoute>
           }
         />
         <Route
           path="notices "
           element={
-            <PablicRoute restricted>
+            <PublicRoute restricted>
               <NoticesPage />
-            </PablicRoute>
+            </PublicRoute>
           }
         />
         <Route
           path="friends"
           element={
-            <PablicRoute restricted>
+            <PublicRoute restricted>
               <OurFriendsPage />
-            </PablicRoute>
+            </PublicRoute>
           }
         />
         <Route path="*" element={<NotFoundPage />} />
