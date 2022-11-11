@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import PablicRoute from 'components/PablicRoute';
 import PrivateRoute from 'components/PrivateRoute';
 import NotFoundPage from 'pages/NotFoundPage';
-import Header from 'pages/Header';
+import Header from 'components/Header';
 
 const LoginPage = lazy(() => import('./pages/LoginPage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage'));
