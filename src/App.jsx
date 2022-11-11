@@ -5,6 +5,7 @@ import PablicRoute from 'components/PablicRoute';
 import PrivateRoute from 'components/PrivateRoute';
 import NotFoundPage from 'pages/NotFoundPage';
 import Header from 'pages/Header';
+import HomePage from 'pages/HomePage';
 
 const LoginPage = lazy(() => import('./pages/LoginPage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage'));
@@ -18,7 +19,15 @@ export default function App() {
     <div>
       <Header />
       <Routes>
-        <Route exact path="/" element={<PrivateRoute></PrivateRoute>} />
+        <Route
+          exact
+          path="/"
+          element={
+            <PrivateRoute>
+              <HomePage />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="user"
           element={
