@@ -1,6 +1,11 @@
 import React from 'react';
-// import s from './index.module.css';
+import AuthForm from 'components/AuthForm';
+import Container from 'components/Container';
 
 export default function RegisterPage() {
-  return <div>RegisterPage </div>;
+  return (
+    <Container>
+      <AuthForm />
+    </Container>
+  );
 }
