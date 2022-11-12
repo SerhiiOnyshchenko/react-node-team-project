@@ -19,7 +19,7 @@ export default function App() {
     <div>
       <Header />
       <Routes>
-        <Router
+        <Route
           path="/"
           element={
             <PrivateRoute>
