@@ -4,7 +4,7 @@ import { Route, Router, Routes } from 'react-router-dom';
 import PublicRoute from 'components/PublicRoute';
 import PrivateRoute from 'components/PrivateRoute';
 import NotFoundPage from 'pages/NotFoundPage';
-import Header from 'pages/Header';
+import Header from 'components/Header';
 import HomePage from 'pages/HomePage';
 
 const LoginPage = lazy(() => import('./pages/LoginPage'));
