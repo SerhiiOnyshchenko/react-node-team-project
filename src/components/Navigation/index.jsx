@@ -1,5 +1,6 @@
 import Nav from 'components/Nav';
 import AuthNav from 'components/AuthNav';
+import UserNav from 'components/UserNav';
 import s from './index.module.css';
 
 export default function Navigation() {
@@ -7,6 +8,7 @@ export default function Navigation() {
     <div className={s.wrapper}>
       <Nav />
       <AuthNav />
+      <UserNav />
     </div>
   );
 }
