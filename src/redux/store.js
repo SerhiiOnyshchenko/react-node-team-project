@@ -12,6 +12,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import loaderReduser from './loader/loader-reduser';
 
 const NEW_PersistConfig = {
   key: 'NEW',
@@ -29,6 +30,7 @@ export const store = configureStore({
   reducer: {
     // auth: persistReducer(authPersistConfig, authReducer),
     NEW: persistReducer(NEW_PersistConfig, NEW_Reduser),
+    loader: loaderReduser,
   },
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({
