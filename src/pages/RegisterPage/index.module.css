@@ -1,0 +1,17 @@
+.waveBackground {
+  background-image: url('../../images/wave-background/wave-mobile.png');
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: contain;
+}
+
+@media screen and (min-width: 768px) {
+  .waveBackground {
+    background-image: url('../../images/wave-background/wave-tablet.png');
+  }
+}
+@media screen and (min-width: 1280px) {
+  .waveBackground {
+    background-image: url('../../images/wave-background/wave-desktop.png');
+  }
+}
