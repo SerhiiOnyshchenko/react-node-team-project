@@ -1,6 +1,14 @@
 import React from 'react';
-// import s from './index.module.css';
+
+import Container from 'components/Container';
+import s from './index.module.css';
 
 export default function UserPage() {
-  return <div>UserPage </div>;
+  return (
+    <section className={s.section}>
+      <Container>
+        <h1 className={s.title}>My information:</h1>
+      </Container>
+    </section>
+  );
 }

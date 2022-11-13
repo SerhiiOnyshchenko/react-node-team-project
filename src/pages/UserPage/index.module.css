@@ -1,0 +1,13 @@
+.section {
+  padding: 60px 0px 80px;
+}
+
+.title {
+  font-size: 20px;
+  line-height: 135%;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+
+  color: #000000;
+}
