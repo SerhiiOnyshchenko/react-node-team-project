@@ -27,7 +27,7 @@ export default function App() {
     setTimeout(() => {
       dispatch(changeLoader(false));
     }, 2000);
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
