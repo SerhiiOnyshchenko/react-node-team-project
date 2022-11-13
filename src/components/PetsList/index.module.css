@@ -1,0 +1,110 @@
+.list {
+  margin-top: 26px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: var(--modal-bg);
+  padding: 16px 20px;
+  box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
+  border-radius: 40px;
+  margin-bottom: 20px;
+}
+
+.petPhoto {
+  width: 240px;
+  height: 240px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.petInfo {
+  position: relative;
+  margin: 20px 0px 40px 0px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.deleteBtn {
+  position: absolute;
+
+  top: -16px;
+  right: 0px;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--btn-bg-default);
+  border: 0;
+  cursor: pointer;
+}
+
+.deleteBtn:hover,
+.deleteBtn:focus {
+  color: var(--btn-bg-hover-active);
+}
+
+.deleteIcon {
+  fill: currentColor;
+}
+
+.petInfoCategory {
+  margin-bottom: 12px;
+
+  font-family: 'Manrope Medium';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.38;
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+
+  color: #000;
+}
+
+.petInfoCategory:last-child {
+  margin-bottom: 0px;
+}
+
+.petInfoTitle {
+  font-family: 'Manrope SemiBold';
+  /* margin-right: 5px; */
+}
+.noPets {
+  text-align: center;
+  padding: 40px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .list {
+    margin-top: 24px;
+  }
+
+  .card {
+    flex-direction: row;
+    padding: 20px;
+  }
+
+  .petPhoto {
+    width: 161px;
+    height: 161px;
+  }
+
+  .petInfo {
+    margin: 0px 0px 0px 32px;
+  }
+
+  .deleteBtn {
+    top: -20px;
+  }
+
+  .petInfoCategory {
+    font-size: 16px;
+  }
+}
