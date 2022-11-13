@@ -9,7 +9,7 @@ const itemsNav = [
 
 export default function Nav() {
   return (
-    <nav>
+    <nav className={s.navContainer}>
       <ul className={s.linkWrapper}>
         {
           <li>

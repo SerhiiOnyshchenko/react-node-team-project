@@ -1,24 +1,29 @@
-.linkWrapper{
-    display: flex;
+.navContainer {
+  margin-left: 80px;
 }
-.link{
-    font-family: 'Manrope';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 27px;
-    letter-spacing: 0.04em;
-    color: #181C27;
-    margin-left: 80px;
-    transition: var(--transition);
+.linkWrapper {
+  display: flex;
 }
+.link {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 27px;
+  letter-spacing: 0.04em;
+  color: #181c27;
 
-.active{
-    font-weight: 700;
-    text-decoration-line: underline;
-    color: #F59256;
+  transition: var(--transition);
+}
+.link:not(:first-child) {
+  margin-left: 80px;
+}
+.active {
+  font-weight: 700;
+  text-decoration-line: underline;
+  color: #f59256;
 }
 .link:hover,
-.link:focus{
-    color: var(--color-hover-active);
+.link:focus {
+  color: var(--color-hover-active);
 }
