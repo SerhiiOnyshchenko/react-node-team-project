@@ -11,3 +11,15 @@
 
   color: #000000;
 }
+
+.userWrap {
+  position: absolute;
+  width: 280px;
+  height: 537px;
+  /* left: 20px; */
+  /* top: 164px; */
+
+  background: var(--modal-bg);
+  box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
+  border-radius: 20px;
+}
