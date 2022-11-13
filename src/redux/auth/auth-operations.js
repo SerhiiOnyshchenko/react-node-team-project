@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://{url}';
+axios.defaults.baseURL = 'http://localhost:8000/api';
 
 const token = {
   set(token) {
@@ -12,9 +12,9 @@ const token = {
   },
 };
 
-const logIn = createAsyncThunk('auth/login', async credentials => {
+const register = createAsyncThunk('auth/register', async credentials => {
   try {
-    const { data } = await axios.post('/auth/login', credentials);
+    const { data } = await axios.post('/users/signup', credentials);
     token.set(data.token);
     return data;
   } catch (error) {
@@ -22,9 +22,19 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
   }
 });
 
-const logOut = createAsyncThunk('auth/logout', async () => {
+const logIn = createAsyncThunk('auth/logIn', async credentials => {
   try {
-    await axios.post('/auth/logout');
+    const { data } = await axios.post('/user/login', credentials);
+    token.set(data.token);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+const logOut = createAsyncThunk('auth/logOut', async () => {
+  try {
+    await axios.post('/user/logout');
     token.unset();
   } catch (error) {
     console.log(error);
@@ -32,7 +42,7 @@ const logOut = createAsyncThunk('auth/logout', async () => {
 });
 
 const fetchCurrentUser = createAsyncThunk(
-  'auth/refresh',
+  'auth/fetchCurrentUser',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
@@ -43,7 +53,7 @@ const fetchCurrentUser = createAsyncThunk(
 
     token.set(persistedToken);
     try {
-      const { data } = await axios.get('/auth/current');
+      const { data } = await axios.get('/user/current');
       return data;
     } catch (error) {
       console.log(error);
@@ -52,6 +62,7 @@ const fetchCurrentUser = createAsyncThunk(
 );
 
 const operations = {
+  register,
   logOut,
   logIn,
   fetchCurrentUser,
