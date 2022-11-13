@@ -12,6 +12,9 @@
   color: var(--btn-color-hover-active);
   transition: var(--transition);
 }
+.btnBg {
+  background: inherit;
+}
 .icon {
   margin-right: 20px;
 }
