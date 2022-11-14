@@ -8,10 +8,10 @@ import s from './index.module.css';
 export default function NoticesPage() {
   return (
     <div className={s.container}>
-      <NoticesSearch></NoticesSearch>
+      {/* <NoticesSearch></NoticesSearch>
       <NoticesCategoriesNav></NoticesCategoriesNav>
       <NoticesCategoriesList></NoticesCategoriesList>
-      <AddNoticeButton></AddNoticeButton>
+      <AddNoticeButton></AddNoticeButton> */}
     </div>
   );
 }
