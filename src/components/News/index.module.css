@@ -1,0 +1,82 @@
+.container {
+  width: 394px;
+  margin-right: 32px;
+  padding-bottom: 60px;
+}
+.container:nth-child(3n + 3) {
+  margin-right: 0px;
+}
+
+.decor {
+  width: 340px;
+  height: 8px;
+  background: linear-gradient(90deg, #ff634e 0%, #ffdf48 105.44%);
+  border-radius: 40px;
+  margin-bottom: 4px;
+}
+.title {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 33px;
+  letter-spacing: -0.01em;
+  overflow: hidden;
+
+  height: 66px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-bottom: 16px;
+}
+
+.containerTitle {
+  width: 395px;
+  /* height: 66px; */
+  /* padding: 1rem; */
+}
+.text {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: #111321;
+  margin-bottom: 40px;
+}
+.data {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: rgba(17, 17, 17, 0.6);
+}
+.readMore {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: right;
+  text-decoration-line: underline;
+  color: #f59256;
+}
+.containerDataAndReadMore {
+  display: flex;
+  justify-content: space-between;
+}
+.linkNews {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: right;
+  text-decoration-line: underline;
+  color: #f59256;
+}
