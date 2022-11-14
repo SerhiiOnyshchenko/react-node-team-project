@@ -22,6 +22,9 @@ export default function MobileNav() {
             <ul className={s.linkWrapper}>
               {itemsNav.map(({ href, title }) => (
                 <NavLink
+                  onClick={function () {
+                    return setOpen();
+                  }}
                   to={href}
                   key={href}
                   className={({ isActive }) =>
