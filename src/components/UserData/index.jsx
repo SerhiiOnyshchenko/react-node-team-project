@@ -1,5 +1,6 @@
 import s from './index.module.css';
 import UserDataItem from 'components/UserDataItem';
+import { ReactComponent as Logo } from '../../images/svg/camera.svg';
 
 // temporary user
 const user = {
@@ -21,7 +22,10 @@ export default function UserData() {
           alt={`${user.name}`}
         />
       </div>
-      <button type="button">Edit photo</button>
+      <button type="button" className={s.editPhoto}>
+        <Logo className={s.editPhotoIcon} />
+        Edit photo
+      </button>
       <UserDataItem field="Name" value={user.name}></UserDataItem>
       <UserDataItem field={'Email'} value={user.email}></UserDataItem>
       <UserDataItem field={'Birthday'} value={user.birthday}></UserDataItem>

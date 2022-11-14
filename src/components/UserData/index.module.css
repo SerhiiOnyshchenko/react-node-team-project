@@ -1,6 +1,7 @@
 .imgWrap {
   width: 233px;
   height: 233px;
+  margin-bottom: 12px;
   border-radius: 50%;
 
   overflow: hidden;
@@ -10,4 +11,14 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.editPhoto {
+  margin-left: auto;
+  margin-bottom: 36px;
+}
+
+.editPhotoIcon {
+  width: 20px;
+  height: 20px;
 }

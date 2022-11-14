@@ -3,6 +3,8 @@
 }
 
 .title {
+  margin-bottom: 18px;
+
   font-size: 20px;
   line-height: 135%;
   display: flex;
@@ -13,11 +15,13 @@
 }
 
 .userWrap {
-  position: absolute;
-  width: 280px;
-  height: 537px;
-  /* left: 20px; */
-  /* top: 164px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 20px 16px;
+
+  align-items: center;
 
   background: var(--modal-bg);
   box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
