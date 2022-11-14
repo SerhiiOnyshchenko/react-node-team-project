@@ -1,11 +1,15 @@
-// import s from './index.module.css';
+import { ReactComponent as Logo } from '../../images/svg/edit.svg';
+
+import s from './index.module.css';
 
 export default function UserDataItem({ field, value }) {
   return (
-    <div>
-      <p>{field}</p>
-      <p>{value}</p>
-      <button type="button">Edit</button>
+    <div className={s.wrapper}>
+      <p className={s.field}>{field}:</p>
+      <p className={s.value}>{value}</p>
+      <button className={s.button} type="button">
+        <Logo className={s.logo}></Logo>
+      </button>
     </div>
   );
 }

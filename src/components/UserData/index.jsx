@@ -14,7 +14,7 @@ const user = {
 
 export default function UserData() {
   return (
-    <div>
+    <div className={s.wrapper}>
       <div className={s.imgWrap}>
         <img
           className={s.image}

@@ -1,3 +1,7 @@
+.wrapper {
+  margin-bottom: 32px;
+}
+
 .imgWrap {
   width: 233px;
   height: 233px;
@@ -14,11 +18,21 @@
 }
 
 .editPhoto {
+  display: flex;
+  align-items: center;
   margin-left: auto;
   margin-bottom: 36px;
+
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 22px;
+
+  background-color: transparent;
 }
 
 .editPhotoIcon {
   width: 20px;
   height: 20px;
+
+  margin-right: 4px;
 }
