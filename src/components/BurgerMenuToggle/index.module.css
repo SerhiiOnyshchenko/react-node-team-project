@@ -1,0 +1,11 @@
+.Btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+@media screen and (min-width: 768px) {
+  .Btn {
+    margin-left: 20px;
+  }
+}

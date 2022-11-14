@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion';
+import s from './index.module.css';
+
 const Path = props => (
   <motion.path
     fill="transparent"
@@ -8,12 +10,12 @@ const Path = props => (
   />
 );
 
-const transition = { duration: 0.33 };
+const transition = { duration: 0.39 };
 
-export function MenuToggle({ toggle, isOpen }) {
+export default function BurgerMenuToggle({ toggle, isOpen }) {
   return (
-    <button onClick={toggle} >
-      <svg width="23" height="23" viewBox="0 0 23 23">
+    <button onClick={toggle} className={s.Btn}>
+      <svg width="30" height="30" viewBox="0 0 23 23">
         <Path
           animate={isOpen ? 'open' : 'closed'}
           initial={false}
