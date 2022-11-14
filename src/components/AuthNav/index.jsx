@@ -10,7 +10,6 @@ const itemsNav = [
 
 export default function AuthNav() {
   const isMobile = useMediaQuery({ maxWidth: 767 });
-
   return (
     <ul className={s.list}>
       {itemsNav.map(({ href, text }) => (

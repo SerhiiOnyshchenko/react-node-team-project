@@ -1,5 +1,11 @@
 .navWrapper {
-  padding-top: 48px;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 60px;
+  right: 0;
+  z-index: 1;
+  background-color: var(--bg);
 }
 .linkWrapper {
   display: flex;

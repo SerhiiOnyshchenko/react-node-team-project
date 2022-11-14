@@ -1,7 +1,7 @@
+import { useState } from 'react';
+import BurgerMenuToggle from '../../BurgerMenuToggle';
 import { NavLink } from 'react-router-dom';
 import Container from '../../Container';
-import AuthNav from 'components/AuthNav';
-import UserNav from 'components/UserNav';
 import s from './index.module.css';
 
 const itemsNav = [
@@ -11,25 +11,30 @@ const itemsNav = [
 ];
 
 export default function MobileNav() {
-  const isLoggedIn = false;
+  const [isOpen, setOpen] = useState(false);
+
   return (
-    <Container>
-      <nav className={s.navWrapper}>
-        {isLoggedIn ? <AuthNav /> : <UserNav />}
-        <ul className={s.linkWrapper}>
-          {itemsNav.map(({ href, title }) => (
-            <NavLink
-              to={href}
-              key={href}
-              className={({ isActive }) =>
-                isActive ? `${s.link} ${s.active}` : `${s.link}`
-              }
-            >
-              {title}
-            </NavLink>
-          ))}
-        </ul>
-      </nav>
-    </Container>
+    <>
+      <BurgerMenuToggle isOpen={isOpen} toggle={() => setOpen(!isOpen)} />
+      {isOpen && (
+        <Container>
+          <nav className={s.navWrapper}>
+            <ul className={s.linkWrapper}>
+              {itemsNav.map(({ href, title }) => (
+                <NavLink
+                  to={href}
+                  key={href}
+                  className={({ isActive }) =>
+                    isActive ? `${s.link} ${s.active}` : `${s.link}`
+                  }
+                >
+                  {title}
+                </NavLink>
+              ))}
+            </ul>
+          </nav>
+        </Container>
+      )}
+    </>
   );
 }
