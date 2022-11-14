@@ -49,7 +49,7 @@ export const FormUserDetails = ({ formData, setFormData, nextStep }) => {
               className={s.input}
               error={touched.lastName && errors.lastName}
             />
-            <div class={s.buttonContainer}>
+            <div className={s.buttonContainer}>
               <button type="submit" className={`${s.button} ${s.buttonActive}`}>
                 Next
               </button>
