@@ -17,7 +17,6 @@
 }
 @media screen and (min-width: 1280px) {
   .waveBackground {
-    height: calc(100vh - 88px);
     background-image: url('../../images/wave-background/wave-desktop.png');
   }
 }
