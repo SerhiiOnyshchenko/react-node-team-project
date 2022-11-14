@@ -35,7 +35,7 @@ export const FormPersonalDetails = ({
             margin="normal"
           />
           <Field name="phone" placeholder="Mobile phone" className={s.input} />
-          <div class={s.buttonContainer}>
+          <div className={s.buttonContainer}>
             <button
               type="submit"
               className={`${s.button} ${s.buttonActive} ${s.register}`}
