@@ -1,0 +1,34 @@
+.navWrapper {
+  padding-top: 48px;
+}
+.linkWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.link {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 44px;
+  letter-spacing: 0.04em;
+  color: #181c27;
+  transition: var(--transition);
+}
+.link:not(:last-child) {
+  margin-bottom: 40px;
+}
+.link:first-child {
+  margin-top: 60px;
+}
+.active {
+  font-weight: 700;
+  text-decoration-line: underline;
+  color: #f59256;
+}
+.link:hover,
+.link:focus {
+  color: var(--color-hover-active);
+}

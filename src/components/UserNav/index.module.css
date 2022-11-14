@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   padding: 0 28px;
-  width: 180px;
+  width: 184px;
   height: 44px;
   font-size: 20px;
   letter-spacing: 0.04em;
@@ -11,6 +11,12 @@
   background-color: var(--btn-bg-another);
   color: var(--btn-color-hover-active);
   transition: var(--transition);
+}
+@media screen and (max-width: 767px) {
+  .btn {
+    height: 35px;
+    padding: 0 36px;
+  }
 }
 .btnBg {
   background: inherit;
