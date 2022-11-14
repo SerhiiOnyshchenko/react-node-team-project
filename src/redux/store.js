@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import NEW_Reduser from './NEW/NEW-slice';
+import { authReducer } from './auth';
 import {
   persistStore,
   persistReducer,
@@ -18,9 +19,16 @@ const NEW_PersistConfig = {
   whitelist: ['token'],
 };
 
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
+
 export const store = configureStore({
   reducer: {
     NEW: persistReducer(NEW_PersistConfig, NEW_Reduser),
+    auth: persistReducer(authPersistConfig, authReducer),
   },
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({

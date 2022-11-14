@@ -9,7 +9,7 @@ export default function AuthForm() {
     password: '',
     confirmPassword: '',
     name: '',
-    address: '',
+    city: '',
     phone: '',
   });
   const nextStep = () => setStep(prev => prev + 1);
@@ -33,6 +33,6 @@ export default function AuthForm() {
         />
       );
     default:
-      return <div>Success</div>;
+      return;
   }
 }

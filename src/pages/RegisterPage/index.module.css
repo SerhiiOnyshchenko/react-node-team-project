@@ -1,4 +1,8 @@
 .waveBackground {
+  height: calc(100vh - 74px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-image: url('../../images/wave-background/wave-mobile.png');
   background-repeat: no-repeat;
   background-position: bottom left;

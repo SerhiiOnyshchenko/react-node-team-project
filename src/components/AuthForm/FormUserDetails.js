@@ -36,19 +36,20 @@ export const FormUserDetails = ({ formData, setFormData, nextStep }) => {
               error={touched.email && errors.email}
             />
             <Field
+              type="password"
               name="password"
               placeholder="Password"
               className={s.input}
               error={touched.firstName && errors.firstName}
             />
             <Field
+              type="password"
               name="confirmPassword"
               placeholder="Confirm Password"
-              margin="normal"
               className={s.input}
               error={touched.lastName && errors.lastName}
             />
-            <div className={s.buttonContainer}>
+            <div class={s.buttonContainer}>
               <button type="submit" className={`${s.button} ${s.buttonActive}`}>
                 Next
               </button>

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Formik, Form, Field } from 'formik';
 import s from './index.module.css';
+import { authOperations } from '../../redux/auth';
 
 export const FormPersonalDetails = ({
   formData,
@@ -11,6 +13,8 @@ export const FormPersonalDetails = ({
   prevStep,
 }) => {
   const [direction, setDirection] = useState('back');
+  const dispatch = useDispatch();
+
   return (
     <>
       <Formik
@@ -18,33 +22,33 @@ export const FormPersonalDetails = ({
         onSubmit={values => {
           setFormData(values);
           direction === 'back' ? prevStep() : nextStep();
-          console.log(values);
+          dispatch(authOperations.register(values));
         }}
       >
         <Form className={s.form}>
           <h1 className={s.title}>Registration</h1>
           <Field name="name" placeholder="Name" className={s.input} />
           <Field
-            name="address"
+            name="city"
             placeholder="City, region"
             className={s.input}
             margin="normal"
           />
           <Field name="phone" placeholder="Mobile phone" className={s.input} />
-          <div className={s.buttonContainer}>
+          <div class={s.buttonContainer}>
+            <button
+              type="submit"
+              className={`${s.button} ${s.buttonActive} ${s.register}`}
+              onClick={() => setDirection('forward')}
+            >
+              Register
+            </button>
             <button
               type="submit"
               className={`${s.button} ${s.buttonDefault} ${s.back}`}
               onClick={() => setDirection('back')}
             >
               Back
-            </button>
-            <button
-              type="submit"
-              className={`${s.button} ${s.buttonActive}`}
-              onClick={() => setDirection('forward')}
-            >
-              Register
             </button>
           </div>
           <p className={s.questionText}>
