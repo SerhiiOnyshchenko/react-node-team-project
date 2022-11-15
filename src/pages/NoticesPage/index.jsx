@@ -1,6 +1,17 @@
 import React from 'react';
-// import s from './index.module.css';
+// import NoticesSearch from 'components/NoticesSearch';
+// import NoticesCategoriesNav from 'components/NoticesCategoriesNav';
+// import NoticesCategoriesList from 'components/NoticesCategoriesList';
+// import AddNoticeButton from 'components/AddNoticeButton';
+import s from './index.module.css';
 
 export default function NoticesPage() {
-  return <div>NoticesPage </div>;
+  return (
+    <div className={s.container}>
+      {/* <NoticesSearch></NoticesSearch>
+      <NoticesCategoriesNav></NoticesCategoriesNav>
+      <NoticesCategoriesList></NoticesCategoriesList>
+      <AddNoticeButton></AddNoticeButton> */}
+    </div>
+  );
 }

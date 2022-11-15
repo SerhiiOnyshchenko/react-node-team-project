@@ -1,0 +1,31 @@
+.navContainer {
+  display: flex;
+  align-items: center;
+  margin-left: 80px;
+}
+.linkWrapper {
+  display: flex;
+}
+.link {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 27px;
+  letter-spacing: 0.04em;
+  color: #181c27;
+
+  transition: var(--transition);
+}
+.link:not(:first-child) {
+  margin-left: 80px;
+}
+.active {
+  font-weight: 700;
+  text-decoration-line: underline;
+  color: #f59256;
+}
+.link:hover,
+.link:focus {
+  color: var(--color-hover-active);
+}

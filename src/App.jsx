@@ -1,10 +1,16 @@
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 // import s from './App.module.css';
-import PablicRoute from 'components/PablicRoute';
+import PublicRoute from 'components/PublicRoute';
 import PrivateRoute from 'components/PrivateRoute';
 import NotFoundPage from 'pages/NotFoundPage';
-import Header from 'pages/Header';
+import Header from 'components/Header';
+import HomePage from 'pages/HomePage';
+import Loader from 'components/Loader';
+import { useSelector } from 'react-redux';
+import { getLoader } from 'redux/loader/loader-selectors';
+import { useDispatch } from 'react-redux';
+import { changeLoader } from 'redux/loader/loader-actions';
 
 const LoginPage = lazy(() => import('./pages/LoginPage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage'));
@@ -14,11 +20,28 @@ const NoticesPage = lazy(() => import('./pages/NoticesPage'));
 const OurFriendsPage = lazy(() => import('./pages/OurFriendsPage'));
 
 export default function App() {
+  const dispatch = useDispatch();
+  const loader = useSelector(getLoader);
+  useEffect(() => {
+    dispatch(changeLoader(true));
+    setTimeout(() => {
+      dispatch(changeLoader(false));
+    }, 2000);
+  }, [dispatch]);
+
   return (
     <div>
+      {loader && <Loader />}
       <Header />
       <Routes>
-        <Route exact path="/" element={<PrivateRoute></PrivateRoute>} />
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <HomePage />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="user"
           element={
@@ -30,41 +53,41 @@ export default function App() {
         <Route
           path="login"
           element={
-            <PablicRoute restricted>
+            <PublicRoute restricted>
               <LoginPage />
-            </PablicRoute>
+            </PublicRoute>
           }
         />
         <Route
           path="register"
           element={
-            <PablicRoute restricted>
+            <PublicRoute restricted>
               <RegisterPage />
-            </PablicRoute>
+            </PublicRoute>
           }
         />
         <Route
           path="news"
           element={
-            <PablicRoute restricted>
+            <PublicRoute restricted>
               <NewsPage />
-            </PablicRoute>
+            </PublicRoute>
           }
         />
         <Route
-          path="notices "
+          path="notices"
           element={
-            <PablicRoute restricted>
+            <PublicRoute restricted>
               <NoticesPage />
-            </PablicRoute>
+            </PublicRoute>
           }
         />
         <Route
           path="friends"
           element={
-            <PablicRoute restricted>
+            <PublicRoute restricted>
               <OurFriendsPage />
-            </PablicRoute>
+            </PublicRoute>
           }
         />
         <Route path="*" element={<NotFoundPage />} />

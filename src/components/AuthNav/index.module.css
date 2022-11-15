@@ -1,0 +1,15 @@
+.list {
+  display: flex;
+  margin-left: auto;
+}
+@media screen and(max-width: 767px) {
+  .list {
+    align-items: center;
+  }
+  .item:not(:first-child) {
+    margin-left: 12px;
+  }
+}
+.item:not(:first-child) {
+  margin-left: 20px;
+}
