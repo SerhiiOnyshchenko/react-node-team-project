@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: center;
   background-color: transparent;
+  z-index: 454;
 }
 @media screen and (min-width: 768px) {
   .Btn {
