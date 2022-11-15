@@ -38,9 +38,13 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: var(--btn-bg-default);
+  background-color: transparent;
   border: 0;
   cursor: pointer;
+  background-image: url('../../images/svg/bin.svg');
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .deleteBtn:hover,
@@ -55,14 +59,15 @@
 .petInfoCategory {
   margin-bottom: 12px;
 
-  font-family: 'Manrope Medium';
+  font-family: 'Manrope';
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.38;
+  white-space: normal;
 
-  display: flex;
-  align-items: center;
+  display: block;
+  align-items: top;
   letter-spacing: 0.04em;
 
   color: #000;
@@ -73,8 +78,9 @@
 }
 
 .petInfoTitle {
-  font-family: 'Manrope SemiBold';
-  /* margin-right: 5px; */
+  font-family: 'Manrope';
+  font-weight: 600;
+  margin-right: 5px;
 }
 .noPets {
   text-align: center;
@@ -101,7 +107,8 @@
   }
 
   .deleteBtn {
-    top: -20px;
+    top: 0;
+    background-color: var(--bg);
   }
 
   .petInfoCategory {

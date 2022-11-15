@@ -12,8 +12,13 @@ export const fetchUser = createAsyncThunk('user/fetch-user', async () => {
   }
 });
 
-export const deletePetFromList = createAsyncThunk('pet/delete-pet-from-list', async () => {
-  try {
-    await axios.delete(`/user/pet`)
+export const deletePetFromList = createAsyncThunk(
+  'pet/delete-pet-from-list',
+  async userData => {
+    try {
+      await axios.delete(userData);
+    } catch (error) {
+      console.log('fetch-new-error', error);
+    }
   }
-});
+);
