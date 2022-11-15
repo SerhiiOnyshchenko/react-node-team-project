@@ -19,7 +19,12 @@
   }
 }
 .authWrapper {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.authWrapper > ul,
+.authWrapper > button {
+  margin-left: 0;
 }
 .linkWrapper {
   display: flex;

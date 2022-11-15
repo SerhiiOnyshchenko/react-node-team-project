@@ -24,7 +24,7 @@ export default function MobileNav() {
         <nav className={s.navWrapper}>
           {isMobile && (
             <div className={s.authWrapper}>
-              {isLoggedIn ? <UserNav /> : <AuthNav />}
+              {isLoggedIn ? <UserNav /> : <AuthNav className={s.centered} />}
             </div>
           )}
           <ul className={s.linkWrapper}>
