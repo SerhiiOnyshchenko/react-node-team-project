@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkreact_node_team_project=self.webpackChunkreact_node_team_project||[]).push([[155],{155:function(e,t,n){n.r(t),n.d(t,{default:function(){return r}});n(791);var c=n(184);function r(){return(0,c.jsx)("div",{children:"NoticesPage "})}}}]);
-//# sourceMappingURL=155.5e4b79b1.chunk.js.map
