@@ -1,0 +1,31 @@
+.button {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+
+  color: rgba(17, 17, 17, 0.6);
+
+  background-color: transparent;
+}
+
+.logo {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .button {
+    position: absolute;
+    left: 32px;
+    bottom: 24px;
+  }
+}
