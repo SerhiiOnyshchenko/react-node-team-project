@@ -11,14 +11,9 @@
 }
 
 .title {
-  font-family: 'Manrope', sans-serif;
-  font-style: normal;
-  font-weight: 500;
   font-size: 20px;
   line-height: 1.35;
   letter-spacing: 0.04em;
-
-  color: var(--color-main);
 }
 
 .addPetWrapper {
@@ -27,13 +22,8 @@
 }
 
 .addPetTitle {
-  font-family: 'Manrope', sans-serif;
-  font-style: normal;
-  font-weight: 500;
   font-size: 20px;
   line-height: 1.35;
-
-  color: var(--color-main);
 }
 
 .buttonAddPet {
@@ -42,15 +32,11 @@
 
   margin-left: 15px;
 
-  border: none;
   border-radius: 50%;
-  stroke: white;
+
   background-color: var(--btn-bg-another);
   background-image: url('../../images/svg/plus.svg');
-  cursor: pointer;
-
   background-repeat: no-repeat;
-  background-size: 24px 24px;
   background-position: center;
 }
 
