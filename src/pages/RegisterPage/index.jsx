@@ -1,6 +1,14 @@
 import React from 'react';
-// import s from './index.module.css';
+import AuthForm from 'components/AuthForm';
+import Container from 'components/Container';
+import s from './index.module.css';
 
 export default function RegisterPage() {
-  return <div>RegisterPage </div>;
+  return (
+    <div className={s.waveBackground}>
+      <Container>
+        <AuthForm />
+      </Container>
+    </div>
+  );
 }

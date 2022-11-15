@@ -1,0 +1,81 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  /* justify-content: space-between; */
+
+  margin-bottom: 12px;
+}
+
+.field {
+  width: 56px;
+  margin-right: 26px;
+  font-size: 12px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+
+  color: #111111;
+}
+
+.value {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  letter-spacing: 0.04em;
+
+  color: #111111;
+}
+
+.button {
+  position: absolute;
+  right: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.logo {
+  width: 20px;
+  height: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    width: 380px;
+
+    margin-bottom: 15px;
+  }
+
+  .field {
+    width: 83px;
+    margin-right: 36px;
+
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  .value {
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  .logo {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .wrapper {
+    width: 100%;
+  }
+
+  .field {
+    margin-right: 24px;
+  }
+}
