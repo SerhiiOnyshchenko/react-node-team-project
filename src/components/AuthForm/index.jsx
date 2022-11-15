@@ -12,7 +12,7 @@ export default function AuthForm() {
     city: '',
     phone: '',
   });
-  const nextStep = () => setStep(prev => prev + 1);
+  const nextStep = () => setStep(prev => (prev === 1 ? prev + 1 : 2));
   const prevStep = () => setStep(prev => prev - 1);
   switch (step) {
     case 1:

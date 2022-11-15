@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Formik, Form, Field } from 'formik';
+import { authOperations, authSelectors } from '../../redux/auth';
 import s from './index.module.css';
-import { authOperations } from '../../redux/auth';
 
 export const FormPersonalDetails = ({
   formData,
@@ -14,6 +14,14 @@ export const FormPersonalDetails = ({
 }) => {
   const [direction, setDirection] = useState('back');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  let isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/user');
+    }
+  }, [navigate, isLoggedIn]);
 
   return (
     <>
@@ -22,7 +30,11 @@ export const FormPersonalDetails = ({
         onSubmit={values => {
           setFormData(values);
           direction === 'back' ? prevStep() : nextStep();
-          dispatch(authOperations.register(values));
+          const registerValues = { ...values };
+          delete registerValues.confirmPassword;
+          if (direction === 'forward') {
+            dispatch(authOperations.register(registerValues));
+          }
         }}
       >
         <Form className={s.form}>

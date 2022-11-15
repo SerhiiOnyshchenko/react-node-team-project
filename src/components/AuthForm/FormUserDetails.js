@@ -105,9 +105,9 @@ export const FormUserDetails = ({ formData, setFormData, nextStep }) => {
             <label className={s.inputBox} htmlFor="password">
               <Field
                 type={passwordType}
+                autoComplete="on"
                 name="password"
                 id="password"
-                // ref={passwordInput}
                 placeholder="Password"
                 className={s.input}
                 error={touched.firstName && errors.firstName}
@@ -133,6 +133,7 @@ export const FormUserDetails = ({ formData, setFormData, nextStep }) => {
             </label>
             <Field
               type="password"
+              autoComplete="on"
               name="confirmPassword"
               placeholder="Confirm Password"
               className={s.input}

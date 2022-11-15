@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'http://localhost:8000/api';
+axios.defaults.baseURL = 'http://localhost:8083/api';
 
 const token = {
   set(token) {
@@ -12,15 +12,26 @@ const token = {
   },
 };
 
-const register = createAsyncThunk('auth/register', async credentials => {
-  try {
-    const { data } = await axios.post('/users/signup', credentials);
-    token.set(data.token);
-    return data;
-  } catch (error) {
-    console.log(error);
+const register = createAsyncThunk(
+  'auth/register',
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await axios.post('/user/registration', credentials);
+      token.set(data.token);
+      return data;
+    } catch (error) {
+      const errorData = error.response.data;
+      let errorMessage = '';
+      if (errorData.name) {
+        errorMessage = `Email already exists in database`;
+      } else {
+        errorMessage = errorData.message;
+      }
+      alert(errorMessage);
+      return thunkAPI.rejectWithValue();
+    }
   }
-});
+);
 
 const logIn = createAsyncThunk('auth/logIn', async credentials => {
   try {
