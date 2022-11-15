@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import BurgerMenuToggle from '../../BurgerMenuToggle';
 import { NavLink } from 'react-router-dom';
 import s from './index.module.css';
+import UserNav from 'components/UserNav';
+import AuthNav from 'components/AuthNav';
 
 const itemsNav = [
   { href: '/news', title: 'News' },
@@ -11,12 +14,19 @@ const itemsNav = [
 
 export default function MobileNav() {
   const [isOpen, setOpen] = useState(false);
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const isLoggedIn = false;
 
   return (
     <>
       <BurgerMenuToggle isOpen={isOpen} toggle={() => setOpen(!isOpen)} />
       {isOpen && (
         <nav className={s.navWrapper}>
+          {isMobile && (
+            <div className={s.authWrapper}>
+              {isLoggedIn ? <UserNav /> : <AuthNav />}
+            </div>
+          )}
           <ul className={s.linkWrapper}>
             {itemsNav.map(({ href, title }) => (
               <NavLink
