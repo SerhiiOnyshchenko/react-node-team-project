@@ -1,0 +1,22 @@
+.background {
+  height: calc(100vh - 74px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../../images/wave-background/wave-mobile.png');
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: contain;
+}
+
+@media screen and (min-width: 768px) {
+  .background {
+    height: calc(100vh - 88px);
+    background-image: url('../../images/wave-background/wave-tablet.png');
+  }
+}
+@media screen and (min-width: 1280px) {
+  .background {
+    background-image: url('../../images/wave-background/wave-desktop.png');
+  }
+}

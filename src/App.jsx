@@ -1,4 +1,4 @@
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 // import s from './App.module.css';
 import PublicRoute from 'components/PublicRoute';
@@ -6,6 +6,11 @@ import PrivateRoute from 'components/PrivateRoute';
 import NotFoundPage from 'pages/NotFoundPage';
 import Header from 'components/Header';
 import HomePage from 'pages/HomePage';
+import Loader from 'components/Loader';
+import { useSelector } from 'react-redux';
+import { getLoader } from 'redux/loader/loader-selectors';
+import { useDispatch } from 'react-redux';
+import { changeLoader } from 'redux/loader/loader-actions';
 
 const LoginPage = lazy(() => import('./pages/LoginPage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage'));
@@ -15,8 +20,18 @@ const NoticesPage = lazy(() => import('./pages/NoticesPage'));
 const OurFriendsPage = lazy(() => import('./pages/OurFriendsPage'));
 
 export default function App() {
+  const dispatch = useDispatch();
+  const loader = useSelector(getLoader);
+  useEffect(() => {
+    dispatch(changeLoader(true));
+    setTimeout(() => {
+      dispatch(changeLoader(false));
+    }, 2000);
+  }, [dispatch]);
+
   return (
     <div>
+      {loader && <Loader />}
       <Header />
       <Routes>
         <Route
