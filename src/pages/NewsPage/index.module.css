@@ -5,8 +5,6 @@
   justify-content: center;
   width: 100%;
   padding-top: 26px;
-  font-family: 'Manrope';
-  font-style: normal;
 }
 
 @media screen and (min-width: 768px) {
@@ -24,14 +22,14 @@
 .newsTitle {
   font-weight: 700;
   font-size: 24px;
-  line-height: 33px;
+  line-height: 1.37;
   margin-bottom: 28px;
 }
 @media screen and (min-width: 768px) {
   .newsTitle {
     margin-bottom: 40px;
     font-size: 48px;
-    line-height: 66px;
+    line-height: 1.37;
   }
 }
 
@@ -42,9 +40,7 @@
   box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
   padding-left: 12px;
   padding-right: 12px;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 22px;
+  line-height: 1.37;
   display: flex;
   align-items: center;
   letter-spacing: 0.04em;
@@ -59,14 +55,13 @@
     padding-left: 20px;
     padding-right: 20px;
     font-size: 20px;
-    line-height: 27px;
+    line-height: 1.35;
   }
 }
 @media screen and (min-width: 1280px) {
   .input {
-    border-radius: 20px;
     font-family: 'Inter';
-    line-height: 24px;
+    line-height: 1.2;
   }
 }
 
@@ -92,11 +87,13 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-color: transparent;
+  background-size: 15px  15px;
 }
 @media screen and (min-width: 768px) {
   .btn {
     width: 44px;
     height: 44px;
+    background-size: 18px  18px;
   }
 }
 
