@@ -14,7 +14,7 @@ export default function AuthNav() {
     <ul className={s.list}>
       {itemsNav.map(({ href, text }) => (
         <li className={s.item} key={href}>
-          <NavLink to={href}>
+          <NavLink to={href} style={{ color: '#000' }}>
             {isMobile ? (
               <Button text={text} smole={true} />
             ) : (
