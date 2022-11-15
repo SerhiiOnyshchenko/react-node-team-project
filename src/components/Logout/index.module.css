@@ -21,3 +21,11 @@
   height: 20px;
   margin-right: 8px;
 }
+
+@media screen and (min-width: 768px) {
+  .button {
+    position: absolute;
+    left: 32px;
+    bottom: 24px;
+  }
+}

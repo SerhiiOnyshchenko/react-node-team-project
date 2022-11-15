@@ -33,13 +33,17 @@
   .userWrap {
     position: absolute;
     width: 736px;
-    /* height: 311px; */
-    left: 0px;
-    /* top: 238px; */
+    padding: 24px 40px 24px 32px;
 
-    /* background: #ffffff; */
-    /* box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11); */
+    left: 0px;
     border-radius: 0px 40px 40px 0px;
+  }
+
+  .title {
+    margin-bottom: 40px;
+
+    font-size: 28px;
+    line-height: 38px;
   }
 }
 

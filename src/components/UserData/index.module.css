@@ -3,14 +3,6 @@
   margin-bottom: 32px;
 }
 
-@media screen and (min-width: 768px) {
-  .wrapper {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-  }
-}
-
 .imgBlock {
   margin-bottom: 36px;
 }
@@ -49,5 +41,19 @@
   margin-right: 4px;
 }
 
-.userInfo {
+/* .userInfo {
+} */
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+
+    margin-bottom: 0px;
+  }
+
+  .imgBlock {
+    margin-bottom: 0px;
+  }
 }
