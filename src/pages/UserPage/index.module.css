@@ -19,6 +19,7 @@
   flex-direction: column;
   justify-content: center;
 
+  width: 280px;
   padding: 20px 16px;
 
   align-items: center;
@@ -26,4 +27,21 @@
   background: var(--modal-bg);
   box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
   border-radius: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .userWrap {
+    position: absolute;
+    width: 736px;
+    /* height: 311px; */
+    left: 0px;
+    /* top: 238px; */
+
+    /* background: #ffffff; */
+    /* box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11); */
+    border-radius: 0px 40px 40px 0px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
 }

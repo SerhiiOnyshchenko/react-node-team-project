@@ -7,6 +7,7 @@ export default function UserDataItem({ field, value }) {
     <div className={s.wrapper}>
       <p className={s.field}>{field}:</p>
       <p className={s.value}>{value}</p>
+      {/* TEXT ABOVE WILL BE A CONTROLLED INPUT */}
       <button className={s.button} type="button">
         <Logo className={s.logo}></Logo>
       </button>

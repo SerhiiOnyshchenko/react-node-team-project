@@ -1,5 +1,18 @@
 .wrapper {
+  width: 100%;
   margin-bottom: 32px;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+}
+
+.imgBlock {
+  margin-bottom: 36px;
 }
 
 .imgWrap {
@@ -21,7 +34,6 @@
   display: flex;
   align-items: center;
   margin-left: auto;
-  margin-bottom: 36px;
 
   font-weight: 400;
   font-size: 12px;
@@ -35,4 +47,7 @@
   height: 20px;
 
   margin-right: 4px;
+}
+
+.userInfo {
 }

@@ -10,11 +10,12 @@ export default function UserPage() {
   return (
     <section className={s.section}>
       <Container>
-        <h1 className={s.title}>My information:</h1>
+        <h2 className={s.title}>My information:</h2>
         <div className={s.userWrap}>
           <UserData></UserData>
           <Logout></Logout>
         </div>
+        {/* HERE WILL BE PETSDATA COMPONENT */}
       </Container>
     </section>
   );
