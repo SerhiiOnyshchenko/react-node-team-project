@@ -1,19 +1,53 @@
 .container {
-  width: 394px;
-  margin-right: 32px;
-  padding-bottom: 60px;
+  width: 280px;
+  padding-bottom: 40px;
 }
-.container:nth-child(3n + 3) {
-  margin-right: 0px;
+
+
+@media screen and (min-width: 768px) {
+	.container {
+    width: 336px;
+    margin-right: 32px;
+    padding-bottom: 60px;
+	}
+ 
+}
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .container:nth-child(2n) {
+    margin-right: 0px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    width: 394px;
+  }
+  .container:nth-child(3n +3) {
+    margin-right: 0px;
+  }
 }
 
 .decor {
-  width: 340px;
-  height: 8px;
+  width: 200px;
+  height: 4px;
   background: linear-gradient(90deg, #ff634e 0%, #ffdf48 105.44%);
   border-radius: 40px;
   margin-bottom: 4px;
 }
+
+@media screen and (min-width: 768px) {
+	.decor {
+    width: 280px;
+    height: 8px;
+	} 
+}
+
+@media screen and (min-width: 1280px) {
+  .decor {
+    width: 340px;
+  }
+}
+
 .title {
   font-family: 'Manrope';
   font-style: normal;
@@ -31,10 +65,22 @@
 }
 
 .containerTitle {
-  width: 395px;
-  /* height: 66px; */
-  /* padding: 1rem; */
+  width: 280px;
 }
+
+@media screen and (min-width: 768px) {
+	.containerTitle {
+    width: 336px;
+	} 
+}
+
+@media screen and (min-width: 1280px) {
+  .containerTitle{
+    width: 395px;
+  }
+}
+
+
 .text {
   font-family: 'Manrope';
   font-style: normal;
@@ -42,12 +88,26 @@
   font-size: 16px;
   line-height: 22px;
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 7;
   -webkit-box-orient: vertical;
   overflow: hidden;
   color: #111321;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
+
+@media screen and (min-width: 768px) {
+	.text {
+    margin-bottom: 40px;
+    -webkit-line-clamp: 6;
+	} 
+}
+
+@media screen and (min-width: 1280px) {
+  .text{
+    -webkit-line-clamp: 5;
+  }
+}
+
 .data {
   font-family: 'Manrope';
   font-style: normal;
@@ -56,16 +116,7 @@
   line-height: 22px;
   color: rgba(17, 17, 17, 0.6);
 }
-.readMore {
-  font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 22px;
-  text-align: right;
-  text-decoration-line: underline;
-  color: #f59256;
-}
+
 .containerDataAndReadMore {
   display: flex;
   justify-content: space-between;
