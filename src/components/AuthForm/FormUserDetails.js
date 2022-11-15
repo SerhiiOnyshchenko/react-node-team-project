@@ -37,6 +37,7 @@ export const FormUserDetails = ({ formData, setFormData, nextStep }) => {
             />
             <Field
               type="password"
+              autoComplete="on"
               name="password"
               placeholder="Password"
               className={s.input}
@@ -44,6 +45,7 @@ export const FormUserDetails = ({ formData, setFormData, nextStep }) => {
             />
             <Field
               type="password"
+              autoComplete="on"
               name="confirmPassword"
               placeholder="Confirm Password"
               className={s.input}
