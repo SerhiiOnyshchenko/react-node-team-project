@@ -15,7 +15,7 @@ const itemsNav = [
 export default function MobileNav() {
   const [isOpen, setOpen] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 767 });
-  const isLoggedIn = false;
+  const isLoggedIn = true;
 
   return (
     <>

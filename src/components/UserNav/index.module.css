@@ -20,6 +20,7 @@
 }
 .btnBg {
   background: inherit;
+  margin-left: auto;
 }
 .icon {
   margin-right: 12px;

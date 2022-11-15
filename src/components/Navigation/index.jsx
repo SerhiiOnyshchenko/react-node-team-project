@@ -14,9 +14,7 @@ export default function Navigation() {
     <>
       <div className={s.wrapper}>
         {!isTablet && <Nav />}
-        {/* {!isMobile && <UserNav />} */}
-        {!isMobile && <AuthNav />}
-        {/* {isLoggedIn ? <UserNav /> : <AuthNav />} */}
+        {!isMobile && (isLoggedIn ? <UserNav /> : <AuthNav />)}
         {isTablet && <MobileNav />}
       </div>
     </>
