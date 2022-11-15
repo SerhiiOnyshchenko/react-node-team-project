@@ -1,6 +1,8 @@
 .container {
   width: 280px;
   padding-bottom: 40px;
+  font-family: 'Manrope';
+  font-style: normal;
 }
 
 
@@ -22,7 +24,7 @@
   .container {
     width: 394px;
   }
-  .container:nth-child(3n +3) {
+  .container:nth-child(3n + 3) {
     margin-right: 0px;
   }
 }
@@ -49,8 +51,6 @@
 }
 
 .title {
-  font-family: 'Manrope';
-  font-style: normal;
   font-weight: 700;
   font-size: 24px;
   line-height: 33px;
@@ -82,8 +82,6 @@
 
 
 .text {
-  font-family: 'Manrope';
-  font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
@@ -108,9 +106,7 @@
   }
 }
 
-.data {
-  font-family: 'Manrope';
-  font-style: normal;
+.data { 
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
@@ -122,8 +118,6 @@
   justify-content: space-between;
 }
 .linkNews {
-  font-family: 'Manrope';
-  font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 22px;
