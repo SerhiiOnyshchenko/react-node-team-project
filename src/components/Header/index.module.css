@@ -9,4 +9,10 @@
 .headerList {
   display: flex;
   align-items: center;
+  /* justify-content: space-between; */
+}
+@media screen and (min-width: 1280px) {
+  .headerList {
+    justify-content: flex-start;
+  }
 }

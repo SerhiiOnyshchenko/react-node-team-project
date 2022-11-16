@@ -1,39 +1,39 @@
 .Btn {
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-	padding: 0 28px;
-	width: 180px;
-	height: 44px;
-	font-size: 20px;
-	letter-spacing: 0.04em;
-	border: 2px solid #f59256;
-	border-radius: 40px;
-	background-color: var(--btn-bg-default);
-	transition: var(--transition);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10 28px;
+  width: 180px;
+  height: 44px;
+  font-size: 20px;
+  letter-spacing: 0.04em;
+  border: 2px solid #f59256;
+  border-radius: 40px;
+  background-color: var(--btn-bg-default);
+  transition: var(--transition);
 }
 
 .Btn_active {
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-	padding: 0 28px;
-	width: 180px;
-	height: 44px;
-	font-size: 20px;
-	letter-spacing: 0.04em;
-	border: 2px solid #f59256;
-	border-radius: 40px;
-	background-color: var(--btn-bg-another);
-	color: var(--btn-color-hover-active);
-	transition: var(--transition);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 28px;
+  width: 180px;
+  height: 44px;
+  font-size: 20px;
+  letter-spacing: 0.04em;
+  border: 2px solid #f59256;
+  border-radius: 40px;
+  background-color: var(--btn-bg-another);
+  color: var(--btn-color-hover-active);
+  transition: var(--transition);
 }
 .Btn:hover {
-	background-color: var(--btn-bg-another);
-	color: var(--btn-color-hover-active);
-	cursor: pointer;
+  background-color: var(--btn-bg-another);
+  color: var(--btn-color-hover-active);
+  cursor: pointer;
 }
 
 .Btn_active:hover {
-	cursor: pointer;
+  cursor: pointer;
 }
