@@ -51,9 +51,12 @@ export default function NoticeItem({ petData = sampleData }) {
         >
           Learn more
         </button>
+        <button type="button" className={s.heartBtn}></button>
       </div>
       {modalShow && (
-        <ModalPage children={<ModalNotice />} onClose={handleModalToggle} />
+        <ModalPage onClose={handleModalToggle}>
+          <ModalNotice />
+        </ModalPage>
       )}
     </>
   );

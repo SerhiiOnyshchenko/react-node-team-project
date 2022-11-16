@@ -62,10 +62,13 @@ export default function ModalNotice() {
           <p className={s.commentsText}>{petData.comments}</p>
         </div>
         <div className={s.buttons}>
-          <Button text={'add to'} />
-          <Button text={'Contact'} active={true} smole={false} />
+          <button type="button" className={s.addToFovorBtn}>
+            add to
+          </button>
+          <a href={`tel:${petData.phone}`} className={s.contactBtn}>
+            Contact
+          </a>
         </div>
-        {/* <a href={`tel:${petData.phone}`}></a> */}
       </div>
     </>
   );
