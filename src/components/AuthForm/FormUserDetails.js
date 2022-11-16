@@ -1,19 +1,28 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import s from './index.module.css';
 import eye from '../../images/svg/eye.svg';
 import eyeBlock from '../../images/svg/eye-blocked.svg';
+import { toast } from 'react-toastify';
+import { ErrorMessageWrapper } from './validator';
 
 const validationSchema = yup.object({
   email: yup.string().email('Invalid email').required('Email is required'),
-  password: yup.string().required('Password is required').max(20),
-  confirmPassword: yup
+  password: yup
     .string()
-    .required('Confirm password is required')
-    .max(20),
+    .matches(/^\S{7,32}$/, 'Password should not contain spaces')
+    .required('Password is required')
+    .min(7)
+    .max(32),
+  confirmPassword: yup.string().when('password', {
+    is: val => (val && val.length > 0 ? true : false),
+    then: yup
+      .string()
+      .oneOf([yup.ref('password')], 'Both password need to be the same'),
+  }),
 });
 
 export const FormUserDetails = ({ formData, setFormData, nextStep }) => {
@@ -49,7 +58,7 @@ export const FormUserDetails = ({ formData, setFormData, nextStep }) => {
     const upper = new RegExp('(?=.*[A-Z])');
     const number = new RegExp('(?=.*[0-9])');
     const special = new RegExp('(?=.*[!@#$%^&*])');
-    const length = new RegExp('(?=.{8,})');
+    const length = new RegExp('(?=.{7,})');
 
     lower.test(data)
       ? lowerCase.current.classList.add(s.valid)
@@ -102,6 +111,11 @@ export const FormUserDetails = ({ formData, setFormData, nextStep }) => {
               className={s.input}
               error={touched.email && errors.email}
             />
+            <ErrorMessage name="email">
+              {errorMsg => {
+                toast.error(errorMsg);
+              }}
+            </ErrorMessage>
             <label className={s.inputBox} htmlFor="password">
               <Field
                 type={passwordType}
@@ -127,10 +141,15 @@ export const FormUserDetails = ({ formData, setFormData, nextStep }) => {
                   <li ref={upperCase}>At least one uppercase character</li>
                   <li ref={digit}>At least one number</li>
                   <li ref={specialChar}>At least one special character</li>
-                  <li ref={minLength}>At least 8 characters</li>
+                  <li ref={minLength}>At least 7 characters</li>
                 </ul>
               </div>
             </label>
+            <ErrorMessage name="password">
+              {errorMsg => {
+                toast.error(errorMsg);
+              }}
+            </ErrorMessage>
             <Field
               type="password"
               autoComplete="on"
@@ -139,6 +158,11 @@ export const FormUserDetails = ({ formData, setFormData, nextStep }) => {
               className={s.input}
               error={touched.lastName && errors.lastName}
             />
+            <ErrorMessage name="confirmPassword">
+              {errorMsg => {
+                toast.error(errorMsg);
+              }}
+            </ErrorMessage>
             <div className={s.buttonContainer}>
               <button type="submit" className={`${s.button} ${s.buttonActive}`}>
                 Next

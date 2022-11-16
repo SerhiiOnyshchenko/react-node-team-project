@@ -1,0 +1,5 @@
+.validation-error-message {
+  color: red;
+  display: block;
+  margin-bottom: 20px;
+}
