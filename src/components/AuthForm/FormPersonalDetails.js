@@ -23,7 +23,7 @@ const validationSchema = yup.object({
     ),
   phone: yup
     .string()
-    .matches(/^\+380\d{9}$/, 'Phone should be in format +380671234567'),
+    .matches(/^\+[0-9]{12}$/, 'Phone should be in format +380671234567'),
 });
 
 export const FormPersonalDetails = ({
