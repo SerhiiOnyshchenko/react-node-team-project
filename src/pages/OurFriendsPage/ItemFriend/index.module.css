@@ -1,0 +1,69 @@
+.padding {
+  width: max-content;
+  height: max-content;
+  padding-left: 30px;
+  padding-bottom: 30px;
+}
+
+.container {
+  width: 395px;
+  height: 287px;
+  background: #ffffff;
+  box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
+  border-radius: 40px;
+  padding: 15px;
+}
+
+.container h3 {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 27px;
+  text-decoration-line: underline;
+  color: #f59256;
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+  align-items: flex-start;
+  justify-content: left;
+  margin-top: 15px;
+}
+.logo {
+  width: 100%;
+}
+.friendData {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: flex-start;
+  padding-left: 15px;
+  width: 50%;
+}
+.friendData h6 {
+  margin-bottom: 5px;
+}
+.friendData p {
+  margin-bottom: 10px;
+}
+.image_container {
+  width: 158px;
+  height: 112px;
+}
+
+@media screen and (max-width: 1300px) {
+  .container {
+    max-width: 850px;
+  }
+  .padding {
+    padding-left: 0px;
+  }
+}
+@media screen and (max-width: 860px) {
+  .container {
+    width: 280px;
+    height: 192px;
+  }
+}

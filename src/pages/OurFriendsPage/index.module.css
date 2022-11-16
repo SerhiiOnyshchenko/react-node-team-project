@@ -1,0 +1,36 @@
+.wrapper {
+  height: calc(100vh - 88px);
+  width: 100vw;
+  overflow: auto;
+}
+
+.container {
+  max-width: 1275px;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+}
+.align_container {
+  margin-left: -15px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: auto;
+}
+
+@media screen and (max-width: 1300px) {
+  .container {
+    max-width: 850px;
+  }
+}
+@media screen and (max-width: 860px) {
+  .container {
+    max-width: 280px;
+  }
+  .align_container {
+    margin-left: 0px;
+    flex-direction: column;
+  }
+}
