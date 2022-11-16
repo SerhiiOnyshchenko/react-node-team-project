@@ -1,4 +1,4 @@
-import { Formik, Field, Form } from 'formik';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import s from './index.module.css';
 import * as yup from 'yup';
 import { Link } from 'react-router-dom';
@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const validationSchema = yup.object({
   email: yup.string().email('Invalid email').required('Email is required'),
-  password: yup.string().required('Password is required').max(20),
+  password: yup.string().required('Password is required').min(7).max(32),
 });
 
 export default function LoginForm() {
@@ -32,7 +32,7 @@ export default function LoginForm() {
           }
         }}
       >
-        {({ handleSubmit, handleChange, errors, touched }) => (
+        {({ handleSubmit, handleChange, touched, errors }) => (
           <Form className={s.form} onSubmit={handleSubmit}>
             <h1 className={s.title}>Login</h1>
 
@@ -45,6 +45,11 @@ export default function LoginForm() {
               type="email"
               error={touched.email && errors.email}
             />
+            <ErrorMessage
+              className={s.errmsg_login}
+              name="email"
+              component="div"
+            />
 
             <Field
               className={s.input}
@@ -54,6 +59,11 @@ export default function LoginForm() {
               type="password"
               placeholder="Password"
               error={touched.password && errors.password}
+            />
+            <ErrorMessage
+              className={s.errmsg_pass}
+              name="password"
+              component="div"
             />
             <button className={s.button} type="submit">
               Login
