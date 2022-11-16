@@ -75,7 +75,7 @@ export default function App() {
           }
         />
         <Route
-          path="notices "
+          path="notices"
           element={
             <PublicRoute restricted>
               <NoticesPage />
