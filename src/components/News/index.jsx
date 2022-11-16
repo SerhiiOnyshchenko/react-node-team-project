@@ -6,7 +6,7 @@ export default function News({ news }) {
 
   return (
     
-    <div className={s.container}>
+    <li className={s.container}>
       <div className={s.decor}></div>
       <div className={s.containerTitle}>
         <div className={s.title}>
@@ -19,6 +19,6 @@ export default function News({ news }) {
        </div>
       </div>
 
-    </div>
+    </li >
   )
 }
