@@ -3,12 +3,13 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'http://localhost:8083/api';
 
-export const newsOperations = createAsyncThunk('news/getNews', async () => {
+export const getNews = createAsyncThunk('news/getNews', async ({query}) => {
   try {
-    const { data } = await axios.get('/news');
+    const { data } = await axios.get(`/news?query=${query}`);
+    console.log(data);
     return data;
   } catch (error) {
-    console.log('fetch-new-error', error);
+    console.log('fetch-news-error', error);
   }
 });
-export default newsOperations;
+export default getNews;

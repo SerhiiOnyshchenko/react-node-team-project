@@ -1,20 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit';
-import  newsOperations  from './news-operations';
+import  getNews  from './news-operations';
 
 const initialState = {
   news: [],
   isLoading: false,
-  isRefreshing: false,
+  // isRefreshing: false,
 };
 
 const newsSlice = createSlice({
   name: 'news',
   initialState,
-  extraReducers: {
-    [newsOperations.pending](state) {
-      state.isRefreshing = true;
-    },
+  extraReducers: builder => {
+    builder.addCase(getNews.fulfilled, (state, action) => {
+      state.news = action.payload;
+      // state.isLoggedIn = true;
+    });
   },
-});
+  // extraReducers: {
+  //   [newsOperations.pending](state) {
+  //     state.isRefreshing = true;
+  //   },
+   },
+);
 
 export default newsSlice.reducer;
