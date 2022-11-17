@@ -23,7 +23,7 @@ export default function MobileNav() {
       {isOpen && (
         <nav className={s.navWrapper}>
           {isMobile && (
-            <div className={s.authWrapper}>
+            <div className={s.authWrapper} onClick={() => setOpen()}>
               {isLoggedIn ? <UserNav /> : <AuthNav className={s.centered} />}
             </div>
           )}
