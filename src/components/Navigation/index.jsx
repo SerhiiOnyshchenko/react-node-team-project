@@ -1,4 +1,6 @@
 import { useMediaQuery } from 'react-responsive';
+// import { useSelector } from 'react-redux';
+// import getIsLoggedIn from '../../redux/auth/auth-selectors';
 import Nav from 'components/Nav';
 import AuthNav from 'components/AuthNav';
 import UserNav from 'components/UserNav';
@@ -9,6 +11,7 @@ export default function Navigation() {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ maxWidth: 1279 });
   const isLoggedIn = true;
+  // const isLoggedIn = useSelector(getIsLoggedIn);
 
   return (
     <>

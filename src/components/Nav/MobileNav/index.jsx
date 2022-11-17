@@ -1,10 +1,14 @@
 import { useState } from 'react';
+// import { useSelector } from 'react-redux';
+// import getIsLoggedIn from '../../../redux/auth/auth-selectors';
 import { useMediaQuery } from 'react-responsive';
-import BurgerMenuToggle from '../../BurgerMenuToggle';
 import { NavLink } from 'react-router-dom';
-import s from './index.module.css';
+
+import BurgerMenuToggle from '../../BurgerMenuToggle';
 import UserNav from 'components/UserNav';
 import AuthNav from 'components/AuthNav';
+
+import s from './index.module.css';
 
 const itemsNav = [
   { href: '/news', title: 'News' },
@@ -13,9 +17,10 @@ const itemsNav = [
 ];
 
 export default function MobileNav() {
+  // const isLoggedIn = useSelector(getIsLoggedIn);
+  const isLoggedIn = true;
   const [isOpen, setOpen] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 767 });
-  const isLoggedIn = true;
 
   return (
     <>
