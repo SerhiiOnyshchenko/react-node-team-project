@@ -3,19 +3,24 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 280px;
   padding-top: 26px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media screen and (min-width: 768px) {
   .newsContainer {
     padding-top: 72px;
+    width: 704px;
+   
   }
 }
 
 @media screen and (min-width: 1280px) {
   .newsContainer {
     padding-top: 38px;
+    width: 1248px;
   }
 }
 
@@ -101,3 +106,5 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+

@@ -13,6 +13,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import loaderReduser from './loader/loader-reduser';
+import newsReduser from './news/news-slice';
 
 const NEW_PersistConfig = {
   key: 'NEW',
@@ -30,6 +31,7 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     NEW: persistReducer(NEW_PersistConfig, NEW_Reduser),
+    news: newsReduser,
     loader: loaderReduser,
   },
   middleware: getDefaultMiddleware => [

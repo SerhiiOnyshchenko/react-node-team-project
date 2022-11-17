@@ -1,20 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchNEW } from './NEWS-operations';
+import  newsOperations  from './news-operations';
 
 const initialState = {
-  NEW: [],
+  news: [],
   isLoading: false,
   isRefreshing: false,
 };
 
-const NEW_Slice = createSlice({
-  name: 'NEW',
+const newsSlice = createSlice({
+  name: 'news',
   initialState,
   extraReducers: {
-    [fetchNEW.pending](state) {
+    [newsOperations.pending](state) {
       state.isRefreshing = true;
     },
   },
 });
 
-export default NEW_Slice.reducer;
+export default newsSlice.reducer;

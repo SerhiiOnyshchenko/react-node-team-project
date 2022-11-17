@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://{url}';
 
-export const fetchNEW = createAsyncThunk('new/fetch-new', async () => {
+export const newsOperations = createAsyncThunk('news', async () => {
   try {
     const { data } = await axios.get('/');
     return data;
@@ -11,3 +11,4 @@ export const fetchNEW = createAsyncThunk('new/fetch-new', async () => {
     console.log('fetch-new-error', error);
   }
 });
+export default newsOperations;

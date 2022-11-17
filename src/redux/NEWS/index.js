@@ -1,2 +1,4 @@
-export * as NEW_Operations from './NEWS-operations';
-export * as NEW_Selectors from './NEWS-selectors';
+export { default as newsOperations } from './news-operations';
+export { default as newsSelectors } from './news-selectors';
+export { default as newsReducer } from './news-slice';
+
