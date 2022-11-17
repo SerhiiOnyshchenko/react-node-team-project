@@ -1,6 +1,5 @@
-import s from './index.module.css';
-import { Formik, Form, Field } from 'formik';
-
+import React, { useState } from 'react';
+import
 // import ModalPage from 'pages/ModalPage';
 
 export default function ModalAddsPet() {

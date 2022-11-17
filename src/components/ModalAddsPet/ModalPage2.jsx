@@ -1,36 +1,30 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import s from './index.module.css';
-import PropTypes from 'prop-types';
-import parse from 'date-fns/parse';
 
 const validationSchema = yup.object({
-  name: yup.string().min(2).max(16).required(),
-  birthday: yup.date
-    .transform(function (value, originalValue) {
-      if (this.isType(value)) {
-        return value;
-      }
-      const result = parse(originalValue, 'dd.MM.yyyy', new Date());
-      return result;
-    })
-    .typeError('please enter a valid date')
-    .required()
-    .min('1950-11-13', 'Date is too early'),
-  breed: yup.string().min(2).max(16).required(),
+  comments: yup
+    .string()
+    .min(8)
+    .max(120)
+    .matches(
+      /^[a-zA-Z0-9 ]*$/,
+      'Only alphanumeric characters and numbers are allowed'
+    )
+    .required(),
 });
 
 const initialValues = {
-  name: '',
-  birthday: '',
-  breed: '',
+  comments: '',
 };
 
-export const Modal1 = ({ name, birthday, breed }) => {
-  const handleSubmit = (values, actions) => {};
+export const ModalPage2 = ({ props }) => {
+  const handleSubmit = values => {
+    props.next(values, true);
+  };
   return (
     <>
-      <div></div>
+      <div className={s.title}>Add pet</div>
       <div className={s.formWrapper}>
         <Formik
           initialValues={initialValues}
@@ -38,6 +32,18 @@ export const Modal1 = ({ name, birthday, breed }) => {
           validationSchema={validationSchema}
         >
           <Form autoComplete="off">
+            <p className={s.addPhotoText}>Add photo and some comments</p>
+            <button type="button" className={s.addPhotoBtn}>
+              +
+            </button>
+            <div className={s.textareaWrapper}>
+              <label className={s.textareaLabel}>Comments</label>
+              <textarea
+                className={s.textarea}
+                name="comments"
+                placeholder=" Type comments"
+              ></textarea>
+            </div>
             <label htmlFor="name">
               Name pet
               <Field
@@ -70,21 +76,19 @@ export const Modal1 = ({ name, birthday, breed }) => {
             </label>
           </Form>
           <div className={s.buttonsWrapper}>
-            <button type="button" className={s.cancelBtn}>
-              Cancel
+            <button
+              type="button"
+              onClick={props.prev}
+              className={s.buttonSimple}
+            >
+              Back
             </button>
-            <button type="button" className={s.cancelBtn}>
-              Next
+            <button type="submit" className={s.buttonSubmit}>
+              Done
             </button>
           </div>
         </Formik>
       </div>
     </>
   );
-};
-
-FormUserDetails.propTypes = {
-  formData: PropTypes.object.isRequired,
-  setFormData: PropTypes.func.isRequired,
-  nextStep: PropTypes.func.isRequired,
 };
