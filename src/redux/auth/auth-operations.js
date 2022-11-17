@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'http://localhost:8083/api';
 
@@ -27,7 +28,7 @@ const register = createAsyncThunk(
       } else {
         errorMessage = errorData.message;
       }
-      alert(errorMessage);
+      toast.error(errorMessage);
       return thunkAPI.rejectWithValue();
     }
   }
