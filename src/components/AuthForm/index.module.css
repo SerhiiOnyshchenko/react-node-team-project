@@ -38,6 +38,11 @@
   }
 }
 
+.fieldContainer {
+  position: relative;
+  margin-bottom: 30px;
+}
+
 .input {
   display: flex;
   flex-direction: column;
@@ -51,14 +56,6 @@
   transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.input:not(:last-of-type) {
-  margin-bottom: 16px;
-}
-
-.input:nth-last-of-type(1) {
-  margin-bottom: 40px;
-}
-
 @media screen and (min-width: 768px) {
   .input {
     min-height: 52px;
@@ -70,10 +67,10 @@
 .inputBox {
   position: relative;
   display: block;
-  margin-bottom: 16px;
+  margin-bottom: 30px;
 }
 .inputBox .input {
-  margin-bottom: 16px;
+  margin-bottom: 30px;
 }
 .toggle {
   position: absolute;
@@ -213,9 +210,4 @@
   .back {
     display: block;
   }
-}
-
-.error {
-  color: red;
-  margin: 2px;
 }

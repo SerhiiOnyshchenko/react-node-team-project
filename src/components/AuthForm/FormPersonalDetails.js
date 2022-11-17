@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { authOperations, authSelectors } from '../../redux/auth';
-import { toast } from 'react-toastify';
 import s from './index.module.css';
+import { ErrorMessageWrapper } from './validator';
 
 const validationSchema = yup.object({
   name: yup
@@ -60,29 +60,27 @@ export const FormPersonalDetails = ({
       >
         <Form className={s.form}>
           <h1 className={s.title}>Registration</h1>
-          <Field name="name" placeholder="Name" className={s.input} />
-          <ErrorMessage name="name">
-            {errorMsg => {
-              toast.error(errorMsg);
-            }}
-          </ErrorMessage>
-          <Field
-            name="city"
-            placeholder="City, region"
-            className={s.input}
-            margin="normal"
-          />
-          <ErrorMessage name="city">
-            {errorMsg => {
-              toast.error(errorMsg);
-            }}
-          </ErrorMessage>
-          <Field name="phone" placeholder="Mobile phone" className={s.input} />
-          <ErrorMessage name="phone">
-            {errorMsg => {
-              toast.error(errorMsg);
-            }}
-          </ErrorMessage>
+          <div className={s.fieldContainer}>
+            <Field name="name" placeholder="Name" className={s.input} />
+            <ErrorMessage name="name">{ErrorMessageWrapper}</ErrorMessage>
+          </div>
+          <div className={s.fieldContainer}>
+            <Field
+              name="city"
+              placeholder="City, region"
+              className={s.input}
+              margin="normal"
+            />
+            <ErrorMessage name="city">{ErrorMessageWrapper}</ErrorMessage>
+          </div>
+          <div className={s.fieldContainer}>
+            <Field
+              name="phone"
+              placeholder="Mobile phone"
+              className={s.input}
+            />
+            <ErrorMessage name="phone">{ErrorMessageWrapper}</ErrorMessage>
+          </div>
           <div className={s.buttonContainer}>
             <button
               type="submit"

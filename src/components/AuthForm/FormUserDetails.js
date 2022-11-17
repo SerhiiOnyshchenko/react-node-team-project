@@ -6,16 +6,17 @@ import * as yup from 'yup';
 import s from './index.module.css';
 import eye from '../../images/svg/eye.svg';
 import eyeBlock from '../../images/svg/eye-blocked.svg';
-import { toast } from 'react-toastify';
 import { ErrorMessageWrapper } from './validator';
 
 const validationSchema = yup.object({
   email: yup.string().email('Invalid email').required('Email is required'),
   password: yup
     .string()
-    .matches(/^\S{7,32}$/, 'Password should not contain spaces')
     .required('Password is required')
-    .min(7)
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
+      'Password is not valid as per password policy'
+    )
     .max(32),
   confirmPassword: yup.string().when('password', {
     is: val => (val && val.length > 0 ? true : false),
@@ -27,7 +28,9 @@ const validationSchema = yup.object({
 
 export const FormUserDetails = ({ formData, setFormData, nextStep }) => {
   const [passwordType, setPasswordType] = useState('password');
+  const [confirmPasswordType, setConfirmPasswordType] = useState('password');
   const [spanBgImage, setSpanBgImage] = useState(eye);
+  const [spanConfirmBgImage, setSpanConfirmBgImage] = useState(eye);
   const [toggleShowValidation, setToggleShowValidation] = useState(
     s.validation
   );
@@ -43,13 +46,23 @@ export const FormUserDetails = ({ formData, setFormData, nextStep }) => {
   const specialChar = useRef();
   const minLength = useRef();
 
-  function handleToggleBtn() {
-    if (passwordType === 'text') {
-      setPasswordType('password');
-      setSpanBgImage(eye);
+  function handleToggleBtn(event) {
+    if (event.currentTarget.id === 'passwordEye') {
+      if (passwordType === 'text') {
+        setPasswordType('password');
+        setSpanBgImage(eye);
+      } else {
+        setPasswordType('text');
+        setSpanBgImage(eyeBlock);
+      }
     } else {
-      setPasswordType('text');
-      setSpanBgImage(eyeBlock);
+      if (confirmPasswordType === 'text') {
+        setConfirmPasswordType('password');
+        setSpanConfirmBgImage(eye);
+      } else {
+        setConfirmPasswordType('text');
+        setSpanConfirmBgImage(eyeBlock);
+      }
     }
   }
 
@@ -104,65 +117,68 @@ export const FormUserDetails = ({ formData, setFormData, nextStep }) => {
         {({ errors, touched }) => (
           <Form className={s.form}>
             <h1 className={s.title}>Registration</h1>
-            <Field
-              type="email"
-              name="email"
-              placeholder="Email"
-              className={s.input}
-              error={touched.email && errors.email}
-            />
-            <ErrorMessage name="email">
-              {errorMsg => {
-                toast.error(errorMsg);
-              }}
-            </ErrorMessage>
-            <label className={s.inputBox} htmlFor="password">
+            <div className={s.fieldContainer}>
               <Field
-                type={passwordType}
-                autoComplete="on"
-                name="password"
-                id="password"
-                placeholder="Password"
+                type="email"
+                name="email"
+                placeholder="Email"
                 className={s.input}
-                error={touched.firstName && errors.firstName}
-                onKeyUp={() => checkPassword(passwordInput.value)}
-                onFocus={() => checkPassword(passwordInput.value)}
-                onBlur={() => setToggleShowValidation(s.validation)}
+                error={touched.email && errors.email}
+              />
+              <ErrorMessage name="email">{ErrorMessageWrapper}</ErrorMessage>
+            </div>
+            <div className={s.fieldContainer}>
+              <label className={s.inputBox} htmlFor="password">
+                <Field
+                  type={passwordType}
+                  autoComplete="on"
+                  name="password"
+                  id="password"
+                  placeholder="Password"
+                  className={s.input}
+                  error={touched.firstName && errors.firstName}
+                  onKeyUp={() => checkPassword(passwordInput.value)}
+                  onFocus={() => checkPassword(passwordInput.value)}
+                  onBlur={() => setToggleShowValidation(s.validation)}
+                />
+                <span
+                  className={s.toggle}
+                  id="passwordEye"
+                  onClick={event => handleToggleBtn(event)}
+                  style={{ backgroundImage: `url(${spanBgImage})` }}
+                ></span>
+
+                <div className={toggleShowValidation} id="validation">
+                  <ul className={s.items}>
+                    <li ref={lowerCase}>At least one lowercase character</li>
+                    <li ref={upperCase}>At least one uppercase character</li>
+                    <li ref={digit}>At least one number</li>
+                    <li ref={specialChar}>At least one special character</li>
+                    <li ref={minLength}>At least 7 characters</li>
+                  </ul>
+                </div>
+              </label>
+              <ErrorMessage name="password">{ErrorMessageWrapper}</ErrorMessage>
+            </div>
+            <div className={s.fieldContainer}>
+              <Field
+                type={confirmPasswordType}
+                autoComplete="on"
+                name="confirmPassword"
+                placeholder="Confirm Password"
+                className={s.input}
+                error={touched.lastName && errors.lastName}
               />
               <span
                 className={s.toggle}
-                onClick={handleToggleBtn}
-                style={{ backgroundImage: `url(${spanBgImage})` }}
+                id="confirmPasswordEye"
+                onClick={event => handleToggleBtn(event)}
+                style={{ backgroundImage: `url(${spanConfirmBgImage})` }}
               ></span>
-
-              <div className={toggleShowValidation} id="validation">
-                <ul className={s.items}>
-                  <li ref={lowerCase}>At least one lowercase character</li>
-                  <li ref={upperCase}>At least one uppercase character</li>
-                  <li ref={digit}>At least one number</li>
-                  <li ref={specialChar}>At least one special character</li>
-                  <li ref={minLength}>At least 7 characters</li>
-                </ul>
-              </div>
-            </label>
-            <ErrorMessage name="password">
-              {errorMsg => {
-                toast.error(errorMsg);
-              }}
-            </ErrorMessage>
-            <Field
-              type="password"
-              autoComplete="on"
-              name="confirmPassword"
-              placeholder="Confirm Password"
-              className={s.input}
-              error={touched.lastName && errors.lastName}
-            />
-            <ErrorMessage name="confirmPassword">
-              {errorMsg => {
-                toast.error(errorMsg);
-              }}
-            </ErrorMessage>
+              <ErrorMessage name="confirmPassword">
+                {ErrorMessageWrapper}
+              </ErrorMessage>
+            </div>
             <div className={s.buttonContainer}>
               <button type="submit" className={`${s.button} ${s.buttonActive}`}>
                 Next
