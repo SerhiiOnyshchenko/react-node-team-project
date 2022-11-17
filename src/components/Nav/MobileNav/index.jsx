@@ -1,6 +1,6 @@
 import { useState } from 'react';
-// import { useSelector } from 'react-redux';
-// import getIsLoggedIn from '../../../redux/auth/auth-selectors';
+import { useSelector } from 'react-redux';
+import { authSelectors } from '../../../redux/auth';
 import { useMediaQuery } from 'react-responsive';
 import { NavLink } from 'react-router-dom';
 
@@ -17,8 +17,7 @@ const itemsNav = [
 ];
 
 export default function MobileNav() {
-  // const isLoggedIn = useSelector(getIsLoggedIn);
-  const isLoggedIn = true;
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const [isOpen, setOpen] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
