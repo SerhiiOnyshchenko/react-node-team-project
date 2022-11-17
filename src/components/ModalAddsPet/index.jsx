@@ -1,12 +1,12 @@
 import s from './index.module.css';
-import ModalPage from 'pages/ModalPage';
+import { Formik, Form, Field } from 'formik';
+
+// import ModalPage from 'pages/ModalPage';
 
 export default function ModalAddsPet() {
   return (
     <>
-      <ModalPage>
-        <div className={s.modal}></div>
-      </ModalPage>
+      <div className={s.modal}></div>
     </>
   );
 }
