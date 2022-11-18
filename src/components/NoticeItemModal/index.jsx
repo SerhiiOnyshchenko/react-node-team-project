@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { sampleData } from './sampleData';
 import s from './modalNotice.module.css';
 import modalImage from '../../images/pet-modal.png';
-import Button from 'components/Button';
+import { ReactComponent as HeartBtnS } from '../../images/svg/heartBtnS.svg';
+
 const PET_MODAL_KEYS = [
   {
     label: 'Name:',
@@ -34,8 +35,12 @@ const PET_MODAL_KEYS = [
   },
 ];
 
-export default function ModalNotice() {
-  const [petData] = useState(sampleData);
+export default function ModalNotice({ id, handleAddFavorite }) {
+  const [petData, setPetData] = useState(sampleData);
+
+  // useEffect(() => {
+  //   setPetData();
+  // }, [id]);
 
   return (
     <>
@@ -62,8 +67,13 @@ export default function ModalNotice() {
           <p className={s.commentsText}>{petData.comments}</p>
         </div>
         <div className={s.buttons}>
-          <button type="button" className={s.addToFovorBtn}>
+          <button
+            type="button"
+            className={s.addToFovorBtn}
+            onClick={handleAddFavorite}
+          >
             add to
+            <HeartBtnS className={s.heartBtn} />
           </button>
           <a href={`tel:${petData.phone}`} className={s.contactBtn}>
             Contact

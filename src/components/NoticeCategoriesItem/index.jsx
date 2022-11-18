@@ -4,6 +4,7 @@ import ModalPage from 'pages/ModalPage';
 import { sampleData } from './sampleData';
 import s from './modalItem.module.css';
 import modalImage from '../../images/pet-item.jpg';
+import { ReactComponent as HeartBtnM } from '../../images/svg/heartBtnM.svg';
 
 export const NOTICE_ITEM_KEYS = [
   {
@@ -22,10 +23,19 @@ export const NOTICE_ITEM_KEYS = [
 
 export default function NoticeItem({ petData = sampleData }) {
   const [modalShow, setModalShow] = useState(false);
+  // const isLogedIn = false;
+  const [inFavorite, setFavorite] = useState(false);
 
   const handleModalToggle = () => {
     setModalShow(!modalShow);
   };
+  const handleAddFavorite = () => {
+    // if (!isLogedIn) return alert('you need login');
+    setFavorite(!inFavorite);
+    if (!inFavorite) return alert('add tofavorite');
+    return alert('remove from favorite');
+  };
+
   return (
     <>
       <div className={s.container}>
@@ -51,11 +61,22 @@ export default function NoticeItem({ petData = sampleData }) {
         >
           Learn more
         </button>
-        <button type="button" className={s.heartBtn}></button>
+        <button
+          type="button"
+          className={s.heartBtn}
+          onClick={handleAddFavorite}
+          inFavorite={inFavorite}
+        >
+          {inFavorite ? (
+            <HeartBtnM className={s.heartItemBtnActive} />
+          ) : (
+            <HeartBtnM className={s.heartItemBtn} />
+          )}
+        </button>
       </div>
       {modalShow && (
         <ModalPage onClose={handleModalToggle}>
-          <ModalNotice />
+          <ModalNotice id={petData.id} handleAddFavorite={handleAddFavorite} />
         </ModalPage>
       )}
     </>
