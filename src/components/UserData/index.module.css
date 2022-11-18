@@ -1,0 +1,75 @@
+.wrapper {
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.imgBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-bottom: 36px;
+}
+
+.imgWrap {
+  width: 233px;
+  height: 233px;
+  margin-bottom: 12px;
+  border-radius: 50%;
+
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.editPhoto {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 22px;
+
+  background-color: transparent;
+}
+
+.editPhotoIcon {
+  width: 20px;
+  height: 20px;
+
+  margin-right: 4px;
+}
+
+/* .userInfo {
+} */
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+
+    margin-bottom: 0px;
+  }
+
+  .imgBlock {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .imgBlock {
+    position: relative;
+  }
+
+  .editPhoto {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+  }
+}

@@ -87,6 +87,22 @@
   border: 1px solid var(--color-hover-active);
 }
 
+.errmsg_login {
+  position: relative;
+  top: -13px;
+  left: 20px;
+
+  color: red;
+}
+
+.errmsg_pass {
+  position: relative;
+  top: -35px;
+  left: 20px;
+
+  color: red;
+}
+
 .button {
   display: inline-flex;
   justify-content: center;
