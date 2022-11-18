@@ -5,6 +5,7 @@ const initialState = {
   user: { name: null, email: null },
   token: null,
   isLoggedIn: false,
+  cities: [],
 };
 
 const authSlice = createSlice({
@@ -33,6 +34,9 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
       }
     );
+    builder.addCase(authOperations.searchCity.fulfilled, (state, action) => {
+      state.cities = action.payload;
+    });
   },
 });
 
