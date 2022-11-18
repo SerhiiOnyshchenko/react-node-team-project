@@ -22,15 +22,18 @@
 
 @media screen and (max-width: 1300px) {
   .container {
-    max-width: 850px;
-  }
-}
-@media screen and (max-width: 860px) {
-  .container {
-    max-width: 280px;
+    max-width: 732px;
   }
   .align_container {
     margin-left: 0px;
+  }
+}
+@media screen and (max-width: 770px) {
+  .align_container {
+    margin-left: 0;
     flex-direction: column;
+  }
+  .container {
+    max-width: 280px;
   }
 }
