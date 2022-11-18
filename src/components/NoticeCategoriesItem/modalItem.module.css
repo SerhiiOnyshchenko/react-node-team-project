@@ -91,3 +91,17 @@
     border-radius: 50%;
     cursor: pointer;
 }
+.hartBtn:hover {
+    background: #f0d6c58e
+}
+.heartItemBtnActive {
+    background: none;
+    fill: #f59256;
+    border-radius: 50%;
+}
+
+.heartItemBtn {
+    background: none;
+    fill: rgba(175, 177, 184, 0.1);
+    border-radius: 50%;
+}
