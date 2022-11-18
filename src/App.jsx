@@ -11,6 +11,8 @@ import { useSelector } from 'react-redux';
 import { getLoader } from 'redux/loader/loader-selectors';
 import { useDispatch } from 'react-redux';
 import { changeLoader } from 'redux/loader/loader-actions';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoginPage = lazy(() => import('./pages/LoginPage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage'));
@@ -92,6 +94,7 @@ export default function App() {
         />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <ToastContainer />
     </div>
   );
 }

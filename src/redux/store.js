@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-import NEW_Reduser from './NEW/NEW-slice';
+import noticesReduser from './notices/notices-slice';
 import { authReducer } from './auth';
+
 import {
   persistStore,
   persistReducer,
@@ -14,22 +15,22 @@ import {
 import storage from 'redux-persist/lib/storage';
 import loaderReduser from './loader/loader-reduser';
 
-const NEW_PersistConfig = {
-  key: 'NEW',
-  storage,
-  whitelist: ['token'],
-};
-
 const authPersistConfig = {
   key: 'auth',
   storage,
   whitelist: ['token'],
 };
 
+const noticesPersistConfig = {
+  key: 'notices',
+  storage,
+  whitelist: ['token'],
+};
+
 export const store = configureStore({
   reducer: {
+    notices: persistReducer(noticesPersistConfig, noticesReduser),
     auth: persistReducer(authPersistConfig, authReducer),
-    NEW: persistReducer(NEW_PersistConfig, NEW_Reduser),
     loader: loaderReduser,
   },
   middleware: getDefaultMiddleware => [
