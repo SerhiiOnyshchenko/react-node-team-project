@@ -1,6 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import noticesReduser from './notices/notices-slice';
 import { authReducer } from './auth';
+import { friendsReduser } from './friends';
+
 
 import {
   persistStore,
@@ -21,6 +23,12 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
+const friendsPersistConfig = {
+  key: 'friends',
+  storage,
+  whitelist: ['token'],
+};
+
 const noticesPersistConfig = {
   key: 'notices',
   storage,
@@ -30,6 +38,7 @@ const noticesPersistConfig = {
 export const store = configureStore({
   reducer: {
     notices: persistReducer(noticesPersistConfig, noticesReduser),
+    friends: persistReducer(friendsPersistConfig, friendsReduser),
     auth: persistReducer(authPersistConfig, authReducer),
     loader: loaderReduser,
   },
