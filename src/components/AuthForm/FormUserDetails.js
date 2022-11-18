@@ -14,7 +14,7 @@ const validationSchema = yup.object({
     .string()
     .required('Password is required')
     .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{7,})/,
       'Password is not valid as per password policy'
     )
     .max(32),
