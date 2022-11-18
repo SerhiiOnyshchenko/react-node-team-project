@@ -46,8 +46,8 @@
 
 @media screen and (min-width: 768px) {
 	.Content {
-		padding: 40px 80px;
-		width: 608px;
+		/* padding: 40px 80px; */
+		width: 704px;
 		height: auto;
 		border-radius: 40px;
 	}
