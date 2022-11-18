@@ -9,6 +9,7 @@ export default function OurFriendsPage() {
 
   return (
     <>
+    <h1>Our friends</h1>
       {error ? (
         <>Oh no, there was an error</>
       ) : isUninitialized ? (
