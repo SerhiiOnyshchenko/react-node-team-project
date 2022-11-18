@@ -35,12 +35,17 @@ const initialValues = {
   breed: '',
 };
 
-export const ModalPage1 = ({ props }) => {
+export default function ModalPage1(props) {
   const handleSubmit = values => {
     props.next(values, true);
   };
   return (
     <>
+      <button
+        type="button"
+        onClick={props.closeModal}
+        className={s.closeBtn}
+      ></button>
       <div className={s.title}>Add pet</div>
       <div className={s.formWrapper}>
         <Formik
@@ -48,8 +53,8 @@ export const ModalPage1 = ({ props }) => {
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >
-          <Form autoComplete="off">
-            <label htmlFor="name">
+          <Form autoComplete="off" className={s.formPageOne}>
+            <label htmlFor="name" className={s.label}>
               Name pet
               <Field
                 type="text"
@@ -59,7 +64,7 @@ export const ModalPage1 = ({ props }) => {
               />
               <ErrorMessage name="name" />
             </label>
-            <label htmlFor="birthday">
+            <label htmlFor="birthday" className={s.label}>
               Date of birth
               <Field
                 type="text"
@@ -69,7 +74,7 @@ export const ModalPage1 = ({ props }) => {
               />
               <ErrorMessage name="birthday" />
             </label>
-            <label htmlFor="breed">
+            <label htmlFor="breed" className={s.label}>
               Type breed
               <Field
                 type="text"
@@ -81,15 +86,15 @@ export const ModalPage1 = ({ props }) => {
             </label>
           </Form>
           <div className={s.buttonsWrapper}>
-            <button type="button" className={s.cancelBtn}>
-              Cancel
-            </button>
-            <button type="submit" className={s.cancelBtn}>
+            <button type="submit" className={s.buttonSubmit}>
               Next
+            </button>
+            <button type="button" className={s.buttonSimple}>
+              Cancel
             </button>
           </div>
         </Formik>
       </div>
     </>
   );
-};
+}

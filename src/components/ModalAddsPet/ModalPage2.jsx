@@ -18,7 +18,7 @@ const initialValues = {
   comments: '',
 };
 
-export const ModalPage2 = ({ props }) => {
+export default function ModalPage2(props) {
   const handleSubmit = values => {
     props.next(values, true);
   };
@@ -31,49 +31,19 @@ export const ModalPage2 = ({ props }) => {
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >
-          <Form autoComplete="off">
+          <Form autoComplete="off" className={s.formPageTwo}>
             <p className={s.addPhotoText}>Add photo and some comments</p>
             <button type="button" className={s.addPhotoBtn}>
               +
             </button>
             <div className={s.textareaWrapper}>
-              <label className={s.textareaLabel}>Comments</label>
+              <label className={s.label}>Comments</label>
               <textarea
                 className={s.textarea}
                 name="comments"
                 placeholder=" Type comments"
               ></textarea>
             </div>
-            <label htmlFor="name">
-              Name pet
-              <Field
-                type="text"
-                name="name"
-                placeholder="Type name pet"
-                className={s.input}
-              />
-              <ErrorMessage name="name" />
-            </label>
-            <label htmlFor="birthday">
-              Date of birth
-              <Field
-                type="text"
-                name="birthday"
-                placeholder="Type date of birth"
-                className={s.input}
-              />
-              <ErrorMessage name="birthday" />
-            </label>
-            <label htmlFor="breed">
-              Type breed
-              <Field
-                type="text"
-                name="breed"
-                placeholder="Type breed"
-                className={s.input}
-              />
-              <ErrorMessage name="breed" />
-            </label>
           </Form>
           <div className={s.buttonsWrapper}>
             <button
@@ -91,4 +61,4 @@ export const ModalPage2 = ({ props }) => {
       </div>
     </>
   );
-};
+}
