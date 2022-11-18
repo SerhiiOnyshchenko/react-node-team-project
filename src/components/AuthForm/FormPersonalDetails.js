@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { authOperations, authSelectors } from '../../redux/auth';
 import s from './index.module.css';
 import { ErrorMessageWrapper } from './validator';
+import DropList from 'components/DropList';
 
 const validationSchema = yup.object({
   name: yup
@@ -18,7 +19,7 @@ const validationSchema = yup.object({
   city: yup
     .string()
     .matches(
-      /^[\w\- ]+, [\w\- ]+$/,
+      /^[\w\-’ ]+, [\w\-’ ]+$/,
       'Address should be in format: City, Region'
     ),
   phone: yup
@@ -32,23 +33,27 @@ export const FormPersonalDetails = ({
   nextStep,
   prevStep,
 }) => {
+  const [showDropList, setShowDropList] = useState(false);
   const [direction, setDirection] = useState('back');
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  let isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  let listCities = useSelector(authSelectors.getCities);
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate('/user');
+  const changeInputCity = e => {
+    setFormData(pre => ({ ...pre, city: e.target.value }));
+    if (e.target.value.length >= 3) {
+      dispatch(authOperations.searchCity(e.target.value));
+      setShowDropList(true);
+    } else {
+      setShowDropList(false);
     }
-  }, [navigate, isLoggedIn]);
+  };
 
   return (
     <>
       <Formik
         initialValues={formData}
         onSubmit={values => {
-          setFormData(values);
+          setFormData({ ...values, city: formData.city });
           direction === 'back' ? prevStep() : nextStep();
           const registerValues = { ...values };
           delete registerValues.confirmPassword;
@@ -65,12 +70,27 @@ export const FormPersonalDetails = ({
             <ErrorMessage name="name">{ErrorMessageWrapper}</ErrorMessage>
           </div>
           <div className={s.fieldContainer}>
-            <Field
-              name="city"
-              placeholder="City, region"
-              className={s.input}
-              margin="normal"
-            />
+            <label className={s.inputBox} htmlFor="city">
+              <Field
+                name="city"
+                id="city"
+                placeholder="City, region"
+                className={s.input}
+                margin="normal"
+                autoComplete="of"
+                value={formData.city}
+                onChange={changeInputCity}
+              />
+              {showDropList && (
+                <DropList
+                  list={listCities}
+                  onSelect={str => {
+                    setFormData(pre => ({ ...pre, city: str }));
+                    setShowDropList(false);
+                  }}
+                />
+              )}
+            </label>
             <ErrorMessage name="city">{ErrorMessageWrapper}</ErrorMessage>
           </div>
           <div className={s.fieldContainer}>
