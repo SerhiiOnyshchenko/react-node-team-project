@@ -11,8 +11,8 @@ const noticesSlice = createSlice({
   name: 'notices',
   initialState,
   extraReducers: {
-    [noticesCategories.pending](state) {
-      state.isRefreshing = true;
+    [noticesCategories.fulfilled](state, action) {
+      state.notices = action.payload;
     },
   },
 });
