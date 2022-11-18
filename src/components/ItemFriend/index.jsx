@@ -13,9 +13,7 @@ const ItemFrien = props => {
   return (
     <div className={styles.padding}>
       <div className={styles.container}>
-        <a href={site} target="_blank" rel="noreferrer">
-          {header}
-        </a>
+        <h3>{header}</h3>
         <div className={styles.flex}>
           <div className={styles.image_container}>
             <img className={styles.logo} alt="" src={avatar} />
@@ -25,7 +23,12 @@ const ItemFrien = props => {
             <h6>Time:</h6>
             <p
               onClick={() => {
-                setDisplay('flex');
+                if (time[0]) {
+                  setDisplay('flex');
+                  setTimeout(() => {
+                    setDisplay('none');
+                  }, 2000);
+                }
               }}
               id={styles['time']}
             >
@@ -38,7 +41,7 @@ const ItemFrien = props => {
               )}
             </p>
             <div
-              onClick={() => {
+              onMouseLeave={() => {
                 setDisplay('none');
               }}
               style={{ display: display }}
@@ -46,12 +49,12 @@ const ItemFrien = props => {
             >
               <div>
                 {newArray.map((_el, index) => (
-                  <p>{days[index]}</p>
+                  <p key={index}>{days[index]}</p>
                 ))}
               </div>
               <div>
-                {newArray.map(el => (
-                  <p>
+                {newArray.map((el, index) => (
+                  <p key={index}>
                     {el.from} {el.to}
                   </p>
                 ))}
@@ -59,7 +62,9 @@ const ItemFrien = props => {
             </div>
 
             <h6>Adress:</h6>
-            <p id={styles['adress']}>{adress}</p>
+            <a href={site} id={styles['adress']}>
+              {adress}
+            </a>
             <h6>Email:</h6>
             <p>{email}</p>
             <h6>Phone:</h6>

@@ -6,7 +6,7 @@ import { friendsOperations, friendsSelectors } from 'redux/friends';
 
 export default function OurFriendsPage() {
   const dispatch = useDispatch();
-  const friendsList = useSelector(friendsSelectors.getFriends());
+  const friendsList = useSelector(friendsSelectors.getFriends);
   useEffect(() => {
     dispatch(friendsOperations.fetchFriends());
   }, [dispatch]);

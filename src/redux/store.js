@@ -1,8 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import noticesReduser from './notices/notices-slice';
 import { authReducer } from './auth';
-import { friendsReduser } from './friends';
-
+import friendsReduser from './friends/friends-slice';
 
 import {
   persistStore,

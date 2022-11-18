@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-axios.defaults.baseURL = 'http://localhost:8080/api';
 
+axios.defaults.baseURL = 'https://team-project-backend.onrender.com/api';
 export const fetchFriends = createAsyncThunk(
   'friends/fetch-friends',
   async () => {

@@ -5,7 +5,7 @@ const initialState = {
   friends: [],
 };
 
-const friends_Slice = createSlice({
+const friendsSlice = createSlice({
   name: 'friends',
   initialState,
   extraReducers: {
@@ -15,4 +15,4 @@ const friends_Slice = createSlice({
   },
 });
 
-export default friends_Slice.reducer;
+export default friendsSlice.reducer;
