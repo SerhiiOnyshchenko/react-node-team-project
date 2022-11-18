@@ -104,7 +104,7 @@
   }
 }
 
-.data { 
+.date { 
   line-height: 1.37;
   font-weight: 400;
   color: rgba(17, 17, 17, 0.6);
@@ -112,11 +112,15 @@
 
 .containerDataAndReadMore {
   display: flex;
-  justify-content: space-between;
 }
 .linkNews {
   line-height: 1.37px;
   text-align: right;
   text-decoration-line: underline;
   color: #f59256;
+  margin-left: auto;
+  height: 22px;
+  display: flex; 
+  align-items: center;
+  justify-content: centers;
 }
