@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import s from './index.module.css';
-import PropTypes from 'prop-types';
 
 const ItemFrien = props => {
   const [display, setDisplay] = useState('none');
