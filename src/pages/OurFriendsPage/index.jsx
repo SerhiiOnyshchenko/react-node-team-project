@@ -19,7 +19,6 @@ export default function OurFriendsPage() {
           <div className={s.wrapper}>
             <div className={s.container}>
               <div className={s.align_container}>
-                {console.log(friendsList)}
                 {friendsList[0] &&
                   friendsList.map(el => (
                     <ItemFrien
