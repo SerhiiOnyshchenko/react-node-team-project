@@ -7,14 +7,16 @@ import News from '../../components/News/index';
 import { useSearchParams } from 'react-router-dom';
 import getNews from '../../redux/news/news-operations';
 import { RotatingLines } from 'react-loader-spinner';
-
+import { newsSelectors} from '../../redux/news'
 export default function NewsPage() {
   const dispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
   const [inputValue, setinputValue] = useState(searchParams.get('query') ?? '');
   const [query, setQuery] = useState(searchParams.get('query') ?? '');
-  const news = useSelector(state => state.news.news);
-  const status = useSelector(state => state.news.status);
+  const news = useSelector(newsSelectors.getNews);
+  const status = useSelector(newsSelectors.getStatus);
+  console.log('news', news);
+  console.log('status', status);
 
   useEffect(() => {
     dispatch(getNews(query));
@@ -51,8 +53,8 @@ export default function NewsPage() {
               className={s.input}
               onChange={handleChangeInput}
               value={inputValue}
-              type="tel"
-              name="number"
+              // type="search"
+              name="search"
               placeholder='Search'
               required
             />

@@ -148,3 +148,8 @@ input:-webkit-autofill:active {
     margin-top: 50px;
   }
 }
+@media screen and (min-width: 1280px) {
+  .Rotating{
+    margin-top: 100px;
+  }
+}
