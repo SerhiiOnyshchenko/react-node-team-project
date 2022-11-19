@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 // import s from './App.module.css';
 import PublicRoute from 'components/PublicRoute';
@@ -13,6 +13,8 @@ import { useDispatch } from 'react-redux';
 import { changeLoader } from 'redux/loader/loader-actions';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ModalPage from 'pages/ModalPage';
+import ModalAddsPet from 'components/ModalAddsPet';
 
 const LoginPage = lazy(() => import('./pages/LoginPage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage'));
@@ -23,6 +25,8 @@ const OurFriendsPage = lazy(() => import('./pages/OurFriendsPage'));
 
 export default function App() {
   const dispatch = useDispatch();
+  const [showModal, setShowModal] = useState(false);
+
   const loader = useSelector(getLoader);
   useEffect(() => {
     dispatch(changeLoader(true));
@@ -33,7 +37,10 @@ export default function App() {
 
   return (
     <div>
-      {/* {loader && <Loader />} */}
+    {/* {loader && <Loader />} */}
+      <ModalPage onClose={() => setShowModal(false)}>
+        <ModalAddsPet />
+      </ModalPage>
       <Header />
       <Routes>
         <Route

@@ -1,0 +1,145 @@
+/* .closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background: var(--bg);
+  backdrop-filter: blur(2px);
+  background-image: url('../../images/svg/close.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+} */
+
+.title {
+  font-size: 24px;
+  line-height: 1.75;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.formWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.formPageOne {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 28px;
+  margin-bottom: 40px;
+}
+
+.label {
+  font-size: 18px;
+  line-height: 1.44;
+}
+
+.input {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.36;
+  width: 240px;
+  height: 40px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  padding-left: 16px;
+
+  background: var(--bg);
+  border: 1px solid rgba(245, 146, 86, 0.5);
+  border-radius: 40px;
+}
+
+.buttonsWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.buttonSubmit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 240px;
+  height: 40px;
+
+  box-sizing: border-box;
+  outline: 0px;
+  border: 0px;
+
+  margin-bottom: 12px;
+
+  background: var(--btn-bg-another);
+  border-radius: 40px;
+
+  line-height: 1.37;
+  letter-spacing: 0.04em;
+  color: var(--modal-bg);
+}
+
+.buttonSimple {
+  max-width: 240px;
+  height: 40px;
+  border-radius: 40px;
+  background: var(--btn-bg-default);
+  border: 2px solid var(--btn-bg-another);
+
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.formPageTwo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.addPhotoText {
+  text-align: center;
+  line-height: 1.38;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.addPhotoBtn {
+  width: 208px;
+  height: 208px;
+  margin: auto;
+
+  background: var(--bg);
+
+  border-radius: 20px;
+  border: none;
+}
+
+.textarea {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 26px;
+
+  color: rgba(17, 17, 17, 0.6);
+
+  padding-top: 12px;
+  padding-left: 14px;
+  width: 240px;
+  height: 100px;
+  background: var(--bg);
+  border: 1px solid rgba(245, 146, 86, 0.5);
+  border-radius: 20px;
+  margin-top: 8px;
+}
