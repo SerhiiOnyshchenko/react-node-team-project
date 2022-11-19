@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './index.module.css';
+import s from './index.module.css';
 import PropTypes from 'prop-types';
 
 const ItemFrien = props => {
@@ -11,15 +11,15 @@ const ItemFrien = props => {
     .map((el, index) => el.isOpen && { day: days[index], ...el });
 
   return (
-    <div className={styles.padding}>
-      <div className={styles.container}>
+    <div className={s.padding}>
+      <div className={s.container}>
         <h3>{header}</h3>
-        <div className={styles.flex}>
-          <div className={styles.image_container}>
-            <img className={styles.logo} alt="" src={avatar} />
+        <div className={s.flex}>
+          <div className={s.image_container}>
+            <img className={s.logo} alt="" src={avatar} />
           </div>
 
-          <div className={styles.friendData}>
+          <div className={s.friendData}>
             <h6>Time:</h6>
             <p
               onClick={() => {
@@ -30,7 +30,7 @@ const ItemFrien = props => {
                   }, 2000);
                 }
               }}
-              id={styles['time']}
+              id={s['time']}
             >
               {time[0] ? (
                 <>
@@ -45,7 +45,7 @@ const ItemFrien = props => {
                 setDisplay('none');
               }}
               style={{ display: display }}
-              className={styles.popup}
+              className={s.popup}
             >
               <div>
                 {newArray.map((_el, index) => (
@@ -62,7 +62,7 @@ const ItemFrien = props => {
             </div>
 
             <h6>Adress:</h6>
-            <a href={site} id={styles['adress']}>
+            <a href={site} id={s['adress']}>
               {adress}
             </a>
             <h6>Email:</h6>

@@ -16,8 +16,6 @@
 }
 
 .container h3 {
-  font-family: 'Manrope';
-  font-style: normal;
   font-weight: 700;
   font-size: 20px;
   line-height: 27px;
@@ -46,9 +44,6 @@
 }
 .friendData h6,
 .friendData p {
-  font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 500;
   font-size: 18px;
   line-height: 18px;
   white-space: nowrap;

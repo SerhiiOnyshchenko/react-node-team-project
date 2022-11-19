@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import styles from './index.module.css';
+import s from './index.module.css';
 import ItemFrien from '../../components/ItemFriend';
 import { useDispatch, useSelector } from 'react-redux';
 import { friendsOperations, friendsSelectors } from 'redux/friends';
@@ -16,9 +16,9 @@ export default function OurFriendsPage() {
       <h1>Our friends</h1>
       {friendsList && (
         <>
-          <div className={styles.wrapper}>
-            <div className={styles.container}>
-              <div className={styles.align_container}>
+          <div className={s.wrapper}>
+            <div className={s.container}>
+              <div className={s.align_container}>
                 {console.log(friendsList)}
                 {friendsList[0] &&
                   friendsList.map(el => (
