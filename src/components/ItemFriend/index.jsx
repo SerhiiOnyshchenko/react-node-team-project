@@ -61,7 +61,7 @@ const ItemFrien = props => {
             </div>
 
             <h6>Adress:</h6>
-            <a href={site} id={s['adress']}>
+            <a href={site} target="_blank" id={s['adress']} rel="noreferrer">
               {adress}
             </a>
             <h6>Email:</h6>

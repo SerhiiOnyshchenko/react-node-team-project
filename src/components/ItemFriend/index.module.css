@@ -102,9 +102,16 @@
   text-overflow: ellipsis;
   font-size: 18px;
   line-height: 18px;
+  margin-bottom: 7px;
   white-space: nowrap;
   text-align: left;
   color: black;
+  text-decoration: underline;
+  cursor: pointer;
+}
+#adress:hover,
+#time:hover {
+  text-decoration: none;
 }
 
 @media screen and (max-width: 1300px) {
@@ -113,7 +120,9 @@
     height: 246px;
   }
   .friendData h6,
-  .friendData p {
+  .friendData p,
+  #adress,
+  #time {
     font-size: 14px;
     line-height: 14px;
     display: flex;
@@ -155,7 +164,8 @@
   }
   .friendData h6,
   .friendData p,
-  #adress {
+  #adress,
+  #time {
     font-size: 12px;
     line-height: 8px;
   }
