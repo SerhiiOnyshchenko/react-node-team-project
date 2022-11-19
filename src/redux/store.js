@@ -1,6 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import NEW_Reduser from './NEW/NEW-slice';
-// import { authReducer } from './auth';
+import noticesReduser from './notices/notices-slice';
+import { authReducer } from './auth';
+import friendsReduser from './friends/friends-slice';
+
 import {
   persistStore,
   persistReducer,
@@ -13,23 +15,31 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import loaderReduser from './loader/loader-reduser';
+import newsReduser from './news/news-slice';
 
-const NEW_PersistConfig = {
-  key: 'NEW',
+const authPersistConfig = {
+  key: 'auth',
   storage,
   whitelist: ['token'],
 };
 
-// const authPersistConfig = {
-//   key: 'auth',
-//   storage,
-//   whitelist: ['token'],
-// };
+const noticesPersistConfig = {
+  key: 'notices',
+  storage,
+  whitelist: ['token'],
+};
+const friendsPersistConfig = {
+  key: 'friends',
+  storage,
+  whitelist: ['token'],
+};
 
 export const store = configureStore({
   reducer: {
-    // auth: persistReducer(authPersistConfig, authReducer),
-    NEW: persistReducer(NEW_PersistConfig, NEW_Reduser),
+    friends: persistReducer(friendsPersistConfig, friendsReduser),
+    notices: persistReducer(noticesPersistConfig, noticesReduser),
+    auth: persistReducer(authPersistConfig, authReducer),
+    news: newsReduser,
     loader: loaderReduser,
   },
   middleware: getDefaultMiddleware => [

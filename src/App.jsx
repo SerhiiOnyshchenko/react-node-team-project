@@ -1,4 +1,4 @@
-import { lazy, useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 // import s from './App.module.css';
 import PublicRoute from 'components/PublicRoute';
@@ -11,6 +11,8 @@ import { useSelector } from 'react-redux';
 import { getLoader } from 'redux/loader/loader-selectors';
 import { useDispatch } from 'react-redux';
 import { changeLoader } from 'redux/loader/loader-actions';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import ModalPage from 'pages/ModalPage';
 import ModalAddsPet from 'components/ModalAddsPet';
 
@@ -35,7 +37,7 @@ export default function App() {
 
   return (
     <div>
-      {loader && <Loader />}
+    {/* {loader && <Loader />} */}
       <ModalPage onClose={() => setShowModal(false)}>
         <ModalAddsPet />
       </ModalPage>
@@ -82,7 +84,7 @@ export default function App() {
           }
         />
         <Route
-          path="notices "
+          path="notices"
           element={
             <PublicRoute restricted>
               <NoticesPage />
@@ -99,6 +101,16 @@ export default function App() {
         />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <ToastContainer
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }

@@ -1,0 +1,62 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 40px 20px 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 20px;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
+}
+
+.addPetWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.addPetTitle {
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.buttonAddPet {
+  width: 40px;
+  height: 40px;
+
+  margin-left: 15px;
+
+  border-radius: 50%;
+
+  background-color: var(--btn-bg-another);
+  background-image: url('../../images/svg/plus.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    margin: 20px 0 20px 0;
+  }
+
+  .title {
+    font-size: 28px;
+    line-height: 1.36;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .header {
+    padding-right: 16px;
+  }
+
+  .buttonAddPet {
+    margin-left: 20px;
+  }
+}
