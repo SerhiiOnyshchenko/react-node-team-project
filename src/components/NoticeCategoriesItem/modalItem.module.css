@@ -1,0 +1,107 @@
+.container{
+    position: relative;
+    width: 280px;
+    padding-bottom: 32px;
+    box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
+    border-radius: 0px 0px 20px 20px;   
+}
+@media screen and (min-width: 768px) {
+    .container {
+        width: 336px;
+    }
+}
+@media screen and (min-width: 1280px) {
+    .container{
+    width: 288px;
+    }
+}
+.imgWrapper{
+    position: relative;
+}
+
+.categoryLabel{
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 158px;
+    padding: 6px 20px;
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(2px);
+    border-radius: 0 20px 20px 0;
+    font-size: 12px;
+    line-height: 16px;
+}
+.infoWrapper{
+    padding: 20px 20px 50px 20px;
+}
+.title{
+    font-weight: 700;
+    width: 231px;
+    margin-bottom: 20px;
+    font-size: 28px;
+    line-height: 38px;
+}
+.infoList {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    justify-content: space-between;
+}
+.label{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    line-height: 21.86px;
+}
+.lebalText{
+    width: 50%;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21.86px;
+}
+.learmMoreBtn{
+    display: block;
+    margin: 0 auto;
+    width: 248px;
+    height:  38px;
+    padding: 8px 79px;
+    background: #ffffff;
+    border: 2px solid #f59256;
+    color: #F59256;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.learmMoreBtn:hover{
+    color: #ff6101;
+    border: 2px solid #ff6101;
+}
+.heartBtn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 0;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    cursor: pointer;
+}
+.hartBtn:hover {
+    background: #f0d6c58e
+}
+.heartItemBtnActive {
+    background: none;
+    fill: #f59256;
+    border-radius: 50%;
+}
+
+.heartItemBtn {
+    background: none;
+    fill: rgba(175, 177, 184, 0.1);
+    border-radius: 50%;
+}

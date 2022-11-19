@@ -1,7 +1,7 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import s from './index.module.css';
 import * as yup from 'yup';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { authOperations } from '../../redux/auth';
 
@@ -15,6 +15,7 @@ const validationSchema = yup.object({
 
 export default function LoginForm() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -27,6 +28,7 @@ export default function LoginForm() {
         onSubmit={async values => {
           try {
             await dispatch(authOperations.logIn(values)).unwrap();
+            navigate('/user');
           } catch (e) {
             toast.error('Wrong email or password');
           }

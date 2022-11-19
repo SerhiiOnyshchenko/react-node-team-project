@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
-axios.defaults.baseURL = 'http://localhost:8083/api';
+// axios.defaults.baseURL = 'http://localhost:8083/api';
+axios.defaults.baseURL = 'https://team-project-backend.onrender.com/api';
 
 const token = {
   set(token) {
@@ -27,7 +29,7 @@ const register = createAsyncThunk(
       } else {
         errorMessage = errorData.message;
       }
-      alert(errorMessage);
+      toast.error(errorMessage);
       return thunkAPI.rejectWithValue();
     }
   }
@@ -71,11 +73,20 @@ const fetchCurrentUser = createAsyncThunk(
     }
   }
 );
+const searchCity = createAsyncThunk('auth/searchCity', async q => {
+  try {
+    const { data } = await axios.get(`/cities/search?q=${q}`);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 const operations = {
   register,
   logOut,
   logIn,
   fetchCurrentUser,
+  searchCity,
 };
 export default operations;
