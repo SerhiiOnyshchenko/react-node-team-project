@@ -70,6 +70,13 @@ input:-webkit-autofill:active {
   box-shadow: 0 0 0 30px #fff inset;
   -webkit-text-fill-color: rgba(0, 0, 0);
 }
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration
+{
+  -webkit-appearance: none;
+}
 
 .inputContainer {
   height: 40px;

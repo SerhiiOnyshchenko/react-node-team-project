@@ -53,7 +53,7 @@ export default function NewsPage() {
               className={s.input}
               onChange={handleChangeInput}
               value={inputValue}
-              // type="search"
+              type="search"
               name="search"
               placeholder='Search'
               required
