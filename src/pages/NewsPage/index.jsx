@@ -6,6 +6,7 @@ import Container from 'components/Container';
 import News from '../../components/News/index';
 import { useSearchParams } from 'react-router-dom';
 import getNews from '../../redux/news/news-operations';
+import { RotatingLines } from 'react-loader-spinner';
 
 export default function NewsPage() {
   const dispatch = useDispatch();
@@ -13,26 +14,10 @@ export default function NewsPage() {
   const [inputValue, setinputValue] = useState(searchParams.get('query') ?? '');
   const [query, setQuery] = useState(searchParams.get('query') ?? '');
   const news = useSelector(state => state.news.news);
+  const status = useSelector(state => state.news.status);
 
   useEffect(() => {
-    // setIsLoading(true);
-    dispatch(getNews(query))
-    console.log('query', query);
-    // console.log()
-    // .then(data => {
-    //   setNews(data.results);
-    //   // console.log(data.results);
-    //   // if (data.results.length === 0) {
-    //   //   Notiflix.Notify.failure(
-    //   //     'Sorry, there are no news matching your search query. Please try again.'
-    //   //   );
-    //   // }
-    // })
-    // .catch(error => {
-    //   console.error(error);
-    // }).finally(() => {
-    //   // setIsLoading(false);
-    // });
+    dispatch(getNews(query));
   }, [dispatch, query]);
 
 
@@ -49,7 +34,6 @@ export default function NewsPage() {
         ? { query: inputValue.trim() }
         : {}
     );
-
   };
 
 
@@ -62,35 +46,33 @@ export default function NewsPage() {
       <div className={s.newsContainer}>
         <h1 className={s.newsTitle}>News</h1>
         <form className={s.form} onSubmit={onSubmit}>
-          <input
-            className={s.input}
-            onChange={handleChangeInput}
-            value={inputValue}
-            type="tel"
-            name="number"
-            placeholder='Search'
-            required
-          />
+          <div className={s.inputContainer} >
+            <input
+              className={s.input}
+              onChange={handleChangeInput}
+              value={inputValue}
+              type="tel"
+              name="number"
+              placeholder='Search'
+              required
+            />
+          </div>
           <button type="submit" className={s.btn}></button>
         </form>
-        <ul className={s.newList}>
-          {news.map(item => (
-            <News key={item.title} news={item} />
-          ))}
-        </ul>
-        {/* /* <ContactForm />
-        <h2 className={css.title}>Contacts</h2>
-        <Filter />
-        {status === 'fetch' && items.length === 0 && (<div className={css.Loader}>
-            <RotatingLines
-                strokeColor="white"
-                strokeWidth="5"
-                animationDuration="0.75"
-                width="150"
-                visible={true}
-            />
+        {!status && news.length > 0 &&
+          <ul className={s.newList}>
+            {news.map((item) => (<News key={item.title} news={item} />))}
+          </ul>}
+        {!status && news.length === 0 && (<div className={s.containerMessage}><p className={s.message}>No results were found for</p><p className={s.query}>{`${query}`}</p></div>)}
+        {status && (<div className={s.Rotating}>
+          <RotatingLines
+            strokeColor="#F59256"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="150"
+            visible={true}
+          />
         </div>)}
-        // {userStatus !== 'refreshUser' && <ContactList />  */}
       </div>
     </Container>
   );
