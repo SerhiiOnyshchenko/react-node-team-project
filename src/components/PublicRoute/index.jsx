@@ -1,4 +1,3 @@
-import Loader from 'components/Loader';
 import { Suspense } from 'react';
 import { RotatingLines } from 'react-loader-spinner';
 import { Navigate } from 'react-router-dom';
