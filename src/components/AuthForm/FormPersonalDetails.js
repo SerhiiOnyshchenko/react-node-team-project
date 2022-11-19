@@ -39,12 +39,14 @@ export const FormPersonalDetails = ({
   let listCities = useSelector(authSelectors.getCities);
 
   const changeInputCity = e => {
-    setFormData(pre => ({ ...pre, city: e.target.value }));
-    if (e.target.value.length >= 3) {
-      dispatch(authOperations.searchCity(e.target.value));
-      setShowDropList(true);
-    } else {
-      setShowDropList(false);
+    if (e.target.value !== ' ') {
+      setFormData(pre => ({ ...pre, city: e.target.value }));
+      if (e.target.value.length >= 3) {
+        dispatch(authOperations.searchCity(e.target.value));
+        setShowDropList(true);
+      } else {
+        setShowDropList(false);
+      }
     }
   };
 
@@ -55,7 +57,7 @@ export const FormPersonalDetails = ({
         onSubmit={values => {
           setFormData({ ...values, city: formData.city });
           direction === 'back' ? prevStep() : nextStep();
-          const registerValues = { ...values };
+          const registerValues = { ...values, city: formData.city };
           delete registerValues.confirmPassword;
           if (direction === 'forward') {
             dispatch(authOperations.register(registerValues));

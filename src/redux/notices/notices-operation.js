@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'team-project-backend.onrender.com/api';
+// axios.defaults.baseURL = 'team-project-backend.onrender.com/api';
 
 const noticesCategories = createAsyncThunk('/notices', async category => {
   try {

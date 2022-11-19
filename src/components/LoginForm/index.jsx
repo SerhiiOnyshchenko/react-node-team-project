@@ -4,9 +4,7 @@ import * as yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { authOperations } from '../../redux/auth';
-
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 const validationSchema = yup.object({
   email: yup.string().email('Invalid email').required('Email is required'),
@@ -79,7 +77,6 @@ export default function LoginForm() {
           </Form>
         )}
       </Formik>
-      <ToastContainer />
     </>
   );
 }
