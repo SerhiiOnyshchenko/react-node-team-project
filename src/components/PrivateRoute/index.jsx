@@ -1,10 +1,10 @@
 import { Suspense } from 'react';
 import { Navigate } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
-// import { AuthSelector } from 'redux/auth';
+import { useSelector } from 'react-redux';
+import { authSelectors } from 'redux/auth';
 
 export default function PrivateRoute({ children }) {
-  const isLoggedIn = true; //useSelector(AuthSelector.getIsLoggedIn);
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
     <div>
       {isLoggedIn ? (

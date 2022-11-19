@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
-// axios.defaults.baseURL = 'http://localhost:8083/api';
+// axios.defaults.baseURL = 'http://localhost:8000/api';
 axios.defaults.baseURL = 'https://team-project-backend.onrender.com/api';
 
 const token = {
