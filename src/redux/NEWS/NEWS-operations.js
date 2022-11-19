@@ -1,13 +1,25 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+// axios.defaults.baseURL = 'https://team-project-backend.onrender.com/api';
+axios.defaults.baseURL = 'http://localhost:8000/api';
+let result;
 
-// axios.defaults.baseURL = 'https://{url}';
-
-export const fetchNEW = createAsyncThunk('new/fetch-new', async () => {
+export const getNews = createAsyncThunk('news/getNews', async (query) => {
   try {
-    const { data } = await axios.get('/');
-    return data;
+    if (query === undefined || query === '') {
+      result = await axios.get('/news');
+      console.log('query === undefined');
+    }
+    if (query) {
+      result = await axios.get(`/news?query=${query}`);
+    }
+    return result.data;
   } catch (error) {
-    console.log('fetch-new-error', error);
+    console.log('fetch-news-error', error);
   }
 });
+export default getNews;
+
+
+
+
