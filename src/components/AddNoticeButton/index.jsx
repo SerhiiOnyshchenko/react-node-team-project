@@ -1,7 +1,4 @@
 import React from 'react';
-
-
-export default function AddNoticeButton() {
 import { useSelector } from 'react-redux';
 import authSelectors from '../../redux/auth/auth-selectors';
 import s from './index.module.css';
