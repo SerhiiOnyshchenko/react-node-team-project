@@ -16,24 +16,22 @@ export default function OurFriendsPage() {
       <h1>Our friends</h1>
       {friendsList && (
         <>
-          <div className={s.wrapper}>
-            <div className={s.container}>
-              <div className={s.align_container}>
-                {friendsList[0] &&
-                  friendsList.map(el => (
-                    <ItemFrien
-                      key={el._id}
-                      site={el.addressUrl}
-                      header={el.title}
-                      time={el.workDays ? el.workDays : []}
-                      adress={el.address ? el.address : '------------------'}
-                      email={el.email ? el.email : '------------------'}
-                      phone={el.phone ? el.phone : '------------------'}
-                      avatar={el.imageUrl ? el.imageUrl : '------------------'}
-                    />
-                  ))}
-                ;
-              </div>
+          <div className={s.container}>
+            <div className={s.align_container}>
+              {friendsList[0] &&
+                friendsList.map(el => (
+                  <ItemFrien
+                    key={el._id}
+                    site={el.addressUrl}
+                    header={el.title}
+                    time={el.workDays ? el.workDays : []}
+                    adress={el.address ? el.address : '------------------'}
+                    email={el.email ? el.email : '------------------'}
+                    phone={el.phone ? el.phone : '------------------'}
+                    avatar={el.imageUrl ? el.imageUrl : '------------------'}
+                  />
+                ))}
+              ;
             </div>
           </div>
         </>
