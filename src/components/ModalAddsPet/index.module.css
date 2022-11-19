@@ -1,4 +1,4 @@
-.closeBtn {
+/* .closeBtn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,7 +15,7 @@
   background-image: url('../../images/svg/close.svg');
   background-repeat: no-repeat;
   background-position: center;
-}
+} */
 
 .title {
   font-size: 24px;
@@ -52,6 +52,7 @@
   height: 40px;
   margin-top: 8px;
   margin-bottom: 16px;
+  padding-left: 16px;
 
   background: var(--bg);
   border: 1px solid rgba(245, 146, 86, 0.5);

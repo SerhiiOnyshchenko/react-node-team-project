@@ -38,11 +38,13 @@ export default function ModalPage2(props) {
             </button>
             <div className={s.textareaWrapper}>
               <label className={s.label}>Comments</label>
-              <textarea
+              <Field
+                as="textarea"
                 className={s.textarea}
                 name="comments"
-                placeholder=" Type comments"
-              ></textarea>
+                placeholder="Type comments"
+              ></Field>
+              <ErrorMessage name="comments" />
             </div>
           </Form>
           <div className={s.buttonsWrapper}>
