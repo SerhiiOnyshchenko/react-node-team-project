@@ -1,6 +1,4 @@
 import { useState } from 'react';
-
-import { sampleData } from './sampleData';
 import s from './modalNotice.module.css';
 import modalImage from '../../images/pet-modal.png';
 import { ReactComponent as HeartBtnM } from '../../images/svg/heartBtnM.svg';
@@ -46,7 +44,6 @@ export default function ModalNotice({
   const dispatch = useDispatch();
   const owner = false;
 
-  console.log();
   return (
     <>
       <div className={s.container}>

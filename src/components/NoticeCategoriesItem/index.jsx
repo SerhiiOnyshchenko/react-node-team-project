@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import ModalNotice from '../NoticeItemModal';
 import ModalPage from 'pages/ModalPage';
+// eslint-disable-next-line
 import { sampleData } from './sampleData';
 import s from './modalItem.module.css';
 import modalImage from '../../images/pet-item.jpg';
