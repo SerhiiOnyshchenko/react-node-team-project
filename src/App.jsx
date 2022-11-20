@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 import { getLoader } from 'redux/loader/loader-selectors';
 import { useDispatch } from 'react-redux';
 import { changeLoader } from 'redux/loader/loader-actions';
+import { authOperations } from 'redux/auth';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -29,6 +30,10 @@ export default function App() {
     setTimeout(() => {
       dispatch(changeLoader(false));
     }, 2000);
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
 
   return (

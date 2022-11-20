@@ -12,29 +12,29 @@ import DropList from 'components/DropList';
 const validationSchema = yup.object({
   name: yup
     .string()
+    .required('Name is required')
     .matches(
       /^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/,
       'Name should only contain letters'
     ),
   city: yup
     .string()
+    .required('Address is required')
     .matches(
       /^[\w\-’ ]+, [\w\-’ ]+$/,
       'Address should be in format: City, Region'
     ),
   phone: yup
     .string()
+    .required('Phone is required')
     .matches(/^\+[0-9]{12}$/, 'Phone should be in format +380671234567'),
 });
 
-export const FormPersonalDetails = ({
-  formData,
-  setFormData,
-  nextStep,
-  prevStep,
-}) => {
+export const FormPersonalDetails = ({ data, setFormData, next, prev }) => {
+  const handleSubmit = values => {
+    next(values, true);
+  };
   const [showDropList, setShowDropList] = useState(false);
-  const [direction, setDirection] = useState('back');
   const dispatch = useDispatch();
   let listCities = useSelector(authSelectors.getCities);
 
@@ -53,87 +53,80 @@ export const FormPersonalDetails = ({
   return (
     <>
       <Formik
-        initialValues={formData}
-        onSubmit={values => {
-          setFormData({ ...values, city: formData.city });
-          direction === 'back' ? prevStep() : nextStep();
-          const registerValues = { ...values, city: formData.city };
-          delete registerValues.confirmPassword;
-          if (direction === 'forward') {
-            dispatch(authOperations.register(registerValues));
-          }
-        }}
+        initialValues={data}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
-        <Form className={s.form}>
-          <h1 className={s.title}>Registration</h1>
-          <div className={s.fieldContainer}>
-            <Field name="name" placeholder="Name" className={s.input} />
-            <ErrorMessage name="name">{ErrorMessageWrapper}</ErrorMessage>
-          </div>
-          <div className={s.fieldContainer}>
-            <label className={s.inputBox} htmlFor="city">
-              <Field
-                name="city"
-                id="city"
-                placeholder="City, region"
-                className={s.input}
-                margin="normal"
-                autoComplete="of"
-                value={formData.city}
-                onChange={changeInputCity}
-              />
-              {showDropList && (
-                <DropList
-                  list={listCities}
-                  onSelect={str => {
-                    setFormData(pre => ({ ...pre, city: str }));
-                    setShowDropList(false);
-                  }}
+        {({ values }) => (
+          <Form className={s.form}>
+            <h1 className={s.title}>Registration</h1>
+            <div className={s.fieldContainer}>
+              <Field name="name" placeholder="Name" className={s.input} />
+              <ErrorMessage name="name">{ErrorMessageWrapper}</ErrorMessage>
+            </div>
+            <div className={s.fieldContainer}>
+              <label className={s.inputBox} htmlFor="city">
+                <Field
+                  name="city"
+                  id="city"
+                  placeholder="City, region"
+                  className={s.input}
+                  margin="normal"
+                  autoComplete="of"
+                  value={data.city}
+                  onChange={changeInputCity}
                 />
-              )}
-            </label>
-            <ErrorMessage name="city">{ErrorMessageWrapper}</ErrorMessage>
-          </div>
-          <div className={s.fieldContainer}>
-            <Field
-              name="phone"
-              placeholder="Mobile phone"
-              className={s.input}
-            />
-            <ErrorMessage name="phone">{ErrorMessageWrapper}</ErrorMessage>
-          </div>
-          <div className={s.buttonContainer}>
-            <button
-              type="submit"
-              className={`${s.button} ${s.buttonActive} ${s.register}`}
-              onClick={() => setDirection('forward')}
-            >
-              Register
-            </button>
-            <button
-              type="submit"
-              className={`${s.button} ${s.buttonDefault} ${s.back}`}
-              onClick={() => setDirection('back')}
-            >
-              Back
-            </button>
-          </div>
-          <p className={s.questionText}>
-            Already have an account?{' '}
-            <Link to="/login" className={s.loginLink}>
-              Login
-            </Link>
-          </p>
-        </Form>
+                {showDropList && (
+                  <DropList
+                    list={listCities}
+                    onSelect={str => {
+                      setFormData(pre => ({ ...pre, city: str }));
+                      setShowDropList(false);
+                    }}
+                  />
+                )}
+              </label>
+              <ErrorMessage name="city">{ErrorMessageWrapper}</ErrorMessage>
+            </div>
+            <div className={s.fieldContainer}>
+              <Field
+                name="phone"
+                placeholder="Mobile phone"
+                className={s.input}
+              />
+              <ErrorMessage name="phone">{ErrorMessageWrapper}</ErrorMessage>
+            </div>
+            <div className={s.buttonContainer}>
+              <button
+                type="submit"
+                className={`${s.button} ${s.buttonActive} ${s.register}`}
+              >
+                Register
+              </button>
+              <button
+                type="button"
+                className={`${s.button} ${s.buttonDefault} ${s.back}`}
+                onClick={() => prev(values)}
+              >
+                Back
+              </button>
+            </div>
+            <p className={s.questionText}>
+              Already have an account?{' '}
+              <Link to="/login" className={s.loginLink}>
+                Login
+              </Link>
+            </p>
+          </Form>
+        )}
       </Formik>
     </>
   );
 };
 
 FormPersonalDetails.propTypes = {
-  formData: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
   setFormData: PropTypes.func.isRequired,
-  nextStep: PropTypes.func.isRequired,
-  prevStep: PropTypes.func.isRequired,
+  next: PropTypes.func.isRequired,
+  prev: PropTypes.func.isRequired,
 };
