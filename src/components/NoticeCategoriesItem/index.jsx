@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ModalNotice from '../NoticeItemModal';
 import ModalPage from 'pages/ModalPage';
+// eslint-disable-next-line
 import { sampleData } from './sampleData';
 import s from './modalItem.module.css';
 import modalImage from '../../images/pet-item.jpg';
@@ -24,6 +25,7 @@ export const NOTICE_ITEM_KEYS = [
 export default function NoticeItem({ petData = sampleData }) {
   const [modalShow, setModalShow] = useState(false);
   // const isLogedIn = false;
+  //
   const [inFavorite, setFavorite] = useState(false);
 
   const handleModalToggle = () => {

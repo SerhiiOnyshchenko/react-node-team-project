@@ -36,8 +36,8 @@ const PET_MODAL_KEYS = [
 ];
 
 export default function ModalNotice({ id, handleAddFavorite }) {
-  const [petData, setPetData] = useState(sampleData);
-
+  // const [petData, setPetData] = useState(sampleData);
+  const petData = sampleData;
   // useEffect(() => {
   //   setPetData();
   // }, [id]);
