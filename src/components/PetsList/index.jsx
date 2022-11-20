@@ -25,7 +25,7 @@ export default function PetsList() {
         'Lorem ipsum dolor sit amet, consecteturLorem ipsum dolor sit amet, consectetur  Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetur',
     },
   ];
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   // const petsList = useSelector(User_Selectors.getUserPetsList);
   //   const isLoading = useSelector(getIsLoading);
 
@@ -45,11 +45,10 @@ export default function PetsList() {
                   <button
                     type="button"
                     onClick={() => {
-                      dispatch(User_Operations.deletePetFromList(pet._id));
+                      // dispatch(User_Operations.deletePetFromList(pet._id));
                     }}
                     className={s.deleteBtn}
-                  >
-                  </button>
+                  ></button>
                   <p className={s.petInfoCategory}>
                     <span className={s.petInfoTitle}>Name: </span>
                     {pet.name}
