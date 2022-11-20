@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import ModalNotice from '../NoticeItemModal';
 import ModalPage from 'pages/ModalPage';
 // eslint-disable-next-line
@@ -6,6 +7,8 @@ import { sampleData } from './sampleData';
 import s from './modalItem.module.css';
 import modalImage from '../../images/pet-item.jpg';
 import { ReactComponent as HeartBtnM } from '../../images/svg/heartBtnM.svg';
+import { authOperations, authSelectors } from 'redux/auth';
+import { useDispatch } from 'react-redux';
 
 export const NOTICE_ITEM_KEYS = [
   {
@@ -23,16 +26,20 @@ export const NOTICE_ITEM_KEYS = [
 ];
 
 export default function NoticeItem({ petData = sampleData }) {
+  // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  // const favorite = useSelector(authSelectors.getUserFavorite);
+  // console.log(favorite);
+  const dispatch = useDispatch();
+
   const [modalShow, setModalShow] = useState(false);
-  // const isLogedIn = false;
-  //
   const [inFavorite, setFavorite] = useState(false);
 
   const handleModalToggle = () => {
     setModalShow(!modalShow);
   };
   const handleAddFavorite = () => {
-    // if (!isLogedIn) return alert('you need login');
+    // if (!isLoggedIn) return alert('you need login');
+
     setFavorite(!inFavorite);
     if (!inFavorite) return alert('add tofavorite');
     return alert('remove from favorite');
@@ -78,7 +85,11 @@ export default function NoticeItem({ petData = sampleData }) {
       </div>
       {modalShow && (
         <ModalPage onClose={handleModalToggle}>
-          <ModalNotice id={petData.id} handleAddFavorite={handleAddFavorite} />
+          <ModalNotice
+            petData={petData}
+            handleAddFavorite={handleAddFavorite}
+            inFavorite={inFavorite}
+          />
         </ModalPage>
       )}
     </>
