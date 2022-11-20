@@ -91,7 +91,7 @@
     border-radius: 50%;
     cursor: pointer;
 }
-.hartBtn:hover {
+.heartBtn:hover {
     background: #f0d6c58e
 }
 .heartItemBtnActive {

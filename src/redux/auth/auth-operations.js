@@ -81,6 +81,24 @@ const searchCity = createAsyncThunk('auth/searchCity', async q => {
     console.log(error);
   }
 });
+const addToFavorite = createAsyncThunk('auth/addToFavorite', async petId => {
+  try {
+    await axios.post(`/user/favorite/${petId}`);
+    const { data } = await axios.get('/user/favorite')
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+});
+const deleteFromFavorite = createAsyncThunk('auth/deleteFromFavorite', async petId => {
+  try {
+    await axios.delete(`/user/favorite/${petId}`);
+    const { data } = await axios.get('/user/favorite')
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 const operations = {
   register,
@@ -88,5 +106,7 @@ const operations = {
   logIn,
   fetchCurrentUser,
   searchCity,
+  addToFavorite,
+  deleteFromFavorite,
 };
 export default operations;
