@@ -10,8 +10,10 @@ export default function Button({ text, active = false, smole = false }) {
           ? {
               height: '32px',
               fontSize: '14px',
+              lineHeight: '19px',
+              letterSpacing: '0.04em',
               width: 'auto',
-              padding: '10px 28px',
+              padding: '8px 28px',
             }
           : {}
       }

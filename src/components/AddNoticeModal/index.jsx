@@ -8,11 +8,16 @@ export default function AddNoticeModal() {
   const [step, setstep] = useState(1);
 
   const [formData, setFormData] = useState({
-    name: '',
-    birthday: '',
+    titleOfAd: '',
+    namePet: '',
     breed: '',
-    photo: '',
+    sex: '',
+    location: '',
+    price: '',
+    category: '',
     comments: '',
+    birthDate: '',
+    image: '',
   });
 
   const nextStep = () => {
@@ -46,7 +51,8 @@ export default function AddNoticeModal() {
       );
     case 2:
       return (
-        <div>
+        <div className={s.Wrapper}>
+          <h1 className={s.header}>Add pet</h1>
           <StepTwo
             nextStep={nextStep}
             prevStep={prevStep}
