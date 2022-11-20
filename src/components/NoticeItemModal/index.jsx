@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { sampleData } from './sampleData';
 import s from './modalNotice.module.css';
 import modalImage from '../../images/pet-modal.png';
