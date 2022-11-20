@@ -1,7 +1,22 @@
 .btnWrapper {
   display: flex;
   align-items: center;
+  position: absolute;
+  right: 20px;
 }
+@media screen and (min-width: 768px) {
+  .btnWrapper {
+    top: 350px;
+    right: 32px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .btnWrapper {
+    top: 320px;
+    right: 16px;
+  }
+}
+
 .btn {
   width: 80px;
   height: 80px;
