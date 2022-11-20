@@ -12,7 +12,7 @@ export default function ModalPage({ children, onClose }) {
   }, []);
 
   function closeModalEscKey(e) {
-    if (e.target.className === 'App') {
+    if (e.currentTarget === e.target) {
       onClose();
     }
     if (e.code === 'Escape') {

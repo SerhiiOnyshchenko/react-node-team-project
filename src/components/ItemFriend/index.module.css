@@ -102,9 +102,16 @@
   text-overflow: ellipsis;
   font-size: 18px;
   line-height: 18px;
+  margin-bottom: 7px;
   white-space: nowrap;
   text-align: left;
   color: black;
+  text-decoration: underline;
+  cursor: pointer;
+}
+#adress:hover,
+#time:hover {
+  text-decoration: none;
 }
 
 @media screen and (max-width: 1300px) {
@@ -113,9 +120,11 @@
     height: 246px;
   }
   .friendData h6,
-  .friendData p {
+  .friendData p,
+  #adress,
+  #time {
     font-size: 14px;
-    line-height: 14px;
+    line-height: 15px;
     display: flex;
   }
   .image_container {
@@ -138,12 +147,14 @@
 }
 
 @media screen and (max-width: 770px) {
+  .flex {
+    margin-top: 10px;
+  }
   .popup {
     top: 30px;
   }
   #adress {
     width: 120px;
-    line-height: 20px;
   }
   .container {
     width: 280px;
@@ -155,9 +166,10 @@
   }
   .friendData h6,
   .friendData p,
-  #adress {
+  #adress,
+  #time {
     font-size: 12px;
-    line-height: 8px;
+    line-height: 12px;
   }
   .image_container {
     width: 110px;
@@ -168,6 +180,6 @@
   }
   .popup p {
     font-size: 9px;
-    line-height: 13px;
+    line-height: 10px;
   }
 }
