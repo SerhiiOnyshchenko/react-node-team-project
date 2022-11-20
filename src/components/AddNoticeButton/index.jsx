@@ -5,6 +5,7 @@ import s from './index.module.css';
 import { ReactComponent as Plus } from '../../images/svg/plus.svg';
 import { useMediaQuery } from 'react-responsive';
 import { toast } from 'react-toastify';
+import AddNoticeModal from 'components/AddNoticeModal';
 
 export default function AddNoticeButton() {
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -22,16 +23,12 @@ export default function AddNoticeButton() {
     <>
       <div className={s.btnWrapper}>
         {!isMobile && text}
-        <button
-          type="button"
-          className={s.btn}
-          onClick={handleClick}
-          isOpen={isOpen}
-        >
+        <button type="button" className={s.btn} onClick={handleClick}>
           <Plus className={s.icon} />
           {isMobile && text}
         </button>
       </div>
+      {isOpen && <AddNoticeModal />}
     </>
   );
 }
