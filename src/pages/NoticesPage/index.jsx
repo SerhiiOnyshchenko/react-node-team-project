@@ -9,8 +9,8 @@ export default function NoticesPage() {
   return (
     <div className={s.container}>
       <NoticesSearch></NoticesSearch>
-      <NoticesCategoriesNav></NoticesCategoriesNav>
-      <NoticesCategoriesList></NoticesCategoriesList>
+      {/* <NoticesCategoriesNav></NoticesCategoriesNav> */}
+      {/* <NoticesCategoriesList></NoticesCategoriesList> */}
       <AddNoticeButton></AddNoticeButton>
     </div>
   );
