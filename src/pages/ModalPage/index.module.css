@@ -14,7 +14,8 @@
   pointer-events: initial;
   transform: scale(1);
   transition: var(--transition);
-  z-index: 100;
+  z-index: 1000;
+  overflow: scroll;
 }
 
 .Content {
