@@ -10,7 +10,7 @@ export default function PrivateRoute({ children }) {
       {isLoggedIn ? (
         <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
       ) : (
-        <Navigate replace to="login" />
+        <Navigate replace to="/login" />
       )}
     </div>
   );

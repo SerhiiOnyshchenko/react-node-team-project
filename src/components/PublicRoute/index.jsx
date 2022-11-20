@@ -1,10 +1,10 @@
 import { Suspense } from 'react';
 import { Navigate } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
-// import { AuthSelector } from 'redux/auth';
+import { useSelector } from 'react-redux';
+import { authSelectors } from 'redux/auth';
 
 export default function PublicRoute({ children, restricted = false }) {
-  const isLoggedIn = false; // useSelector(AuthSelector.getIsLoggedIn);
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const showNavigate = isLoggedIn && restricted;
   return (
     <>

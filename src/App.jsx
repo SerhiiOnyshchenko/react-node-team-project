@@ -13,6 +13,7 @@ import { useDispatch } from 'react-redux';
 import { changeLoader } from 'redux/loader/loader-actions';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { authOperations, authSelectors } from 'redux/auth';
 
 const LoginPage = lazy(() => import('./pages/LoginPage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage'));
@@ -24,7 +25,10 @@ const OurFriendsPage = lazy(() => import('./pages/OurFriendsPage'));
 export default function App() {
   const dispatch = useDispatch();
   const loader = useSelector(getLoader);
+
   useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+
     dispatch(changeLoader(true));
     setTimeout(() => {
       dispatch(changeLoader(false));
@@ -71,7 +75,7 @@ export default function App() {
         <Route
           path="news"
           element={
-            <PublicRoute restricted>
+            <PublicRoute>
               <NewsPage />
             </PublicRoute>
           }
@@ -79,7 +83,7 @@ export default function App() {
         <Route
           path="notices"
           element={
-            <PublicRoute restricted>
+            <PublicRoute>
               <NoticesPage />
             </PublicRoute>
           }
@@ -87,7 +91,7 @@ export default function App() {
         <Route
           path="friends"
           element={
-            <PublicRoute restricted>
+            <PublicRoute>
               <OurFriendsPage />
             </PublicRoute>
           }
