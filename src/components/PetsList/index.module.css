@@ -1,0 +1,106 @@
+.list {
+  margin-top: 26px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: var(--modal-bg);
+  padding: 16px 20px;
+  box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
+  border-radius: 40px;
+  margin-bottom: 20px;
+}
+
+.petPhoto {
+  width: 240px;
+  height: 240px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.petInfo {
+  position: relative;
+  margin: 20px 0px 40px 0px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.deleteBtn {
+  position: absolute;
+
+  top: -16px;
+  right: 0px;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 0;
+
+  background-image: url('../../images/svg/bin.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.deleteBtn:hover,
+.deleteBtn:focus {
+  color: var(--btn-bg-hover-active);
+}
+
+.petInfoCategory {
+  margin-bottom: 12px;
+
+  line-height: 1.38;
+  white-space: normal;
+
+  display: block;
+  align-items: top;
+  letter-spacing: 0.04em;
+}
+
+.petInfoCategory:last-child {
+  margin-bottom: 0px;
+}
+
+.petInfoTitle {
+  font-weight: 600;
+  margin-right: 5px;
+}
+
+.noPets {
+  text-align: center;
+  padding: 40px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .list {
+    margin-top: 24px;
+  }
+
+  .card {
+    flex-direction: row;
+    padding: 20px;
+  }
+
+  .petPhoto {
+    width: 161px;
+    height: 161px;
+  }
+
+  .petInfo {
+    margin: 0px 0px 0px 32px;
+  }
+
+  .deleteBtn {
+    top: 0;
+    background-color: var(--bg);
+  }
+
+  .petInfoCategory {
+    font-size: 16px;
+  }
+}
