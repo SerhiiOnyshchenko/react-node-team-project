@@ -29,7 +29,6 @@ export default function ModalPage({ children, onClose }) {
           type="button"
           onClick={onClose}
         ></button>
-        <h2>Add pet</h2>
         {children}
       </div>
     </div>,

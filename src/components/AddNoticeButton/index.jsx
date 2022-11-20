@@ -6,6 +6,7 @@ import { ReactComponent as Plus } from '../../images/svg/plus.svg';
 import { useMediaQuery } from 'react-responsive';
 import { toast } from 'react-toastify';
 import AddNoticeModal from 'components/AddNoticeModal';
+import ModalPage from 'pages/ModalPage';
 
 export default function AddNoticeButton() {
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -13,12 +14,13 @@ export default function AddNoticeButton() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const [isOpen, setOpen] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = props => {
     if (!isLoggedIn) return toast.info('You must be logged in');
     else {
       setOpen(true);
     }
   };
+
   return (
     <>
       <div className={s.btnWrapper}>
@@ -28,7 +30,15 @@ export default function AddNoticeButton() {
           {isMobile && text}
         </button>
       </div>
-      {isOpen && <AddNoticeModal />}
+      {isOpen && (
+        <ModalPage
+          onClose={() => {
+            setOpen(false);
+          }}
+        >
+          <AddNoticeModal />
+        </ModalPage>
+      )}
     </>
   );
 }
