@@ -1,23 +1,26 @@
 import { useState } from 'react';
-import { sampleData } from './sampleData';
+import { useSelector, useDispatch } from 'react-redux';
 import s from './modalNotice.module.css';
+// import { toast } from 'react-toastify';
 import modalImage from '../../images/pet-modal.png';
-import Button from 'components/Button';
+import { ReactComponent as HeartBtnM } from '../../images/svg/heartBtnM.svg';
+import { authOperations, authSelectors } from 'redux/auth/index';
+
 const PET_MODAL_KEYS = [
   {
     label: 'Name:',
-    key: 'name',
+    key: 'namePet',
   },
   {
-    label: 'Year:',
-    key: 'year',
+    label: 'birthday',
+    key: 'Birthday:',
   },
   {
     label: 'Breed:',
     key: 'breed',
   },
   {
-    label: 'Loсation:',
+    label: 'Place:',
     key: 'location',
   },
   {
@@ -32,10 +35,21 @@ const PET_MODAL_KEYS = [
     label: 'Phone:',
     key: 'phone',
   },
+  {
+    label: 'Price:',
+    key: 'price',
+    category: 'sell',
+  },
 ];
 
-export default function ModalNotice() {
-  const [petData] = useState(sampleData);
+export default function ModalNotice({
+  petData,
+  handleAddFavorite,
+  inFavorite,
+}) {
+  // const dispatch = useDispatch();
+
+  const owner = false;
 
   return (
     <>
@@ -44,16 +58,30 @@ export default function ModalNotice() {
           <div className={s.imgWrapper}>
             <img src={petData.avatar || modalImage} alt={petData.name} />
             <div className={s.categoryLabel}>{petData.category}</div>
+            <button
+              type="button"
+              className={s.heartBtn}
+              onClick={handleAddFavorite}
+            >
+              {inFavorite ? (
+                <HeartBtnM className={s.heartItemBtnActive} />
+              ) : (
+                <HeartBtnM className={s.heartItemBtn} />
+              )}
+            </button>
           </div>
           <div className={s.info}>
-            <h3 className={s.title}>{petData.title}</h3>
+            <h3 className={s.title}>{petData.titleOfAd}</h3>
             <ul>
-              {PET_MODAL_KEYS.map(({ label, key }) => (
-                <li key={key} className={s.infoList}>
-                  <span className={s.label}>{label}</span>
-                  <span className={s.lebalText}>{petData[key]}</span>
-                </li>
-              ))}
+              {PET_MODAL_KEYS.map(({ label, key, category }) => {
+                if (category && category !== petData.category) return null;
+                return (
+                  <li key={key} className={s.infoList}>
+                    <span className={s.label}>{label}</span>
+                    <span className={s.lebalText}>{petData[key]}</span>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
@@ -62,12 +90,20 @@ export default function ModalNotice() {
           <p className={s.commentsText}>{petData.comments}</p>
         </div>
         <div className={s.buttons}>
-          <button type="button" className={s.addToFovorBtn}>
-            add to
-          </button>
           <a href={`tel:${petData.phone}`} className={s.contactBtn}>
             Contact
           </a>
+          {owner && (
+            <button
+              type="button"
+              className={s.deleteBtn}
+              // onClick={() => {
+              //   dispatch();
+              // }}
+            >
+              delete
+            </button>
+          )}
         </div>
       </div>
     </>

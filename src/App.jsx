@@ -1,16 +1,18 @@
-import { lazy, useEffect } from 'react';
+import { lazy, useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-// import s from './App.module.css';
 import PublicRoute from 'components/PublicRoute';
 import PrivateRoute from 'components/PrivateRoute';
 import NotFoundPage from 'pages/NotFoundPage';
 import Header from 'components/Header';
 import HomePage from 'pages/HomePage';
-import Loader from 'components/Loader';
-import { useSelector } from 'react-redux';
-import { getLoader } from 'redux/loader/loader-selectors';
 import { useDispatch } from 'react-redux';
 import { changeLoader } from 'redux/loader/loader-actions';
+import { authOperations } from 'redux/auth';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { authOperations } from 'redux/auth';
+import ModalPage from 'pages/ModalPage';
+import ModalAddsPet from 'components/ModalAddsPet';
 
 const LoginPage = lazy(() => import('./pages/LoginPage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage'));
@@ -21,17 +23,31 @@ const OurFriendsPage = lazy(() => import('./pages/OurFriendsPage'));
 
 export default function App() {
   const dispatch = useDispatch();
-  const loader = useSelector(getLoader);
+  const [showModal, setShowModal] = useState(false);
+
+  // const loader = useSelector(getLoader);
+
   useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+
     dispatch(changeLoader(true));
     setTimeout(() => {
       dispatch(changeLoader(false));
     }, 2000);
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
+
   return (
     <div>
-      {loader && <Loader />}
+      {/* {loader && <Loader />} */}
+      {showModal && (
+        <ModalPage onClose={() => setShowModal(false)}>
+          <ModalAddsPet />
+        </ModalPage>
+      )}
       <Header />
       <Routes>
         <Route
@@ -69,7 +85,7 @@ export default function App() {
         <Route
           path="news"
           element={
-            <PublicRoute restricted>
+            <PublicRoute>
               <NewsPage />
             </PublicRoute>
           }
@@ -77,7 +93,7 @@ export default function App() {
         <Route
           path="notices"
           element={
-            <PublicRoute restricted>
+            <PublicRoute>
               <NoticesPage />
             </PublicRoute>
           }
@@ -85,13 +101,23 @@ export default function App() {
         <Route
           path="friends"
           element={
-            <PublicRoute restricted>
+            <PublicRoute>
               <OurFriendsPage />
             </PublicRoute>
           }
         />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <ToastContainer
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }

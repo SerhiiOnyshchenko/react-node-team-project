@@ -1,15 +1,15 @@
-import React from 'react';
+import React, {useState, useEffect } from 'react';
 import NoticesSearch from 'components/NoticesSearch';
 import NoticesCategoriesNav from 'components/NoticesCategoriesNav';
 import NoticesCategoriesList from 'components/NoticesCategoriesList';
 import AddNoticeButton from 'components/AddNoticeButton';
 import s from './index.module.css';
-import { useState } from 'react';
-// import { useSelector } from 'react-redux';
+import { Outlet, useNavigate } from 'react-router-dom';
+import Container from 'components/Container';
 
 export default function NoticesPage() {
   const notices = [];
-  // useSelector(noticesSelectors.getNoticesCategories());
+  const navigate = useNavigate();
   const [filteredNotices, setFilteredNotices] = useState(notices);
 
   const filter = search => {
@@ -20,12 +20,19 @@ export default function NoticesPage() {
     setFilteredNotices(newNotices);
   };
 
+  useEffect(() => {
+    navigate('/notices/sell');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  
   return (
-    <div className={s.Container}>
+    <Container>
       <NoticesSearch onSearch={filter}></NoticesSearch>
-      <NoticesCategoriesNav></NoticesCategoriesNav>
-      <NoticesCategoriesList list={filteredNotices}></NoticesCategoriesList>
-      <AddNoticeButton></AddNoticeButton>
-    </div>
+        <div className={s.btnBox}>
+          <NoticesCategoriesNav>
+          <AddNoticeButton>
+        </div>
+      <Outlet />
+    </Container>
   );
 }

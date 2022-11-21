@@ -3,19 +3,23 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 280px;
   padding-top: 26px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media screen and (min-width: 768px) {
   .newsContainer {
     padding-top: 72px;
+    width: 704px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .newsContainer {
     padding-top: 38px;
+    width: 1248px;
   }
 }
 
@@ -25,6 +29,7 @@
   line-height: 1.37;
   margin-bottom: 28px;
 }
+
 @media screen and (min-width: 768px) {
   .newsTitle {
     margin-bottom: 40px;
@@ -34,10 +39,7 @@
 }
 
 .input {
-  height: 40px;
-  width: 280px;
   border-radius: 20px;
-  box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
   padding-left: 12px;
   padding-right: 12px;
   line-height: 1.37;
@@ -45,23 +47,49 @@
   align-items: center;
   letter-spacing: 0.04em;
   color: #535353;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
 }
 
 @media screen and (min-width: 768px) {
   .input {
-    height: 44px;
-    width: 608px;
     border-radius: 40px;
     padding-left: 20px;
     padding-right: 20px;
     font-size: 20px;
     line-height: 1.35;
+    border-radius: 20px;
   }
 }
-@media screen and (min-width: 1280px) {
-  .input {
-    font-family: 'Inter';
-    line-height: 1.2;
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px #fff inset;
+  -webkit-text-fill-color: rgba(0, 0, 0);
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration
+{
+  -webkit-appearance: none;
+}
+
+.inputContainer {
+  height: 40px;
+  width: 280px;
+  border-radius: 20px;
+  background-color: var( --btn-bg-default);
+  box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
+}
+@media screen and (min-width: 768px) {
+  .inputContainer {
+    height: 44px;
+    width: 608px;
+    border-radius: 40px;
   }
 }
 
@@ -87,17 +115,48 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-color: transparent;
-  background-size: 15px  15px;
+  background-size: 15px 15px;
 }
 @media screen and (min-width: 768px) {
   .btn {
     width: 44px;
     height: 44px;
-    background-size: 18px  18px;
+    background-size: 18px 18px;
   }
 }
 
 .newList {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
+}
+
+.query {
+  font-weight: 700;
+  margin-left: 5px;
+  font-size: 24px;
+}
+.message {
+  font-weight: 400;
+  font-size: 24px;
+}
+.containerMessage {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Rotating{
+  margin-top: 150px;
+}
+
+@media screen and (min-width: 768px) {
+  .Rotating{
+    margin-top: 50px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .Rotating{
+    margin-top: 100px;
+  }
 }

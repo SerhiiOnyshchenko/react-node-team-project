@@ -1,12 +1,10 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import s from './index.module.css';
 import * as yup from 'yup';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { authOperations } from '../../redux/auth';
-
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 const validationSchema = yup.object({
   email: yup.string().email('Invalid email').required('Email is required'),
@@ -15,6 +13,7 @@ const validationSchema = yup.object({
 
 export default function LoginForm() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -27,6 +26,7 @@ export default function LoginForm() {
         onSubmit={async values => {
           try {
             await dispatch(authOperations.logIn(values)).unwrap();
+            navigate('/user');
           } catch (e) {
             toast.error('Wrong email or password');
           }
@@ -77,7 +77,6 @@ export default function LoginForm() {
           </Form>
         )}
       </Formik>
-      <ToastContainer />
     </>
   );
 }
