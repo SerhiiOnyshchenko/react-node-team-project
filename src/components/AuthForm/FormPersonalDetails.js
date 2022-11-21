@@ -15,7 +15,7 @@ const validationSchema = yup.object({
     .required('Name is required')
     .matches(
       /^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/,
-      'Name should only contain letters'
+      'Name should only contain Latin letters'
     ),
   city: yup
     .string()
