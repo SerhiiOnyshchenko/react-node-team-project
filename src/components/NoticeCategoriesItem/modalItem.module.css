@@ -66,9 +66,9 @@
     width: 248px;
     height:  38px;
     padding: 8px 79px;
-    background: #ffffff;
-    border: 2px solid #f59256;
-    color: #F59256;
+    background: var(--btn-bg-default);
+    border: 2px solid var(--color-another);
+    color: var(--color-another);
     border-radius: 40px;
     cursor: pointer;
     font-size: 16px;
@@ -76,6 +76,7 @@
 .learmMoreBtn:hover{
     color: #ff6101;
     border: 2px solid #ff6101;
+    transition: var(--transition);
 }
 .heartBtn {
     position: absolute;
@@ -87,16 +88,16 @@
     padding: 0;
     border: 0;
     font-size: 0;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(253, 247, 242, 0.5);
     border-radius: 50%;
-    cursor: pointer;
 }
 .heartBtn:hover {
-    background: #f0d6c58e
+    background: rgba(253, 247, 242, 1);
+    transition: var(--transition);
 }
 .heartItemBtnActive {
     background: none;
-    fill: #f59256;
+    fill: var(--color-hover-active);
     border-radius: 50%;
 }
 
