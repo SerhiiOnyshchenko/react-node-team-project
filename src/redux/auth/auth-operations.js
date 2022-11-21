@@ -20,7 +20,8 @@ const register = createAsyncThunk(
     try {
       const { data } = await axios.post('/user/registration', credentials);
       token.set(data.token);
-      return data;
+      const favorite = await axios.get('/user/favorite');
+      return { ...data, favorite: favorite.data };
     } catch (error) {
       const errorData = error.response.data;
       let errorMessage = '';
@@ -39,7 +40,8 @@ const logIn = createAsyncThunk('auth/logIn', async credentials => {
   try {
     const { data } = await axios.post('/user/login', credentials);
     token.set(data.token);
-    return data;
+    const favorite = await axios.get('/user/favorite');
+    return { ...data, favorite: favorite.data };
   } catch (error) {
     console.log(error);
   }
@@ -67,7 +69,8 @@ const fetchCurrentUser = createAsyncThunk(
     token.set(persistedToken);
     try {
       const { data } = await axios.get('/user/current');
-      return data;
+      const favorite = await axios.get('/user/favorite');
+      return { ...data, favorite: favorite.data };
     } catch (error) {
       console.log(error);
     }
@@ -82,24 +85,38 @@ const searchCity = createAsyncThunk('auth/searchCity', async q => {
     console.log(error);
   }
 });
+
+const getFavorite = createAsyncThunk('auth/getFavorite', async () => {
+  try {
+    const { data } = await axios.get('/user/favorite');
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 const addToFavorite = createAsyncThunk('auth/addToFavorite', async petId => {
   try {
     await axios.post(`/user/favorite/${petId}`);
-    const { data } = await axios.get('/user/favorite')
+    const { data } = await axios.get('/user/favorite');
     return data;
   } catch (error) {
     console.log(error);
   }
 });
-const deleteFromFavorite = createAsyncThunk('auth/deleteFromFavorite', async petId => {
-  try {
-    await axios.delete(`/user/favorite/${petId}`);
-    const { data } = await axios.get('/user/favorite')
-    return data;
-  } catch (error) {
-    console.log(error);
+
+const deleteFromFavorite = createAsyncThunk(
+  'auth/deleteFromFavorite',
+  async petId => {
+    try {
+      await axios.delete(`/user/favorite/${petId}`);
+      const { data } = await axios.get('/user/favorite');
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
   }
-});
+);
 
 const operations = {
   register,
@@ -109,5 +126,6 @@ const operations = {
   searchCity,
   addToFavorite,
   deleteFromFavorite,
+  getFavorite,
 };
 export default operations;
