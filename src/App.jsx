@@ -16,7 +16,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { authOperations, authSelectors } from 'redux/auth';
 import ModalPage from 'pages/ModalPage';
 import ModalAddsPet from 'components/ModalAddsPet';
-import NoticeItem from 'components/NoticeCategoriesItem';
 
 const LoginPage = lazy(() => import('./pages/LoginPage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage'));
@@ -42,11 +41,10 @@ export default function App() {
 
   return (
     <div>
-      <NoticeItem />
       {/* {loader && <Loader />} */}
-      {/* <ModalPage onClose={() => setShowModal(false)}>
+      <ModalPage onClose={() => setShowModal(false)}>
         <ModalAddsPet />
-      </ModalPage> */}
+      </ModalPage>
       <Header />
       <Routes>
         <Route
