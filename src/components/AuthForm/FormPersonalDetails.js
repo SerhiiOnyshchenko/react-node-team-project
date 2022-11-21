@@ -19,7 +19,6 @@ const validationSchema = yup.object({
     ),
   city: yup
     .string()
-    .required('Address is required')
     .matches(
       /^[\w\-’ ]+, [\w\-’ ]+$/,
       'Address should be in format: City, Region'
@@ -32,7 +31,9 @@ const validationSchema = yup.object({
 
 export const FormPersonalDetails = ({ data, setFormData, next, prev }) => {
   const handleSubmit = values => {
-    next(values, true);
+    const registerValues = { ...values, city: data.city };
+    delete registerValues.confirmPassword;
+    next(registerValues, true);
   };
   const [showDropList, setShowDropList] = useState(false);
   const dispatch = useDispatch();
@@ -106,7 +107,11 @@ export const FormPersonalDetails = ({ data, setFormData, next, prev }) => {
               <button
                 type="button"
                 className={`${s.button} ${s.buttonDefault} ${s.back}`}
-                onClick={() => prev(values)}
+                onClick={() => {
+                  values.city = data.city;
+                  console.log('values' + values);
+                  return prev(values);
+                }}
               >
                 Back
               </button>

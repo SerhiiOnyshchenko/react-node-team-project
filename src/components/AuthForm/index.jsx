@@ -22,15 +22,13 @@ export default function AuthForm() {
       return;
     }
     setCurrentStep(prev => prev + 1);
-  };
-
-  const makeRequest = formData => {
-    console.log('Form Submitted', formData);
+    console.log(formData);
   };
 
   const handlePrevStep = newData => {
     setFormData(prev => ({ ...prev, ...newData }));
     setCurrentStep(prev => prev - 1);
+    console.log(formData);
   };
 
   const steps = [
