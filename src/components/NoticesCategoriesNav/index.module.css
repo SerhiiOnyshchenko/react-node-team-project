@@ -1,0 +1,20 @@
+.btnLink {
+	color: inherit;
+}
+
+.wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+
+@media screen and (min-width: 768px) {
+	.wrapper {
+		max-width: 475px;
+	}
+}
+@media screen and (min-width: 1280px) {
+	.wrapper {
+		max-width: none;
+	}
+}

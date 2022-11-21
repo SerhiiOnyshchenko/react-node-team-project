@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import noticesCategories from './notices-operation';
+import { noticesOperations } from 'redux/notices';
 
 const initialState = {
   notices: [],
+  userNotices: [],
   isLoading: false,
   isRefreshing: false,
 };
@@ -11,8 +12,11 @@ const noticesSlice = createSlice({
   name: 'notices',
   initialState,
   extraReducers: {
-    [noticesCategories.fulfilled](state, action) {
+    [noticesOperations.getNoticesCategories.fulfilled](state, action) {
       state.notices = action.payload;
+    },
+    [noticesOperations.getUserNotices.fulfilled](state, action) {
+      state.userNotices = action.payload;
     },
   },
 });
