@@ -7,6 +7,7 @@ import Header from 'components/Header';
 import HomePage from 'pages/HomePage';
 import { useDispatch } from 'react-redux';
 import { changeLoader } from 'redux/loader/loader-actions';
+import { authOperations } from 'redux/auth';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { authOperations } from 'redux/auth';
@@ -33,6 +34,10 @@ export default function App() {
     setTimeout(() => {
       dispatch(changeLoader(false));
     }, 2000);
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
 
   return (

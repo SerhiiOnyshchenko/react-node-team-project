@@ -73,6 +73,7 @@ const fetchCurrentUser = createAsyncThunk(
     }
   }
 );
+
 const searchCity = createAsyncThunk('auth/searchCity', async q => {
   try {
     const { data } = await axios.get(`/cities/search?q=${q}`);
