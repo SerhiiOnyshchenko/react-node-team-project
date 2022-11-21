@@ -1,4 +1,4 @@
-.searchContainer {
+.SearchContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,18 +9,18 @@
 }
 
 @media screen and (min-width: 768px) {
-  .searchContainer {
+  .SearchContainer {
     padding-top: 92px;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .searchContainer {
+  .SearchContainer {
     padding-top: 59px;
   }
 }
 
-.searchTitle {
+.SearchTitle {
   font-weight: 700;
   font-size: 24px;
   line-height: 1.37;
@@ -28,13 +28,13 @@
   color: var(--color-main);
 }
 @media screen and (min-width: 768px) {
-  .searchTitle {
+  .SearchTitle {
     font-size: 48px;
     line-height: 1.37;
   }
 }
 
-.searchInput {
+.SearchInput {
   display: flex;
   align-items: center;
 
@@ -52,7 +52,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .searchInput {
+  .SearchInput {
     height: 44px;
     width: 608px;
     margin-top: 40px;
@@ -64,17 +64,26 @@
     line-height: 1.35;
   }
 }
-@media screen and (min-width: 1280px) {
-  .searchInput {
-    line-height: 1.2;
-  }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px #fff inset;
+  -webkit-text-fill-color: rgba(0, 0, 0);
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration {
+  -webkit-appearance: none;
 }
 
-.searchForm {
+.SearchForm {
   position: relative;
 }
 
-.searchBtn {
+.SearchBtn {
   position: absolute;
   top: 28px;
   right: 0px;
@@ -87,7 +96,7 @@
   background-size: 15px 15px;
 }
 @media screen and (min-width: 768px) {
-  .searchBtn {
+  .SearchBtn {
     top: 40px;
     width: 44px;
     height: 44px;

@@ -1,60 +1,36 @@
-// import { Formik, Field, Form } from 'formik';
+import React from 'react';
 import Container from 'components/Container';
 import s from './index.module.css';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-// const filterNoticesByTitle = (notices, query) => {
-//   if (query === '') return;
+export default function NoticesSearch({ onSearch }) {
+  const handleSubmit = evt => {
+    evt.preventDefault();
+    const query = evt.target.search.value;
+    onSearch(query);
+    query = '';
+  };
 
-//   const normalizeQuery = query.toLowerCase();
-
-//   return notices.filter(evt =>
-//     evt.title.toLowerCase().includes(normalizeQuery)
-//   );
-// };
-
-// export default function NoticesSearch({ onSubmit }) {
-//   const handleSubmit = (values, { resetForm }) => {
-//     onSubmit(values);
-//     resetForm();
-//   };
-
-//   return (
-//     <Container>
-//       <div className={s.searchContainer}>
-//         <Formik onSubmit={handleSubmit}>
-//           <h2 className={s.searchTitle}>Find your favorite pet</h2>
-//           <Form className={s.searchForm}>
-//             <Field className={s.searchInput} type="text" placeholder="Search">
-//               <button className={s.searchBtn} type="submit"></button>
-//             </Field>
-//           </Form>
-//         </Formik>
-//       </div>
-//     </Container>
-//   );
-// }
-
-export default function NoticesSearch() {
   return (
     <Container>
-      <div className={s.searchContainer}>
-        <h2 className={s.searchTitle}>Find your favorite pet</h2>
-        <form className={s.searchForm}>
+      <div className={s.SearchContainer}>
+        <h2 className={s.SearchTitle}>Find your favorite pet</h2>
+        <form className={s.SearchForm} onSubmit={handleSubmit}>
           <input
-            className={s.searchInput}
+            className={s.SearchInput}
             type="text"
-            autoComplete="off"
+            name="search"
             autoFocus
             placeholder="Search"
+            required
           />
-          <button className={s.searchBtn} type="submit"></button>
+          <button className={s.SearchBtn} type="submit"></button>
         </form>
       </div>
     </Container>
   );
 }
 
-// NoticesSearch.propTypes = {
-//   onSubmit: PropTypes.func.isRequired,
-// };
+NoticesSearch.propTypes = {
+  onSearch: PropTypes.func.isRequired,
+};
