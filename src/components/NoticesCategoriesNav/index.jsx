@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { authSelectors } from 'redux/auth';
 
 const buttonText = [
-  { id: 'sell', text: 'sell', active: true },
+  { id: 'sell', text: 'sell', active: false },
   { id: 'lost-found', text: 'lost/found', active: false },
   { id: 'for-free', text: 'In good hends', active: false },
 ];
@@ -20,14 +20,22 @@ export default function NoticesCategoriesNav() {
     isLoading ? [...buttonText, ...authButtonText] : buttonText
   );
   const location = useLocation();
+
   useEffect(() => {
     const locationArr = location.pathname.split('/');
-    const newBtnList = btnList.map(item => {
-      return { ...item, active: locationArr[2] === item.id ? true : false };
-    });
+    let newBtnList;
+    if (isLoading) {
+      newBtnList = [...buttonText, ...authButtonText].map(item => {
+        return { ...item, active: locationArr[2] === item.id ? true : false };
+      });
+    } else {
+      newBtnList = btnList.map(item => {
+        return { ...item, active: locationArr[2] === item.id ? true : false };
+      });
+    }
     setBtnList(newBtnList);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location]);
+  }, [location, isLoading]);
 
   return (
     <div className={s.wrapper}>
