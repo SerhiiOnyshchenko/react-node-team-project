@@ -19,7 +19,7 @@
 
 .Content {
 	position: relative;
-	padding: 40px 20px;
+	padding: 60px 20px 40px;
 	width: 280px;
 	height: auto;
 	background: var(--modal-bg);
@@ -30,14 +30,20 @@
 	position: absolute;
 	top: 24px;
 	right: 24px;
-	width: 44px;
-	height: 44px;
+	width: 34px;
+	height: 34px;
 	background-color: var(--bg);
 	background-image: url(../../images/svg/close.svg);
 	background-repeat: no-repeat;
 	background-position: center;
 	border-radius: 50%;
 	transition: var(--transition);
+}
+@media screen and (min-width: 768px) {
+	.Btn_close{
+		width: 44px;
+		height: 44px;
+	}
 }
 
 .Btn_close:hover {
@@ -46,7 +52,7 @@
 
 @media screen and (min-width: 768px) {
 	.Content {
-		/* padding: 40px 80px; */
+		padding: 40px 20px;
 		width: 704px;
 		height: auto;
 		border-radius: 40px;

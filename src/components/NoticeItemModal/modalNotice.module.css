@@ -169,7 +169,7 @@
     height: 44px;
     font-size: 20px;
     letter-spacing: 0.04em;
-    border: 2px solid #f59256;
+    border: 2px solid var(--btn-bg-another);
     border-radius: 40px;
     background-color: var(--btn-bg-default);
     transition: var(--transition);
@@ -177,8 +177,8 @@
 .deleteBtn:hover {
     color: #ff6101;
     border: 2px solid #ff6101;
-    cursor: pointer;
-} *
+    transition: var(--transition);
+} 
 
 .heartBtn {
     position: absolute;
@@ -190,18 +190,18 @@
     padding: 0;
     border: 0;
     font-size: 0;
-    background: rgba(255, 255, 255, 0.6);
+    background:rgba(253, 247, 242, 0.5);
     border-radius: 50%;
-    cursor: pointer;
 }
 
 .heartBtn:hover {
-    background: #f0d6c58e
+    background: rgba(253, 247, 242, 1);
+    transition: var(--transition);
 }
 
 .heartItemBtnActive {
     background: none;
-    fill: #f59256;
+    fill: var(--btn-bg-another);
     border-radius: 50%;
 }
 
