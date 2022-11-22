@@ -13,6 +13,7 @@ const StepTwo = ({ nextStep, handleFormData, prevStep, values }) => {
       nextStep();
     }
   };
+  console.log(submitFormData, error);
   return <div></div>;
 };
 
