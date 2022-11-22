@@ -31,19 +31,23 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
       state.favorite = [];
     });
-    builder.addCase(
-      authOperations.fetchCurrentUser.fulfilled,
-      (state, action) => {
+    builder
+      .addCase(authOperations.fetchCurrentUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
         state.favorite = action.payload.favorite;
-      }
-    );
+      })
+      .addCase(
+        authOperations.fetchCurrentUser.rejected,
+        (state, { payload }) => {
+          if (payload && payload.status === 401) {
+            state.token = '';
+            state.isLoggedIn = false;
+          }
+        }
+      );
     builder.addCase(authOperations.searchCity.fulfilled, (state, action) => {
       state.cities = action.payload;
-    });
-    builder.addCase(authOperations.getFavorite.fulfilled, (state, action) => {
-      state.favorite = action.payload;
     });
     builder.addCase(authOperations.addToFavorite.fulfilled, (state, action) => {
       state.favorite = action.payload;

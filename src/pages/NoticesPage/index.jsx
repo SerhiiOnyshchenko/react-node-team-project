@@ -33,7 +33,7 @@ export default function NoticesPage() {
 
   return (
     <Container>
-      <NoticesSearch onSearch={filter} />
+      <NoticesSearch onSearch={filter}></NoticesSearch>
       <div className={s.btnBox}>
         <NoticesCategoriesNav />
         <AddNoticeButton />

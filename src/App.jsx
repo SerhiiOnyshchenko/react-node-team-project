@@ -5,9 +5,9 @@ import PrivateRoute from 'components/PrivateRoute';
 import NotFoundPage from 'pages/NotFoundPage';
 import Header from 'components/Header';
 import HomePage from 'pages/HomePage';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { changeLoader } from 'redux/loader/loader-actions';
-import { authOperations } from 'redux/auth';
+import { authOperations, authSelectors } from 'redux/auth';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ModalPage from 'pages/ModalPage';
@@ -26,15 +26,17 @@ export default function App() {
   const [showModal, setShowModal] = useState(false);
 
   // const loader = useSelector(getLoader);
-
+  const getIsLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   useEffect(() => {
-    dispatch(authOperations.fetchCurrentUser());
+    if (getIsLoggedIn) {
+      dispatch(authOperations.fetchCurrentUser());
+    }
 
     dispatch(changeLoader(true));
     setTimeout(() => {
       dispatch(changeLoader(false));
     }, 2000);
-  }, [dispatch]);
+  }, [dispatch, getIsLoggedIn]);
 
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
