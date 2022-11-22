@@ -16,6 +16,7 @@ export default function NoticesPage() {
       notice.titleOfAd.toLowerCase().includes(search.toLowerCase())
     );
     setFilteredNotices(newNotices);
+    console.log(filteredNotices);
   };
 
   useEffect(() => {

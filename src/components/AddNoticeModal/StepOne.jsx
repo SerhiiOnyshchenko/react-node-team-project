@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 
 const validationSchema = yup.object({
@@ -32,6 +32,7 @@ const StepOne = ({ nextStep, handleFormData, values }) => {
       nextStep();
     }
   };
+  console.log(submitFormData, error);
 
   return (
     <div>
