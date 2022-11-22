@@ -25,8 +25,6 @@ export default function App() {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
 
-  // const loader = useSelector(getLoader);
-  const getIsLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   useEffect(() => {
     if (getIsLoggedIn) {
       dispatch(authOperations.fetchCurrentUser());
@@ -36,11 +34,8 @@ export default function App() {
     setTimeout(() => {
       dispatch(changeLoader(false));
     }, 2000);
-  }, [dispatch, getIsLoggedIn]);
-
-  useEffect(() => {
-    dispatch(authOperations.fetchCurrentUser());
-  }, [dispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>

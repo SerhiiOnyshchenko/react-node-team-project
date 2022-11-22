@@ -14,6 +14,7 @@ const authButtonText = [
   { id: 'favorite', text: 'Favorite ads', active: false },
   { id: 'own', text: 'My ads', active: false },
 ];
+
 export default function NoticesCategoriesNav() {
   const isLoading = useSelector(authSelectors.getIsLoggedIn);
   const [btnList, setBtnList] = useState(

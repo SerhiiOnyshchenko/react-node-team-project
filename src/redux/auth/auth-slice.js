@@ -7,6 +7,7 @@ const initialState = {
   isLoggedIn: false,
   cities: [],
   favorite: [],
+  disabledBtn: false,
 };
 
 const authSlice = createSlice({
@@ -31,21 +32,24 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
       state.favorite = [];
     });
-    builder
-      .addCase(authOperations.fetchCurrentUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+    builder.addCase(
+      authOperations.fetchCurrentUser.fulfilled,
+      (state, action) => {
+        state.user = action.payload.user;
         state.isLoggedIn = true;
         state.favorite = action.payload.favorite;
-      })
-      .addCase(
-        authOperations.fetchCurrentUser.rejected,
-        (state, { payload }) => {
-          if (payload && payload.status === 401) {
-            state.token = '';
-            state.isLoggedIn = false;
-          }
-        }
-      );
+      }
+    );
+    builder.addCase(authOperations.patchUserInfo.pending, state => {
+      state.disabledBtn = true;
+    });
+    builder.addCase(authOperations.patchUserInfo.fulfilled, (state, action) => {
+      state.user = action.payload.user;
+      state.disabledBtn = false;
+    });
+    builder.addCase(authOperations.patchUserInfo.rejected, state => {
+      state.disabledBtn = false;
+    });
     builder.addCase(authOperations.searchCity.fulfilled, (state, action) => {
       state.cities = action.payload;
     });
