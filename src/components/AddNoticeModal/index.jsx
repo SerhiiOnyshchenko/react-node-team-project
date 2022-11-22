@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
-import Final from './Final';
 import s from './index.module.css';
 
 export default function AddNoticeModal() {
-  const [step, setstep] = useState(1);
+  const [step, setStep] = useState(1);
 
   const [formData, setFormData] = useState({
     titleOfAd: '',
@@ -20,22 +19,8 @@ export default function AddNoticeModal() {
     image: '',
   });
 
-  const nextStep = () => {
-    setstep(step + 1);
-  };
-
-  const prevStep = () => {
-    setstep(step - 1);
-  };
-
-  const handleInputData = input => e => {
-    const { value } = e.target;
-
-    setFormData(prevState => ({
-      ...prevState,
-      [input]: value,
-    }));
-  };
+  const nextStep = () => setStep(prev => (prev === 1 ? prev + 1 : 2));
+  const prevStep = () => setStep(prev => prev - 1);
 
   switch (step) {
     case 1:
@@ -43,9 +28,9 @@ export default function AddNoticeModal() {
         <div className={s.Wrapper}>
           <h1 className={s.header}>Add pet</h1>
           <StepOne
+            formData={formData}
+            setFormData={setFormData}
             nextStep={nextStep}
-            handleFormData={handleInputData}
-            values={formData}
           />
         </div>
       );
@@ -54,17 +39,11 @@ export default function AddNoticeModal() {
         <div className={s.Wrapper}>
           <h1 className={s.header}>Add pet</h1>
           <StepTwo
+            formData={formData}
+            setFormData={setFormData}
             nextStep={nextStep}
             prevStep={prevStep}
-            handleFormData={handleInputData}
-            values={formData}
           />
-        </div>
-      );
-    case 3:
-      return (
-        <div>
-          <Final values={formData} />
         </div>
       );
     default:
