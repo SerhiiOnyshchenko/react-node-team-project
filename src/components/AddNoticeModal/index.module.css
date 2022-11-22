@@ -43,6 +43,7 @@
 .input {
   appearance: none;
   -webkit-appearance: none;
+  -moz-appearance: none;
 }
 .radio:hover,
 .radio:focus {
@@ -53,11 +54,13 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 100%;
   margin-bottom: 16px;
   font-size: 18px;
   line-height: 26px;
 }
-.textFildWrap input:checked ~ .radio {
+
+.radio > input:checked ~ .radio {
   background-color: var(--btn-bg-another);
   color: #fff;
 }
@@ -86,6 +89,7 @@
 }
 .errorMsg {
   color: red;
+  text-align: left;
 }
 .submitBtn {
   width: 240px;
@@ -112,4 +116,105 @@
     width: 180px;
     height: 44px;
   }
+}
+/* StepTwo */
+.sexWrap {
+  display: flex;
+  margin-bottom: 40px;
+}
+.sexLabel {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.sexLabel:not(:last-child) {
+  margin-right: 95px;
+}
+.sexIcon {
+  width: 40px;
+  height: 40px;
+  content: url('../../images/sex-male.png');
+  margin-bottom: 23px;
+}
+.sexIconFemale {
+  width: 40px;
+  height: 40px;
+  content: url('../../images/sex-female.png');
+  margin-bottom: 23px;
+}
+.inputSex {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.sexLabel > input:checked ~ .sexText {
+  color: var(--color-hover-active);
+}
+.sexM {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 26px;
+  margin-bottom: 31px;
+  margin-right: auto;
+}
+.sexText {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.avatarLabel {
+  position: relative;
+  margin-bottom: 28px;
+  width: 116px;
+  height: 116px;
+}
+@media screen and (min-width: 768px) {
+  .avatarLabel {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 16px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .avatarLabel {
+    margin-bottom: 18px;
+  }
+}
+.addImage {
+  width: 116px;
+  height: 116px;
+  background: #fdf7f2;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointe;
+}
+@media screen and (min-width: 768px) {
+  .addImage {
+    width: 140px;
+    height: 140px;
+  }
+}
+.selectedAvatar {
+  width: 116px;
+  height: 116px;
+  background: #fff;
+}
+@media screen and (min-width: 768px) {
+  .selectedAvatar {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+.inputFile {
+  /* appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none; */
+  display: none;
 }
