@@ -18,15 +18,21 @@ const validationSchema = yup.object({
       'Password is not valid as per password policy'
     )
     .max(32),
-  confirmPassword: yup.string().when('password', {
-    is: val => (val && val.length > 0 ? true : false),
-    then: yup
-      .string()
-      .oneOf([yup.ref('password')], 'Both password need to be the same'),
-  }),
+  confirmPassword: yup
+    .string()
+    .required('Confirm Password is required')
+    .when('password', {
+      is: val => (val && val.length > 0 ? true : false),
+      then: yup
+        .string()
+        .oneOf([yup.ref('password')], 'Both password need to be the same'),
+    }),
 });
 
-export const FormUserDetails = ({ formData, setFormData, nextStep }) => {
+export const FormUserDetails = props => {
+  const handleSubmit = values => {
+    props.next(values);
+  };
   const [passwordType, setPasswordType] = useState('password');
   const [confirmPasswordType, setConfirmPasswordType] = useState('password');
   const [spanBgImage, setSpanBgImage] = useState(eye);
@@ -107,11 +113,8 @@ export const FormUserDetails = ({ formData, setFormData, nextStep }) => {
   return (
     <>
       <Formik
-        initialValues={formData}
-        onSubmit={values => {
-          setFormData(values);
-          nextStep();
-        }}
+        initialValues={props.data}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
         {({ errors, touched }) => (
@@ -198,7 +201,6 @@ export const FormUserDetails = ({ formData, setFormData, nextStep }) => {
 };
 
 FormUserDetails.propTypes = {
-  formData: PropTypes.object.isRequired,
-  setFormData: PropTypes.func.isRequired,
-  nextStep: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired,
+  next: PropTypes.func.isRequired,
 };

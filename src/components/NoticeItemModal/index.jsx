@@ -1,24 +1,25 @@
-// import { useState } from 'react';
-import { sampleData } from './sampleData';
+import { useSelector } from 'react-redux';
 import s from './modalNotice.module.css';
-import modalImage from '../../images/pet-modal.png';
-import { ReactComponent as HeartBtnS } from '../../images/svg/heartBtnS.svg';
+// import { toast } from 'react-toastify';
+import modalImage from '../../images/no-image-found.png';
+import { ReactComponent as HeartBtnM } from '../../images/svg/heartBtnM.svg';
+import { noticesSelectors } from 'redux/notices';
 
 const PET_MODAL_KEYS = [
   {
     label: 'Name:',
-    key: 'name',
+    key: 'namePet',
   },
   {
-    label: 'Year:',
-    key: 'year',
+    label: 'Birthday:',
+    key: 'dateOfBirth',
   },
   {
     label: 'Breed:',
     key: 'breed',
   },
   {
-    label: 'Loсation:',
+    label: 'Place:',
     key: 'location',
   },
   {
@@ -26,39 +27,76 @@ const PET_MODAL_KEYS = [
     key: 'sex',
   },
   {
-    label: 'Email:',
-    key: 'email',
+    key: 'owner',
+    values: [
+      {
+        label: 'Email:',
+        field: 'email',
+      },
+      {
+        label: 'Phone:',
+        field: 'phone',
+      },
+    ],
   },
   {
-    label: 'Phone:',
-    key: 'phone',
+    label: 'Price:',
+    key: 'price',
+    category: 'sell',
   },
 ];
 
-export default function ModalNotice({ id, handleAddFavorite }) {
-  // const [petData, setPetData] = useState(sampleData);
-  const petData = sampleData;
-  // useEffect(() => {
-  //   setPetData();
-  // }, [id]);
+export default function ModalNotice({
+  petData,
+  handleFavoriteToggle,
+  favorite,
+}) {
+  const userNotices = useSelector(noticesSelectors.getUserNotices);
+  const owner = userNotices.some(notice => notice._id === petData._id);
+
+  // const dispatch = useDispatch();
 
   return (
     <>
       <div className={s.container}>
         <div className={s.infoWrapper}>
           <div className={s.imgWrapper}>
-            <img src={petData.avatar || modalImage} alt={petData.name} />
+            <img src={petData.image || modalImage} alt={petData.name} />
             <div className={s.categoryLabel}>{petData.category}</div>
+            <button
+              type="button"
+              className={s.heartBtn}
+              onClick={handleFavoriteToggle}
+            >
+              {favorite ? (
+                <HeartBtnM className={s.heartItemBtnActive} />
+              ) : (
+                <HeartBtnM className={s.heartItemBtn} />
+              )}
+            </button>
           </div>
           <div className={s.info}>
-            <h3 className={s.title}>{petData.title}</h3>
+            <h3 className={s.title}>{petData.titleOfAd}</h3>
             <ul>
-              {PET_MODAL_KEYS.map(({ label, key }) => (
-                <li key={key} className={s.infoList}>
-                  <span className={s.label}>{label}</span>
-                  <span className={s.lebalText}>{petData[key]}</span>
-                </li>
-              ))}
+              {PET_MODAL_KEYS.map(({ label, key, category, values }) => {
+                if (category && category !== petData.category) return null;
+                if (values) {
+                  return values.map(({ field, label }) => (
+                    <li key={key} className={s.infoList}>
+                      <span className={s.label}>{label}</span>
+                      <span className={s.lebalText}>
+                        {petData[key] && petData[key][field]}
+                      </span>
+                    </li>
+                  ));
+                }
+                return (
+                  <li key={key} className={s.infoList}>
+                    <span className={s.label}>{label}</span>
+                    <span className={s.lebalText}>{petData[key]}</span>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
@@ -67,17 +105,24 @@ export default function ModalNotice({ id, handleAddFavorite }) {
           <p className={s.commentsText}>{petData.comments}</p>
         </div>
         <div className={s.buttons}>
-          <button
-            type="button"
-            className={s.addToFovorBtn}
-            onClick={handleAddFavorite}
-          >
-            add to
-            <HeartBtnS className={s.heartBtn} />
-          </button>
           <a href={`tel:${petData.phone}`} className={s.contactBtn}>
             Contact
           </a>
+          {owner && (
+            <button
+              type="button"
+              className={s.deleteBtn}
+              // onSubmit={async () => {
+              //   try {
+              //     await dispatch(noticesOperations.deleteFromNotice(petData._id));
+              //   } catch (e) {
+              //     toast.error();
+              //   }
+              // }}
+            >
+              delete
+            </button>
+          )}
         </div>
       </div>
     </>

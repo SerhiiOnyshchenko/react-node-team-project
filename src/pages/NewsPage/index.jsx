@@ -6,6 +6,7 @@ import News from '../../components/News/index';
 import getNews from 'redux/news/news-operations';
 import { RotatingLines } from 'react-loader-spinner';
 import { newsSelectors } from '../../redux/news';
+import BtnScrollToTop from 'components/BtnScrollToTop';
 
 export default function NewsPage() {
   const dispatch = useDispatch();
@@ -64,6 +65,7 @@ export default function NewsPage() {
           </div>
         )}
       </div>
+      <BtnScrollToTop />
     </Container>
   );
 }

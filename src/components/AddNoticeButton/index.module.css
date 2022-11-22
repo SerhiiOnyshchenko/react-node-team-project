@@ -1,0 +1,55 @@
+.btnWrapper {
+	display: flex;
+	align-items: center;
+	position: absolute;
+	right: 20px;
+}
+@media screen and (min-width: 768px) {
+	.btnWrapper {
+		position: relative;
+		right: 0;
+	}
+}
+@media screen and (min-width: 1280px) {
+	.btnWrapper {
+		position: relative;
+	}
+}
+
+.btn {
+	width: 80px;
+	height: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	border-radius: 50%;
+	background-color: var(--btn-bg-another);
+	color: #fff;
+}
+@media screen and (min-width: 768px) {
+	.btn {
+		width: 44px;
+		height: 44px;
+		margin-left: 12px;
+	}
+}
+.icon {
+	width: 21.33px;
+	height: 21.33px;
+	margin-bottom: 5px;
+	transform: scale(1);
+	transition: var(--transition);
+}
+
+.icon:hover,
+.icon:focus {
+	transform: scale(1.4);
+}
+@media screen and (min-width: 768px) {
+	.icon {
+		width: 14px;
+		height: 14px;
+		margin-bottom: 0;
+	}
+}

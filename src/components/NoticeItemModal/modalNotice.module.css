@@ -121,7 +121,7 @@
     .buttons{
         width: 332px;
         display: flex;
-        flex-direction: row;
+        flex-direction: row-reverse;
         gap: 12px;
         margin-left: auto;
     }
@@ -141,7 +141,7 @@
     color: var(--btn-color-hover-active);
     transition: var(--transition);
 }
-.addToFovorBtn {
+/* .addToFovorBtn {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -159,4 +159,54 @@
     color: #ff6101;
     border: 2px solid #ff6101;
     cursor: pointer;
+} */
+.deleteBtn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 28px;
+    width: 180px;
+    height: 44px;
+    font-size: 20px;
+    letter-spacing: 0.04em;
+    border: 2px solid var(--btn-bg-another);
+    border-radius: 40px;
+    background-color: var(--btn-bg-default);
+    transition: var(--transition);
+}
+.deleteBtn:hover {
+    color: #ff6101;
+    border: 2px solid #ff6101;
+    transition: var(--transition);
+} 
+
+.heartBtn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 0;
+    background:rgba(253, 247, 242, 0.5);
+    border-radius: 50%;
+}
+
+.heartBtn:hover {
+    background: rgba(253, 247, 242, 1);
+    transition: var(--transition);
+}
+
+.heartItemBtnActive {
+    background: none;
+    fill: var(--btn-bg-another);
+    border-radius: 50%;
+}
+
+.heartItemBtn {
+    background: none;
+    fill: rgba(175, 177, 184, 0.1);
+    border-radius: 50%;
 }

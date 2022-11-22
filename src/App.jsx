@@ -7,11 +7,12 @@ import Header from 'components/Header';
 import HomePage from 'pages/HomePage';
 import { useDispatch } from 'react-redux';
 import { changeLoader } from 'redux/loader/loader-actions';
+import { authOperations } from 'redux/auth';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { authOperations } from 'redux/auth';
 import ModalPage from 'pages/ModalPage';
 import ModalAddsPet from 'components/ModalAddsPet';
+import NoticesCategoriesList from './components/NoticesCategoriesList';
 
 const LoginPage = lazy(() => import('./pages/LoginPage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage'));
@@ -24,8 +25,6 @@ export default function App() {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
 
-  // const loader = useSelector(getLoader);
-
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
 
@@ -33,7 +32,8 @@ export default function App() {
     setTimeout(() => {
       dispatch(changeLoader(false));
     }, 2000);
-  }, [dispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>
@@ -48,9 +48,9 @@ export default function App() {
         <Route
           path="/"
           element={
-            <PrivateRoute>
+            <PublicRoute>
               <HomePage />
-            </PrivateRoute>
+            </PublicRoute>
           }
         />
         <Route
@@ -92,7 +92,48 @@ export default function App() {
               <NoticesPage />
             </PublicRoute>
           }
-        />
+        >
+          <Route
+            path="sell"
+            element={
+              <PublicRoute>
+                <NoticesCategoriesList />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="lost-found"
+            element={
+              <PublicRoute>
+                <NoticesCategoriesList />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="for-free"
+            element={
+              <PublicRoute>
+                <NoticesCategoriesList />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="favorite"
+            element={
+              <PublicRoute>
+                <NoticesCategoriesList />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="own"
+            element={
+              <PublicRoute>
+                <NoticesCategoriesList />
+              </PublicRoute>
+            }
+          />
+        </Route>
         <Route
           path="friends"
           element={
