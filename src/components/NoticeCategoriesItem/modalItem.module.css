@@ -17,6 +17,17 @@
 }
 .imgWrapper{
     position: relative;
+    width: 280px;
+}
+@media screen and (min-width: 768px) {
+    .imgWrapper {
+        width: 336px;
+    }
+}
+@media screen and (min-width: 1280px) {
+    .imgWrapper {
+        width: 288px;
+    }
 }
 
 .categoryLabel{
