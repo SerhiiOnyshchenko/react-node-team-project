@@ -2,7 +2,6 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
-// axios.defaults.baseURL = 'http://localhost:8000/api';
 axios.defaults.baseURL = 'https://team-project-backend.onrender.com/api';
 
 const token = {
@@ -43,7 +42,7 @@ const logIn = createAsyncThunk('auth/logIn', async credentials => {
     const favorite = await axios.get('/user/favorite');
     return { ...data, favorite: favorite.data };
   } catch (error) {
-    console.log(error);
+    toast.error(error.response.data.message);
   }
 });
 
@@ -52,7 +51,7 @@ const logOut = createAsyncThunk('auth/logOut', async () => {
     await axios.post('/user/logout');
     token.unset();
   } catch (error) {
-    console.log(error);
+    toast.error(error.response.data.message);
   }
 });
 
@@ -72,7 +71,30 @@ const fetchCurrentUser = createAsyncThunk(
       const favorite = await axios.get('/user/favorite');
       return { ...data, favorite: favorite.data };
     } catch (error) {
-      console.log(error);
+      toast.error(error.response.data.message);
+    }
+  }
+);
+
+const patchUserInfo = createAsyncThunk(
+  'auth/patchUserInfo',
+  async ({ type, value, token }) => {
+    try {
+      const config = {
+        [type]: value,
+      };
+      const header = {
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data',
+        },
+      };
+      const { data } = await axios.patch('/user/update', config, header);
+      return data;
+    } catch (error) {
+      const { message } = error.response.data.message;
+      toast.error(message);
     }
   }
 );
@@ -82,7 +104,7 @@ const searchCity = createAsyncThunk('auth/searchCity', async q => {
     const { data } = await axios.get(`/cities/search?q=${q}`);
     return data;
   } catch (error) {
-    console.log(error);
+    toast.error(error.response.data.message);
   }
 });
 
@@ -91,7 +113,7 @@ const getFavorite = createAsyncThunk('auth/getFavorite', async () => {
     const { data } = await axios.get('/user/favorite');
     return data;
   } catch (error) {
-    console.log(error);
+    toast.error(error.response.data.message);
   }
 });
 
@@ -101,7 +123,7 @@ const addToFavorite = createAsyncThunk('auth/addToFavorite', async petId => {
     const { data } = await axios.get('/user/favorite');
     return data;
   } catch (error) {
-    console.log(error);
+    toast.error(error.response.data.message);
   }
 });
 
@@ -113,7 +135,7 @@ const deleteFromFavorite = createAsyncThunk(
       const { data } = await axios.get('/user/favorite');
       return data;
     } catch (error) {
-      console.log(error);
+      toast.error(error.response.data.message);
     }
   }
 );
@@ -127,5 +149,6 @@ const operations = {
   addToFavorite,
   deleteFromFavorite,
   getFavorite,
+  patchUserInfo,
 };
 export default operations;

@@ -109,7 +109,6 @@ export const FormPersonalDetails = ({ data, setFormData, next, prev }) => {
                 className={`${s.button} ${s.buttonDefault} ${s.back}`}
                 onClick={() => {
                   values.city = data.city;
-                  console.log('values' + values);
                   return prev(values);
                 }}
               >

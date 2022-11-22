@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
-// axios.defaults.baseURL = 'team-project-backend.onrender.com/api';
+import { toast } from 'react-toastify';
 
 export const getNoticesCategories = createAsyncThunk(
   'notices/getNoticesCategories',
@@ -10,7 +9,7 @@ export const getNoticesCategories = createAsyncThunk(
       const { data } = await axios.get(`/notices?category=${category}`);
       return data;
     } catch (error) {
-      console.log(error);
+      toast.error(error.response.data.message);
     }
   }
 );
@@ -22,7 +21,7 @@ export const getUserNotices = createAsyncThunk(
       const { data } = await axios.get(`/notices/user`);
       return data;
     } catch (error) {
-      console.log(error);
+      toast.error(error.response.data.message);
     }
   }
 );

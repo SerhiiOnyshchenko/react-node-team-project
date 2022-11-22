@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import Container from 'components/Container';
 import UserData from 'components/UserData';
-import Logout from 'components/Logout';
 import s from './index.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { authSelectors } from 'redux/auth';
+import PetsData from './../../components/PetsData/index';
 
 export default function UserPage() {
   const navigate = useNavigate();
@@ -17,15 +17,14 @@ export default function UserPage() {
     }
   }, [navigate, isLoggedIn]);
   return (
-    <section className={s.section}>
-      <Container>
-        <h2 className={s.title}>My information:</h2>
-        <div className={s.userWrap}>
-          <UserData></UserData>
-          <Logout></Logout>
+    <Container>
+      <div className={s.User}>
+        <div>
+          <h2 className={s.title}>My information:</h2>
+          <UserData />
         </div>
-        {/* HERE WILL BE PETSDATA COMPONENT */}
-      </Container>
-    </section>
+        <PetsData />
+      </div>
+    </Container>
   );
 }
