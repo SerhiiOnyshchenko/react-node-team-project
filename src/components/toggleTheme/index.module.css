@@ -1,0 +1,68 @@
+.toggle-theme__box {
+	position: absolute;
+	top: 30px;
+	right: 60px;
+	display: flex;
+	align-items: center;
+}
+
+.toggle-theme__icon {
+	width: 24px;
+	height: 24px;
+	background-color: var(--bg);
+	background-image: url(../../image/theme/eye.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	border-radius: 50px;
+	margin-right: 5px;
+}
+
+.toggle-theme__icon--light {
+	background-image: url(../../image/theme/eye.png);
+}
+
+.toggle-theme__icon--dark {
+	background-position: center 10px;
+	background-image: url(../../image/theme/eye-close.png);
+}
+
+.toggle-theme__checked-box {
+	position: relative;
+	width: 44px;
+	height: 24px;
+	padding: 4px;
+	background: var(--btn-bg-hover);
+	border-radius: 50px;
+	cursor: pointer;
+}
+
+.toggle-theme__check--light,
+.toggle-theme__check--dark {
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	width: 16px;
+	height: 16px;
+	background: #ff868e;
+	border-radius: 40px;
+	transition: var(--transition);
+}
+.toggle-theme__check--dark {
+	right: 24px;
+}
+@media screen and (max-width: 1439px) {
+	.toggle-theme__box {
+		right: 150px;
+	}
+}
+@media screen and (max-width: 767px) {
+	.toggle-theme__box {
+		right: 120px;
+	}
+}
+@media screen and (max-width: 424px) {
+	.toggle-theme__box {
+		top: 20px;
+		right: 80px;
+	}
+}

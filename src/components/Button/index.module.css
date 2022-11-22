@@ -14,7 +14,7 @@
 }
 
 .Btn_active {
-	display: inline-flex;
+	display: inline-flex; 
 	justify-content: center;
 	align-items: center;
 	padding: 0 28px;
