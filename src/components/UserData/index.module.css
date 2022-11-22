@@ -27,11 +27,28 @@
 	height: 100%;
 	object-fit: contain;
 }
+.InputWrapper {
+	position: relative;
+	margin-left: auto;
+}
+
+.InputFile {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+}
+.InputFile::-webkit-file-upload-button {
+	cursor: pointer;
+}
 
 .editPhoto {
 	display: flex;
 	align-items: center;
-	margin-left: auto;
 
 	font-weight: 400;
 	font-size: 12px;
@@ -84,7 +101,7 @@
 		width: 411px;
 		padding: 20px 16px 40px;
 	}
-	.editPhoto {
+	.InputWrapper {
 		position: absolute;
 		right: 0px;
 		bottom: 0px;

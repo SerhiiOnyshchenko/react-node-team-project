@@ -2,13 +2,29 @@ import s from './index.module.css';
 import UserDataItem from 'components/UserDataItem';
 import { ReactComponent as Logo } from '../../images/svg/camera.svg';
 import Logout from 'components/Logout';
-import { useSelector } from 'react-redux';
-import { authSelectors } from 'redux/auth';
+import { useDispatch, useSelector } from 'react-redux';
+import { authOperations, authSelectors } from 'redux/auth';
 import { useState } from 'react';
 
 export default function UserData() {
   const user = useSelector(authSelectors.getUser);
   const [disBtnEdit, setDisBtnEdit] = useState(false);
+  const dispatch = useDispatch();
+  const token = useSelector(authSelectors.getUserToken);
+
+  const selectFile = e => {
+    const [file] = e.target.files;
+    if (file) {
+      dispatch(
+        authOperations.patchUserInfo({
+          type: 'image',
+          value: file,
+          token,
+        })
+      );
+    }
+  };
+
   return (
     <div className={s.wrapper}>
       <div className={s.imgBlock}>
@@ -21,10 +37,18 @@ export default function UserData() {
             height="233"
           />
         </div>
-        <button type="button" className={s.editPhoto}>
-          <Logo className={s.editPhotoIcon} />
-          Edit photo
-        </button>
+        <div className={s.InputWrapper}>
+          <button type="button" className={s.editPhoto}>
+            <Logo className={s.editPhotoIcon} />
+            Edit photo
+          </button>
+          <input
+            className={s.InputFile}
+            type="file"
+            accept=".jpg,.png"
+            onChange={selectFile}
+          />
+        </div>
       </div>
       <div className={s.userInfo}>
         <UserDataItem
