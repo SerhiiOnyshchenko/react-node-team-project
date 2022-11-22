@@ -15,7 +15,8 @@ export default function NoticesPage() {
     const newNotices = notices.filter(notice =>
       notice.titleOfAd.toLowerCase().includes(search.toLowerCase())
     );
-    setFilteredNotices(newNotices);
+		setFilteredNotices(newNotices);
+		console.log(filteredNotices);
   };
 
   useEffect(() => {
