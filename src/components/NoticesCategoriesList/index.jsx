@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { noticesOperations, noticesSelectors } from 'redux/notices';
 import { authSelectors } from './../../redux/auth';
 import s from './index.module.css';
+import { RotatingLines } from 'react-loader-spinner';
 
 export default function NoticesCategoriesList() {
   const { pathname } = useLocation();
@@ -13,6 +14,7 @@ export default function NoticesCategoriesList() {
   const category = useSelector(noticesSelectors.getNoticesCategories);
   const userNotices = useSelector(noticesSelectors.getUserNotices);
   const favorite = useSelector(authSelectors.getUserFavorite);
+  const isLoading = useSelector(noticesSelectors.getIsLoadingNotices);
 
   useEffect(() => {
     const pathnameArr = pathname.split('/');
@@ -46,9 +48,32 @@ export default function NoticesCategoriesList() {
     }
   };
   return (
-    <div className={s.NoticeList}>
-      {noticesData &&
-        noticesData.map(item => <NoticeItem key={item._id} petData={item} />)}
-    </div>
+    <>
+      {isLoading ? (
+        <div
+          style={{
+            marginTop: '50px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <RotatingLines
+            strokeColor="#F59256"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="150"
+            visible={true}
+          />
+        </div>
+      ) : (
+        <div className={s.NoticeList}>
+          {noticesData &&
+            noticesData.map(item => (
+              <NoticeItem key={item._id} petData={item} />
+            ))}
+        </div>
+      )}
+    </>
   );
 }

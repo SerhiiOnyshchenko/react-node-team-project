@@ -37,6 +37,7 @@ export default function UserData() {
             height="233"
           />
         </div>
+
         <div className={s.InputWrapper}>
           <button type="button" className={s.editPhoto}>
             <Logo className={s.editPhotoIcon} />
