@@ -26,9 +26,7 @@ export default function App() {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    if (getIsLoggedIn) {
-      dispatch(authOperations.fetchCurrentUser());
-    }
+    dispatch(authOperations.fetchCurrentUser());
 
     dispatch(changeLoader(true));
     setTimeout(() => {
