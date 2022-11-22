@@ -1,16 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { authOperations, authSelectors } from 'redux/auth';
 import ModalNotice from '../NoticeItemModal';
 import ModalPage from 'pages/ModalPage';
-// eslint-disable-next-line
-import { sampleData } from './sampleData';
 import s from './modalItem.module.css';
 import { toast } from 'react-toastify';
-import modalImage from '../../images/pet-item.jpg';
+import modalImage from '../../images/no-image-found.png';
 import { ReactComponent as HeartBtnM } from '../../images/svg/heartBtnM.svg';
-import { authOperations, authSelectors } from 'redux/auth';
 
-export const NOTICE_ITEM_KEYS = [
+const NOTICE_ITEM_KEYS = [
   {
     label: 'Breed:',
     key: 'breed',
@@ -30,35 +28,52 @@ export const NOTICE_ITEM_KEYS = [
   },
 ];
 
-export default function NoticeItem({ petData = sampleData }) {
+export default function NoticeItem({ petData }) {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  const favorite = useSelector(authSelectors.getUserFavorite);
-  console.log(`${isLoggedIn}: isLoggedIn`);
-  console.log(`favorite: ${favorite}`);
-  console.log(petData._id);
+  const userFavorite = useSelector(authSelectors.getUserFavorite);
+  const inFavorites = userFavorite.some(favor => favor._id === petData._id);
+
   const dispatch = useDispatch();
 
   const [modalShow, setModalShow] = useState(false);
-  const [inFavorite, setFavorite] = useState(false);
-  // let inFavorite =
+  const [favorite, setFavorite] = useState(false);
+
+  useEffect(() => {
+    setFavorite(inFavorites);
+  }, [inFavorites]);
 
   const handleModalToggle = () => {
     setModalShow(!modalShow);
   };
-  const handleAddFavorite = () => {
-    if (!isLoggedIn) return toast.info('you need login');
-    dispatch(authOperations.addToFavorite(petData._id));
 
-    setFavorite(!inFavorite);
-    if (!inFavorite) return toast.success('add tofavorite');
-    return toast.success('remove from favorite');
+  const handleFavoriteToggle = () => {
+    if (!isLoggedIn) return toast.info('You must be logged in');
+    if (favorite === true) {
+      try {
+        dispatch(authOperations.deleteFromFavorite(petData._id));
+        return toast.success('remove from favorite');
+      } catch (e) {
+        toast.error(e.message);
+      }
+    } else {
+      try {
+        dispatch(authOperations.addToFavorite(petData._id));
+        return toast.success('add tofavorite');
+      } catch (e) {
+        toast.error(e.message);
+      }
+    }
   };
 
   return (
     <>
       <div className={s.container}>
         <div className={s.imgWrapper}>
-          <img src={petData.avatar || modalImage} alt={petData.name} />
+          <img
+            src={petData.image || modalImage}
+            alt={petData.name}
+            height="100%"
+          />
           <div className={s.categoryLabel}>{petData.category}</div>
         </div>
         <div className={s.infoWrapper}>
@@ -85,10 +100,9 @@ export default function NoticeItem({ petData = sampleData }) {
         <button
           type="button"
           className={s.heartBtn}
-          onClick={handleAddFavorite}
-          inFavorite={inFavorite}
+          onClick={handleFavoriteToggle}
         >
-          {inFavorite ? (
+          {favorite ? (
             <HeartBtnM className={s.heartItemBtnActive} />
           ) : (
             <HeartBtnM className={s.heartItemBtn} />
@@ -99,8 +113,8 @@ export default function NoticeItem({ petData = sampleData }) {
         <ModalPage onClose={handleModalToggle}>
           <ModalNotice
             petData={petData}
-            handleAddFavorite={handleAddFavorite}
-            inFavorite={inFavorite}
+            handleFavoriteToggle={handleFavoriteToggle}
+            favorite={favorite}
           />
         </ModalPage>
       )}

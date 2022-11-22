@@ -1,10 +1,9 @@
-import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import s from './modalNotice.module.css';
 // import { toast } from 'react-toastify';
-import modalImage from '../../images/pet-modal.png';
+import modalImage from '../../images/no-image-found.png';
 import { ReactComponent as HeartBtnM } from '../../images/svg/heartBtnM.svg';
-import { authOperations, authSelectors } from 'redux/auth/index';
+import { noticesOperations, noticesSelectors } from 'redux/notices';
 
 const PET_MODAL_KEYS = [
   {
@@ -12,8 +11,8 @@ const PET_MODAL_KEYS = [
     key: 'namePet',
   },
   {
-    label: 'birthday',
-    key: 'Birthday:',
+    label: 'Birthday:',
+    key: 'dateOfBirth',
   },
   {
     label: 'Breed:',
@@ -28,12 +27,17 @@ const PET_MODAL_KEYS = [
     key: 'sex',
   },
   {
-    label: 'Email:',
-    key: 'email',
-  },
-  {
-    label: 'Phone:',
-    key: 'phone',
+    key: 'owner',
+    values: [
+      {
+        label: 'Email:',
+        field: 'email',
+      },
+      {
+        label: 'Phone:',
+        field: 'phone',
+      },
+    ],
   },
   {
     label: 'Price:',
@@ -44,26 +48,27 @@ const PET_MODAL_KEYS = [
 
 export default function ModalNotice({
   petData,
-  handleAddFavorite,
-  inFavorite,
+  handleFavoriteToggle,
+  favorite,
 }) {
-  // const dispatch = useDispatch();
+  const userNotices = useSelector(noticesSelectors.getUserNotices);
+  const owner = userNotices.some(notice => notice._id === petData._id);
 
-  const owner = false;
+  // const dispatch = useDispatch();
 
   return (
     <>
       <div className={s.container}>
         <div className={s.infoWrapper}>
           <div className={s.imgWrapper}>
-            <img src={petData.avatar || modalImage} alt={petData.name} />
+            <img src={petData.image || modalImage} alt={petData.name} />
             <div className={s.categoryLabel}>{petData.category}</div>
             <button
               type="button"
               className={s.heartBtn}
-              onClick={handleAddFavorite}
+              onClick={handleFavoriteToggle}
             >
-              {inFavorite ? (
+              {favorite ? (
                 <HeartBtnM className={s.heartItemBtnActive} />
               ) : (
                 <HeartBtnM className={s.heartItemBtn} />
@@ -73,8 +78,18 @@ export default function ModalNotice({
           <div className={s.info}>
             <h3 className={s.title}>{petData.titleOfAd}</h3>
             <ul>
-              {PET_MODAL_KEYS.map(({ label, key, category }) => {
+              {PET_MODAL_KEYS.map(({ label, key, category, values }) => {
                 if (category && category !== petData.category) return null;
+                if (values) {
+                  return values.map(({ field, label }) => (
+                    <li key={key} className={s.infoList}>
+                      <span className={s.label}>{label}</span>
+                      <span className={s.lebalText}>
+                        {petData[key] && petData[key][field]}
+                      </span>
+                    </li>
+                  ));
+                }
                 return (
                   <li key={key} className={s.infoList}>
                     <span className={s.label}>{label}</span>
@@ -97,8 +112,12 @@ export default function ModalNotice({
             <button
               type="button"
               className={s.deleteBtn}
-              // onClick={() => {
-              //   dispatch();
+              // onSubmit={async () => {
+              //   try {
+              //     await dispatch(noticesOperations.deleteFromNotice(petData._id));
+              //   } catch (e) {
+              //     toast.error();
+              //   }
               // }}
             >
               delete
