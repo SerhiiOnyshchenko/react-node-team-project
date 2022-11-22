@@ -15,7 +15,7 @@ const noticesSlice = createSlice({
       state.isLoading = true;
     },
     [noticesOperations.getNoticesCategories.fulfilled](state, action) {
-      state.notices = action.payload;
+      state.notices = action.payload.notices;
       state.isLoading = false;
     },
     [noticesOperations.getNoticesCategories.rejected](state) {
