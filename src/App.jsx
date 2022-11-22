@@ -41,10 +41,10 @@ export default function App() {
 
   return (
     <div>
-    {/* {loader && <Loader />} */}
-      <ModalPage onClose={() => setShowModal(false)}>
+      {/* {loader && <Loader />} */}
+      {showModal && (<ModalPage onClose={() => setShowModal(false)}>
         <ModalAddsPet />
-      </ModalPage>
+      </ModalPage> )}
       <Header />
       <Routes>
         <Route
