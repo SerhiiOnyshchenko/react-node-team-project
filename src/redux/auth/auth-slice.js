@@ -7,6 +7,7 @@ const initialState = {
   isLoggedIn: false,
   cities: [],
   favorite: [],
+  disabledBtn: false,
 };
 
 const authSlice = createSlice({
@@ -34,11 +35,21 @@ const authSlice = createSlice({
     builder.addCase(
       authOperations.fetchCurrentUser.fulfilled,
       (state, action) => {
-        state.user = action.payload;
+        state.user = action.payload.user;
         state.isLoggedIn = true;
         state.favorite = action.payload.favorite;
       }
     );
+    builder.addCase(authOperations.patchUserInfo.pending, state => {
+      state.disabledBtn = true;
+    });
+    builder.addCase(authOperations.patchUserInfo.fulfilled, (state, action) => {
+      state.user = action.payload.user;
+      state.disabledBtn = false;
+    });
+    builder.addCase(authOperations.patchUserInfo.rejected, state => {
+      state.disabledBtn = false;
+    });
     builder.addCase(authOperations.searchCity.fulfilled, (state, action) => {
       state.cities = action.payload;
     });

@@ -13,7 +13,6 @@ export default function NewsPage() {
   const [query, setQuery] = useState('');
   const news = useSelector(newsSelectors.getNews);
   const status = useSelector(newsSelectors.getStatus);
-  console.log(news);
 
   useEffect(() => {
     dispatch(getNews());
@@ -66,7 +65,7 @@ export default function NewsPage() {
           </div>
         )}
       </div>
-      <BtnScrollToTop/>
+      <BtnScrollToTop />
     </Container>
   );
 }

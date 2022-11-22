@@ -1,81 +1,92 @@
 .wrapper {
-  position: relative;
-  display: flex;
-  /* justify-content: space-between; */
-
-  margin-bottom: 12px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	height: 24px;
+	margin-bottom: 8px;
 }
 
 .field {
-  width: 56px;
-  margin-right: 26px;
-  font-size: 12px;
-  line-height: 16px;
-  display: flex;
-  align-items: center;
-  letter-spacing: 0.04em;
+	width: 56px;
+	font-size: 12px;
+	line-height: 16px;
+	display: flex;
+	letter-spacing: 0.04em;
 
-  color: #111111;
+	color: #111111;
 }
 
 .value {
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  letter-spacing: 0.04em;
-
-  color: #111111;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 16px;
+	letter-spacing: 0.04em;
+	margin-left: 19px;
+	color: #111111;
 }
-
+.Input {
+	margin-left: 0;
+	width: 160px;
+	height: 24px;
+	padding: 4px 18px;
+	background: #fdf7f2;
+	border: 1px solid rgba(245, 146, 86, 0.5);
+	border-radius: 40px;
+	letter-spacing: 0.04em;
+}
 .button {
-  position: absolute;
-  right: 0px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
+	display: flex;
+	justify-content: center;
+	background-color: transparent;
+	margin-left: auto;
 }
 
 .logo {
-  width: 20px;
-  height: 20px;
+	width: 20px;
+	height: 20px;
+	fill: #f59256;
 }
 
 @media screen and (min-width: 768px) {
-  .wrapper {
-    width: 380px;
+	.wrapper {
+		width: auto;
 
-    margin-bottom: 15px;
-  }
+		margin-bottom: 15px;
+	}
 
-  .field {
-    width: 83px;
-    margin-right: 36px;
+	.field {
+		width: 83px;
 
-    font-size: 18px;
-    line-height: 25px;
-  }
+		font-size: 18px;
+		line-height: 25px;
+	}
 
-  .value {
-    font-size: 18px;
-    line-height: 25px;
-  }
-
-  .logo {
-    width: 32px;
-    height: 32px;
-  }
+	.value {
+		margin-left: 26px;
+		font-size: 18px;
+		line-height: 25px;
+		width: 250px;
+	}
+	.Input {
+		font-weight: 400;
+		font-size: 18px;
+		line-height: calc(25 / 18);
+		margin-left: 13px;
+		width: 216px;
+		height: 32px;
+		padding: 4px 12px;
+	}
+	.logo {
+		width: 32px;
+		height: 32px;
+	}
 }
 
 @media screen and (min-width: 1280px) {
-  .wrapper {
-    width: 100%;
-  }
-
-  .field {
-    margin-right: 24px;
-  }
+	.wrapper {
+		width: 100%;
+	}
+	.value {
+		width: auto;
+	}
 }

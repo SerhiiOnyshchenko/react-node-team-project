@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
-axios.defaults.baseURL = 'https://team-project-backend.onrender.com/api';
+import { toast } from 'react-toastify';
 
 export const getNews = createAsyncThunk('news/getNews', async query => {
   try {
@@ -14,7 +13,7 @@ export const getNews = createAsyncThunk('news/getNews', async query => {
       return data;
     }
   } catch (error) {
-    console.log('fetch-news-error', error);
+    toast.error(error.response.data.message);
   }
 });
 export default getNews;

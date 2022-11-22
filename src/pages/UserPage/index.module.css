@@ -1,5 +1,8 @@
-.section {
-	padding: 60px 0px 80px;
+.User {
+	padding: 45px 0px 40px;
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
 }
 
 .title {
@@ -9,7 +12,6 @@
 	display: flex;
 	align-items: center;
 	letter-spacing: 0.04em;
-
 	color: #000000;
 }
 
@@ -26,6 +28,12 @@
 }
 
 @media screen and (min-width: 768px) {
+	.User {
+		padding: 68px 0px 80px;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
 	.userWrap {
 		width: 736px;
 		padding: 24px 40px 24px 32px;
@@ -40,6 +48,12 @@
 }
 
 @media screen and (min-width: 1280px) {
+	.User {
+		padding: 38px 0px 80px;
+		display: flex;
+		flex-direction: row;
+		gap: 32px;
+	}
 	.userWrap {
 		width: 411px;
 		padding: 20px 16px 40px;
