@@ -13,6 +13,7 @@ const validationSchema = yup.object({
   password: yup
     .string()
     .required('Password is required')
+    .matches(/^[^ ]{7,32}/, 'Password should not contain space')
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{7,})/,
       'Password is not valid as per password policy'
