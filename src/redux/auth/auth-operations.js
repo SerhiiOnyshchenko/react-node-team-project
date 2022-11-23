@@ -60,6 +60,7 @@ const fetchCurrentUser = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
+    
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue();
     }
@@ -107,9 +108,8 @@ const searchCity = createAsyncThunk('auth/searchCity', async q => {
   }
 });
 
-const getFavorite = createAsyncThunk('auth/getFavorite', async petId => {
+const getFavorite = createAsyncThunk('auth/getFavorite', async () => {
   try {
-    await axios.post(`/user/favorite/${petId}`);
     const { data } = await axios.get('/user/favorite');
     return data;
   } catch (error) {
