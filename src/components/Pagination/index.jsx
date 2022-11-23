@@ -26,6 +26,7 @@ export default function AppPagination({ totalHits, pageSize, data, setData }) {
         setData(items);
       }
     });
+ // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [totalHits, pagination.from, pagination.to, data]);
 
   const handlePageChange = (event, page) => {
