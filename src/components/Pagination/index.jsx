@@ -2,32 +2,31 @@ import { useEffect, useState } from 'react';
 import Pagination from '@mui/material/Pagination';
 import s from './index.module.css';
 
-export default function AppPagination({ totalPages, news, setNews }) {
-  const pageSize = 6;
-  const totalHits = 6;
+export default function AppPagination({ totalHits, pageSize, data, setData }) {
   const [pagination, setPagination] = useState({
     count: 0,
     from: 0,
     to: pageSize,
   });
-  const getData = () => {
-    return new Promise((resolve, reject) => {
-      if (!news) {
-        return;
-      }
-      resolve({ data: news.slice(pagination.from, pagination.to) });
-    });
-  };
 
   useEffect(() => {
-    if (totalPages) {
-      setPagination({ ...pagination, count: totalHits });
-    }
+    const getData = () => {
+      return new Promise((resolve, reject) => {
+        if (!data) {
+          return;
+        }
+        resolve({ data: data });
+      });
+    };
+
+    setPagination({ ...pagination, count: totalHits });
     getData().then(res => {
-      const items = res.data;
-      setNews(items);
+      if (data) {
+        const items = res.data.slice(pagination.from, pagination.to);
+        setData(items);
+      }
     });
-  }, [totalPages, pagination.from, pagination.to]);
+  }, [totalHits, pagination.from, pagination.to, data]);
 
   const handlePageChange = (event, page) => {
     const from = (page - 1) * pageSize;
@@ -37,10 +36,10 @@ export default function AppPagination({ totalPages, news, setNews }) {
   };
 
   return (
-    pageSize > totalHits && (
+    pageSize < totalHits && (
       <Pagination
         className={s.pagination}
-        count={Math.ceil(pagination.count / pagination.to)}
+        count={totalHits / pageSize}
         onChange={handlePageChange}
       />
     )

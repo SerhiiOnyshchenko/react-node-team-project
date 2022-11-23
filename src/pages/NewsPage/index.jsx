@@ -12,7 +12,6 @@ export default function NewsPage() {
   const dispatch = useDispatch();
   const [query, setQuery] = useState('');
   const news = useSelector(newsSelectors.getNews);
-  const totalPages = useSelector(newsSelectors.getTotalPages);
 
   const [newsSlice, setNewsSlice] = useState([]);
   const status = useSelector(newsSelectors.getStatus);
@@ -70,9 +69,10 @@ export default function NewsPage() {
       </div>
       <BtnScrollToTop />
       <Pagination
-        totalPages={totalPages}
-        news={news}
-        setNews={n => {
+        totalHits={6}
+        pageSize={6}
+        data={news}
+        setData={n => {
           setNewsSlice(n);
         }}
       />
