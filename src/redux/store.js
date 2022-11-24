@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import noticesReduser from './notices/notices-slice';
 import { authReducer } from './auth';
 import friendsReduser from './friends/friends-slice';
+import { petsReducer } from './pets';
 
 import {
   persistStore,
@@ -34,6 +35,12 @@ const friendsPersistConfig = {
   whitelist: ['token'],
 };
 
+const petsPersistConfig = {
+  key: 'userPets',
+  storage,
+  whitelist: ['token'],
+};
+
 export const store = configureStore({
   reducer: {
     friends: persistReducer(friendsPersistConfig, friendsReduser),
@@ -41,6 +48,7 @@ export const store = configureStore({
     auth: persistReducer(authPersistConfig, authReducer),
     news: newsReduser,
     loader: loaderReduser,
+    userPets: persistReducer(petsPersistConfig, petsReducer),
   },
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({
