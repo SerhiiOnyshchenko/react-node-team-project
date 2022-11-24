@@ -1,0 +1,17 @@
+.NoticeList {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: center;
+	gap: 32px;
+	padding-bottom: 200px;
+}
+
+@media screen and (min-width: 768px) {
+	.NoticeList {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+	}
+}

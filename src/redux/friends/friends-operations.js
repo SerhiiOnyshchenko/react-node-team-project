@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
-axios.defaults.baseURL = 'https://team-project-backend.onrender.com/api';
 export const fetchFriends = createAsyncThunk(
   'friends/fetch-friends',
   async () => {
@@ -9,7 +9,7 @@ export const fetchFriends = createAsyncThunk(
       const { data } = await axios.get('/friends');
       return data;
     } catch (error) {
-      console.log('fetch-friends-error', error);
+      toast.error(error.response.data.message);
     }
   }
 );

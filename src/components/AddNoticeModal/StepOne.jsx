@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import s from './index.module.css';
 import * as yup from 'yup';

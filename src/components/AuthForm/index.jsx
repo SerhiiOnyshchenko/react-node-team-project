@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { authOperations } from '../../redux/auth';
+import { useDispatch } from 'react-redux';
 import { FormUserDetails } from './FormUserDetails';
 import { FormPersonalDetails } from './FormPersonalDetails';
 
 export default function AuthForm() {
-  const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -12,27 +13,30 @@ export default function AuthForm() {
     city: '',
     phone: '',
   });
-  const nextStep = () => setStep(prev => (prev === 1 ? prev + 1 : 2));
-  const prevStep = () => setStep(prev => prev - 1);
-  switch (step) {
-    case 1:
-      return (
-        <FormUserDetails
-          formData={formData}
-          setFormData={setFormData}
-          nextStep={nextStep}
-        />
-      );
-    case 2:
-      return (
-        <FormPersonalDetails
-          formData={formData}
-          setFormData={setFormData}
-          nextStep={nextStep}
-          prevStep={prevStep}
-        />
-      );
-    default:
+  const [currentStep, setCurrentStep] = useState(0);
+  const dispatch = useDispatch();
+  const handleNextStep = (newData, final = false) => {
+    setFormData(prev => ({ ...prev, ...newData }));
+    if (final) {
+      dispatch(authOperations.register(newData));
       return;
-  }
+    }
+    setCurrentStep(prev => prev + 1);
+  };
+
+  const handlePrevStep = newData => {
+    setFormData(prev => ({ ...prev, ...newData }));
+    setCurrentStep(prev => prev - 1);
+  };
+
+  const steps = [
+    <FormUserDetails next={handleNextStep} data={formData} />,
+    <FormPersonalDetails
+      next={handleNextStep}
+      prev={handlePrevStep}
+      setFormData={setFormData}
+      data={formData}
+    />,
+  ];
+  return <div>{steps[currentStep]}</div>;
 }

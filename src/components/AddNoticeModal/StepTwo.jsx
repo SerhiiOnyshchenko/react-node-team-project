@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import s from './index.module.css';
 import bigPlus from '../../images/svg/big-plus.svg';
