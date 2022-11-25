@@ -49,34 +49,45 @@ export default function ModalPage1(props) {
           <Form autoComplete="on" className={s.formPageOne}>
             <label htmlFor="name" className={s.label}>
               Name pet
-              <Field
-                type="text"
-                name="name"
-                placeholder="Type name pet"
-                className={s.input}
-              />
-              <ErrorMessage name="name" />
             </label>
+            <Field
+              type="text"
+              name="name"
+              placeholder="Type name pet"
+              className={s.input}
+            />
+            <ErrorMessage
+              name="name"
+              render={msg => <div className={s.errorMsg}>{msg}</div>}
+            />
+
             <label htmlFor="birthday" className={s.label}>
               Date of birth
-              <Field
-                type="text"
-                name="birthday"
-                placeholder="Type date of birth"
-                className={s.input}
-              />
-              <ErrorMessage name="birthday" />
             </label>
+            <Field
+              type="text"
+              name="birthday"
+              placeholder="Type date of birth"
+              className={s.input}
+            />
+            <ErrorMessage
+              name="birthday"
+              render={msg => <div className={s.errorMsg}>{msg}</div>}
+            />
+
             <label htmlFor="breed" className={s.label}>
               Type breed
-              <Field
-                type="text"
-                name="breed"
-                placeholder="Type breed"
-                className={s.input}
-              />
-              <ErrorMessage name="breed" />
             </label>
+            <Field
+              type="text"
+              name="breed"
+              placeholder="Type breed"
+              className={s.inputLast}
+            />
+            <ErrorMessage
+              name="breed"
+              render={msg => <div className={s.errorMsg}>{msg}</div>}
+            />
 
             <div className={s.buttonsWrapper}>
               <button type="submit" className={s.buttonSubmit}>

@@ -37,6 +37,20 @@
   border-radius: 40px;
 }
 
+.inputLast {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.36;
+  width: 240px;
+  height: 40px;
+  margin-top: 8px;
+  padding-left: 16px;
+
+  background: var(--bg);
+  border: 1px solid rgba(245, 146, 86, 0.5);
+  border-radius: 40px;
+}
+
 .buttonsWrapper {
   display: flex;
   flex-direction: column;
@@ -151,4 +165,35 @@
 
   border: 1px solid rgba(245, 146, 86, 0.5);
   border-radius: 20px;
+}
+
+.errorMsg {
+  color: red;
+  text-align: left;
+  margin-top: -10px;
+  margin-bottom: 5px;
+  max-width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .input,
+  .inputLast {
+    width: 448px;
+  }
+
+  .buttonsWrapper {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .buttonSubmit,
+  .buttonSimple {
+    width: 180px;
+  }
+
+  .formWrapper {
+    margin-right: 80px;
+    margin-left: 80px;
+  }
 }
