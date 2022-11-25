@@ -4,6 +4,7 @@ import { ReactComponent as LogoOk } from '../../images/svg/edit-ok.svg';
 import s from './index.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { authOperations, authSelectors } from 'redux/auth';
+import MaskInput from 'components/MaskInput';
 
 export default function UserDataItem({
   field,
@@ -12,14 +13,14 @@ export default function UserDataItem({
   setDisBtnEdit,
 }) {
   const form = useRef();
-  const [isEdite, setIsEdite] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
   const [inputValue, setInputValue] = useState(value);
   const dispatch = useDispatch();
   const token = useSelector(authSelectors.getUserToken);
   const disabledBtn = useSelector(authSelectors.getDisabledBtn);
 
   const handleSubmit = () => {
-    if (isEdite && inputValue !== value) {
+    if (isEdit && inputValue !== value) {
       dispatch(
         authOperations.patchUserInfo({
           type: field.toLowerCase(),
@@ -28,13 +29,13 @@ export default function UserDataItem({
         })
       );
     }
-    setIsEdite(false);
+    setIsEdit(false);
     setDisBtnEdit(false);
   };
 
-  const handleEdite = () => {
+  const handleEdit = () => {
     setDisBtnEdit(true);
-    setIsEdite(true);
+    setIsEdit(true);
   };
 
   return (
@@ -42,7 +43,34 @@ export default function UserDataItem({
       <div className={s.wrapper}>
         <p className={s.field}>{field}:</p>
 
-        {isEdite ? (
+        {!isEdit ? (
+          <p className={s.value}>{inputValue}</p>
+        ) : field === 'Phone' ? (
+          <input
+            className={s.Input}
+            type={field.toLowerCase()}
+            name={field.toLowerCase()}
+            value={inputValue}
+            onChange={e => setInputValue(e.target.value)}
+            data-pattern="+**(***)***-**-**"
+            data-prefix="+38(0"
+            onInput={MaskInput.maskInput}
+            onFocus={MaskInput.onMaskedInputFocus}
+            onBlur={MaskInput.onMaskedInputBlur}
+          />
+        ) : field === 'Birthday' ? (
+          <input
+            className={s.Input}
+            type={field.toLowerCase()}
+            name={field.toLowerCase()}
+            value={inputValue}
+            onChange={e => setInputValue(e.target.value)}
+            data-pattern="**.**.****"
+            onInput={MaskInput.maskInput}
+            onFocus={MaskInput.onMaskedInputFocus}
+            onBlur={MaskInput.onMaskedInputBlur}
+          />
+        ) : (
           <input
             className={s.Input}
             type={field.toLowerCase()}
@@ -50,10 +78,8 @@ export default function UserDataItem({
             value={inputValue}
             onChange={e => setInputValue(e.target.value)}
           />
-        ) : (
-          <p className={s.value}>{inputValue}</p>
         )}
-        {isEdite ? (
+        {isEdit ? (
           <button className={s.button} type="button" onClick={handleSubmit}>
             <LogoOk className={s.logo} />
           </button>
@@ -62,7 +88,7 @@ export default function UserDataItem({
             <Logo className={s.logo} style={{ fill: 'gray' }} />
           </button>
         ) : (
-          <button className={s.button} type="button" onClick={handleEdite}>
+          <button className={s.button} type="button" onClick={handleEdit}>
             <Logo className={s.logo} />
           </button>
         )}
