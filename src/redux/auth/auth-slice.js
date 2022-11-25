@@ -3,6 +3,7 @@ import authOperations from './auth-operations';
 
 const initialState = {
   user: { name: null, email: null },
+  isLoading: false,
   token: null,
   isLoggedIn: false,
   cities: [],
@@ -14,19 +15,33 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: builder => {
+    builder.addCase(authOperations.register.pending, state => {
+      state.isLoading = true;
+    });
     builder.addCase(authOperations.register.fulfilled, (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
+      state.isLoading = false;
       state.favorite = action.payload.favorite;
+    });
+    builder.addCase(authOperations.register.rejected, state => {
+      state.isLoading = false;
+    });
+    builder.addCase(authOperations.logIn.pending, state => {
+      state.isLoading = true;
     });
     builder.addCase(authOperations.logIn.fulfilled, (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
+      state.isLoading = false;
       state.favorite = action.payload.favorite;
     });
-    builder.addCase(authOperations.logOut.fulfilled, (state, action) => {
+    builder.addCase(authOperations.logIn.rejected, state => {
+      state.isLoading = false;
+    });
+    builder.addCase(authOperations.logOut.fulfilled, state => {
       state.user = { name: null, email: null };
       state.token = null;
       state.isLoggedIn = false;

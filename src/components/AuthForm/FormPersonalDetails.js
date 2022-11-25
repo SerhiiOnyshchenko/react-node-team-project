@@ -9,6 +9,7 @@ import s from './index.module.css';
 import { ErrorMessageWrapper } from './validator';
 import DropList from 'components/DropList';
 import MaskInput from 'components/MaskInput';
+import { RotatingLines } from 'react-loader-spinner';
 
 const validationSchema = yup.object({
   name: yup
@@ -20,7 +21,6 @@ const validationSchema = yup.object({
     ),
   city: yup
     .string()
-    .required('City and Region are required')
     .matches(
       /^[a-zA-Z\-’ ]+, [a-zA-Z\-’ ]+$/,
       'Address should be in format: City, Region'
@@ -43,6 +43,7 @@ export const FormPersonalDetails = ({ data, setFormData, next, prev }) => {
   const [showDropList, setShowDropList] = useState(false);
   const dispatch = useDispatch();
   let listCities = useSelector(authSelectors.getCities);
+  const getIsLoading = useSelector(authSelectors.getIsLoading);
 
   const changeInputCity = e => {
     if (/\d/g.test(e.target.value)) return;
@@ -109,12 +110,24 @@ export const FormPersonalDetails = ({ data, setFormData, next, prev }) => {
               <ErrorMessage name="phone">{ErrorMessageWrapper}</ErrorMessage>
             </div>
             <div className={s.buttonContainer}>
-              <button
-                type="submit"
-                className={`${s.button} ${s.buttonActive} ${s.register}`}
-              >
-                Register
-              </button>
+              {getIsLoading ? (
+                <div className={`${s.button} ${s.buttonActive} ${s.register}`}>
+                  <RotatingLines
+                    strokeColor="#fdf7f2"
+                    strokeWidth="5"
+                    animationDuration="0.75"
+                    width="40"
+                    visible={true}
+                  />
+                </div>
+              ) : (
+                <button
+                  type="submit"
+                  className={`${s.button} ${s.buttonActive} ${s.register}`}
+                >
+                  Register
+                </button>
+              )}
               <button
                 type="button"
                 className={`${s.button} ${s.buttonDefault} ${s.back}`}
