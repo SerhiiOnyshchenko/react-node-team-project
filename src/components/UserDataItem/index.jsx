@@ -5,6 +5,9 @@ import s from './index.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { authOperations, authSelectors } from 'redux/auth';
 import MaskInput from 'components/MaskInput';
+import * as yup from 'yup';
+import { toast } from 'react-toastify';
+import DropList from 'components/DropList';
 
 export default function UserDataItem({
   field,
@@ -15,11 +18,45 @@ export default function UserDataItem({
   const form = useRef();
   const [isEdit, setIsEdit] = useState(false);
   const [inputValue, setInputValue] = useState(value);
+  const [showDropList, setShowDropList] = useState(false);
   const dispatch = useDispatch();
   const token = useSelector(authSelectors.getUserToken);
   const disabledBtn = useSelector(authSelectors.getDisabledBtn);
+  const listCities = useSelector(authSelectors.getCities);
 
-  const handleSubmit = () => {
+  const emailSchema = yup.object({
+    email: yup.string().email('Invalid email').required('Email is required'),
+  });
+  const citySchema = yup.object({
+    city: yup
+      .string()
+      .matches(
+        /^[a-zA-Z\-’ ]+, [a-zA-Z\-’ ]+$/,
+        'Address should be in format: City, Region'
+      ),
+  });
+
+  const handleSubmit = async () => {
+    let error = true;
+    if (field === 'Email') {
+      error = await emailSchema.isValid({
+        email: inputValue,
+      });
+      if (!error) {
+        toast.error('Invalid email');
+        return;
+      }
+    }
+    if (field === 'City') {
+      error = await citySchema.isValid({
+        city: inputValue,
+      });
+      if (!error) {
+        toast.error('Address should be in format: City, Region');
+        return;
+      }
+    }
+
     if (isEdit && inputValue !== value) {
       dispatch(
         authOperations.patchUserInfo({
@@ -29,6 +66,7 @@ export default function UserDataItem({
         })
       );
     }
+
     setIsEdit(false);
     setDisBtnEdit(false);
   };
@@ -38,6 +76,18 @@ export default function UserDataItem({
     setIsEdit(true);
   };
 
+  const changeInputCity = e => {
+    if (/\d/g.test(e.target.value)) return;
+    if (e.target.value !== ' ') {
+      setInputValue(e.target.value);
+      if (e.target.value.length >= 3) {
+        dispatch(authOperations.searchCity(e.target.value));
+        setShowDropList(true);
+      } else {
+        setShowDropList(false);
+      }
+    }
+  };
   return (
     <form ref={form}>
       <div className={s.wrapper}>
@@ -70,6 +120,25 @@ export default function UserDataItem({
             onFocus={MaskInput.onMaskedInputFocus}
             onBlur={MaskInput.onMaskedInputBlur}
           />
+        ) : field === 'City' ? (
+          <label className={s.inputBox} htmlFor="city">
+            <input
+              className={s.Input}
+              type={field.toLowerCase()}
+              name={field.toLowerCase()}
+              value={inputValue}
+              onChange={changeInputCity}
+            />
+            {showDropList && (
+              <DropList
+                list={listCities}
+                onSelect={str => {
+                  setInputValue(str);
+                  setShowDropList(false);
+                }}
+              />
+            )}
+          </label>
         ) : (
           <input
             className={s.Input}
