@@ -61,7 +61,12 @@ export default function ModalNotice({
       <div className={s.container}>
         <div className={s.infoWrapper}>
           <div className={s.imgWrapper}>
-            <img src={petData.image || modalImage} alt={petData.name} />
+            <img
+              src={petData.image || modalImage}
+              alt={petData.name}
+              height="100%"
+              style={{ objectFit: 'cover' }}
+            />
             <div className={s.categoryLabel}>{petData.category}</div>
             <button
               type="button"
