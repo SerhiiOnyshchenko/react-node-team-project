@@ -35,7 +35,7 @@ const register = createAsyncThunk(
   }
 );
 
-const logIn = createAsyncThunk('auth/logIn', async credentials => {
+const logIn = createAsyncThunk('auth/logIn', async (credentials, thunkAPI) => {
   try {
     const { data } = await axios.post('/user/login', credentials);
     token.set(data.token);
@@ -43,6 +43,7 @@ const logIn = createAsyncThunk('auth/logIn', async credentials => {
     return { ...data, favorite: favorite.data };
   } catch (error) {
     toast.error(error.response.data.message);
+    return thunkAPI.rejectWithValue();
   }
 });
 
@@ -72,6 +73,7 @@ const fetchCurrentUser = createAsyncThunk(
       return { ...data, favorite: favorite.data };
     } catch (error) {
       toast.error(error.response.data.message);
+      return thunkAPI.rejectWithValue();
     }
   }
 );

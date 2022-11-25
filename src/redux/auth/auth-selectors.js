@@ -1,4 +1,5 @@
 const getIsLoggedIn = state => state.auth.isLoggedIn;
+const getIsLoading = state => state.auth.isLoading;
 const getCities = state => state.auth.cities;
 const getUsername = state => state.auth.user.name;
 const getUser = state => state.auth.user;
@@ -14,5 +15,6 @@ const authSelectors = {
   getUser,
   getUserToken,
   getDisabledBtn,
+  getIsLoading,
 };
 export default authSelectors;

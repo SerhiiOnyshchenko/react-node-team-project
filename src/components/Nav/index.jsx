@@ -4,7 +4,7 @@ import s from './index.module.css';
 const itemsNav = [
   { href: '/news', title: 'News' },
   { href: '/notices', title: 'Find pet' },
-  { href: '/friends', title: 'Our friend' },
+  { href: '/friends', title: 'Our friends' },
 ];
 
 export default function Nav() {
