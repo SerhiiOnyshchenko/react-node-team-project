@@ -1,33 +1,12 @@
-/* .closeBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  width: 34px;
-  height: 34px;
-  border: none;
-  border-radius: 50%;
-  background: var(--bg);
-  backdrop-filter: blur(2px);
-  background-image: url('../../images/svg/close.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-} */
-
 .title {
   font-size: 24px;
   line-height: 1.75;
   text-align: center;
-  margin-top: 40px;
 }
 
 .formWrapper {
   display: flex;
   justify-content: center;
-  margin-bottom: 40px;
 }
 
 .formPageOne {
@@ -36,7 +15,6 @@
   justify-content: center;
   align-items: flex-start;
   margin-top: 28px;
-  margin-bottom: 40px;
 }
 
 .label {
@@ -59,12 +37,25 @@
   border-radius: 40px;
 }
 
+.inputLast {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.36;
+  width: 240px;
+  height: 40px;
+  margin-top: 8px;
+  padding-left: 16px;
+
+  background: var(--bg);
+  border: 1px solid rgba(245, 146, 86, 0.5);
+  border-radius: 40px;
+}
+
 .buttonsWrapper {
   display: flex;
   flex-direction: column;
   width: 100%;
   margin-top: 40px;
-  margin-bottom: 40px;
 }
 
 .buttonSubmit {
@@ -83,6 +74,7 @@
   background: var(--btn-bg-another);
   border-radius: 40px;
 
+  font-size: 16px;
   line-height: 1.37;
   letter-spacing: 0.04em;
   color: var(--modal-bg);
@@ -96,7 +88,7 @@
   border: 2px solid var(--btn-bg-another);
 
   font-size: 16px;
-  line-height: 22px;
+  line-height: 1.37;
 }
 
 .formPageTwo {
@@ -105,7 +97,6 @@
   justify-content: center;
   align-items: flex-start;
   margin-top: 20px;
-  margin-bottom: 40px;
 }
 
 .addPhotoText {
@@ -113,6 +104,7 @@
   line-height: 1.38;
   margin-right: auto;
   margin-left: auto;
+  margin-bottom: 20px;
 }
 
 .addPhotoBtn {
@@ -124,6 +116,14 @@
 
   border-radius: 20px;
   border: none;
+
+  background-image: url('../../images/svg/big-plus.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.textareaWrapper {
+  margin-top: 20px;
 }
 
 .textarea {
@@ -142,4 +142,58 @@
   border: 1px solid rgba(245, 146, 86, 0.5);
   border-radius: 20px;
   margin-top: 8px;
+}
+
+.addFileBtnWrapper {
+  position: relative;
+}
+
+.addFileInput {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.inputImage {
+  width: 208px;
+  height: 208px;
+
+  border: 1px solid rgba(245, 146, 86, 0.5);
+  border-radius: 20px;
+}
+
+.errorMsg {
+  color: red;
+  text-align: left;
+  margin-top: -10px;
+  margin-bottom: 5px;
+  max-width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .input,
+  .inputLast {
+    width: 448px;
+  }
+
+  .buttonsWrapper {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .buttonSubmit,
+  .buttonSimple {
+    width: 180px;
+  }
+
+  .formWrapper {
+    margin-right: 80px;
+    margin-left: 80px;
+  }
 }

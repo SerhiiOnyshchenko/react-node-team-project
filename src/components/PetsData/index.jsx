@@ -1,13 +1,14 @@
-// import { useState } from 'react';
-// import PetsList from 'components/PetsList';
+import { useState } from 'react';
+import PetsList from 'components/PetsList';
 import s from './index.module.css';
-// import ModalPage from 'pages/ModalPage';
+import ModalPage from 'pages/ModalPage';
+import ModalAddsPet from 'components/ModalAddsPet';
 
 export default function PetsData(props) {
-  // const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const onAddPetBtnClick = () => {
-    // setShowModal(true);
+    setShowModal(true);
   };
 
   return (
@@ -23,8 +24,12 @@ export default function PetsData(props) {
             ></button>
           </div>
         </div>
-        {/* {showModal && <ModalPage setShowModal={setShowModal} />} */}
-        {/* <PetsList /> */}
+        {showModal && (
+          <ModalPage onClose={() => setShowModal(false)}>
+            <ModalAddsPet />
+          </ModalPage>
+        )}
+        <PetsList />
       </div>
     </>
   );
