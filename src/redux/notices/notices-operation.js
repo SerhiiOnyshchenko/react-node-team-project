@@ -25,3 +25,16 @@ export const getUserNotices = createAsyncThunk(
     }
   }
 );
+
+export const deleteUserNotices = createAsyncThunk(
+  'notices/deleteUserNotices',
+  async petId => {
+    try {
+      await axios.delete(`/notices/${petId}`);
+      const { data } = await axios.get('notices/getUserNotices');
+      return data;
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+  }
+);

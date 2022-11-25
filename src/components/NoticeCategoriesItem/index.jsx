@@ -73,11 +73,12 @@ export default function NoticeItem({ petData }) {
             src={petData.image || modalImage}
             alt={petData.name}
             height="100%"
+            style={{ height: 288, objectFit: 'cover' }}
           />
           <div className={s.categoryLabel}>{petData.category}</div>
         </div>
         <div className={s.infoWrapper}>
-          <h3 className={s.title}>{petData.title}</h3>
+          <h3 className={s.title}>{petData.titleOfAd}</h3>
           <ul>
             {NOTICE_ITEM_KEYS.map(({ label, key, category }) => {
               if (category && category !== petData.category) return null;
@@ -90,13 +91,15 @@ export default function NoticeItem({ petData }) {
             })}
           </ul>
         </div>
-        <button
-          type="button"
-          className={s.learmMoreBtn}
-          onClick={handleModalToggle}
-        >
-          Learn more
-        </button>
+        <div className={s.learnMoreBtnCont}>
+          <button
+            type="button"
+            className={s.learnMoreBtn}
+            onClick={handleModalToggle}
+          >
+            Learn more
+          </button>
+        </div>
         <button
           type="button"
           className={s.heartBtn}
