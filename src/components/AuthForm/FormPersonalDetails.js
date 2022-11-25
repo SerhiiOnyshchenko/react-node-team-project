@@ -8,6 +8,7 @@ import { authOperations, authSelectors } from '../../redux/auth';
 import s from './index.module.css';
 import { ErrorMessageWrapper } from './validator';
 import DropList from 'components/DropList';
+import MaskInput from 'components/MaskInput';
 
 const validationSchema = yup.object({
   name: yup
@@ -19,14 +20,18 @@ const validationSchema = yup.object({
     ),
   city: yup
     .string()
+    .required('City and Region are required')
     .matches(
-      /^[\w\-’ ]+, [\w\-’ ]+$/,
+      /^[a-zA-Z\-’ ]+, [a-zA-Z\-’ ]+$/,
       'Address should be in format: City, Region'
     ),
   phone: yup
     .string()
     .required('Phone is required')
-    .matches(/^\+[0-9]{12}$/, 'Phone should be in format +380671234567'),
+    .matches(
+      /^\+38\(0..\)...-..-../,
+      'Phone should be in format +38(067)123-45-67'
+    ),
 });
 
 export const FormPersonalDetails = ({ data, setFormData, next, prev }) => {
@@ -40,6 +45,7 @@ export const FormPersonalDetails = ({ data, setFormData, next, prev }) => {
   let listCities = useSelector(authSelectors.getCities);
 
   const changeInputCity = e => {
+    if (/\d/g.test(e.target.value)) return;
     if (e.target.value !== ' ') {
       setFormData(pre => ({ ...pre, city: e.target.value }));
       if (e.target.value.length >= 3) {
@@ -94,6 +100,11 @@ export const FormPersonalDetails = ({ data, setFormData, next, prev }) => {
                 name="phone"
                 placeholder="Mobile phone"
                 className={s.input}
+                data-pattern="+**(***)***-**-**"
+                data-prefix="+38(0"
+                onInput={MaskInput.maskInput}
+                onFocus={MaskInput.onMaskedInputFocus}
+                onBlur={MaskInput.onMaskedInputBlur}
               />
               <ErrorMessage name="phone">{ErrorMessageWrapper}</ErrorMessage>
             </div>
