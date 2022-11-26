@@ -87,7 +87,7 @@ export default function ModalNotice({
                 if (category && category !== petData.category) return null;
                 if (values) {
                   return values.map(({ field, label }) => (
-                    <li key={key} className={s.infoList}>
+                    <li key={label} className={s.infoList}>
                       <span className={s.label}>{label}</span>
                       <span className={s.lebalText}>
                         {petData[key] && petData[key][field]}
