@@ -5,15 +5,25 @@ export default function DropList({ list, onSelect }) {
     <>
       {list.length > 0 && (
         <ul className={s.DropList}>
-          {list.map(item => (
-            <li
-              key={`${item.city}, ${item.region}`}
-              className={s.DropItem}
-              onClick={() => onSelect(`${item.city}, ${item.region}`)}
-            >
-              {item.city}, {item.region}
-            </li>
-          ))}
+          {list.map(item =>
+            item.city ? (
+              <li
+                key={item._id}
+                className={s.DropItem}
+                onClick={() => onSelect(`${item.city}, ${item.region}`)}
+              >
+                {item.city}, {item.region}
+              </li>
+            ) : (
+              <li
+                key={item._id}
+                className={s.DropItem}
+                onClick={() => onSelect(item.breed)}
+              >
+                {item.breed}
+              </li>
+            )
+          )}
         </ul>
       )}
     </>
