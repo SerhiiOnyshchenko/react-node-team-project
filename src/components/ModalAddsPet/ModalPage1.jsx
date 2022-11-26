@@ -2,6 +2,11 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import s from './index.module.css';
 import { parse } from 'date-fns';
+import MaskInput from 'components/MaskInput';
+import { useState } from 'react';
+import { authOperations, authSelectors } from 'redux/auth';
+import { useDispatch, useSelector } from 'react-redux';
+import DropList from 'components/DropList';
 
 const today = new Date();
 
@@ -28,21 +33,40 @@ const validationSchema = yup.object({
   breed: yup
     .string()
     .min(2)
-    .max(16)
+    .max(25)
     .matches(/[a-zA-Z]/, 'Only alphanumeric characters are allowed')
     .required(),
 });
 
-export default function ModalPage1(props) {
+export default function ModalPage1({ data, setFormData, next, onClose }) {
+  const dispatch = useDispatch();
+  const [showDropList, setShowDropList] = useState(false);
+  const [breedValue, setBreedValue] = useState(data.breed);
+  const listBreeds = useSelector(authSelectors.getBreeds);
+
   const handleSubmit = values => {
-    props.next(values, false);
+    next({ ...values, breed: breedValue }, false);
+  };
+
+  const changeInputBreed = e => {
+    if (/\d/g.test(e.target.value)) return;
+    if (e.target.value !== ' ') {
+      // setFormData(pre => ({ ...pre, breed: e.target.value }));
+      setBreedValue(e.target.value);
+      if (e.target.value.length >= 3) {
+        dispatch(authOperations.searchBreeds(e.target.value));
+        setShowDropList(true);
+      } else {
+        setShowDropList(false);
+      }
+    }
   };
   return (
     <>
       <div className={s.title}>Add pet</div>
       <div className={s.formWrapper}>
         <Formik
-          initialValues={props.data}
+          initialValues={data}
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >
@@ -60,15 +84,17 @@ export default function ModalPage1(props) {
               name="name"
               render={msg => <div className={s.errorMsg}>{msg}</div>}
             />
-
             <label htmlFor="birthday" className={s.label}>
               Date of birth
             </label>
             <Field
-              type="text"
               name="birthday"
               placeholder="Type date of birth"
               className={s.input}
+              data-pattern="**.**.****"
+              onInput={MaskInput.maskInput}
+              onFocus={MaskInput.onMaskedInputFocus}
+              onBlur={MaskInput.onMaskedInputBlur}
             />
             <ErrorMessage
               name="birthday"
@@ -78,12 +104,26 @@ export default function ModalPage1(props) {
             <label htmlFor="breed" className={s.label}>
               Type breed
             </label>
-            <Field
-              type="text"
-              name="breed"
-              placeholder="Type breed"
-              className={s.inputLast}
-            />
+            <div style={{ position: 'relative' }}>
+              <Field
+                name="breed"
+                placeholder="Type breed"
+                autoComplete="off"
+                value={breedValue}
+                className={s.inputLast}
+                onInput={changeInputBreed}
+              />
+              {showDropList && (
+                <DropList
+                  list={listBreeds}
+                  onSelect={str => {
+                    // setFormData(pre => ({ ...pre, breed: str }));
+                    setBreedValue(str);
+                    setShowDropList(false);
+                  }}
+                />
+              )}
+            </div>
             <ErrorMessage
               name="breed"
               render={msg => <div className={s.errorMsg}>{msg}</div>}
@@ -96,7 +136,7 @@ export default function ModalPage1(props) {
               <button
                 type="button"
                 className={s.buttonSimple}
-                onClick={props.closeModal}
+                onClick={() => onClose()}
               >
                 Cancel
               </button>

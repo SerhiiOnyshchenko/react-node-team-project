@@ -6,7 +6,7 @@ import { petsOperations } from 'redux/pets';
 import ModalPage1 from './ModalPage1';
 import ModalPage2 from './ModalPage2';
 
-export default function ModalAddsPet(props) {
+export default function ModalAddsPet({ onClose }) {
   const dispatch = useDispatch();
   const token = useSelector(authSelectors.getUserToken);
 
@@ -21,12 +21,12 @@ export default function ModalAddsPet(props) {
 
   const FormTitles = ['First page', 'Second page'];
 
-  const makeRequest = formData => {
-    dispatch(petsOperations.addUserPet({ formData, token }));
+  const makeRequest = form => {
+    dispatch(petsOperations.addUserPet({ form, token }));
   };
 
   const handleNextStep = (newData, final = false) => {
-    setFormData(prev => ({ ...prev, ...newData }));
+    setFormData(prev => (prev = newData));
     setPage(prev => prev + 1);
 
     if (final) {
@@ -42,14 +42,15 @@ export default function ModalAddsPet(props) {
 
   const steps = [
     <ModalPage1
-      onClose={props.onClose}
+      onClose={onClose}
       next={handleNextStep}
       data={formData}
+      setFormData={setFormData}
       title={FormTitles[page]}
     />,
     <ModalPage2
       prev={handlePrevStep}
-      onClose={props.onClose}
+      onClose={onClose}
       next={handleNextStep}
       data={formData}
       title={FormTitles[page]}
