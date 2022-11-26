@@ -31,12 +31,16 @@ const PET_MODAL_KEYS = [
     key: 'owner',
     values: [
       {
-        label: 'Email:',
-        field: 'email',
+        label: 'Owner:',
+        field: 'name',
       },
       {
         label: 'Phone:',
         field: 'phone',
+      },
+      {
+        label: 'Email:',
+        field: 'email',
       },
     ],
   },
