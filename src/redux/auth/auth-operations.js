@@ -93,6 +93,8 @@ const patchUserInfo = createAsyncThunk(
         },
       };
       const { data } = await axios.patch('/user/update', config, header);
+      toast.success('Your information was update');
+
       return data;
     } catch (error) {
       const { message } = error.response.data.message;
@@ -104,6 +106,15 @@ const patchUserInfo = createAsyncThunk(
 const searchCity = createAsyncThunk('auth/searchCity', async q => {
   try {
     const { data } = await axios.get(`/cities/search?q=${q}`);
+    return data;
+  } catch (error) {
+    toast.error(error.response.data.message);
+  }
+});
+
+const searchBreeds = createAsyncThunk('auth/searchBreeds', async q => {
+  try {
+    const { data } = await axios.get(`/breeds/search?q=${q}`);
     return data;
   } catch (error) {
     toast.error(error.response.data.message);
@@ -152,5 +163,6 @@ const operations = {
   deleteFromFavorite,
   getFavorite,
   patchUserInfo,
+  searchBreeds,
 };
 export default operations;
