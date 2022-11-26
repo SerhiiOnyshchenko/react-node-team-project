@@ -31,7 +31,7 @@ export const deleteUserNotices = createAsyncThunk(
   async petId => {
     try {
       await axios.delete(`/notices/${petId}`);
-      const { data } = await axios.get('notices/getUserNotices');
+      const { data } = await axios.get('/notices/user');
       return data;
     } catch (error) {
       toast.error(error.response.data.message);

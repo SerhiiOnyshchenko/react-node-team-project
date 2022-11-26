@@ -1,9 +1,10 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import s from './modalNotice.module.css';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import modalImage from '../../images/no-image-found.png';
 import { ReactComponent as HeartBtnM } from '../../images/svg/heartBtnM.svg';
-import { noticesSelectors } from 'redux/notices';
+import { noticesOperations } from 'redux/notices';
+import { authSelectors } from 'redux/auth';
 
 const PET_MODAL_KEYS = [
   {
@@ -51,10 +52,10 @@ export default function ModalNotice({
   handleFavoriteToggle,
   favorite,
 }) {
-  const userNotices = useSelector(noticesSelectors.getUserNotices);
-  const owner = userNotices.some(notice => notice._id === petData._id);
+  const user = useSelector(authSelectors.getUser);
+  const owner = user._id === petData.owner._id;
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -110,20 +111,23 @@ export default function ModalNotice({
           <p className={s.commentsText}>{petData.comments}</p>
         </div>
         <div className={s.buttons}>
-          <a href={`tel:${petData.phone}`} className={s.contactBtn}>
+          <a href={`tel:${petData.owner.phone}`} className={s.contactBtn}>
             Contact
           </a>
           {owner && (
             <button
               type="button"
               className={s.deleteBtn}
-              // onSubmit={async () => {
-              //   try {
-              //     await dispatch(noticesOperations.deleteFromNotice(petData._id));
-              //   } catch (e) {
-              //     toast.error();
-              //   }
-              // }}
+              onClick={() => {
+                try {
+                  dispatch(
+                    noticesOperations.deleteUserNotices(petData._id),
+                    toast.done('deleted')
+                  );
+                } catch (e) {
+                  toast.error(e.message);
+                }
+              }}
             >
               delete
             </button>
