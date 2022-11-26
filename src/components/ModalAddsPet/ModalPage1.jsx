@@ -2,16 +2,13 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import s from './index.module.css';
 import { parse } from 'date-fns';
+import MaskInput from 'components/MaskInput';
+import { useState } from 'react';
+import { authOperations, authSelectors } from 'redux/auth';
+import { useDispatch, useSelector } from 'react-redux';
+import DropList from 'components/DropList';
 
 const today = new Date();
-
-// function parseDateString(value, originalValue) {
-//   const parsedDate = isDate(originalValue)
-//     ? originalValue
-//     : parse(originalValue, 'yyyy-MM-dd', new Date());
-
-//   return parsedDate;
-// }
 
 const validationSchema = yup.object({
   name: yup
@@ -36,77 +33,115 @@ const validationSchema = yup.object({
   breed: yup
     .string()
     .min(2)
-    .max(16)
+    .max(25)
     .matches(/[a-zA-Z]/, 'Only alphanumeric characters are allowed')
     .required(),
 });
 
-const initialValues = {
-  name: '',
-  birthday: '',
-  breed: '',
-};
+export default function ModalPage1({ data, setFormData, next, onClose }) {
+  const dispatch = useDispatch();
+  const [showDropList, setShowDropList] = useState(false);
+  const [breedValue, setBreedValue] = useState(data.breed);
+  const listBreeds = useSelector(authSelectors.getBreeds);
 
-export default function ModalPage1(props) {
   const handleSubmit = values => {
-    props.next(values, true);
+    next({ ...values, breed: breedValue }, false);
+  };
+
+  const changeInputBreed = e => {
+    if (/\d/g.test(e.target.value)) return;
+    if (e.target.value !== ' ') {
+      // setFormData(pre => ({ ...pre, breed: e.target.value }));
+      setBreedValue(e.target.value);
+      if (e.target.value.length >= 3) {
+        dispatch(authOperations.searchBreeds(e.target.value));
+        setShowDropList(true);
+      } else {
+        setShowDropList(false);
+      }
+    }
   };
   return (
     <>
-      {/* <button
-        type="button"
-        onClick={props.closeModal}
-        className={s.closeBtn}
-      ></button> */}
       <div className={s.title}>Add pet</div>
       <div className={s.formWrapper}>
         <Formik
-          initialValues={initialValues}
+          initialValues={data}
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >
-          <div>
-            <Form autoComplete="off" className={s.formPageOne}>
-              <label htmlFor="name" className={s.label}>
-                Name pet
-                <Field
-                  type="text"
-                  name="name"
-                  placeholder="Type name pet"
-                  className={s.input}
+          <Form autoComplete="on" className={s.formPageOne}>
+            <label htmlFor="name" className={s.label}>
+              Name pet
+            </label>
+            <Field
+              type="text"
+              name="name"
+              placeholder="Type name pet"
+              className={s.input}
+            />
+            <ErrorMessage
+              name="name"
+              render={msg => <div className={s.errorMsg}>{msg}</div>}
+            />
+            <label htmlFor="birthday" className={s.label}>
+              Date of birth
+            </label>
+            <Field
+              name="birthday"
+              placeholder="Type date of birth"
+              className={s.input}
+              data-pattern="**.**.****"
+              onInput={MaskInput.maskInput}
+              onFocus={MaskInput.onMaskedInputFocus}
+              onBlur={MaskInput.onMaskedInputBlur}
+            />
+            <ErrorMessage
+              name="birthday"
+              render={msg => <div className={s.errorMsg}>{msg}</div>}
+            />
+
+            <label htmlFor="breed" className={s.label}>
+              Type breed
+            </label>
+            <div style={{ position: 'relative' }}>
+              <Field
+                name="breed"
+                placeholder="Type breed"
+                autoComplete="off"
+                value={breedValue}
+                className={s.inputLast}
+                onInput={changeInputBreed}
+              />
+              {showDropList && (
+                <DropList
+                  list={listBreeds}
+                  onSelect={str => {
+                    // setFormData(pre => ({ ...pre, breed: str }));
+                    setBreedValue(str);
+                    setShowDropList(false);
+                  }}
                 />
-                <ErrorMessage name="name" />
-              </label>
-              <label htmlFor="birthday" className={s.label}>
-                Date of birth
-                <Field
-                  type="text"
-                  name="birthday"
-                  placeholder="Type date of birth"
-                  className={s.input}
-                />
-                <ErrorMessage name="birthday" />
-              </label>
-              <label htmlFor="breed" className={s.label}>
-                Type breed
-                <Field
-                  type="text"
-                  name="breed"
-                  placeholder="Type breed"
-                  className={s.input}
-                />
-                <ErrorMessage name="breed" />
-              </label>
-            </Form>
+              )}
+            </div>
+            <ErrorMessage
+              name="breed"
+              render={msg => <div className={s.errorMsg}>{msg}</div>}
+            />
+
             <div className={s.buttonsWrapper}>
               <button type="submit" className={s.buttonSubmit}>
                 Next
               </button>
-              <button type="button" className={s.buttonSimple}>
+              <button
+                type="button"
+                className={s.buttonSimple}
+                onClick={() => onClose()}
+              >
                 Cancel
               </button>
             </div>
-          </div>
+          </Form>
         </Formik>
       </div>
     </>

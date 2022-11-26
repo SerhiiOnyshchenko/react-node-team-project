@@ -61,7 +61,12 @@ export default function ModalNotice({
       <div className={s.container}>
         <div className={s.infoWrapper}>
           <div className={s.imgWrapper}>
-            <img src={petData.image || modalImage} alt={petData.name} />
+            <img
+              src={petData.image || modalImage}
+              alt={petData.name}
+              height="100%"
+              style={{ objectFit: 'cover' }}
+            />
             <div className={s.categoryLabel}>{petData.category}</div>
             <button
               type="button"
@@ -82,7 +87,7 @@ export default function ModalNotice({
                 if (category && category !== petData.category) return null;
                 if (values) {
                   return values.map(({ field, label }) => (
-                    <li key={key} className={s.infoList}>
+                    <li key={label} className={s.infoList}>
                       <span className={s.label}>{label}</span>
                       <span className={s.lebalText}>
                         {petData[key] && petData[key][field]}

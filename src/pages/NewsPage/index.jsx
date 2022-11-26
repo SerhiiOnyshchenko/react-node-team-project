@@ -6,12 +6,14 @@ import News from '../../components/News/index';
 import getNews from 'redux/news/news-operations';
 import { RotatingLines } from 'react-loader-spinner';
 import { newsSelectors } from '../../redux/news';
+import Pagination from 'components/Pagination';
 import BtnScrollToTop from 'components/BtnScrollToTop';
-
 export default function NewsPage() {
   const dispatch = useDispatch();
   const [query, setQuery] = useState('');
   const news = useSelector(newsSelectors.getNews);
+
+  const [newsSlice, setNewsSlice] = useState([]);
   const status = useSelector(newsSelectors.getStatus);
 
   useEffect(() => {
@@ -40,14 +42,14 @@ export default function NewsPage() {
           </div>
           <button type="submit" className={s.btn}></button>
         </form>
-        {!status && news.length > 0 && (
+        {!status && newsSlice.length > 0 && (
           <ul className={s.newList}>
-            {news.map(item => (
+            {newsSlice.map(item => (
               <News key={item._id} news={item} />
             ))}
           </ul>
         )}
-        {!status && news.length === 0 && (
+        {!status && newsSlice.length === 0 && (
           <div className={s.containerMessage}>
             <p className={s.message}>No results were found for</p>
             <p className={s.query}>{query}</p>
@@ -66,6 +68,14 @@ export default function NewsPage() {
         )}
       </div>
       <BtnScrollToTop />
+      <Pagination
+        totalHits={6}
+        pageSize={6}
+        data={news}
+        setData={n => {
+          setNewsSlice(n);
+        }}
+      />
     </Container>
   );
 }

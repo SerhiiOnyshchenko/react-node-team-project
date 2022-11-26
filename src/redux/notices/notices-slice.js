@@ -31,6 +31,16 @@ const noticesSlice = createSlice({
     [noticesOperations.getUserNotices.rejected](state) {
       state.isLoading = false;
     },
+    [noticesOperations.deleteUserNotices.pending](state) {
+      state.isLoading = true;
+    },
+    [noticesOperations.deleteUserNotices.fulfilled](state, action) {
+      state.notices = action.payload;
+      state.isLoading = false;
+    },
+    [noticesOperations.deleteUserNotices.rejected](state) {
+      state.isLoading = false;
+    },
   },
 });
 

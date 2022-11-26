@@ -14,7 +14,8 @@
 	pointer-events: initial;
 	transform: scale(1);
 	transition: var(--transition);
-	z-index: 100;
+	z-index: 1000;
+	overflow: scroll;
 }
 
 .Content {
@@ -40,7 +41,7 @@
 	transition: var(--transition);
 }
 @media screen and (min-width: 768px) {
-	.Btn_close{
+	.Btn_close {
 		width: 44px;
 		height: 44px;
 	}
@@ -52,7 +53,7 @@
 
 @media screen and (min-width: 768px) {
 	.Content {
-		padding: 40px 20px;
+		/* padding: 40px 80px; */
 		width: 704px;
 		height: auto;
 		border-radius: 40px;

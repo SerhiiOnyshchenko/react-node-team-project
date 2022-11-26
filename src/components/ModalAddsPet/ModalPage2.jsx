@@ -1,4 +1,5 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useState } from 'react';
 import * as yup from 'yup';
 import s from './index.module.css';
 
@@ -14,28 +15,50 @@ const validationSchema = yup.object({
     .required(),
 });
 
-const initialValues = {
-  comments: '',
-};
-
-export default function ModalPage2(props) {
+export default function ModalPage2({ next, data, onClose, prev }) {
+  const [fileInput, setFileInput] = useState('');
   const handleSubmit = values => {
-    props.next(values, true);
+    next({ ...values, image: fileInput }, true);
+    onClose();
   };
+
+  const selectFile = e => {
+    const [file] = e.target.files;
+    if (file) {
+      setFileInput(file);
+    }
+  };
+
   return (
     <>
       <div className={s.title}>Add pet</div>
       <div className={s.formWrapper}>
         <Formik
-          initialValues={initialValues}
+          initialValues={data}
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >
-          <Form autoComplete="off" className={s.formPageTwo}>
+          <Form autoComplete="on" className={s.formPageTwo}>
             <p className={s.addPhotoText}>Add photo and some comments</p>
-            <button type="button" className={s.addPhotoBtn}>
-              +
-            </button>
+            <div className={s.addFileBtnWrapper}>
+              {fileInput ? (
+                <img
+                  className={s.inputImage}
+                  src={URL.createObjectURL(fileInput)}
+                  alt={fileInput.name}
+                />
+              ) : (
+                <button type="button" className={s.addPhotoBtn}></button>
+              )}
+              <Field
+                type="file"
+                name="image"
+                accept=".jpg,.png"
+                onChange={selectFile}
+                className={s.addFileInput}
+              />
+            </div>
+
             <div className={s.textareaWrapper}>
               <label className={s.label}>Comments</label>
               <Field
@@ -46,19 +69,16 @@ export default function ModalPage2(props) {
               ></Field>
               <ErrorMessage name="comments" />
             </div>
+
+            <div className={s.buttonsWrapper}>
+              <button type="submit" className={s.buttonSubmit}>
+                Submit
+              </button>
+              <button type="button" onClick={prev} className={s.buttonSimple}>
+                Back
+              </button>
+            </div>
           </Form>
-          <div className={s.buttonsWrapper}>
-            <button
-              type="button"
-              onClick={props.prev}
-              className={s.buttonSimple}
-            >
-              Back
-            </button>
-            <button type="submit" className={s.buttonSubmit}>
-              Done
-            </button>
-          </div>
         </Formik>
       </div>
     </>

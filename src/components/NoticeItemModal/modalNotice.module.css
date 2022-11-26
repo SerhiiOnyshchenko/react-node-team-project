@@ -63,13 +63,20 @@
 
 }
 .label{
+    font-size: 14px;
     font-weight: 600;
     line-height: 19px;
 }
 .lebalText{
+    font-size: 14px;
     width: 50%;
     font-weight: 500;
     line-height: 19px;
+}@media screen and (max-width: 767px) {
+    .lebalText {
+        overflow: scroll;
+        text-overflow: clip;
+    }
 }
 @media screen and (min-width: 768px){
     .lebalText{
