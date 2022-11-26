@@ -7,6 +7,7 @@ import s from './modalItem.module.css';
 import { toast } from 'react-toastify';
 import modalImage from '../../images/no-image-found.png';
 import { ReactComponent as HeartBtnM } from '../../images/svg/heartBtnM.svg';
+import getPetAge from './getPetAge';
 
 const NOTICE_ITEM_KEYS = [
   {
@@ -19,7 +20,7 @@ const NOTICE_ITEM_KEYS = [
   },
   {
     label: 'Age:',
-    key: 'dateOfBirth',
+    key: 'age',
   },
   {
     label: 'Price:',
@@ -32,6 +33,9 @@ export default function NoticeItem({ petData }) {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const userFavorite = useSelector(authSelectors.getUserFavorite);
   const inFavorites = userFavorite.some(favor => favor._id === petData._id);
+  const petAge = getPetAge(
+    new Date(petData.dateOfBirth.split('.').reverse().join('.'))
+  );
 
   const dispatch = useDispatch();
 
@@ -85,7 +89,7 @@ export default function NoticeItem({ petData }) {
               return (
                 <li key={key} className={s.infoList}>
                   <span className={s.label}>{label}</span>
-                  <span className={s.lebalText}>{petData[key]}</span>
+                  <span className={s.lebalText}>{petData[key] || petAge}</span>
                 </li>
               );
             })}
