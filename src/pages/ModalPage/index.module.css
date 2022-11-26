@@ -20,7 +20,7 @@
 
 .Content {
 	position: relative;
-	padding: 40px 20px;
+	padding: 60px 20px 40px;
 	width: 280px;
 	height: auto;
 	background: var(--modal-bg);
@@ -31,8 +31,8 @@
 	position: absolute;
 	top: 24px;
 	right: 24px;
-	width: 44px;
-	height: 44px;
+	width: 34px;
+	height: 34px;
 	background-color: var(--bg);
 	background-image: url(../../images/svg/close.svg);
 	background-repeat: no-repeat;

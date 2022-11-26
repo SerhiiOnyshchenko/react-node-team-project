@@ -8,6 +8,9 @@ import MaskInput from 'components/MaskInput';
 import * as yup from 'yup';
 import { toast } from 'react-toastify';
 import DropList from 'components/DropList';
+import { parse } from 'date-fns';
+
+const today = new Date();
 
 export default function UserDataItem({
   field,
@@ -35,6 +38,21 @@ export default function UserDataItem({
         'Address should be in format: City, Region'
       ),
   });
+  const birthdaySchema = yup.object({
+    birthday: yup
+      .date()
+      .transform(function (value, originalValue) {
+        if (this.isType(value)) {
+          return value;
+        }
+        const result = parse(originalValue, 'dd.MM.yyyy', new Date());
+        return result;
+      })
+      .typeError('Please enter a valid date')
+      .required()
+      .min('1920-11-13', 'Date is too early')
+      .max(today),
+  });
 
   const handleSubmit = async () => {
     let error = true;
@@ -53,6 +71,15 @@ export default function UserDataItem({
       });
       if (!error) {
         toast.error('Address should be in format: City, Region');
+        return;
+      }
+    }
+    if (field === 'Birthday') {
+      error = await birthdaySchema.isValid({
+        birthday: inputValue,
+      });
+      if (!error) {
+        toast.error('Please enter a valid date');
         return;
       }
     }
@@ -88,6 +115,7 @@ export default function UserDataItem({
       }
     }
   };
+
   return (
     <form ref={form}>
       <div className={s.wrapper}>
