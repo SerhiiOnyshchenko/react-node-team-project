@@ -19,7 +19,7 @@ const NOTICE_ITEM_KEYS = [
   },
   {
     label: 'Age:',
-    key: 'year',
+    key: 'dateOfBirth',
   },
   {
     label: 'Price:',
