@@ -1,3 +1,4 @@
+import EllipsisText from 'react-ellipsis-text';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { authOperations, authSelectors } from 'redux/auth';
@@ -82,14 +83,22 @@ export default function NoticeItem({ petData }) {
           <div className={s.categoryLabel}>{petData.category}</div>
         </div>
         <div className={s.infoWrapper}>
-          <h3 className={s.title}>{petData.titleOfAd}</h3>
+          <EllipsisText
+            text={petData.titleOfAd}
+            length={18}
+            className={s.title}
+          ></EllipsisText>
           <ul>
             {NOTICE_ITEM_KEYS.map(({ label, key, category }) => {
               if (category && category !== petData.category) return null;
               return (
                 <li key={key} className={s.infoList}>
                   <span className={s.label}>{label}</span>
-                  <span className={s.lebalText}>{petData[key] || petAge}</span>
+                  <EllipsisText
+                    text={petData[key] || petAge}
+                    length={18}
+                    className={s.lebalText}
+                  ></EllipsisText>
                 </li>
               );
             })}

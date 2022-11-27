@@ -5,6 +5,8 @@
   right: 20px;
   top: 440px;
   z-index: 23;
+  cursor: pointer;
+  transition: var(--transition);
 }
 @media screen and (min-width: 768px) {
   .btnWrapper {
@@ -18,7 +20,10 @@
     position: relative;
   }
 }
-
+.btnWrapper:hover,
+.btnWrapper:focus {
+  color: var(--btn-bg-another);
+}
 .btn {
   width: 80px;
   height: 80px;
@@ -29,6 +34,11 @@
   border-radius: 50%;
   background-color: var(--btn-bg-another);
   color: #fff;
+  transition: var(--transition);
+}
+.btn:hover,
+.btn:focus {
+  font-size: medium;
 }
 @media screen and (min-width: 768px) {
   .btn {
