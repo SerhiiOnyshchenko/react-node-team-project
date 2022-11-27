@@ -15,8 +15,8 @@ export default function NoticesPage() {
     const newNotices = notices.filter(notice =>
       notice.titleOfAd.toLowerCase().includes(search.toLowerCase())
     );
-		setFilteredNotices(newNotices);
-		console.log(filteredNotices);
+    setFilteredNotices(newNotices);
+    console.log(filteredNotices);
   };
 
   useEffect(() => {
@@ -39,6 +39,7 @@ export default function NoticesPage() {
         <NoticesCategoriesNav />
         <AddNoticeButton />
       </div>
+
       <Outlet />
     </Container>
   );

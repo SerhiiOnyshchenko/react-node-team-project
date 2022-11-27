@@ -26,8 +26,8 @@ export default function AppPagination({ totalHits, pageSize, data, setData }) {
         setData(items);
       }
     });
- // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [totalHits, pagination.from, pagination.to, data]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, pagination.from, pagination.to]);
 
   const handlePageChange = (event, page) => {
     const from = (page - 1) * pageSize;
@@ -40,7 +40,7 @@ export default function AppPagination({ totalHits, pageSize, data, setData }) {
     pageSize < totalHits && (
       <Pagination
         className={s.pagination}
-        count={totalHits / pageSize}
+        count={Math.ceil(totalHits / pageSize)}
         onChange={handlePageChange}
       />
     )

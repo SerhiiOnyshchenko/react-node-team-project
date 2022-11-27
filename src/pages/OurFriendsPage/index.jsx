@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import s from './index.module.css';
 import ItemFrien from '../../components/ItemFriend';
 import { useDispatch, useSelector } from 'react-redux';
 import { friendsOperations, friendsSelectors } from 'redux/friends';
+import Pagination from 'components/Pagination';
 
 export default function OurFriendsPage() {
   const dispatch = useDispatch();
   const friendsList = useSelector(friendsSelectors.getFriends);
+  const [friendsSlice, setFriendsSlice] = useState([]);
   useEffect(() => {
     dispatch(friendsOperations.fetchFriends());
   }, [dispatch]);
@@ -19,7 +21,7 @@ export default function OurFriendsPage() {
           <div className={s.container}>
             <div className={s.align_container}>
               {friendsList[0] &&
-                friendsList.map(el => (
+                friendsSlice.map(el => (
                   <ItemFrien
                     key={el._id}
                     site={el.addressUrl}
@@ -34,6 +36,14 @@ export default function OurFriendsPage() {
               ;
             </div>
           </div>
+          <Pagination
+            totalHits={9}
+            pageSize={6}
+            data={friendsList}
+            setData={n => {
+              setFriendsSlice(n);
+            }}
+          />
         </>
       )}
     </>
