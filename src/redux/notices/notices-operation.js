@@ -25,13 +25,36 @@ export const getUserNotices = createAsyncThunk(
     }
   }
 );
+export const createNotices = createAsyncThunk(
+  'notices/createNotices',
+  async ({ values, token }, thunkAPI) => {
+    try {
+      const header = {
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data',
+        },
+      };
+
+      await axios.post(`/notices`, values, header);
+      const { data } = await axios.get('notices/user');
+      toast.success('New notice added!');
+      return data;
+    } catch (error) {
+      toast.error(error.response.data.message);
+      return thunkAPI.rejectWithValue();
+    }
+  }
+);
 
 export const deleteUserNotices = createAsyncThunk(
   'notices/deleteUserNotices',
   async petId => {
     try {
       await axios.delete(`/notices/${petId}`);
-      const { data } = await axios.get('notices/getUserNotices');
+      const { data } = await axios.get('notices/user');
+      toast.success('Notice deleted!');
       return data;
     } catch (error) {
       toast.error(error.response.data.message);

@@ -4,11 +4,12 @@
 	left: 0;
 	right: 0;
 	max-height: 200px;
-	padding: 20px 40px;
+	padding: 20px 20px;
 	background: var(--bg);
 	border: 2px solid rgba(245, 146, 86, 0.5);
 	border-radius: 30px;
 	overflow: auto;
+	text-align: left;
 	z-index: 5;
 	white-space: nowrap;
 	text-overflow: ellipsis;

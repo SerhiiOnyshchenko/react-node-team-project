@@ -1,3 +1,9 @@
+.containerPet {
+	padding: 40px 20px;
+}
+.errorMsg {
+	color: red;
+}
 .title {
 	font-size: 24px;
 	line-height: 1.75;
@@ -146,6 +152,7 @@
 
 .addFileBtnWrapper {
 	position: relative;
+	margin: 0 auto;
 }
 
 .addFileInput {
@@ -179,13 +186,19 @@
 }
 
 @media screen and (min-width: 768px) {
+	.containerPet {
+		width: 608px;
+		padding: 40px 80px;
+	}
 	.input,
 	.inputLast {
 		width: 448px;
 	}
-
+	.textarea {
+		width: 394px;
+	}
 	.buttonsWrapper {
-		flex-direction: row;
+		flex-direction: row-reverse;
 		justify-content: center;
 		gap: 20px;
 	}
@@ -193,10 +206,5 @@
 	.buttonSubmit,
 	.buttonSimple {
 		width: 180px;
-	}
-
-	.formWrapper {
-		margin-right: 80px;
-		margin-left: 80px;
 	}
 }

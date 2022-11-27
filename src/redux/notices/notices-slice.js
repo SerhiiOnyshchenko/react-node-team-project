@@ -25,17 +25,27 @@ const noticesSlice = createSlice({
       state.isLoading = true;
     },
     [noticesOperations.getUserNotices.fulfilled](state, action) {
-      state.notices = action.payload;
+      state.userNotices = action.payload;
       state.isLoading = false;
     },
     [noticesOperations.getUserNotices.rejected](state) {
+      state.isLoading = false;
+    },
+    [noticesOperations.createNotices.pending](state) {
+      state.isLoading = true;
+    },
+    [noticesOperations.createNotices.fulfilled](state, action) {
+      state.userNotices = action.payload;
+      state.isLoading = false;
+    },
+    [noticesOperations.createNotices.rejected](state) {
       state.isLoading = false;
     },
     [noticesOperations.deleteUserNotices.pending](state) {
       state.isLoading = true;
     },
     [noticesOperations.deleteUserNotices.fulfilled](state, action) {
-      state.notices = action.payload;
+      state.userNotices = action.payload;
       state.isLoading = false;
     },
     [noticesOperations.deleteUserNotices.rejected](state) {

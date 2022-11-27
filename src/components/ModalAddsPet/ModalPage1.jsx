@@ -33,7 +33,7 @@ const validationSchema = yup.object({
   breed: yup
     .string()
     .min(2)
-    .max(25)
+    .max(35)
     .matches(/[a-zA-Z]/, 'Only alphanumeric characters are allowed')
     .required(),
 });
@@ -51,7 +51,6 @@ export default function ModalPage1({ data, setFormData, next, onClose }) {
   const changeInputBreed = e => {
     if (/\d/g.test(e.target.value)) return;
     if (e.target.value !== ' ') {
-      // setFormData(pre => ({ ...pre, breed: e.target.value }));
       setBreedValue(e.target.value);
       if (e.target.value.length >= 3) {
         dispatch(authOperations.searchBreeds(e.target.value));
@@ -62,7 +61,7 @@ export default function ModalPage1({ data, setFormData, next, onClose }) {
     }
   };
   return (
-    <>
+    <div className={s.containerPet}>
       <div className={s.title}>Add pet</div>
       <div className={s.formWrapper}>
         <Formik
@@ -102,7 +101,7 @@ export default function ModalPage1({ data, setFormData, next, onClose }) {
             />
 
             <label htmlFor="breed" className={s.label}>
-              Type breed
+              Breed
             </label>
             <div style={{ position: 'relative' }}>
               <Field
@@ -117,7 +116,6 @@ export default function ModalPage1({ data, setFormData, next, onClose }) {
                 <DropList
                   list={listBreeds}
                   onSelect={str => {
-                    // setFormData(pre => ({ ...pre, breed: str }));
                     setBreedValue(str);
                     setShowDropList(false);
                   }}
@@ -144,6 +142,6 @@ export default function ModalPage1({ data, setFormData, next, onClose }) {
           </Form>
         </Formik>
       </div>
-    </>
+    </div>
   );
 }

@@ -38,6 +38,14 @@ export default function UserDataItem({
         'Address should be in format: City, Region'
       ),
   });
+  const phoneSchema = yup.object({
+    phone: yup
+      .string()
+      .matches(
+        /^\+38\(0..\)...-..-../,
+        'Phone should be in format +38(067)123-45-67'
+      ),
+  });
   const birthdaySchema = yup.object({
     birthday: yup
       .date()
@@ -54,8 +62,18 @@ export default function UserDataItem({
       .max(today),
   });
 
-  const handleSubmit = async () => {
+  const handleSubmit = async e => {
+    e.preventDefault();
     let error = true;
+    if (field === 'Phone') {
+      error = await phoneSchema.isValid({
+        phone: inputValue,
+      });
+      if (!error) {
+        toast.error('Phone should be in format +38(067)123-45-67');
+        return;
+      }
+    }
     if (field === 'Email') {
       error = await emailSchema.isValid({
         email: inputValue,
@@ -117,7 +135,7 @@ export default function UserDataItem({
   };
 
   return (
-    <form ref={form}>
+    <form ref={form} onSubmit={handleSubmit}>
       <div className={s.wrapper}>
         <p className={s.field}>{field}:</p>
 

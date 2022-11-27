@@ -27,6 +27,10 @@ export default function NoticesCategoriesList() {
   }, [category]);
 
   useEffect(() => {
+    setNoticesData(favorite);
+  }, [favorite]);
+
+  useEffect(() => {
     setNoticesData(userNotices);
   }, [userNotices]);
 

@@ -53,6 +53,7 @@ export default function ModalAddsPet({ onClose }) {
       onClose={onClose}
       next={handleNextStep}
       data={formData}
+      setFormData={setFormData}
       title={FormTitles[page]}
     />,
   ];

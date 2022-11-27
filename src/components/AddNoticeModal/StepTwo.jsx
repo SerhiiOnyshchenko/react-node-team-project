@@ -1,14 +1,17 @@
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import s from './index.module.css';
-import bigPlus from '../../images/svg/big-plus.svg';
 import * as yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { noticesOperations } from 'redux/notices';
+import { useDispatch, useSelector } from 'react-redux';
+import { authSelectors } from 'redux/auth';
+import { useNavigate } from 'react-router-dom';
 
 const validationSchema = yup.object({
   sex: yup.string().required('Field is required!'),
   location: yup.string().required('Field is required!'),
-  price: yup.string().notRequired(),
+  price: yup.number().min(0).max(10000).notRequired(),
   image: yup
     .mixed()
     .required('Image is Required!(jpg,jpeg,png)')
@@ -23,27 +26,19 @@ const validationSchema = yup.object({
 
 const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png'];
 
-const StepTwo = ({ formData, setFormData, nextStep, prevStep, file }) => {
+const StepTwo = ({ formData, setFormData, prevStep, onClose }) => {
   const [direction, setDirection] = useState('back');
-  const [fileValue, setFileValue] = useState('');
-
-  const checkCategory = () => {
-    return formData.category === 'sell';
-  };
+  const [fileInput, setFileInput] = useState(formData.image);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const token = useSelector(authSelectors.getUserToken);
 
   const handleAddAvatar = (e, setFieldValue) => {
     const [file] = e.target.files;
-    const reader = new FileReader();
     if (file) {
+      setFileInput(file);
       setFieldValue('image', file);
-      reader.readAsDataURL(file);
-      reader.onloadend = e => {
-        const base64data = reader.result;
-        setFileValue(base64data);
-        setFormData(values => {
-          return { ...values, image: file };
-        });
-      };
+      setFormData(values => ({ ...values, image: file }));
     }
   };
 
@@ -53,17 +48,25 @@ const StepTwo = ({ formData, setFormData, nextStep, prevStep, file }) => {
         validationSchema={validationSchema}
         initialValues={formData}
         onSubmit={values => {
-          setFormData(values);
-          direction === 'back' ? prevStep() : nextStep();
+          setFormData({
+            ...values,
+            image: fileInput,
+            price: values.category !== 'sell' ? '0' : values.price,
+          });
+          if (direction === 'back') {
+            prevStep();
+          }
           if (direction === 'forward') {
-            // dispatch(authOperations.register(registerValues));
+            dispatch(noticesOperations.createNotices({ values, token }));
+            navigate('/notices/own');
+            onClose();
           }
         }}
       >
         {({ setFieldValue }) => (
           <Form className={s.textFildWrap}>
             <fieldset className={s.sexWrap}>
-              <legend className={s.sexM}>The sex</legend>
+              <legend className={s.sexM}>The sex*:</legend>
               <label className={s.sexLabel} htmlFor="male">
                 <Field
                   className={s.inputSex}
@@ -89,11 +92,11 @@ const StepTwo = ({ formData, setFormData, nextStep, prevStep, file }) => {
                 <span className={s.sexIconFemale}></span>
                 <span className={s.sexText}>Female</span>
               </label>
-              <ErrorMessage
-                name="sex"
-                render={msg => <div className={s.secStepError}>{msg}</div>}
-              />
             </fieldset>
+            <ErrorMessage
+              name="sex"
+              render={msg => <div className={s.errorMsg}>{msg}</div>}
+            />
             <div className={s.textFildWrap}>
               <label htmlFor="location" type="text" className={s.label}>
                 Location*:
@@ -109,14 +112,17 @@ const StepTwo = ({ formData, setFormData, nextStep, prevStep, file }) => {
                 render={msg => <div className={s.errorMsg}>{msg}</div>}
               />
             </div>
-            {checkCategory() && (
-              <div>
+            {formData.category === 'sell' && (
+              <div className={s.textFildWrap}>
                 <label htmlFor="price" type="text" className={s.label}>
                   Price*:
                 </label>
                 <Field
                   id="price"
                   name="price"
+                  type="number"
+                  min="0"
+                  max="10000"
                   placeholder="Type price"
                   className={s.inputText}
                 />
@@ -126,37 +132,35 @@ const StepTwo = ({ formData, setFormData, nextStep, prevStep, file }) => {
                 />
               </div>
             )}
-            <label htmlFor="price" type="text" className={s.label}>
-              Load the pet's image:
-            </label>
             <label htmlFor="image" className={s.avatarLabel}>
-              <div className={s.addImage}>
-                {file ? (
-                  <img
-                    id="image"
-                    className={s.selectedAvatar}
-                    src={file}
-                    alt={formData.image.name}
-                  />
-                ) : (
-                  <img src={bigPlus} alt="add" />
-                )}
-              </div>
+              Load the pet's image*:
+            </label>
+            <div className={s.addImage}>
+              {fileInput && (
+                <img
+                  id="image"
+                  className={s.selectedAvatar}
+                  src={URL.createObjectURL(fileInput)}
+                  alt={fileInput.name}
+                />
+              )}
+
               <input
                 className={s.inputFile}
                 type="file"
                 id="image"
                 name="image"
+                accept=".jpg,.png"
                 onChange={e => handleAddAvatar(e, setFieldValue)}
               />
-            </label>
-            <ErrorMessage
-              name="image"
-              render={msg => <div className={s.errorMsg}>{msg}</div>}
-            />
+              <ErrorMessage
+                name="image"
+                render={msg => <div className={s.errorMsg}>{msg}</div>}
+              />
+            </div>
             <div className={s.textFildWrap}>
               <label className={s.label} htmlFor="comments">
-                Comments
+                Comments*:
               </label>
               <Field
                 component="textarea"
@@ -164,7 +168,7 @@ const StepTwo = ({ formData, setFormData, nextStep, prevStep, file }) => {
                 id="comments"
                 rows="3"
                 placeholder="Type comments"
-                className={s.inputText}
+                className={s.inputTextarea}
               ></Field>
               <ErrorMessage
                 name="comments"
