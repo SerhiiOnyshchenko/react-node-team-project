@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import NoticesCategoriesList from './components/NoticesCategoriesList';
 import Loader from './components/Loader';
+import BtnScrollToTop from 'components/BtnScrollToTop';
 
 const LoginPage = lazy(() => import('./pages/LoginPage'));
 const RegisterPage = lazy(() => import('./pages/RegisterPage'));
@@ -24,11 +25,6 @@ export default function App() {
   const isRefreshing = useSelector(authSelectors.getIsRefreshing);
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
-
-    // dispatch(changeLoader(true));
-    // setTimeout(() => {
-    //   dispatch(changeLoader(false));
-    // }, 2000);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -39,6 +35,7 @@ export default function App() {
       ) : (
         <>
           <Header />
+          <BtnScrollToTop />
           <Routes>
             <Route
               path="/"

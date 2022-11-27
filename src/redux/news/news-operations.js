@@ -6,20 +6,10 @@ export const getNews = createAsyncThunk('news/getNews', async query => {
   try {
     if (query === undefined || query === '') {
       const { data } = await axios.get('/news');
-      if (data.data) {
-        data.data.sort((a, b) => {
-          return new Date(b.date) - new Date(a.date);
-        });
-      }
       return data;
     }
     if (query) {
       const { data } = await axios.get(`/news?query=${query}`);
-      if (data.data) {
-        data.data.sort((a, b) => {
-          return new Date(b.date) - new Date(a.date);
-        });
-      }
       return data;
     }
   } catch (error) {
