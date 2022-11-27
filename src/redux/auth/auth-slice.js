@@ -6,7 +6,9 @@ const initialState = {
   isLoading: false,
   token: null,
   isLoggedIn: false,
+  isRefreshing: true,
   cities: [],
+  breeds: [],
   favorite: [],
   disabledBtn: false,
 };
@@ -20,7 +22,7 @@ const authSlice = createSlice({
     });
     builder.addCase(authOperations.register.fulfilled, (state, action) => {
       state.user = action.payload.user;
-      state.token = action.payload.token;
+      state.token = action.payload.user.token;
       state.isLoggedIn = true;
       state.isLoading = false;
       state.favorite = action.payload.favorite;
@@ -47,14 +49,22 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
       state.favorite = [];
     });
+    builder.addCase(authOperations.fetchCurrentUser.pending, state => {
+      state.isRefreshing = true;
+    });
     builder.addCase(
       authOperations.fetchCurrentUser.fulfilled,
       (state, action) => {
         state.user = action.payload.user;
         state.isLoggedIn = true;
+        state.isRefreshing = false;
         state.favorite = action.payload.favorite;
       }
     );
+    builder.addCase(authOperations.fetchCurrentUser.rejected, state => {
+      state.isLoggedIn = false;
+      state.isRefreshing = false;
+    });
     builder.addCase(authOperations.patchUserInfo.pending, state => {
       state.disabledBtn = true;
     });
@@ -65,8 +75,17 @@ const authSlice = createSlice({
     builder.addCase(authOperations.patchUserInfo.rejected, state => {
       state.disabledBtn = false;
     });
+    builder.addCase(authOperations.searchCity.pending, (state, action) => {
+      state.cities = [];
+    });
     builder.addCase(authOperations.searchCity.fulfilled, (state, action) => {
       state.cities = action.payload;
+    });
+    builder.addCase(authOperations.searchBreeds.pending, (state, action) => {
+      state.breeds = [];
+    });
+    builder.addCase(authOperations.searchBreeds.fulfilled, (state, action) => {
+      state.breeds = action.payload;
     });
     builder.addCase(authOperations.getFavorite.fulfilled, (state, action) => {
       state.favorite = action.payload;

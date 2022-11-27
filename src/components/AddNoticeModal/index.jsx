@@ -3,7 +3,7 @@ import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 import s from './index.module.css';
 
-export default function AddNoticeModal() {
+export default function AddNoticeModal({ onClose }) {
   const [step, setStep] = useState(1);
 
   const [formData, setFormData] = useState({
@@ -12,10 +12,10 @@ export default function AddNoticeModal() {
     breed: '',
     sex: '',
     location: '',
-    price: '',
+    price: '0',
     category: '',
     comments: '',
-    birthDate: '',
+    dateOfBirth: '',
     image: '',
   });
 
@@ -31,6 +31,7 @@ export default function AddNoticeModal() {
             formData={formData}
             setFormData={setFormData}
             nextStep={nextStep}
+            onClose={onClose}
           />
         </div>
       );
@@ -41,8 +42,8 @@ export default function AddNoticeModal() {
           <StepTwo
             formData={formData}
             setFormData={setFormData}
-            nextStep={nextStep}
             prevStep={prevStep}
+            onClose={onClose}
           />
         </div>
       );

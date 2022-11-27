@@ -15,12 +15,11 @@ const validationSchema = yup.object({
     .required(),
 });
 
-export default function ModalPage2(props) {
+export default function ModalPage2({ next, data, onClose, prev }) {
   const [fileInput, setFileInput] = useState('');
-
   const handleSubmit = values => {
-    props.next({ ...values, image: fileInput }, true);
-    props.closeModal();
+    next({ ...values, image: fileInput }, true);
+    onClose();
   };
 
   const selectFile = e => {
@@ -35,7 +34,7 @@ export default function ModalPage2(props) {
       <div className={s.title}>Add pet</div>
       <div className={s.formWrapper}>
         <Formik
-          initialValues={props.data}
+          initialValues={data}
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >
@@ -75,11 +74,7 @@ export default function ModalPage2(props) {
               <button type="submit" className={s.buttonSubmit}>
                 Submit
               </button>
-              <button
-                type="button"
-                onClick={props.prev}
-                className={s.buttonSimple}
-              >
+              <button type="button" onClick={prev} className={s.buttonSimple}>
                 Back
               </button>
             </div>

@@ -4,9 +4,8 @@ import s from './index.module.css';
 import ModalPage from 'pages/ModalPage';
 import ModalAddsPet from 'components/ModalAddsPet';
 
-export default function PetsData(props) {
+export default function PetsData() {
   const [showModal, setShowModal] = useState(false);
-
   const onAddPetBtnClick = () => {
     setShowModal(true);
   };
@@ -26,7 +25,7 @@ export default function PetsData(props) {
         </div>
         {showModal && (
           <ModalPage onClose={() => setShowModal(false)}>
-            <ModalAddsPet />
+            <ModalAddsPet onClose={() => setShowModal(false)} />
           </ModalPage>
         )}
         <PetsList />

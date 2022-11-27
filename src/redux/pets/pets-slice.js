@@ -32,8 +32,15 @@ const petsSlice = createSlice({
       state.isLoading = false;
     },
 
+    [petsOperations.deleteUserPet.pending](state) {
+      state.isLoading = true;
+    },
     [petsOperations.deleteUserPet.fulfilled](state, { payload }) {
       state.pets = payload;
+      state.isLoading = false;
+    },
+    [petsOperations.deleteUserPet.rejected](state) {
+      state.isLoading = false;
     },
   },
 });

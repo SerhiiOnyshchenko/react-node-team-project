@@ -8,6 +8,7 @@ export default function ModalPage({ children, onClose }) {
 
   useEffect(() => {
     window.addEventListener('keydown', closeModalEscKey);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

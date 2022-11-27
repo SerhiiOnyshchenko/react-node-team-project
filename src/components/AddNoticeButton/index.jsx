@@ -36,7 +36,11 @@ export default function AddNoticeButton() {
             setOpen(false);
           }}
         >
-          <AddNoticeModal />
+          <AddNoticeModal
+            onClose={() => {
+              setOpen(false);
+            }}
+          />
         </ModalPage>
       )}
     </>

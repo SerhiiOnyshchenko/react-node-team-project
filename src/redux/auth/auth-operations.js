@@ -18,8 +18,11 @@ const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post('/user/registration', credentials);
-      token.set(data.token);
+      token.set(data.user.token);
       const favorite = await axios.get('/user/favorite');
+      toast.success(
+        'Congratulations, your account has been successfully created.'
+      );
       return { ...data, favorite: favorite.data };
     } catch (error) {
       const errorData = error.response.data;
@@ -40,6 +43,7 @@ const logIn = createAsyncThunk('auth/logIn', async (credentials, thunkAPI) => {
     const { data } = await axios.post('/user/login', credentials);
     token.set(data.token);
     const favorite = await axios.get('/user/favorite');
+    toast.success('Login Success!');
     return { ...data, favorite: favorite.data };
   } catch (error) {
     toast.error(error.response.data.message);
@@ -93,6 +97,8 @@ const patchUserInfo = createAsyncThunk(
         },
       };
       const { data } = await axios.patch('/user/update', config, header);
+      toast.success('Your information was update');
+
       return data;
     } catch (error) {
       const { message } = error.response.data.message;
@@ -104,6 +110,15 @@ const patchUserInfo = createAsyncThunk(
 const searchCity = createAsyncThunk('auth/searchCity', async q => {
   try {
     const { data } = await axios.get(`/cities/search?q=${q}`);
+    return data;
+  } catch (error) {
+    toast.error(error.response.data.message);
+  }
+});
+
+const searchBreeds = createAsyncThunk('auth/searchBreeds', async q => {
+  try {
+    const { data } = await axios.get(`/breeds/search?q=${q}`);
     return data;
   } catch (error) {
     toast.error(error.response.data.message);
@@ -152,5 +167,6 @@ const operations = {
   deleteFromFavorite,
   getFavorite,
   patchUserInfo,
+  searchBreeds,
 };
 export default operations;

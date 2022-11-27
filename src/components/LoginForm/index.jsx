@@ -4,7 +4,6 @@ import * as yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { authOperations, authSelectors } from '../../redux/auth';
-import { toast } from 'react-toastify';
 import { RotatingLines } from 'react-loader-spinner';
 
 const validationSchema = yup.object({
@@ -29,9 +28,7 @@ export default function LoginForm() {
           try {
             await dispatch(authOperations.logIn(values)).unwrap();
             navigate('/user');
-          } catch (e) {
-            toast.error('Wrong email or password');
-          }
+          } catch (error) {}
         }}
       >
         {({ handleSubmit, handleChange, touched, errors }) => (
