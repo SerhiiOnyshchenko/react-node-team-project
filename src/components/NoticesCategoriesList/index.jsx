@@ -95,7 +95,7 @@ export default function NoticesCategoriesList() {
       )}
       <Pagination
         totalHits={noticesData.length}
-        pageSize={3}
+        pageSize={8}
         data={noticesData}
         setData={n => {
           setNoticesSlice(n);
