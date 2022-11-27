@@ -1,0 +1,27 @@
+.Backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(17, 17, 17, 0.6);
+    backdrop-filter: blur(10px);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: initial;
+    transform: scale(1);
+    transition: var(--transition);
+    z-index: 110;
+}
+
+.Content {
+    position: relative;
+    padding: 20px;
+    width: fit-content;
+    height: auto;
+    background: var(--modal-bg);
+    border-radius: 20px;
+}
