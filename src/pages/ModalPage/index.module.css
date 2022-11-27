@@ -4,33 +4,33 @@
 	left: 0;
 	width: 100vw;
 	height: 100vh;
+	padding: 20px 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	background: rgba(17, 17, 17, 0.6);
 	backdrop-filter: blur(10px);
-	opacity: 1;
 	visibility: visible;
 	pointer-events: initial;
-	transform: scale(1);
 	transition: var(--transition);
 	z-index: 1000;
-	overflow: scroll;
 }
 
 .Content {
 	position: relative;
-	padding: 60px 20px 40px;
 	width: 280px;
-	height: auto;
+	max-height: 100%;
 	background: var(--modal-bg);
 	border-radius: 20px;
+	overflow: auto;
 }
-
+.Content::-webkit-scrollbar {
+	width: 0;
+}
 .Btn_close {
 	position: absolute;
-	top: 24px;
-	right: 24px;
+	top: 20px;
+	right: 20px;
 	width: 34px;
 	height: 34px;
 	background-color: var(--bg);
@@ -40,22 +40,20 @@
 	border-radius: 50%;
 	transition: var(--transition);
 }
-@media screen and (min-width: 768px) {
-	.Btn_close {
-		width: 44px;
-		height: 44px;
-	}
-}
 
 .Btn_close:hover {
 	background-color: var(--btn-bg-hover-active);
 }
 
 @media screen and (min-width: 768px) {
+	.Btn_close {
+		top: 24px;
+		right: 24px;
+		width: 44px;
+		height: 44px;
+	}
 	.Content {
-		/* padding: 40px 80px; */
-		width: 704px;
-		height: auto;
+		min-width: 608px;
 		border-radius: 40px;
 	}
 }

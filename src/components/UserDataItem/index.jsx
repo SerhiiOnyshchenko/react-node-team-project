@@ -38,6 +38,14 @@ export default function UserDataItem({
         'Address should be in format: City, Region'
       ),
   });
+  const phoneSchema = yup.object({
+    phone: yup
+      .string()
+      .matches(
+        /^\+38\(0..\)...-..-../,
+        'Phone should be in format +38(067)123-45-67'
+      ),
+  });
   const birthdaySchema = yup.object({
     birthday: yup
       .date()
@@ -56,6 +64,15 @@ export default function UserDataItem({
 
   const handleSubmit = async () => {
     let error = true;
+    if (field === 'Phone') {
+      error = await phoneSchema.isValid({
+        phone: inputValue,
+      });
+      if (!error) {
+        toast.error('Phone should be in format +38(067)123-45-67');
+        return;
+      }
+    }
     if (field === 'Email') {
       error = await emailSchema.isValid({
         email: inputValue,

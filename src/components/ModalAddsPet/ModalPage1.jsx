@@ -51,7 +51,6 @@ export default function ModalPage1({ data, setFormData, next, onClose }) {
   const changeInputBreed = e => {
     if (/\d/g.test(e.target.value)) return;
     if (e.target.value !== ' ') {
-      // setFormData(pre => ({ ...pre, breed: e.target.value }));
       setBreedValue(e.target.value);
       if (e.target.value.length >= 3) {
         dispatch(authOperations.searchBreeds(e.target.value));
@@ -117,7 +116,6 @@ export default function ModalPage1({ data, setFormData, next, onClose }) {
                 <DropList
                   list={listBreeds}
                   onSelect={str => {
-                    // setFormData(pre => ({ ...pre, breed: str }));
                     setBreedValue(str);
                     setShowDropList(false);
                   }}

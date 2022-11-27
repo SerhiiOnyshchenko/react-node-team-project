@@ -1,152 +1,155 @@
-.infoWrapper{
-    margin-bottom: 28px;
-}
-@media screen and (min-width: 768px){
-    .infoWrapper{
-        display: inline-flex;
-    }
-}
-.imgWrapper{
-    position: relative;
-    width: 240px;
-    height: 240px;
-    border-radius: 0px 0px 40px 40px;
-    overflow: hidden;
-    margin: 0 auto 16px auto;
-}
-@media screen and (min-width: 768px) {
-    .imgWrapper{
-        width: 288px;
-        height: 328px;
-        margin: 0 20px 0 0;
-    }
+.container {
 }
 
-.categoryLabel{
-    position: absolute;
-    top: 20px;
-    left: 0;
-    width: 158px;
-    padding: 6px 20px;
-    background-color: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(50px);
-    border-radius: 0 20px 20px 0;
+.infoWrapper {
+	margin-bottom: 28px;
+}
+@media screen and (min-width: 768px) {
+	.infoWrapper {
+		display: inline-flex;
+	}
+}
+.imgWrapper {
+	position: relative;
+	width: 240px;
+	height: 240px;
+	border-radius: 0px 0px 40px 40px;
+	overflow: hidden;
+	margin: 0 auto 16px auto;
+}
+@media screen and (min-width: 768px) {
+	.imgWrapper {
+		width: 288px;
+		height: 328px;
+		margin: 0 20px 0 0;
+	}
+}
+
+.categoryLabel {
+	position: absolute;
+	top: 20px;
+	left: 0;
+	width: 158px;
+	padding: 6px 20px;
+	background-color: rgba(255, 255, 255, 0.6);
+	backdrop-filter: blur(50px);
+	border-radius: 0 20px 20px 0;
 }
 
 .title {
-    width: 230px;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 32.78px;
-    margin-bottom: 16px;
+	width: 230px;
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 32.78px;
+	margin-bottom: 16px;
 }
 
 @media screen and (min-width: 768px) {
-    .title{
-        /* width: 228px; */
-        font-size: 28px;
-        line-height: 38.25px
-    }
+	.title {
+		/* width: 228px; */
+		font-size: 28px;
+		line-height: 38.25px;
+	}
 }
 
 @media screen and (min-width: 1280px) {
-    .title{
-        /* width: 228px; */
-            font-size: 28px;
-    }
-} 
-.infoList{
-    display: flex;
-    align-items: center;
-    margin-bottom: 8px;
-    justify-content: space-between;
-
+	.title {
+		/* width: 228px; */
+		font-size: 28px;
+	}
 }
-.label{
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 19px;
+.infoList {
+	display: flex;
+	align-items: center;
+	margin-bottom: 8px;
+	justify-content: space-between;
 }
-.lebalText{
-    font-size: 14px;
-    width: 50%;
-    font-weight: 500;
-    line-height: 19px;
-}@media screen and (max-width: 767px) {
-    .lebalText {
-        overflow: scroll;
-        text-overflow: clip;
-    }
+.label {
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 19px;
 }
-@media screen and (min-width: 768px){
-    .lebalText{
-        font-size: 16px;
-        line-height: 22px;
-    }
+.lebalText {
+	font-size: 14px;
+	width: 50%;
+	font-weight: 500;
+	line-height: 19px;
 }
-
-.commentsWrapper{
-    margin-bottom: 40px;
-}
-    @media screen and (min-width: 768px){
-        .commentsWrapper{
-            margin-bottom: 32px;
-        }
-    }
-.comments{
-    display: inline-block;
-    margin-right: 7px;
-    font-weight: 600;
-    line-height: 19.12px;
-}
-@media screen and (min-width: 768px){
-    .commentsText {
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 24px;
-    }
-}
-.commentsText{
-    display: contents;
-    line-height: 19.12px;
-}
-@media screen and (min-width: 768px){
-    .commentsText{
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 24px;
-    }
-}
-
-.buttons{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 12px;
+@media screen and (max-width: 767px) {
+	.lebalText {
+		overflow: scroll;
+		text-overflow: clip;
+	}
 }
 @media screen and (min-width: 768px) {
-    .buttons{
-        width: 332px;
-        display: flex;
-        flex-direction: row-reverse;
-        gap: 12px;
-        margin-left: auto;
-    }
+	.lebalText {
+		font-size: 16px;
+		line-height: 22px;
+	}
+}
+
+.commentsWrapper {
+	margin-bottom: 40px;
+}
+@media screen and (min-width: 768px) {
+	.commentsWrapper {
+		margin-bottom: 32px;
+	}
+}
+.comments {
+	display: inline-block;
+	margin-right: 7px;
+	font-weight: 600;
+	line-height: 19.12px;
+}
+@media screen and (min-width: 768px) {
+	.commentsText {
+		font-weight: 600;
+		font-size: 16px;
+		line-height: 24px;
+	}
+}
+.commentsText {
+	display: contents;
+	line-height: 19.12px;
+}
+@media screen and (min-width: 768px) {
+	.commentsText {
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 24px;
+	}
+}
+
+.buttons {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	gap: 12px;
+}
+@media screen and (min-width: 768px) {
+	.buttons {
+		width: 332px;
+		display: flex;
+		flex-direction: row-reverse;
+		gap: 12px;
+		margin-left: auto;
+	}
 }
 .contactBtn {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 28px;
-    width: 180px;
-    height: 44px;
-    font-size: 20px;
-    letter-spacing: 0.04em;
-    border: 2px solid #f59256;
-    border-radius: 40px;
-    background-color: var(--btn-bg-another);
-    color: var(--btn-color-hover-active);
-    transition: var(--transition);
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0 28px;
+	width: 180px;
+	height: 44px;
+	font-size: 20px;
+	letter-spacing: 0.04em;
+	border: 2px solid #f59256;
+	border-radius: 40px;
+	background-color: var(--btn-bg-another);
+	color: var(--btn-color-hover-active);
+	transition: var(--transition);
 }
 /* .addToFovorBtn {
     display: inline-flex;
@@ -168,52 +171,52 @@
     cursor: pointer;
 } */
 .deleteBtn {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 28px;
-    width: 180px;
-    height: 44px;
-    font-size: 20px;
-    letter-spacing: 0.04em;
-    border: 2px solid var(--btn-bg-another);
-    border-radius: 40px;
-    background-color: var(--btn-bg-default);
-    transition: var(--transition);
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0 28px;
+	width: 180px;
+	height: 44px;
+	font-size: 20px;
+	letter-spacing: 0.04em;
+	border: 2px solid var(--btn-bg-another);
+	border-radius: 40px;
+	background-color: var(--btn-bg-default);
+	transition: var(--transition);
 }
 .deleteBtn:hover {
-    color: #ff6101;
-    border: 2px solid #ff6101;
-    transition: var(--transition);
-} 
+	color: #ff6101;
+	border: 2px solid #ff6101;
+	transition: var(--transition);
+}
 
 .heartBtn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 44px;
-    height: 44px;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 0;
-    background:rgba(253, 247, 242, 0.5);
-    border-radius: 50%;
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	width: 44px;
+	height: 44px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 0;
+	background: rgba(253, 247, 242, 0.5);
+	border-radius: 50%;
 }
 
 .heartBtn:hover {
-    background: rgba(253, 247, 242, 1);
-    transition: var(--transition);
+	background: rgba(253, 247, 242, 1);
+	transition: var(--transition);
 }
 
 .heartItemBtnActive {
-    background: none;
-    fill: var(--btn-bg-another);
-    border-radius: 50%;
+	background: none;
+	fill: var(--btn-bg-another);
+	border-radius: 50%;
 }
 
 .heartItemBtn {
-    background: none;
-    fill: rgba(175, 177, 184, 0.1);
-    border-radius: 50%;
+	background: none;
+	fill: rgba(175, 177, 184, 0.1);
+	border-radius: 50%;
 }

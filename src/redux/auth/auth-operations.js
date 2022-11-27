@@ -18,8 +18,11 @@ const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post('/user/registration', credentials);
-      token.set(data.token);
+      token.set(data.user.token);
       const favorite = await axios.get('/user/favorite');
+      toast.success(
+        'Congratulations, your account has been successfully created.'
+      );
       return { ...data, favorite: favorite.data };
     } catch (error) {
       const errorData = error.response.data;
@@ -40,6 +43,7 @@ const logIn = createAsyncThunk('auth/logIn', async (credentials, thunkAPI) => {
     const { data } = await axios.post('/user/login', credentials);
     token.set(data.token);
     const favorite = await axios.get('/user/favorite');
+    toast.success('Login Success!');
     return { ...data, favorite: favorite.data };
   } catch (error) {
     toast.error(error.response.data.message);

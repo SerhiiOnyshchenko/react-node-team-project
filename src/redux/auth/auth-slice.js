@@ -22,7 +22,7 @@ const authSlice = createSlice({
     });
     builder.addCase(authOperations.register.fulfilled, (state, action) => {
       state.user = action.payload.user;
-      state.token = action.payload.token;
+      state.token = action.payload.user.token;
       state.isLoggedIn = true;
       state.isLoading = false;
       state.favorite = action.payload.favorite;
@@ -75,8 +75,14 @@ const authSlice = createSlice({
     builder.addCase(authOperations.patchUserInfo.rejected, state => {
       state.disabledBtn = false;
     });
+    builder.addCase(authOperations.searchCity.pending, (state, action) => {
+      state.cities = [];
+    });
     builder.addCase(authOperations.searchCity.fulfilled, (state, action) => {
       state.cities = action.payload;
+    });
+    builder.addCase(authOperations.searchBreeds.pending, (state, action) => {
+      state.breeds = [];
     });
     builder.addCase(authOperations.searchBreeds.fulfilled, (state, action) => {
       state.breeds = action.payload;
