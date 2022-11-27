@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-node-team-project/static/css/main.9f85938d.css",
-    "main.js": "/react-node-team-project/static/js/main.468a7248.js",
+    "main.css": "/react-node-team-project/static/css/main.a73a5695.css",
+    "main.js": "/react-node-team-project/static/js/main.5ba3afdc.js",
     "static/css/596.304faf4c.chunk.css": "/react-node-team-project/static/css/596.304faf4c.chunk.css",
     "static/js/596.6359f98a.chunk.js": "/react-node-team-project/static/js/596.6359f98a.chunk.js",
     "static/css/307.ec1162ce.chunk.css": "/react-node-team-project/static/css/307.ec1162ce.chunk.css",
     "static/js/307.77a78e24.chunk.js": "/react-node-team-project/static/js/307.77a78e24.chunk.js",
     "static/css/612.0fbd7c45.chunk.css": "/react-node-team-project/static/css/612.0fbd7c45.chunk.css",
-    "static/js/612.b6f16f83.chunk.js": "/react-node-team-project/static/js/612.b6f16f83.chunk.js",
-    "static/css/226.447b8b43.chunk.css": "/react-node-team-project/static/css/226.447b8b43.chunk.css",
-    "static/js/226.343154f1.chunk.js": "/react-node-team-project/static/js/226.343154f1.chunk.js",
+    "static/js/612.c5860b43.chunk.js": "/react-node-team-project/static/js/612.c5860b43.chunk.js",
+    "static/css/2.8bf80bc2.chunk.css": "/react-node-team-project/static/css/2.8bf80bc2.chunk.css",
+    "static/js/2.98b7ee4e.chunk.js": "/react-node-team-project/static/js/2.98b7ee4e.chunk.js",
     "static/css/859.3448e3a1.chunk.css": "/react-node-team-project/static/css/859.3448e3a1.chunk.css",
     "static/js/859.5af72e8a.chunk.js": "/react-node-team-project/static/js/859.5af72e8a.chunk.js",
     "static/css/82.4c90ccc1.chunk.css": "/react-node-team-project/static/css/82.4c90ccc1.chunk.css",
@@ -44,16 +44,16 @@
     "static/media/search.svg": "/react-node-team-project/static/media/search.e7f9ac79a451e3faa2a7.svg",
     "static/media/big-plus.svg": "/react-node-team-project/static/media/big-plus.816a6171aa1587710bd9.svg",
     "static/media/plus.svg": "/react-node-team-project/static/media/plus.18dde0ab6d2ab0cd36f9fdac9bc7c4b1.svg",
-    "main.9f85938d.css.map": "/react-node-team-project/static/css/main.9f85938d.css.map",
-    "main.468a7248.js.map": "/react-node-team-project/static/js/main.468a7248.js.map",
+    "main.a73a5695.css.map": "/react-node-team-project/static/css/main.a73a5695.css.map",
+    "main.5ba3afdc.js.map": "/react-node-team-project/static/js/main.5ba3afdc.js.map",
     "596.304faf4c.chunk.css.map": "/react-node-team-project/static/css/596.304faf4c.chunk.css.map",
     "596.6359f98a.chunk.js.map": "/react-node-team-project/static/js/596.6359f98a.chunk.js.map",
     "307.ec1162ce.chunk.css.map": "/react-node-team-project/static/css/307.ec1162ce.chunk.css.map",
     "307.77a78e24.chunk.js.map": "/react-node-team-project/static/js/307.77a78e24.chunk.js.map",
     "612.0fbd7c45.chunk.css.map": "/react-node-team-project/static/css/612.0fbd7c45.chunk.css.map",
-    "612.b6f16f83.chunk.js.map": "/react-node-team-project/static/js/612.b6f16f83.chunk.js.map",
-    "226.447b8b43.chunk.css.map": "/react-node-team-project/static/css/226.447b8b43.chunk.css.map",
-    "226.343154f1.chunk.js.map": "/react-node-team-project/static/js/226.343154f1.chunk.js.map",
+    "612.c5860b43.chunk.js.map": "/react-node-team-project/static/js/612.c5860b43.chunk.js.map",
+    "2.8bf80bc2.chunk.css.map": "/react-node-team-project/static/css/2.8bf80bc2.chunk.css.map",
+    "2.98b7ee4e.chunk.js.map": "/react-node-team-project/static/js/2.98b7ee4e.chunk.js.map",
     "859.3448e3a1.chunk.css.map": "/react-node-team-project/static/css/859.3448e3a1.chunk.css.map",
     "859.5af72e8a.chunk.js.map": "/react-node-team-project/static/js/859.5af72e8a.chunk.js.map",
     "82.4c90ccc1.chunk.css.map": "/react-node-team-project/static/css/82.4c90ccc1.chunk.css.map",
@@ -63,7 +63,7 @@
     "301.28b3553b.chunk.js.map": "/react-node-team-project/static/js/301.28b3553b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9f85938d.css",
-    "static/js/main.468a7248.js"
+    "static/css/main.a73a5695.css",
+    "static/js/main.5ba3afdc.js"
   ]
 }
