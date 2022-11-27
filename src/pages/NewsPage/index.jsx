@@ -7,7 +7,7 @@ import getNews from 'redux/news/news-operations';
 import { RotatingLines } from 'react-loader-spinner';
 import { newsSelectors } from '../../redux/news';
 import Pagination from 'components/Pagination';
-import BtnScrollToTop from 'components/BtnScrollToTop';
+
 export default function NewsPage() {
   const dispatch = useDispatch();
   const [query, setQuery] = useState('');
@@ -67,7 +67,6 @@ export default function NewsPage() {
           </div>
         )}
       </div>
-      <BtnScrollToTop />
       <Pagination
         totalHits={6}
         pageSize={6}

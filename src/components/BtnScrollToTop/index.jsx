@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import s from './index.module.css';
 
 export default function BtnScrollToTop() {
-  const buttonScrollToTop = document.getElementById('BtnScrollToTop');
+  const buttonScrollToTop = useRef();
   window.onscroll = () => scrollToTopFunction();
 
   function scrollToTopFunction() {
     if (
-      document.body.scrollTop > 40 ||
-      document.documentElement.scrollTop > 40
+      document.body.scrollTop > 100 ||
+      document.documentElement.scrollTop > 100
     ) {
-      buttonScrollToTop.style.display = 'block';
+      buttonScrollToTop.current.style.display = 'block';
     } else {
-      buttonScrollToTop.style.display = 'none';
+      buttonScrollToTop.current.style.display = 'none';
     }
   }
 
@@ -22,6 +22,7 @@ export default function BtnScrollToTop() {
 
   return (
     <button
+      ref={buttonScrollToTop}
       id="BtnScrollToTop"
       onClick={onClickBtn}
       type="button"

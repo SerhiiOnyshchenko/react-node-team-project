@@ -3,7 +3,6 @@ const maskInput = evt => {
 
   const pattern = input.dataset.pattern;
   const prefix = input.dataset.prefix;
-  // let reg;
   let value;
   let startIndex = 0;
   let count = 0;
