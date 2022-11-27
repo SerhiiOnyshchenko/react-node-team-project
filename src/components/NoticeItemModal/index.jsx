@@ -1,6 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
 import s from './modalNotice.module.css';
-import { toast } from 'react-toastify';
 import modalImage from '../../images/no-image-found.png';
 import { ReactComponent as HeartBtnM } from '../../images/svg/heartBtnM.svg';
 import { noticesOperations } from 'redux/notices';

@@ -62,7 +62,8 @@ export default function UserDataItem({
       .max(today),
   });
 
-  const handleSubmit = async () => {
+  const handleSubmit = async e => {
+    e.preventDefault();
     let error = true;
     if (field === 'Phone') {
       error = await phoneSchema.isValid({
@@ -113,18 +114,9 @@ export default function UserDataItem({
 
     setIsEdit(false);
     setDisBtnEdit(false);
-    window.removeEventListener('keydown', closeInputEnter);
   };
 
-  function closeInputEnter(e) {
-    if (e.code === 'Escape') {
-      handleSubmit();
-    }
-  }
-
   const handleEdit = () => {
-    window.addEventListener('keydown', closeInputEnter);
-
     setDisBtnEdit(true);
     setIsEdit(true);
   };
@@ -143,7 +135,7 @@ export default function UserDataItem({
   };
 
   return (
-    <form ref={form}>
+    <form ref={form} onSubmit={handleSubmit}>
       <div className={s.wrapper}>
         <p className={s.field}>{field}:</p>
 
