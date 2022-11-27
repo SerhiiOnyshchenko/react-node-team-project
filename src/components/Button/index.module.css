@@ -11,7 +11,9 @@
 	border-radius: 40px;
 	background-color: var(--btn-bg-default);
 	transition: var(--transition);
+	color: var(--color-main);
 }
+
 
 .Btn_active {
 	display: inline-flex; 

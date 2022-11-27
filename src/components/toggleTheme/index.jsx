@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './ToggleTheme.css';
+import s from './index.module.css';
 
 export default function ToggleTheme() {
    const [toggle, setToggle] = useState(true);
@@ -11,7 +11,7 @@ export default function ToggleTheme() {
       if (currentTheme) {
          document.documentElement.setAttribute('data-theme', currentTheme);
          if (currentTheme === 'dark') {
-            setToggle(false);
+            setToggle(false); 
          }
       }
    }, [currentTheme]);
@@ -29,23 +29,19 @@ export default function ToggleTheme() {
    };
 
    return (
-      <div className="toggle-theme__box">
+      <div className={s.toggleThemeBox}>
          <div
             className={
                toggle
-                  ? 'toggle-theme__icon toggle-theme__icon--light'
-                  : 'toggle-theme__icon toggle-theme__icon--dark'
+                  ? s.toggleThemeIconLight
+                  :  s.toggleThemeIconDark
             }
          ></div>
-         <div className="toggle-theme__checked-box" onClick={toggleTheme}>
+         <div className={s.toggleThemeCheckedBox} onClick={toggleTheme}>
             <div
-               className={
-                  toggle
-                     ? 'toggle-theme__check--light'
-                     : 'toggle-theme__check--dark'
-               }
+               className={toggle ? s.toggleThemeCheckLight : s.toggleThemeCheckDark}
             ></div>
          </div>
-      </div>
+      </div> 
    );
 }

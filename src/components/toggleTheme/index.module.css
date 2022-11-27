@@ -1,67 +1,72 @@
-.toggle-theme__box {
-	position: absolute;
-	top: 30px;
-	right: 60px;
+.toggleThemeBox {
+	margin-left: 200px;
 	display: flex;
 	align-items: center;
+	background-color: var(--bg);
 }
 
-.toggle-theme__icon {
+.toggleThemeIconLight {
 	width: 24px;
 	height: 24px;
-	background-color: var(--bg);
-	background-image: url(../../image/theme/eye.png);
+	background-color:  var(--bg); 
 	background-position: center;
 	background-repeat: no-repeat;
 	border-radius: 50px;
 	margin-right: 5px;
+	background-image: url(../../images/sun24.png);
 }
 
-.toggle-theme__icon--light {
-	background-image: url(../../image/theme/eye.png);
+.toggleThemeIconDark {
+	width: 24px;
+	height: 24px;
+	background-color: transparent;
+	background-position: center;
+	background-repeat: no-repeat;
+	border-radius: 50px;
+	margin-right: 5px;
+	background-image: url(../../images/moon.png);
 }
 
-.toggle-theme__icon--dark {
-	background-position: center 10px;
-	background-image: url(../../image/theme/eye-close.png);
-}
+.toggleThemeCheckedBox {
 
-.toggle-theme__checked-box {
 	position: relative;
 	width: 44px;
 	height: 24px;
-	padding: 4px;
-	background: var(--btn-bg-hover);
+	padding: 2px;
+	/* background: var( --btn-bg-default); */
+	background-color:  var(--bg); 
+	border: 2px solid #f59256;
+	box-sizing:border-box;
 	border-radius: 50px;
 	cursor: pointer;
 }
 
-.toggle-theme__check--light,
-.toggle-theme__check--dark {
+.toggleThemeCheckLight,
+.toggleThemeCheckDark {
 	position: absolute;
-	top: 4px;
+	top: 2px;
 	right: 4px;
 	width: 16px;
 	height: 16px;
-	background: #ff868e;
+	background-color: var(--btn-bg-another);
 	border-radius: 40px;
 	transition: var(--transition);
 }
-.toggle-theme__check--dark {
-	right: 24px;
+.toggleThemeCheckDark {
+	right: 22px;
 }
 @media screen and (max-width: 1439px) {
-	.toggle-theme__box {
+	.toggleThemeBox {
 		right: 150px;
 	}
 }
 @media screen and (max-width: 767px) {
-	.toggle-theme__box {
+	.toggleThemeBox {
 		right: 120px;
 	}
 }
 @media screen and (max-width: 424px) {
-	.toggle-theme__box {
+	.toggleThemeBox {
 		top: 20px;
 		right: 80px;
 	}

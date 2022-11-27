@@ -107,17 +107,53 @@ h6 {
   --btn-color-hover-active: #ffffff;
 
   --transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  --color-link:  #181c27;
+  --color-text:  #111321;
+  --color-date:  rgba(17, 17, 17, 0.6);
+  --color-input:  #ffffff;
+  --color-placeholder: #535353; 
+  --color-border-input: #ffffff;
+  --color-friendCard: #ffffff;
+  --color-text-friends: #000000;
+}
+
+[data-theme="dark"] {
+  --color-main:#fdf7f2;
+  --color-another: #f59256;
+  --color-hover-active: #f59256;
+
+  --bg: #111111;
+
+  --modal-bg:  #1c1c1c;
+
+  --btn-bg-default: #111111;
+  --btn-bg-another: #f59256;
+  --btn-bg-hover-active: #f59256;
+
+  --btn-color: #111111;
+  --btn-color-hover-active: #ffffff;
+
+  --transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  --color-link: #fdf7f2;
+  --color-text:  #DCDCDC;
+  --color-date:  rgba(128, 128, 128);
+  /* --color-input: #1c1c1c; */
+  --color-input:  #111111;
+  --color-placeholder: #DCDCDC;
+  --color-border-input:  #f59256;
+  --color-friendCard: #1c1c1c;
+  --color-text-friends: #ffffff;
 }
 
 body {
   font-family: 'Manrope', sans-serif;
   font-weight: 500;
   font-size: 16px;
-  background-color: var(--bg);
+  background-color: var(--bg); 
   color: var(--color-main);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
+} 

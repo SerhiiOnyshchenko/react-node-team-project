@@ -8,7 +8,7 @@
 .container {
   width: 395px;
   height: 287px;
-  background: var(--btn-color-hover-active);
+  background: var(--color-friendCard);
   box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
   border-radius: 40px;
   padding: 15px;
@@ -105,7 +105,7 @@
   margin-bottom: 7px;
   white-space: nowrap;
   text-align: left;
-  color: black;
+  color: var(--color-text-friends);
   text-decoration: underline;
   cursor: pointer;
 }
@@ -135,7 +135,6 @@
   }
   #adress {
     width: 170px;
-    color: black;
   }
   .popup {
     top: 40px;
@@ -183,3 +182,4 @@
     line-height: 10px;
   }
 }
+
