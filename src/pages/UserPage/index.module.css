@@ -58,4 +58,7 @@
 		width: 411px;
 		padding: 20px 16px 40px;
 	}
+	.title {
+		margin-bottom: 24px;
+	}
 }
