@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import s from './index.module.css';
-import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { noticesOperations } from 'redux/notices';

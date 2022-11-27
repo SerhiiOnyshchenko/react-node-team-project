@@ -6,11 +6,13 @@ import { noticesOperations, noticesSelectors } from 'redux/notices';
 import { authSelectors } from './../../redux/auth';
 import s from './index.module.css';
 import { RotatingLines } from 'react-loader-spinner';
+import Pagination from 'components/Pagination';
 
 export default function NoticesCategoriesList() {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
   const [noticesData, setNoticesData] = useState([]);
+  const [noticesSlice, setNoticesSlice] = useState([]);
   const category = useSelector(noticesSelectors.getNoticesCategories);
   const userNotices = useSelector(noticesSelectors.getUserNotices);
   const favorite = useSelector(authSelectors.getUserFavorite);
@@ -82,8 +84,8 @@ export default function NoticesCategoriesList() {
         </div>
       ) : (
         <div className={s.NoticeList}>
-          {noticesData.length ? (
-            noticesData.map(item => (
+          {noticesSlice.length ? (
+            noticesSlice.map(item => (
               <NoticeItem key={item._id} petData={item} />
             ))
           ) : (
@@ -91,6 +93,14 @@ export default function NoticesCategoriesList() {
           )}
         </div>
       )}
+      <Pagination
+        totalHits={noticesData.length}
+        pageSize={3}
+        data={noticesData}
+        setData={n => {
+          setNoticesSlice(n);
+        }}
+      />
     </>
   );
 }

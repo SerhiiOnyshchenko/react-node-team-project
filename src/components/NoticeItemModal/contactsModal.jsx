@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import s from './contactsModals.module.css';
-// import { PropTypes } from 'prop-types';
 
 export default function ContactsModal({ children, onClose }) {
   const modalRoot = useRef(document.querySelector('#modal-root'));
@@ -23,14 +22,7 @@ export default function ContactsModal({ children, onClose }) {
 
   return createPortal(
     <div className={s.Backdrop} onClick={closeModalEscKey}>
-      <div className={s.Content}>
-        {/* <button
-          className={s.Btn_close}
-          type="button"
-          onClick={onClose}
-        ></button> */}
-        {children}
-      </div>
+      <div className={s.Content}>{children}</div>
     </div>,
     modalRoot.current
   );

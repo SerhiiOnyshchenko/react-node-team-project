@@ -146,10 +146,7 @@ export default function ModalNotice({
       {contactModalShow && (
         <ContactsModal onClose={handleModalToggle}>
           <div className={style.modalButtons}>
-            <a
-              href={`tel:${petData.owner.phone}`}
-              className={s.modalContactBtn}
-            >
+            <a href={`tel:+${ownerPhone}`} className={s.modalContactBtn}>
               to call
             </a>
             <a
