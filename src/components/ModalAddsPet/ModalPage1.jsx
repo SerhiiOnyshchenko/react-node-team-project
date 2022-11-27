@@ -15,7 +15,7 @@ const validationSchema = yup.object({
     .string()
     .min(2)
     .max(16)
-    .matches(/[a-zA-Z]/, 'Only alphanumeric characters are allowed')
+    .matches(/[a-zA-Z]/, 'Only alphabetic characters are allowed')
     .required(),
   birthday: yup
     .date()
