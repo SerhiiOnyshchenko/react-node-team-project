@@ -1,10 +1,8 @@
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import s from './index.module.css';
-import bigPlus from '../../images/svg/big-plus.svg';
 import * as yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { number } from 'prop-types';
 import { noticesOperations } from 'redux/notices';
 import { useDispatch, useSelector } from 'react-redux';
 import { authSelectors } from 'redux/auth';
@@ -30,25 +28,17 @@ const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png'];
 
 const StepTwo = ({ formData, setFormData, prevStep, onClose }) => {
   const [direction, setDirection] = useState('back');
-  const [fileValue, setFileValue] = useState('');
   const [fileInput, setFileInput] = useState(formData.image);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const token = useSelector(authSelectors.getUserToken);
+
   const handleAddAvatar = (e, setFieldValue) => {
     const [file] = e.target.files;
-    const reader = new FileReader();
     if (file) {
       setFileInput(file);
       setFieldValue('image', file);
-      reader.readAsDataURL(file);
-      reader.onloadend = e => {
-        const base64data = reader.result;
-        setFileValue(base64data);
-        setFormData(values => {
-          return { ...values, image: file };
-        });
-      };
+      setFormData(values => ({ ...values, image: file }));
     }
   };
 

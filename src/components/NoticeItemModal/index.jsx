@@ -58,7 +58,7 @@ export default function ModalNotice({
 }) {
   const user = useSelector(authSelectors.getUser);
   const owner = user._id === petData.owner._id;
-
+  const ownerPhone = petData.owner.phone.replace(/\D/g, '');
   const dispatch = useDispatch();
 
   return (
@@ -115,7 +115,7 @@ export default function ModalNotice({
           <p className={s.commentsText}>{petData.comments}</p>
         </div>
         <div className={s.buttons}>
-          <a href={`tel:${petData.owner.phone}`} className={s.contactBtn}>
+          <a href={`tel:+${ownerPhone}`} className={s.contactBtn}>
             Contact
           </a>
           {owner && (
@@ -123,14 +123,7 @@ export default function ModalNotice({
               type="button"
               className={s.deleteBtn}
               onClick={() => {
-                try {
-                  dispatch(
-                    noticesOperations.deleteUserNotices(petData._id),
-                    toast.done('deleted')
-                  );
-                } catch (e) {
-                  toast.error(e.message);
-                }
+                dispatch(noticesOperations.deleteUserNotices(petData._id));
               }}
             >
               delete

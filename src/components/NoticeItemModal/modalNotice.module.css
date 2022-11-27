@@ -1,10 +1,15 @@
 .container {
+	padding: 60px 20px 40px;
 }
 
 .infoWrapper {
 	margin-bottom: 28px;
 }
 @media screen and (min-width: 768px) {
+	.container {
+		width: 704px;
+		padding: 32px 20px;
+	}
 	.infoWrapper {
 		display: inline-flex;
 	}
@@ -46,18 +51,12 @@
 
 @media screen and (min-width: 768px) {
 	.title {
-		/* width: 228px; */
+		width: 300px;
 		font-size: 28px;
 		line-height: 38.25px;
 	}
 }
 
-@media screen and (min-width: 1280px) {
-	.title {
-		/* width: 228px; */
-		font-size: 28px;
-	}
-}
 .infoList {
 	display: flex;
 	align-items: center;
@@ -70,19 +69,17 @@
 	line-height: 19px;
 }
 .lebalText {
+	display: block;
+	width: 60%;
 	font-size: 14px;
-	width: 50%;
-	font-weight: 500;
 	line-height: 19px;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
-@media screen and (max-width: 767px) {
-	.lebalText {
-		overflow: scroll;
-		text-overflow: clip;
-	}
-}
+
 @media screen and (min-width: 768px) {
 	.lebalText {
+		width: 70%;
 		font-size: 16px;
 		line-height: 22px;
 	}
@@ -100,24 +97,18 @@
 	display: inline-block;
 	margin-right: 7px;
 	font-weight: 600;
-	line-height: 19.12px;
+	line-height: 24px;
 }
-@media screen and (min-width: 768px) {
-	.commentsText {
-		font-weight: 600;
-		font-size: 16px;
-		line-height: 24px;
-	}
-}
+
 .commentsText {
+	font-weight: 400;
+	line-height: 24px;
 	display: contents;
 	line-height: 19.12px;
 }
 @media screen and (min-width: 768px) {
 	.commentsText {
 		font-weight: 500;
-		font-size: 16px;
-		line-height: 24px;
 	}
 }
 

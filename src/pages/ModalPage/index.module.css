@@ -54,6 +54,7 @@
 	}
 	.Content {
 		min-width: 608px;
+		width: auto;
 		border-radius: 40px;
 	}
 }

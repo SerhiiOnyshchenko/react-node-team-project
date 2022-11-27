@@ -113,9 +113,18 @@ export default function UserDataItem({
 
     setIsEdit(false);
     setDisBtnEdit(false);
+    window.removeEventListener('keydown', closeInputEnter);
   };
 
+  function closeInputEnter(e) {
+    if (e.code === 'Escape') {
+      handleSubmit();
+    }
+  }
+
   const handleEdit = () => {
+    window.addEventListener('keydown', closeInputEnter);
+
     setDisBtnEdit(true);
     setIsEdit(true);
   };

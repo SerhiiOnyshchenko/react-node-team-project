@@ -39,7 +39,7 @@ export const createNotices = createAsyncThunk(
 
       await axios.post(`/notices`, values, header);
       const { data } = await axios.get('notices/user');
-      toast.success('New notices added!');
+      toast.success('New notice added!');
       return data;
     } catch (error) {
       toast.error(error.response.data.message);
@@ -54,6 +54,7 @@ export const deleteUserNotices = createAsyncThunk(
     try {
       await axios.delete(`/notices/${petId}`);
       const { data } = await axios.get('notices/user');
+      toast.success('Notice deleted!');
       return data;
     } catch (error) {
       toast.error(error.response.data.message);

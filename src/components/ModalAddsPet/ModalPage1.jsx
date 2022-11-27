@@ -33,7 +33,7 @@ const validationSchema = yup.object({
   breed: yup
     .string()
     .min(2)
-    .max(25)
+    .max(35)
     .matches(/[a-zA-Z]/, 'Only alphanumeric characters are allowed')
     .required(),
 });
@@ -61,7 +61,7 @@ export default function ModalPage1({ data, setFormData, next, onClose }) {
     }
   };
   return (
-    <>
+    <div className={s.containerPet}>
       <div className={s.title}>Add pet</div>
       <div className={s.formWrapper}>
         <Formik
@@ -101,7 +101,7 @@ export default function ModalPage1({ data, setFormData, next, onClose }) {
             />
 
             <label htmlFor="breed" className={s.label}>
-              Type breed
+              Breed
             </label>
             <div style={{ position: 'relative' }}>
               <Field
@@ -142,6 +142,6 @@ export default function ModalPage1({ data, setFormData, next, onClose }) {
           </Form>
         </Formik>
       </div>
-    </>
+    </div>
   );
 }
