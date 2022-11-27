@@ -1,13 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import s from './index.module.css';
 import PropTypes from 'prop-types';
+import { useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { noticesOperations } from 'redux/notices';
 
-export default function NoticesSearch({ onSearch }) {
+export default function NoticesSearch() {
+  const [query, setQuery] = useState('');
+  const { pathname } = useLocation();
+  const dispatch = useDispatch();
+
+  const pathnameArr = pathname.split('/');
+
   const handleSubmit = evt => {
     evt.preventDefault();
-    const query = evt.target.search.value;
-    onSearch(query);
-    evt.target.search.value = '';
+    if (pathnameArr[2] === 'sell') {
+      dispatch(
+        noticesOperations.getNoticesCategories({ category: 'sell', query })
+      );
+    }
+    if (pathnameArr[2] === 'lost-found') {
+      dispatch(
+        noticesOperations.getNoticesCategories({
+          category: 'lost/found',
+          query,
+        })
+      );
+    }
+    if (pathnameArr[2] === 'for-free') {
+      dispatch(
+        noticesOperations.getNoticesCategories({
+          category: 'in_good_hands',
+          query,
+        })
+      );
+    }
+    setQuery('');
   };
 
   return (
@@ -21,6 +49,8 @@ export default function NoticesSearch({ onSearch }) {
             name="search"
             autoFocus
             placeholder="Search"
+            value={query}
+            onInput={e => setQuery(e.target.value)}
             required
           />
           <button className={s.SearchBtn} type="submit"></button>
@@ -29,7 +59,3 @@ export default function NoticesSearch({ onSearch }) {
     </>
   );
 }
-
-NoticesSearch.propTypes = {
-  onSearch: PropTypes.func.isRequired,
-};

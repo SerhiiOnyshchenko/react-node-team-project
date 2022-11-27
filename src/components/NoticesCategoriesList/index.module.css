@@ -6,7 +6,10 @@
 	gap: 32px;
 	padding-bottom: 200px;
 }
-
+.NoticeText {
+	font-size: 24px;
+	font-weight: 700;
+}
 @media screen and (min-width: 768px) {
 	.NoticeList {
 		display: flex;

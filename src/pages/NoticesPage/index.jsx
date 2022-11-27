@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import NoticesSearch from 'components/NoticesSearch';
 import NoticesCategoriesNav from 'components/NoticesCategoriesNav';
 import AddNoticeButton from 'components/AddNoticeButton';
@@ -7,17 +7,8 @@ import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import Container from 'components/Container';
 
 export default function NoticesPage() {
-  const notices = [];
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  // eslint-disable-next-line no-unused-vars
-  const [filteredNotices, setFilteredNotices] = useState(notices);
-  const filter = search => {
-    const newNotices = notices.filter(notice =>
-      notice.titleOfAd.toLowerCase().includes(search.toLowerCase())
-    );
-    setFilteredNotices(newNotices);
-  };
 
   useEffect(() => {
     if (
@@ -34,7 +25,7 @@ export default function NoticesPage() {
 
   return (
     <Container>
-      <NoticesSearch onSearch={filter}></NoticesSearch>
+      <NoticesSearch />
       <div className={s.btnBox}>
         <NoticesCategoriesNav />
         <AddNoticeButton />

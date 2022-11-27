@@ -42,13 +42,17 @@ export default function NoticesCategoriesList() {
 
   const resetNoticesData = async pathnameArr => {
     if (pathnameArr[2] === 'sell') {
-      dispatch(noticesOperations.getNoticesCategories('sell'));
+      dispatch(noticesOperations.getNoticesCategories({ category: 'sell' }));
     }
     if (pathnameArr[2] === 'lost-found') {
-      dispatch(noticesOperations.getNoticesCategories('lost/found'));
+      dispatch(
+        noticesOperations.getNoticesCategories({ category: 'lost/found' })
+      );
     }
     if (pathnameArr[2] === 'for-free') {
-      dispatch(noticesOperations.getNoticesCategories('in_good_hands'));
+      dispatch(
+        noticesOperations.getNoticesCategories({ category: 'in_good_hands' })
+      );
     }
     if (pathnameArr[2] === 'favorite') {
       setNoticesData(favorite);
@@ -78,10 +82,13 @@ export default function NoticesCategoriesList() {
         </div>
       ) : (
         <div className={s.NoticeList}>
-          {noticesData &&
+          {noticesData.length ? (
             noticesData.map(item => (
               <NoticeItem key={item._id} petData={item} />
-            ))}
+            ))
+          ) : (
+            <p className={s.NoticeText}>Not notices</p>
+          )}
         </div>
       )}
     </>
