@@ -3,6 +3,7 @@ import { authOperations } from '../../redux/auth';
 import { useDispatch } from 'react-redux';
 import { FormUserDetails } from './FormUserDetails';
 import { FormPersonalDetails } from './FormPersonalDetails';
+import { useNavigate } from 'react-router-dom';
 
 export default function AuthForm() {
   const [formData, setFormData] = useState({
@@ -14,11 +15,15 @@ export default function AuthForm() {
     phone: '',
   });
   const [currentStep, setCurrentStep] = useState(0);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const handleNextStep = (newData, final = false) => {
+  const handleNextStep = async (newData, final = false) => {
     setFormData(prev => ({ ...prev, ...newData }));
     if (final) {
-      dispatch(authOperations.register(newData));
+      try {
+        await dispatch(authOperations.register(newData)).unwrap();
+        navigate('/user');
+      } catch (error) {}
       return;
     }
     setCurrentStep(prev => prev + 1);
