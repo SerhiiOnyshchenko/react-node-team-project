@@ -85,7 +85,7 @@ export default function NoticeItem({ petData }) {
         <div className={s.infoWrapper}>
           <EllipsisText
             text={petData.titleOfAd}
-            length={18}
+            length={15}
             className={s.title}
           ></EllipsisText>
           <ul>
@@ -96,7 +96,7 @@ export default function NoticeItem({ petData }) {
                   <span className={s.label}>{label}</span>
                   <EllipsisText
                     text={petData[key] || petAge}
-                    length={18}
+                    length={20}
                     className={s.lebalText}
                   ></EllipsisText>
                 </li>

@@ -49,6 +49,11 @@ export default function UserDataItem({
   const birthdaySchema = yup.object({
     birthday: yup
       .date()
+      .test('len', 'Must be exactly DD.MM.YYYY', (value, { originalValue }) => {
+        if (originalValue) {
+          return originalValue.length === 10;
+        }
+      })
       .transform(function (value, originalValue) {
         if (this.isType(value)) {
           return value;

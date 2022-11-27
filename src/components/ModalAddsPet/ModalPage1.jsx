@@ -19,6 +19,11 @@ const validationSchema = yup.object({
     .required(),
   birthday: yup
     .date()
+    .test('len', 'Must be exactly DD.MM.YYYY', (value, { originalValue }) => {
+      if (originalValue) {
+        return originalValue.length === 10;
+      }
+    })
     .transform(function (value, originalValue) {
       if (this.isType(value)) {
         return value;
@@ -26,14 +31,14 @@ const validationSchema = yup.object({
       const result = parse(originalValue, 'dd.MM.yyyy', new Date());
       return result;
     })
-    .typeError('please enter a valid date')
+    .typeError('Please enter a valid date')
     .required()
     .min('1950-11-13', 'Date is too early')
     .max(today),
   breed: yup
     .string()
     .min(2)
-    .max(35)
+    .max(30)
     .matches(/[a-zA-Z]/, 'Only alphanumeric characters are allowed')
     .required(),
 });

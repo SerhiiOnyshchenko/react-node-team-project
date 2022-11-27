@@ -7,6 +7,9 @@ import DropList from 'components/DropList';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { authOperations, authSelectors } from 'redux/auth';
+import { parse } from 'date-fns';
+
+const today = new Date();
 
 const validationSchema = yup.object({
   titleOfAd: yup.string().required('Field is required!'),
@@ -14,12 +17,23 @@ const validationSchema = yup.object({
   namePet: yup.string().required('Field is required!'),
   breed: yup.string().required('Field is required!'),
   dateOfBirth: yup
-    .string()
-    .matches(
-      /^\s*(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.((?:19|20)\d{2})\s*$/,
-      'Date format is DD.MM.YYYY'
-    )
-    .required('Field is required!'),
+    .date()
+    .test('len', 'Must be exactly DD.MM.YYYY', (value, { originalValue }) => {
+      if (originalValue) {
+        return originalValue.length === 10;
+      }
+    })
+    .transform(function (value, originalValue) {
+      if (this.isType(value)) {
+        return value;
+      }
+      const result = parse(originalValue, 'dd.MM.yyyy', new Date());
+      return result;
+    })
+    .typeError('Please enter a valid date')
+    .required()
+    .min('1950-11-13', 'Date is too early')
+    .max(today),
 });
 
 const StepOne = ({ formData, setFormData, nextStep, onClose }) => {
@@ -71,7 +85,7 @@ const StepOne = ({ formData, setFormData, nextStep, onClose }) => {
               <Field
                 type="radio"
                 name="category"
-                value="in_good_hands"
+                value="in good hands"
                 id="in good hands"
                 className={s.inputRadio}
               />

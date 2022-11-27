@@ -42,7 +42,6 @@
 }
 
 .title {
-	width: 230px;
 	font-weight: 700;
 	font-size: 24px;
 	line-height: 32.78px;
@@ -62,6 +61,7 @@
 	align-items: center;
 	margin-bottom: 8px;
 	justify-content: space-between;
+	width: 100%;
 }
 .label {
 	font-size: 14px;

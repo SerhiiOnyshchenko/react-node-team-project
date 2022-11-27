@@ -10,13 +10,13 @@ export default function NoticesPage() {
   const notices = [];
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  // eslint-disable-next-line no-unused-vars
   const [filteredNotices, setFilteredNotices] = useState(notices);
   const filter = search => {
     const newNotices = notices.filter(notice =>
       notice.titleOfAd.toLowerCase().includes(search.toLowerCase())
     );
-		setFilteredNotices(newNotices);
-		console.log(filteredNotices);
+    setFilteredNotices(newNotices);
   };
 
   useEffect(() => {

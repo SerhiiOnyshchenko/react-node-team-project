@@ -40,16 +40,15 @@ export default function PetsList() {
             <ul className={s.list}>
               {petsList.map(pet => (
                 <li key={pet._id} className={s.card}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      dispatch(petsOperations.deleteUserPet(pet._id));
+                    }}
+                    className={s.deleteBtn}
+                  ></button>
                   <img src={pet.image} alt="Pet" className={s.petPhoto} />
-                  <button></button>
                   <div className={s.petInfo}>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        dispatch(petsOperations.deleteUserPet(pet._id));
-                      }}
-                      className={s.deleteBtn}
-                    ></button>
                     <p className={s.petInfoCategory}>
                       <span className={s.petInfoTitle}>Name: </span>
                       {pet.name}

@@ -15,9 +15,9 @@ export default function NoticesCategoriesList() {
   const userNotices = useSelector(noticesSelectors.getUserNotices);
   const favorite = useSelector(authSelectors.getUserFavorite);
   const isLoading = useSelector(noticesSelectors.getIsLoadingNotices);
+  const pathnameArr = pathname.split('/');
 
   useEffect(() => {
-    const pathnameArr = pathname.split('/');
     resetNoticesData(pathnameArr);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
@@ -27,11 +27,17 @@ export default function NoticesCategoriesList() {
   }, [category]);
 
   useEffect(() => {
-    setNoticesData(favorite);
+    if (pathnameArr[2] === 'favorite') {
+      setNoticesData(favorite);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [favorite]);
 
   useEffect(() => {
-    setNoticesData(userNotices);
+    if (pathnameArr[2] === 'own') {
+      setNoticesData(userNotices);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userNotices]);
 
   const resetNoticesData = async pathnameArr => {

@@ -8,7 +8,7 @@ import { authSelectors } from 'redux/auth';
 const buttonText = [
   { id: 'sell', text: 'sell', active: false },
   { id: 'lost-found', text: 'lost/found', active: false },
-  { id: 'for-free', text: 'In good hends', active: false },
+  { id: 'for-free', text: 'In good hands', active: false },
 ];
 const authButtonText = [
   { id: 'favorite', text: 'Favorite ads', active: false },

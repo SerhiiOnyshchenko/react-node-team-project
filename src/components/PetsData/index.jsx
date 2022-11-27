@@ -16,11 +16,10 @@ export default function PetsData() {
         <div className={s.header}>
           <h2 className={s.title}>My pets: </h2>
           <div className={s.addPetWrapper}>
-            <h3 className={s.addPetTitle}>Add pet</h3>
-            <button
-              onClick={onAddPetBtnClick}
-              className={s.buttonAddPet}
-            ></button>
+            <button onClick={onAddPetBtnClick} className={s.addPetTitle}>
+              Add pet
+              <span className={s.buttonAddPet}></span>
+            </button>
           </div>
         </div>
         {showModal && (
