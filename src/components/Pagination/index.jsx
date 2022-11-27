@@ -22,12 +22,16 @@ export default function AppPagination({ totalHits, pageSize, data, setData }) {
     setPagination({ ...pagination, count: totalHits });
     getData().then(res => {
       if (data) {
+        if (data.length <= pageSize) {
+          setData(data);
+          return;
+        }
         const items = res.data.slice(pagination.from, pagination.to);
         setData(items);
       }
     });
- // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [totalHits, pagination.from, pagination.to, data]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, pagination.from, pagination.to]);
 
   const handlePageChange = (event, page) => {
     const from = (page - 1) * pageSize;
@@ -40,7 +44,7 @@ export default function AppPagination({ totalHits, pageSize, data, setData }) {
     pageSize < totalHits && (
       <Pagination
         className={s.pagination}
-        count={totalHits / pageSize}
+        count={Math.ceil(totalHits / pageSize)}
         onChange={handlePageChange}
       />
     )

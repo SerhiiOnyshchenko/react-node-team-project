@@ -6,11 +6,13 @@ import { noticesOperations, noticesSelectors } from 'redux/notices';
 import { authSelectors } from './../../redux/auth';
 import s from './index.module.css';
 import { RotatingLines } from 'react-loader-spinner';
+import Pagination from 'components/Pagination';
 
 export default function NoticesCategoriesList() {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
   const [noticesData, setNoticesData] = useState([]);
+  const [noticesSlice, setNoticesSlice] = useState([]);
   const category = useSelector(noticesSelectors.getNoticesCategories);
   const userNotices = useSelector(noticesSelectors.getUserNotices);
   const favorite = useSelector(authSelectors.getUserFavorite);
@@ -42,13 +44,17 @@ export default function NoticesCategoriesList() {
 
   const resetNoticesData = async pathnameArr => {
     if (pathnameArr[2] === 'sell') {
-      dispatch(noticesOperations.getNoticesCategories('sell'));
+      dispatch(noticesOperations.getNoticesCategories({ category: 'sell' }));
     }
     if (pathnameArr[2] === 'lost-found') {
-      dispatch(noticesOperations.getNoticesCategories('lost/found'));
+      dispatch(
+        noticesOperations.getNoticesCategories({ category: 'lost/found' })
+      );
     }
     if (pathnameArr[2] === 'for-free') {
-      dispatch(noticesOperations.getNoticesCategories('in_good_hands'));
+      dispatch(
+        noticesOperations.getNoticesCategories({ category: 'in_good_hands' })
+      );
     }
     if (pathnameArr[2] === 'favorite') {
       setNoticesData(favorite);
@@ -78,12 +84,23 @@ export default function NoticesCategoriesList() {
         </div>
       ) : (
         <div className={s.NoticeList}>
-          {noticesData &&
-            noticesData.map(item => (
+          {noticesSlice.length ? (
+            noticesSlice.map(item => (
               <NoticeItem key={item._id} petData={item} />
-            ))}
+            ))
+          ) : (
+            <p className={s.NoticeText}>Not notices</p>
+          )}
         </div>
       )}
+      <Pagination
+        totalHits={noticesData.length}
+        pageSize={8}
+        data={noticesData}
+        setData={n => {
+          setNoticesSlice(n);
+        }}
+      />
     </>
   );
 }

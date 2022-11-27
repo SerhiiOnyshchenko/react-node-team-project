@@ -4,10 +4,15 @@ import { toast } from 'react-toastify';
 
 export const getNoticesCategories = createAsyncThunk(
   'notices/getNoticesCategories',
-  async category => {
+  async ({ category, query = '' }) => {
     try {
-      const { data } = await axios.get(`/notices?category=${category}`);
-      return data;
+      let data;
+      if (query) {
+        data = await axios.get(`/notices?category=${category}&q=${query}`);
+      } else {
+        data = await axios.get(`/notices?category=${category}`);
+      }
+      return data.data;
     } catch (error) {
       toast.error(error.response.data.message);
     }
