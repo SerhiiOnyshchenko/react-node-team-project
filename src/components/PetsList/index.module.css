@@ -43,16 +43,13 @@
 	border-radius: 50%;
 	background-color: transparent;
 	border: 0;
-
-	background-image: url("../../images/svg/bin.svg");
-	background-repeat: no-repeat;
-	background-position: center;
+	fill: var(--color-main);
 	transition: var(--transition);
 }
 
 .deleteBtn:hover,
 .deleteBtn:focus {
-	background-image: url("../../images/svg/bin-hover.svg");
+	fill: var(--color-hover-active);
 }
 
 .petInfoCategory {

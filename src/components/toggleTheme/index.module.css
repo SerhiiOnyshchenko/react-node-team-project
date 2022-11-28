@@ -1,5 +1,5 @@
 .toggleThemeBox {
-	margin-left: 200px;
+	margin-left: 20px;
 	display: flex;
 	align-items: center;
 	background-color: var(--bg);
@@ -8,7 +8,7 @@
 .toggleThemeIconLight {
 	width: 24px;
 	height: 24px;
-	background-color:  var(--bg); 
+	background-color: var(--bg);
 	background-position: center;
 	background-repeat: no-repeat;
 	border-radius: 50px;
@@ -28,15 +28,14 @@
 }
 
 .toggleThemeCheckedBox {
-
 	position: relative;
 	width: 44px;
 	height: 24px;
 	padding: 2px;
 	/* background: var( --btn-bg-default); */
-	background-color:  var(--bg); 
+	background-color: var(--bg);
 	border: 2px solid #f59256;
-	box-sizing:border-box;
+	box-sizing: border-box;
 	border-radius: 50px;
 	cursor: pointer;
 }
@@ -63,6 +62,11 @@
 @media screen and (max-width: 767px) {
 	.toggleThemeBox {
 		right: 120px;
+	}
+}
+@media screen and (min-width: 768px) {
+	.toggleThemeBox {
+		margin-left: 40px;
 	}
 }
 @media screen and (max-width: 424px) {

@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { RotatingLines } from 'react-loader-spinner';
 import ModalPage from 'pages/ModalPage';
 import ModalSuccess from 'components/ModalSuccess';
+import { ReactComponent as Bin } from '../../images/svg/bin.svg';
 
 export default function PetsList() {
   const dispatch = useDispatch();
@@ -47,7 +48,9 @@ export default function PetsList() {
                     type="button"
                     onClick={() => setShowModal(true)}
                     className={s.deleteBtn}
-                  ></button>
+                  >
+                    <Bin />
+                  </button>
                   <img src={pet.image} alt="Pet" className={s.petPhoto} />
                   <div className={s.petInfo}>
                     <p className={s.petInfoCategory}>

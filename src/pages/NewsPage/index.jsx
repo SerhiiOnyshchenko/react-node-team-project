@@ -7,6 +7,7 @@ import getNews from 'redux/news/news-operations';
 import { RotatingLines } from 'react-loader-spinner';
 import { newsSelectors } from '../../redux/news';
 import Pagination from 'components/Pagination';
+import { ReactComponent as Search } from '../../images/svg/search.svg';
 
 export default function NewsPage() {
   const dispatch = useDispatch();
@@ -40,7 +41,9 @@ export default function NewsPage() {
               placeholder="Search"
             />
           </div>
-          <button type="submit" className={s.btn}></button>
+          <button type="submit" className={s.btn}>
+            <Search />
+          </button>
         </form>
         {!status && newsSlice.length > 0 && (
           <ul className={s.newList}>

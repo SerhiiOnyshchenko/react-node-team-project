@@ -7,6 +7,7 @@ import { noticesOperations } from 'redux/notices';
 import { useDispatch, useSelector } from 'react-redux';
 import { authSelectors } from 'redux/auth';
 import { useNavigate } from 'react-router-dom';
+import { ReactComponent as Plus } from '../../images/svg/big-plus.svg';
 
 const validationSchema = yup.object({
   sex: yup.string().required('Field is required!'),
@@ -144,7 +145,7 @@ const StepTwo = ({ formData, setFormData, prevStep, onClose }) => {
                   alt={fileInput.name}
                 />
               )}
-
+              <Plus />
               <input
                 className={s.inputFile}
                 type="file"

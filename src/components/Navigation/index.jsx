@@ -9,7 +9,6 @@ import ToggleTheme from 'components/ToggleTheme';
 import s from './index.module.css';
 import Donate from 'components/Donate';
 
-
 export default function Navigation() {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ maxWidth: 1279 });
@@ -19,11 +18,11 @@ export default function Navigation() {
     <>
       <div className={s.wrapper}>
         {!isTablet && <Nav />}
-        <ToggleTheme/>
-        {!isMobile && <Donate />}
+        <ToggleTheme />
+        <Donate />
         {!isMobile && (isLoggedIn ? <UserNav /> : <AuthNav />)}
         {isTablet && <MobileNav />}
-        {isMobile && <Donate />}
+        {/* {isMobile && <Donate />} */}
       </div>
     </>
   );
