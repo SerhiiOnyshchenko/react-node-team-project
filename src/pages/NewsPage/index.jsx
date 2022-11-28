@@ -7,12 +7,12 @@ import getNews from 'redux/news/news-operations';
 import { RotatingLines } from 'react-loader-spinner';
 import { newsSelectors } from '../../redux/news';
 import Pagination from 'components/Pagination';
+import { ReactComponent as Search } from '../../images/svg/search.svg';
 
 export default function NewsPage() {
   const dispatch = useDispatch();
   const [query, setQuery] = useState('');
   const news = useSelector(newsSelectors.getNews);
-
   const [newsSlice, setNewsSlice] = useState([]);
   const status = useSelector(newsSelectors.getStatus);
 
@@ -24,7 +24,14 @@ export default function NewsPage() {
     e.preventDefault();
     dispatch(getNews(e.target.search.value));
     setQuery(e.target.search.value);
-    e.target.search.value = '';
+  };
+
+  const changeInput = e => {
+    e.preventDefault();
+    if (e.target.value === '') {
+      dispatch(getNews(e.target.value));
+      setQuery(e.target.value);
+    }
   };
 
   return (
@@ -38,9 +45,12 @@ export default function NewsPage() {
               type="search"
               name="search"
               placeholder="Search"
+              onInput={changeInput}
             />
           </div>
-          <button type="submit" className={s.btn}></button>
+          <button type="submit" className={s.btn}>
+            <Search />
+          </button>
         </form>
         {!status && newsSlice.length > 0 && (
           <ul className={s.newList}>
@@ -67,14 +77,16 @@ export default function NewsPage() {
           </div>
         )}
       </div>
-      <Pagination
-        totalHits={6}
-        pageSize={6}
-        data={news}
-        setData={n => {
-          setNewsSlice(n);
-        }}
-      />
+      {news && (
+        <Pagination
+          totalHits={news.length}
+          pageSize={6}
+          data={news}
+          setData={n => {
+            setNewsSlice(n);
+          }}
+        />
+      )}
     </Container>
   );
 }

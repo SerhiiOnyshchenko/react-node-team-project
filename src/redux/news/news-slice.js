@@ -21,7 +21,6 @@ const newsSlice = createSlice({
       state.status = false;
     });
   },
-},
-);
+});
 
 export default newsSlice.reducer;

@@ -1,26 +1,26 @@
 .wrapper {
-  border-radius: 50%;
-  padding: 10px;
-  margin-left: 80px;
-  background: inherit;
-  transition: var(--transition);
+	border-radius: 50%;
+	padding: 10px;
+	margin-left: 20px;
+	background: inherit;
+	transition: var(--transition);
 }
-@media screen and (max-width: 768px) {
-  .wrapper {
-    margin-right: 30px;
-  }
+@media screen and (min-width: 768px) {
+	.wrapper {
+		margin-left: 40px;
+	}
 }
 .icon {
-  fill: #000;
-  width: 24px;
-  height: 24px;
-  transition: var(--transition);
+	fill: var(--color-main);
+	width: 24px;
+	height: 24px;
+	transition: var(--transition);
 }
 .icon:hover,
 .icon:focus {
-  fill: #fff;
+	fill: var(--color-input);
 }
 .wrapper:hover,
 .wrapper:focus {
-  background: var(--color-hover-active);
+	background: var(--color-hover-active);
 }

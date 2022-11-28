@@ -28,6 +28,7 @@
 	background: transparent;
 	font-size: 20px;
 	line-height: 1.35;
+	color: var(--color-main);
 }
 
 .buttonAddPet {
