@@ -1,11 +1,14 @@
 import s from './index.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { petsOperations, petsSelectors } from 'redux/pets';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { RotatingLines } from 'react-loader-spinner';
+import ModalPage from 'pages/ModalPage';
+import ModalSuccess from 'components/ModalSuccess';
 
 export default function PetsList() {
   const dispatch = useDispatch();
+  const [showModal, setShowModal] = useState(false);
   const petsList = useSelector(petsSelectors.getUserPetsList);
   const isLoadingPets = useSelector(petsSelectors.getIsLoading);
 
@@ -42,9 +45,7 @@ export default function PetsList() {
                 <li key={pet._id} className={s.card}>
                   <button
                     type="button"
-                    onClick={() => {
-                      dispatch(petsOperations.deleteUserPet(pet._id));
-                    }}
+                    onClick={() => setShowModal(true)}
                     className={s.deleteBtn}
                   ></button>
                   <img src={pet.image} alt="Pet" className={s.petPhoto} />
@@ -66,6 +67,16 @@ export default function PetsList() {
                       {pet.comments}
                     </p>
                   </div>
+                  {showModal && (
+                    <ModalPage onClose={() => setShowModal(false)}>
+                      <ModalSuccess
+                        onDispatch={() =>
+                          dispatch(petsOperations.deleteUserPet(pet._id))
+                        }
+                        onClose={() => setShowModal(false)}
+                      />
+                    </ModalPage>
+                  )}
                 </li>
               ))}
             </ul>
