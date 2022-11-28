@@ -84,14 +84,10 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
 	box-shadow: 0 0 0 30px var(--bg-input-modal) inset;
+	border: 1px solid var(--color-border-input);
 	-webkit-text-fill-color: var(--color-main);
 }
-input::-webkit-search-decoration,
-input::-webkit-search-cancel-button,
-input::-webkit-search-results-button,
-input::-webkit-search-results-decoration {
-	-webkit-appearance: none;
-}
+
 .inputTextarea {
 	position: relative;
 	width: 100%;
@@ -110,12 +106,7 @@ textarea:-webkit-autofill:active {
 	box-shadow: 0 0 0 30px var(--bg-input-modal) inset;
 	-webkit-text-fill-color: var(--color-main);
 }
-textarea::-webkit-search-decoration,
-textarea::-webkit-search-cancel-button,
-textarea::-webkit-search-results-button,
-textarea::-webkit-search-results-decoration {
-	-webkit-appearance: none;
-}
+
 .inputTextarea::-webkit-scrollbar {
 	width: 2px;
 }

@@ -39,19 +39,19 @@
 }
 
 .input {
-  border-radius: 20px;
-  padding-left: 12px;
-  padding-right: 12px;
-  line-height: 1.37;
-  display: flex;
-  align-items: center;
-  letter-spacing: 0.04em;
-  color: var(--color-placeholder);
-  background-color: transparent;
-  width: 100%;
-  height: 100%;
-  cursor: text;
-  border: 2px solid var( --color-border-input);
+	border-radius: 20px;
+	padding-left: 12px;
+	padding-right: 12px;
+	line-height: 1.37;
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.04em;
+	color: var(--color-placeholder);
+	background-color: transparent;
+	width: 100%;
+	height: 100%;
+	cursor: text;
+	border: 2px solid var(--color-border-input);
 }
 
 @media screen and (min-width: 768px) {
@@ -69,22 +69,23 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  box-shadow: 0 0 0 30px var(--color-input) inset;
-  -webkit-text-fill-color: var(--color-main);
+	box-shadow: 0 0 0 30px var(--color-input) inset;
+	-webkit-text-fill-color: var(--color-main);
 }
 input::-webkit-search-decoration,
 input::-webkit-search-cancel-button,
 input::-webkit-search-results-button,
 input::-webkit-search-results-decoration {
-  -webkit-appearance: none;
+	margin-right: 30px;
+	/* -webkit-appearance: none; */
 }
 
 .inputContainer {
-  height: 40px;
-  width: 280px;
-  border-radius: 20px;
-  background-color: var(--color-input);
-  box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
+	height: 40px;
+	width: 280px;
+	border-radius: 20px;
+	background-color: var(--color-input);
+	box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
 }
 @media screen and (min-width: 768px) {
 	.inputContainer {
@@ -112,17 +113,16 @@ input::-webkit-search-results-decoration {
 	right: 0px;
 	width: 40px;
 	height: 40px;
-	background-image: url(../../images/svg/search.svg);
-	background-repeat: no-repeat;
-	background-position: center center;
+	fill: var(--color-main);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	background-color: transparent;
-	background-size: 15px 15px;
 }
 @media screen and (min-width: 768px) {
 	.btn {
 		width: 44px;
 		height: 44px;
-		background-size: 18px 18px;
 	}
 }
 
@@ -148,17 +148,16 @@ input::-webkit-search-results-decoration {
 }
 
 .Rotating {
-  margin-top: 150px;
+	margin-top: 150px;
 }
 
 @media screen and (min-width: 768px) {
-  .Rotating {
-    margin-top: 50px;
-  }
+	.Rotating {
+		margin-top: 50px;
+	}
 }
 @media screen and (min-width: 1280px) {
-  .Rotating {
-    margin-top: 100px;
-  }
-
+	.Rotating {
+		margin-top: 100px;
+	}
 }

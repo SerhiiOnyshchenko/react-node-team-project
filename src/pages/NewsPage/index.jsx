@@ -13,7 +13,6 @@ export default function NewsPage() {
   const dispatch = useDispatch();
   const [query, setQuery] = useState('');
   const news = useSelector(newsSelectors.getNews);
-
   const [newsSlice, setNewsSlice] = useState([]);
   const status = useSelector(newsSelectors.getStatus);
 
@@ -25,7 +24,14 @@ export default function NewsPage() {
     e.preventDefault();
     dispatch(getNews(e.target.search.value));
     setQuery(e.target.search.value);
-    e.target.search.value = '';
+  };
+
+  const changeInput = e => {
+    e.preventDefault();
+    if (e.target.value === '') {
+      dispatch(getNews(e.target.value));
+      setQuery(e.target.value);
+    }
   };
 
   return (
@@ -39,6 +45,7 @@ export default function NewsPage() {
               type="search"
               name="search"
               placeholder="Search"
+              onInput={changeInput}
             />
           </div>
           <button type="submit" className={s.btn}>
@@ -70,14 +77,16 @@ export default function NewsPage() {
           </div>
         )}
       </div>
-      <Pagination
-        totalHits={6}
-        pageSize={6}
-        data={news}
-        setData={n => {
-          setNewsSlice(n);
-        }}
-      />
+      {news && (
+        <Pagination
+          totalHits={news.length}
+          pageSize={6}
+          data={news}
+          setData={n => {
+            setNewsSlice(n);
+          }}
+        />
+      )}
     </Container>
   );
 }

@@ -4,12 +4,15 @@
 	margin-bottom: 50px;
 }
 .pagination li > button {
+	color: var(--color-main);
 	transition: var(--transition);
 }
 .pagination li > button[aria-current="true"],
 .pagination li > button[aria-current="true"]:hover {
+	color: var(--color-main);
 	background-color: var(--btn-bg-another);
 }
 .pagination li > button:hover {
+	color: var(--color-main);
 	background-color: var(--btn-bg-another);
 }

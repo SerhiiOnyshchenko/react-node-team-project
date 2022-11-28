@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import s from './index.module.css';
+import { ReactComponent as ArrowUp } from '../../images/svg/arrowUp.svg';
 
 export default function BtnScrollToTop() {
   const buttonScrollToTop = useRef();
@@ -10,7 +11,7 @@ export default function BtnScrollToTop() {
       document.body.scrollTop > 100 ||
       document.documentElement.scrollTop > 100
     ) {
-      buttonScrollToTop.current.style.display = 'block';
+      buttonScrollToTop.current.style.display = 'flex';
     } else {
       buttonScrollToTop.current.style.display = 'none';
     }
@@ -27,6 +28,8 @@ export default function BtnScrollToTop() {
       onClick={onClickBtn}
       type="button"
       className={s.Btn}
-    ></button>
+    >
+      <ArrowUp />
+    </button>
   );
 }

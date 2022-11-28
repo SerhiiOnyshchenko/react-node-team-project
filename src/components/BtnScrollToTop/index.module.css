@@ -1,22 +1,23 @@
 .Btn {
-  display: none;
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 70px;
-  height: 70px;
-  border: 2px solid #f59256;
-  border-radius: 50%;
-  background-image: url('../../images/svg/arrowUp.svg');
-  background-size: 50%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: var(--btn-bg-default);
-  cursor: pointer;
-  z-index: 99;
-  transition: var(--transition);
+	display: none;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	width: 60px;
+	height: 60px;
+	border: 2px solid #f59256;
+	border-radius: 50%;
+	fill: var(--color-main);
+
+	background-color: var(--btn-bg-default);
+	cursor: pointer;
+	z-index: 99;
+	transition: var(--transition);
 }
+
 .Btn:hover {
-  background-color: var(--btn-bg-another);
-  transform: scale(1.1);
+	background-color: var(--btn-bg-another);
+	transform: scale(1.1);
 }
