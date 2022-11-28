@@ -11,8 +11,18 @@ import { ReactComponent as Plus } from '../../images/svg/big-plus.svg';
 
 const validationSchema = yup.object({
   sex: yup.string().required('Field is required!'),
-  location: yup.string().required('Field is required!'),
-  price: yup.number().min(0).max(10000).notRequired(),
+  location: yup
+    .string()
+    .min(2)
+    .max(36)
+    .matches(/\D/g, 'Only alphabetic characters are allowed')
+    .required('Field is required!'),
+  price: yup
+    .string()
+    .min(2)
+    .max(6)
+    .matches(/^[1-9]+[0-9]*\$$/g, 'Only number characters and $ are allowed')
+    .notRequired(),
   image: yup
     .mixed()
     .required('Image is Required!(jpg,jpeg,png)')
@@ -22,7 +32,12 @@ const validationSchema = yup.object({
       value =>
         value === null || (value && SUPPORTED_FORMATS.includes(value.type))
     ),
-  comments: yup.string().min(4).max(120).required('Field is required!'),
+  comments: yup
+    .string()
+    .min(4)
+    .max(120)
+    .matches(/^\D*$/g, 'Only alphabetic characters and symbols are allowed')
+    .required('Field is required!'),
 });
 
 const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png'];
@@ -48,19 +63,23 @@ const StepTwo = ({ formData, setFormData, prevStep, onClose }) => {
       <Formik
         validationSchema={validationSchema}
         initialValues={formData}
-        onSubmit={values => {
+        onSubmit={async values => {
           setFormData({
             ...values,
             image: fileInput,
-            price: values.category !== 'sell' ? '0' : values.price,
+            price: values.category !== 'sell' ? '1$' : values.price,
           });
           if (direction === 'back') {
             prevStep();
           }
           if (direction === 'forward') {
-            dispatch(noticesOperations.createNotices({ values, token }));
-            navigate('/notices/own');
-            onClose();
+            try {
+              await dispatch(
+                noticesOperations.createNotices({ values, token })
+              ).unwrap();
+              navigate('/notices/own');
+              onClose();
+            } catch (error) {}
           }
         }}
       >
@@ -121,9 +140,7 @@ const StepTwo = ({ formData, setFormData, prevStep, onClose }) => {
                 <Field
                   id="price"
                   name="price"
-                  type="number"
-                  min="0"
-                  max="10000"
+                  type="text"
                   placeholder="Type price"
                   className={s.inputText}
                 />
@@ -137,15 +154,17 @@ const StepTwo = ({ formData, setFormData, prevStep, onClose }) => {
               Load the pet's image*:
             </label>
             <div className={s.addImage}>
-              {fileInput && (
+              {fileInput ? (
                 <img
                   id="image"
                   className={s.selectedAvatar}
                   src={URL.createObjectURL(fileInput)}
                   alt={fileInput.name}
                 />
+              ) : (
+                <Plus />
               )}
-              <Plus />
+
               <input
                 className={s.inputFile}
                 type="file"
