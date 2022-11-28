@@ -12,7 +12,7 @@ export default function AddNoticeModal({ onClose }) {
     breed: '',
     sex: '',
     location: '',
-    price: '0',
+    price: '1$',
     category: '',
     comments: '',
     dateOfBirth: '',

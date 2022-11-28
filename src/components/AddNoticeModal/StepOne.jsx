@@ -12,10 +12,25 @@ import { parse } from 'date-fns';
 const today = new Date();
 
 const validationSchema = yup.object({
-  titleOfAd: yup.string().required('Field is required!'),
+  titleOfAd: yup
+    .string()
+    .min(2)
+    .max(48)
+    .matches(/^[a-zA-Z, ]*$/g, 'Only alphabetic characters are allowed')
+    .required('Field is required!'),
   category: yup.string().required('Category is required!'),
-  namePet: yup.string().required('Field is required!'),
-  breed: yup.string().required('Field is required!'),
+  namePet: yup
+    .string()
+    .min(2)
+    .max(16)
+    .matches(/^[a-zA-Z, ]*$/g, 'Only alphabetic characters are allowed')
+    .required('Field is required!'),
+  breed: yup
+    .string()
+    .min(2)
+    .max(36)
+    .matches(/^[a-zA-Z, ]*$/g, 'Only alphabetic characters are allowed')
+    .required('Field is required!'),
   dateOfBirth: yup
     .date()
     .test('len', 'Must be exactly DD.MM.YYYY', (value, { originalValue }) => {
@@ -101,11 +116,11 @@ const StepOne = ({ formData, setFormData, nextStep, onClose }) => {
               />
               <div className={s.radioBtn}>sell</div>
             </label>
-            <ErrorMessage
-              name="category"
-              render={msg => <div className={s.errorMsg}>{msg}</div>}
-            />
           </div>
+          <ErrorMessage
+            name="category"
+            render={msg => <div className={s.errorMsg}>{msg}</div>}
+          />
           <div className={s.textFildWrap}>
             <label htmlFor="titleOfAd" type="text" className={s.label}>
               Tittle of ad*:

@@ -219,6 +219,7 @@ textarea:-webkit-autofill:active {
 	width: 116px;
 	height: 116px;
 	border-radius: 20px;
+	object-fit: cover;
 	background: #fdf7f2;
 }
 
