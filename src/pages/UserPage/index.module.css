@@ -12,7 +12,7 @@
 	display: flex;
 	align-items: center;
 	letter-spacing: 0.04em;
-	color: #000000;
+	color: var(--color-main);
 }
 
 .userWrap {

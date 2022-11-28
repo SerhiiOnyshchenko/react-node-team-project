@@ -13,7 +13,7 @@
 	display: flex;
 	letter-spacing: 0.04em;
 
-	color: #111111;
+	color: var(--color-main);
 }
 
 .value {
@@ -22,14 +22,15 @@
 	line-height: 16px;
 	letter-spacing: 0.04em;
 	margin-left: 19px;
-	color: #111111;
+	color: var(--color-main);
 }
 .Input {
 	margin-left: 0;
 	width: 160px;
 	height: 24px;
 	padding: 4px 18px;
-	background: #fdf7f2;
+	color: var(--color-main);
+	background: var(--color-input);
 	border: 1px solid rgba(245, 146, 86, 0.5);
 	border-radius: 40px;
 	letter-spacing: 0.04em;

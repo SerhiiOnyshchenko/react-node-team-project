@@ -4,7 +4,7 @@
 	position: fixed;
 	top: 66px;
 	left: 0;
-	z-index: 30;
+	z-index: 1;
 	background-color: var(--bg);
 }
 @media screen and (min-width: 768px) {
@@ -33,9 +33,6 @@
 }
 
 .link {
-	font-family: "Manrope";
-	font-style: normal;
-	font-weight: 500;
 	font-size: 32px;
 	line-height: 44px;
 	letter-spacing: 0.04em;
