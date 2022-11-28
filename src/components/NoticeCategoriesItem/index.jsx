@@ -1,3 +1,4 @@
+import EllipsisText from 'react-ellipsis-text';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { authOperations, authSelectors } from 'redux/auth';
@@ -7,6 +8,7 @@ import s from './modalItem.module.css';
 import { toast } from 'react-toastify';
 import modalImage from '../../images/no-image-found.png';
 import { ReactComponent as HeartBtnM } from '../../images/svg/heartBtnM.svg';
+import getPetAge from './getPetAge';
 
 const NOTICE_ITEM_KEYS = [
   {
@@ -19,7 +21,7 @@ const NOTICE_ITEM_KEYS = [
   },
   {
     label: 'Age:',
-    key: 'year',
+    key: 'age',
   },
   {
     label: 'Price:',
@@ -32,6 +34,9 @@ export default function NoticeItem({ petData }) {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const userFavorite = useSelector(authSelectors.getUserFavorite);
   const inFavorites = userFavorite.some(favor => favor._id === petData._id);
+  const petAge = getPetAge(
+    new Date(petData.dateOfBirth.split('.').reverse().join('.'))
+  );
 
   const dispatch = useDispatch();
 
@@ -73,30 +78,41 @@ export default function NoticeItem({ petData }) {
             src={petData.image || modalImage}
             alt={petData.name}
             height="100%"
+            style={{ height: 288, objectFit: 'cover' }}
           />
           <div className={s.categoryLabel}>{petData.category}</div>
         </div>
         <div className={s.infoWrapper}>
-          <h3 className={s.title}>{petData.title}</h3>
+          <EllipsisText
+            text={petData.titleOfAd}
+            length={15}
+            className={s.title}
+          ></EllipsisText>
           <ul>
             {NOTICE_ITEM_KEYS.map(({ label, key, category }) => {
               if (category && category !== petData.category) return null;
               return (
                 <li key={key} className={s.infoList}>
                   <span className={s.label}>{label}</span>
-                  <span className={s.lebalText}>{petData[key]}</span>
+                  <EllipsisText
+                    text={petData[key] || petAge}
+                    length={20}
+                    className={s.lebalText}
+                  ></EllipsisText>
                 </li>
               );
             })}
           </ul>
         </div>
-        <button
-          type="button"
-          className={s.learmMoreBtn}
-          onClick={handleModalToggle}
-        >
-          Learn more
-        </button>
+        <div className={s.learnMoreBtnCont}>
+          <button
+            type="button"
+            className={s.learnMoreBtn}
+            onClick={handleModalToggle}
+          >
+            Learn more
+          </button>
+        </div>
         <button
           type="button"
           className={s.heartBtn}

@@ -31,7 +31,6 @@ export default function OurFriendsPage() {
                     avatar={el.imageUrl ? el.imageUrl : '------------------'}
                   />
                 ))}
-              ;
             </div>
           </div>
         </>

@@ -5,18 +5,51 @@ const initialState = {
   notices: [],
   userNotices: [],
   isLoading: false,
-  isRefreshing: false,
 };
 
 const noticesSlice = createSlice({
   name: 'notices',
   initialState,
   extraReducers: {
+    [noticesOperations.getNoticesCategories.pending](state) {
+      state.isLoading = true;
+    },
     [noticesOperations.getNoticesCategories.fulfilled](state, action) {
-      state.notices = action.payload;
+      state.notices = action.payload.notices;
+      state.isLoading = false;
+    },
+    [noticesOperations.getNoticesCategories.rejected](state) {
+      state.isLoading = false;
+    },
+    [noticesOperations.getUserNotices.pending](state) {
+      state.isLoading = true;
     },
     [noticesOperations.getUserNotices.fulfilled](state, action) {
       state.userNotices = action.payload;
+      state.isLoading = false;
+    },
+    [noticesOperations.getUserNotices.rejected](state) {
+      state.isLoading = false;
+    },
+    [noticesOperations.createNotices.pending](state) {
+      state.isLoading = true;
+    },
+    [noticesOperations.createNotices.fulfilled](state, action) {
+      state.userNotices = action.payload;
+      state.isLoading = false;
+    },
+    [noticesOperations.createNotices.rejected](state) {
+      state.isLoading = false;
+    },
+    [noticesOperations.deleteUserNotices.pending](state) {
+      state.isLoading = true;
+    },
+    [noticesOperations.deleteUserNotices.fulfilled](state, action) {
+      state.userNotices = action.payload;
+      state.isLoading = false;
+    },
+    [noticesOperations.deleteUserNotices.rejected](state) {
+      state.isLoading = false;
     },
   },
 });

@@ -7,6 +7,7 @@ import UserNav from 'components/UserNav';
 import MobileNav from 'components/Nav/MobileNav';
 import ToggleTheme from 'components/ToggleTheme';
 import s from './index.module.css';
+import Donate from 'components/Donate';
 
 
 export default function Navigation() {
@@ -17,10 +18,12 @@ export default function Navigation() {
   return (
     <>
       <div className={s.wrapper}>
-        {!isTablet && <Nav />} 
+        {!isTablet && <Nav />}
         <ToggleTheme/>
+        {!isMobile && <Donate />}
         {!isMobile && (isLoggedIn ? <UserNav /> : <AuthNav />)}
         {isTablet && <MobileNav />}
+        {isMobile && <Donate />}
       </div>
     </>
   );

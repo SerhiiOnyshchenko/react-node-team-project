@@ -1,41 +1,41 @@
 .form {
-  margin: 0 auto;
-  padding-top: 40px;
-  padding-bottom: 104px;
+	margin: 0 auto;
+	padding-top: 40px;
+	padding-bottom: 104px;
 }
 
 @media screen and (min-width: 768px) {
-  .form {
-    width: 608px;
-    padding: 60px 80px 40px 80px;
-    background-color: var(--modal-bg);
-    box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
-    border-radius: 40px;
-  }
+	.form {
+		width: 608px;
+		padding: 60px 80px 40px 80px;
+		background-color: var(--modal-bg);
+		box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
+		border-radius: 40px;
+	}
 }
 
 @media screen and (min-width: 1280px) {
-  .form {
-    width: 618px;
-    padding: 60px 80px;
-  }
+	.form {
+		width: 618px;
+		padding: 60px 80px;
+	}
 }
 
 .title {
-  text-align: center;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 1.38;
-  letter-spacing: 0.04em;
-  margin-bottom: 40px;
+	text-align: center;
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 1.38;
+	letter-spacing: 0.04em;
+	margin-bottom: 40px;
 }
 
 @media screen and (min-width: 768px) {
-  .title {
-    font-weight: 500;
-    font-size: 36px;
-    line-height: 1.36;
-  }
+	.title {
+		font-weight: 500;
+		font-size: 36px;
+		line-height: 1.36;
+	}
 }
 
 .input {
@@ -54,19 +54,19 @@
 
 
 .input:not(:last-of-type) {
-  margin-bottom: 16px;
+	margin-bottom: 16px;
 }
 
 .input:nth-last-of-type(1) {
-  margin-bottom: 40px;
+	margin-bottom: 40px;
 }
 
 @media screen and (min-width: 768px) {
-  .input {
-    min-height: 52px;
-    padding-left: 32px;
-    padding-right: 30px;
-  }
+	.input {
+		min-height: 52px;
+		padding-left: 32px;
+		padding-right: 30px;
+	}
 }
 
 .input::placeholder {
@@ -78,53 +78,68 @@
 }
 
 @media screen and (min-width: 768px) {
-  .input::placeholder {
-    font-size: 18px;
-    line-height: 1.39;
-  }
+	.input::placeholder {
+		font-size: 18px;
+		line-height: 1.39;
+	}
 }
 
 .input:focus {
-  outline: none;
-  border: 1px solid var(--color-hover-active);
+	outline: none;
+	border: 1px solid var(--color-hover-active);
 }
 
 .errmsg_login {
-  position: relative;
-  top: -13px;
-  left: 20px;
+	position: relative;
+	top: -13px;
+	left: 20px;
 
-  color: red;
+	color: red;
 }
 
 .errmsg_pass {
-  position: relative;
-  top: -35px;
-  left: 20px;
+	position: relative;
+	top: -35px;
+	left: 20px;
 
-  color: red;
+	color: red;
 }
 
 .button {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 28px;
-  width: 100%;
-  height: 44px;
-  font-size: 20px;
-  letter-spacing: 0.04em;
-  border: 2px solid #f59256;
-  border-radius: 40px;
-  background-color: var(--btn-bg-default);
-  transition: var(--transition);
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0 28px;
+	width: 100%;
+	height: 44px;
+	font-size: 20px;
+	letter-spacing: 0.04em;
+	border: 2px solid #f59256;
+	border-radius: 40px;
+	background-color: var(--btn-bg-default);
+	transition: var(--transition);
   color: var(--color-main);
+}
+.buttonActive {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0 28px;
+	width: 100%;
+	height: 44px;
+	font-size: 20px;
+	letter-spacing: 0.04em;
+	border: 2px solid #f59256;
+	border-radius: 40px;
+	color: var(--btn-color-hover-active);
+	background-color: var(--btn-bg-another);
+	transition: var(--transition);
 }
 
 .button:hover {
-  background-color: var(--btn-bg-another);
-  color: var(--btn-color-hover-active);
-  cursor: pointer;
+	background-color: var(--btn-bg-another);
+	color: var(--btn-color-hover-active);
+	cursor: pointer;
 }
 
 .question {
@@ -138,5 +153,5 @@
 }
 
 .registerLink {
-  color: #3091eb;
+	color: #3091eb;
 }

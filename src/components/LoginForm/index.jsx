@@ -2,9 +2,9 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import s from './index.module.css';
 import * as yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { authOperations } from '../../redux/auth';
-import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
+import { authOperations, authSelectors } from '../../redux/auth';
+import { RotatingLines } from 'react-loader-spinner';
 
 const validationSchema = yup.object({
   email: yup.string().email('Invalid email').required('Email is required'),
@@ -14,6 +14,7 @@ const validationSchema = yup.object({
 export default function LoginForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const getIsLoading = useSelector(authSelectors.getIsLoading);
 
   return (
     <>
@@ -27,9 +28,7 @@ export default function LoginForm() {
           try {
             await dispatch(authOperations.logIn(values)).unwrap();
             navigate('/user');
-          } catch (e) {
-            toast.error('Wrong email or password');
-          }
+          } catch (error) {}
         }}
       >
         {({ handleSubmit, handleChange, touched, errors }) => (
@@ -65,9 +64,21 @@ export default function LoginForm() {
               name="password"
               component="div"
             />
-            <button className={s.button} type="submit">
-              Login
-            </button>
+            {getIsLoading ? (
+              <div className={s.buttonActive}>
+                <RotatingLines
+                  strokeColor="#fdf7f2"
+                  strokeWidth="5"
+                  animationDuration="0.75"
+                  width="40"
+                  visible={true}
+                />
+              </div>
+            ) : (
+              <button className={s.button} type="submit">
+                Login
+              </button>
+            )}
             <p className={s.question}>
               Don't have an account?{' '}
               <Link to="/register" className={s.registerLink}>

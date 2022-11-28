@@ -1,106 +1,116 @@
 .list {
-  margin-top: 26px;
+	margin-top: 26px;
+	margin-bottom: 20px;
 }
 
 .card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: var(--modal-bg);
+	padding: 16px 20px 0px;
+	box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
+	border-radius: 40px;
+	margin-bottom: 20px;
+}
 
-  background-color: var(--modal-bg);
-  padding: 16px 20px;
-  box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
-  border-radius: 40px;
-  margin-bottom: 20px;
+.card:last-child {
+	margin-bottom: 40px;
 }
 
 .petPhoto {
-  width: 240px;
-  height: 240px;
-  border-radius: 20px;
-  object-fit: cover;
+	width: 240px;
+	border-radius: 20px;
+	object-fit: cover;
 }
 
 .petInfo {
-  position: relative;
-  margin: 20px 0px 40px 0px;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+	margin: 20px 0px 40px;
+	width: 240px;
+	display: flex;
+	flex-direction: column;
 }
 
 .deleteBtn {
-  position: absolute;
+	position: absolute;
 
-  top: -16px;
-  right: 0px;
+	top: 20px;
+	right: 20px;
 
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background-color: transparent;
-  border: 0;
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	background-color: transparent;
+	border: 0;
 
-  background-image: url('../../images/svg/bin.svg');
-  background-repeat: no-repeat;
-  background-position: center;
+	background-image: url("../../images/svg/bin.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+	transition: var(--transition);
 }
 
 .deleteBtn:hover,
 .deleteBtn:focus {
-  color: var(--btn-bg-hover-active);
+	background-image: url("../../images/svg/bin-hover.svg");
 }
 
 .petInfoCategory {
-  margin-bottom: 12px;
+	margin-bottom: 12px;
 
-  line-height: 1.38;
-  white-space: normal;
+	line-height: 1.38;
+	white-space: normal;
 
-  display: block;
-  align-items: top;
-  letter-spacing: 0.04em;
-}
-
-.petInfoCategory:last-child {
-  margin-bottom: 0px;
+	display: block;
+	align-items: top;
+	letter-spacing: 0.04em;
 }
 
 .petInfoTitle {
-  font-weight: 600;
-  margin-right: 5px;
+	font-weight: 600;
+	margin-right: 5px;
 }
 
 .noPets {
-  text-align: center;
-  padding: 40px 0;
+	text-align: center;
+	padding: 40px 0;
 }
 
 @media screen and (min-width: 768px) {
-  .list {
-    margin-top: 24px;
-  }
+	.list {
+		margin-top: 24px;
+	}
 
-  .card {
-    flex-direction: row;
-    padding: 20px;
-  }
+	.card {
+		flex-direction: row;
+		align-items: flex-start;
+		padding: 20px;
+	}
 
-  .petPhoto {
-    width: 161px;
-    height: 161px;
-  }
+	.card:last-child {
+		margin-bottom: 20px;
+	}
 
-  .petInfo {
-    margin: 0px 0px 0px 32px;
-  }
+	.petPhoto {
+		width: 161px;
+	}
 
-  .deleteBtn {
-    top: 0;
-    background-color: var(--bg);
-  }
+	.petInfo {
+		width: 100%;
+		margin: 0px 0px 0px 32px;
+	}
 
-  .petInfoCategory {
-    font-size: 16px;
-  }
+	.deleteBtn {
+		background-color: var(--bg);
+	}
+
+	.petInfoCategory {
+		font-size: 16px;
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.card {
+		margin-bottom: 22px;
+	}
 }

@@ -1,10 +1,288 @@
 .Wrapper {
-  text-align: center;
+	text-align: center;
+	padding: 40px 18px;
+}
+.Wrapper::-webkit-scrollbar {
+	width: 0;
 }
 .header {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 33px;
-  margin: 40px 0 28px;
+	font-size: 24px;
+	line-height: 33px;
+	margin-bottom: 20px;
+}
+.text {
+	margin-bottom: 20px;
+	line-height: 22px;
+	letter-spacing: -0.01em;
+}
+.radioWrapper {
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: 7px;
+	row-gap: 12px;
+	margin-bottom: 32px;
+}
+.wrapprerInput {
+	position: relative;
+}
+.radioBtn {
+	display: block;
+	padding: 8px 25px;
+	font-size: 14px;
+	border-radius: 40px;
+	letter-spacing: 0.04em;
+	line-height: calc(19 / 14);
+	border: 2px solid var(--btn-bg-another);
+	transition: var(--transition);
+}
+
+.inputRadio {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+}
+
+.inputRadio:checked + .radioBtn,
+.inputRadio:hover + .radioBtn,
+.inputRadio:focus + .radioBtn {
+	background-color: var(--btn-bg-another);
+	color: #fff;
+}
+.textFildWrap {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 100%;
+	margin-bottom: 16px;
+	font-size: 18px;
+	line-height: 26px;
+}
+
+.radio > input:checked ~ .radio {
+	background-color: var(--btn-bg-another);
+	color: #fff;
+}
+.inputText {
+	position: relative;
+	width: 100%;
+	height: 40px;
+	padding: 12px 14px;
+	background: #fdf7f2;
+	border: 1px solid rgba(245, 146, 86, 0.5);
+	border-radius: 40px;
+}
+
+.inputTextarea {
+	position: relative;
+	width: 100%;
+	padding: 12px 14px;
+	background: #fdf7f2;
+	border: 1px solid rgba(245, 146, 86, 0.5);
+	border-radius: 20px;
+	min-height: 50px;
+	resize: none;
+}
+.inputTextarea::-webkit-scrollbar {
+	width: 2px;
+}
+.label {
+	margin-bottom: 8px;
+}
+.submitBtnWrapp {
+	display: flex;
+	flex-direction: column;
+	margin-top: 24px;
+	gap: 12px;
+}
+
+.errorMsg {
+	color: red;
+	text-align: left;
+}
+.submitBtn {
+	width: 240px;
+	height: 40px;
+	border-radius: 40px;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 1.36;
+	letter-spacing: 0.04em;
+	background-color: #fff;
+	color: #111;
+	border: 2px solid #f59256;
+	cursor: pointer;
+	transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.submitBtn:hover,
+.submitBtn:active,
+.submitBtn:focus {
+	background-color: #f59256;
+	color: #fff;
+}
+
+/* StepTwo */
+.sexWrap {
+	display: flex;
+	margin-bottom: 32px;
+	font-size: 18px;
+}
+.sexLabel {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+.sexLabel:not(:last-child) {
+	margin-right: 40px;
+}
+.sexIcon {
+	width: 40px;
+	height: 40px;
+	content: url("../../images/sex-male.png");
+	margin-bottom: 12px;
+}
+.sexIconFemale {
+	width: 40px;
+	height: 40px;
+	content: url("../../images/sex-female.png");
+	margin-bottom: 12px;
+}
+.inputSex {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+.sexLabel > input:checked ~ .sexText {
+	color: var(--color-hover-active);
+}
+.sexM {
+	line-height: 26px;
+	margin-bottom: 16px;
+	margin-right: auto;
+}
+.sexText {
+	line-height: 26px;
+}
+
+.avatarLabel {
+	margin-bottom: 8px;
+}
+
+.addImage {
+	position: relative;
+	width: 116px;
+	height: 116px;
+	background: #fdf7f2;
+	border-radius: 20px;
+	background-image: url(../../images/svg/big-plus.svg);
+	background-position: center;
+	background-repeat: no-repeat;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 28px;
+}
+
+.selectedAvatar {
+	width: 116px;
+	height: 116px;
+	border-radius: 20px;
+	background: #fdf7f2;
+}
+
+.inputFile {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
+@media screen and (min-width: 768px) {
+	.Wrapper {
+		text-align: center;
+		padding: 40px 80px;
+	}
+	.header {
+		font-size: 36px;
+	}
+	.text {
+		font-size: 20px;
+	}
+	.label {
+		font-size: 24px;
+	}
+	.radioBtn {
+		font-size: 20px;
+		line-height: calc(27 / 20);
+	}
+	.inputText {
+		width: 100%;
+	}
+	.submitBtnWrapp {
+		flex-direction: row-reverse;
+		justify-content: center;
+		width: 100%;
+	}
+	.submitBtn {
+		width: 180px;
+		height: 44px;
+	}
+	.sexM {
+		font-size: 24px;
+	}
+	.sexText {
+		font-size: 20px;
+	}
+	.avatarLabel {
+		font-size: 24px;
+		margin-bottom: 12px;
+	}
+	.addImage {
+		width: 140px;
+		height: 140px;
+	}
+	.selectedAvatar {
+		width: 140px;
+		height: 140px;
+	}
+	.inputTextarea {
+		min-height: 110px;
+		padding: 16px 18px;
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.avatarLabel {
+		margin-bottom: 18px;
+	}
 }

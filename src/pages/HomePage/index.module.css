@@ -1,5 +1,7 @@
 .HomePage {
 	margin: 0 auto;
+	padding-left: auto;
+	padding-right: auto;
 	padding-top: 44px;
 	height: calc(100vh - 74px);
 	background-color: transparent;
@@ -36,12 +38,12 @@
 
 @media screen and (min-width: 1280px) {
 	.HomePage {
-		width: 1280px;
+		width: 1380px;
 		background-image: url(../../images/home/home-bg-1.png), url(../../images/home/home-bg-2.png),
 			url(../../images/home/home-bg-3.png), url(../../images/home/home-bg-4.png),
 			url(../../images/home/home-bg-heart.png), url(../../images/home/home-bg-circle.png);
-		background-position: bottom right, bottom -514px left -67px, bottom -305px left 43px, bottom right -5px,
-			bottom 509px left 712px, bottom 200px left 424px;
+		background-position: bottom right 50px, bottom -514px left -107px, bottom -305px left, bottom right,
+			bottom 509px left 662px, bottom 200px left 374px;
 		background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
 		background-size: 624px 655px, 1091px 826px, 1068px 685px, 511px 393px, 92px 89px, 63px 63px;
 	}

@@ -1,0 +1,15 @@
+.pagination {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 50px;
+}
+.pagination li > button {
+	transition: var(--transition);
+}
+.pagination li > button[aria-current="true"],
+.pagination li > button[aria-current="true"]:hover {
+	background-color: var(--btn-bg-another);
+}
+.pagination li > button:hover {
+	background-color: var(--btn-bg-another);
+}

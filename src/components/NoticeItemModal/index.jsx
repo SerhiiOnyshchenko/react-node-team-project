@@ -1,9 +1,12 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
 import s from './modalNotice.module.css';
-// import { toast } from 'react-toastify';
+import style from './modalNotice.module.css';
 import modalImage from '../../images/no-image-found.png';
+import ContactsModal from './contactsModal';
 import { ReactComponent as HeartBtnM } from '../../images/svg/heartBtnM.svg';
-import { noticesSelectors } from 'redux/notices';
+import { noticesOperations } from 'redux/notices';
+import { authSelectors } from 'redux/auth';
 
 const PET_MODAL_KEYS = [
   {
@@ -30,12 +33,16 @@ const PET_MODAL_KEYS = [
     key: 'owner',
     values: [
       {
-        label: 'Email:',
-        field: 'email',
+        label: 'Owner:',
+        field: 'name',
       },
       {
         label: 'Phone:',
         field: 'phone',
+      },
+      {
+        label: 'Email:',
+        field: 'email',
       },
     ],
   },
@@ -51,17 +58,28 @@ export default function ModalNotice({
   handleFavoriteToggle,
   favorite,
 }) {
-  const userNotices = useSelector(noticesSelectors.getUserNotices);
-  const owner = userNotices.some(notice => notice._id === petData._id);
+  const [contactModalShow, setContactModalShow] = useState(false);
 
-  // const dispatch = useDispatch();
+  const user = useSelector(authSelectors.getUser);
+  const owner = user._id === petData.owner._id;
+  const ownerPhone = petData.owner.phone.replace(/\D/g, '');
+  const dispatch = useDispatch();
+
+  const handleModalToggle = () => {
+    setContactModalShow(!contactModalShow);
+  };
 
   return (
     <>
       <div className={s.container}>
         <div className={s.infoWrapper}>
           <div className={s.imgWrapper}>
-            <img src={petData.image || modalImage} alt={petData.name} />
+            <img
+              src={petData.image || modalImage}
+              alt={petData.name}
+              height="100%"
+              style={{ objectFit: 'cover' }}
+            />
             <div className={s.categoryLabel}>{petData.category}</div>
             <button
               type="button"
@@ -82,7 +100,7 @@ export default function ModalNotice({
                 if (category && category !== petData.category) return null;
                 if (values) {
                   return values.map(({ field, label }) => (
-                    <li key={key} className={s.infoList}>
+                    <li key={label} className={s.infoList}>
                       <span className={s.label}>{label}</span>
                       <span className={s.lebalText}>
                         {petData[key] && petData[key][field]}
@@ -105,26 +123,41 @@ export default function ModalNotice({
           <p className={s.commentsText}>{petData.comments}</p>
         </div>
         <div className={s.buttons}>
-          <a href={`tel:${petData.phone}`} className={s.contactBtn}>
+          <button
+            type="button"
+            className={s.contactBtn}
+            onClick={handleModalToggle}
+          >
             Contact
-          </a>
+          </button>
           {owner && (
             <button
               type="button"
               className={s.deleteBtn}
-              // onSubmit={async () => {
-              //   try {
-              //     await dispatch(noticesOperations.deleteFromNotice(petData._id));
-              //   } catch (e) {
-              //     toast.error();
-              //   }
-              // }}
+              onClick={() => {
+                dispatch(noticesOperations.deleteUserNotices(petData._id));
+              }}
             >
               delete
             </button>
           )}
         </div>
       </div>
+      {contactModalShow && (
+        <ContactsModal onClose={handleModalToggle}>
+          <div className={style.modalButtons}>
+            <a href={`tel:+${ownerPhone}`} className={s.modalContactBtn}>
+              to call
+            </a>
+            <a
+              href={`mailto:${petData.owner.email}`}
+              className={s.modalContactBtn}
+            >
+              send email
+            </a>
+          </div>
+        </ContactsModal>
+      )}
     </>
   );
 }

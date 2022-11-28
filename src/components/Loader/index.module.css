@@ -9,15 +9,15 @@
 	align-items: center;
 	background: rgba(17, 17, 17, 0.6);
 	backdrop-filter: blur(10px);
-	opacity: 0;
+	opacity: 1;
 	visibility: visible;
 	pointer-events: initial;
-	animation: opacityloader 2s linear;
+	/* animation: opacityloader 2s linear infinite; */
 	z-index: 100;
 }
 @keyframes opacityloader {
 	0% {
-		opacity: 0;
+		opacity: 0.4;
 	}
 	20%,
 	90% {
@@ -32,7 +32,7 @@
 	width: 367px;
 	height: 325px;
 	background: url(../../images/loader/dog-patron.png) no-repeat center/cover;
-	animation: blickImg 2s linear;
+	animation: blickImg 2s linear infinite;
 	opacity: 0.4;
 }
 @keyframes blickImg {
@@ -49,6 +49,6 @@
 		opacity: 1;
 	}
 	100% {
-		opacity: 0;
+		opacity: 0.4;
 	}
 }
