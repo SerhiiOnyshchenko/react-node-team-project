@@ -1,0 +1,45 @@
+.AccessContainer {
+	padding: 40px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.AccessTitle {
+	font-weight: 600;
+	font-size: 26px;
+	margin-bottom: 20px;
+}
+.BttonsWrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}
+
+.Btn {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10 28px;
+	width: 180px;
+	height: 44px;
+	font-size: 20px;
+	letter-spacing: 0.04em;
+	border: 2px solid #f59256;
+	border-radius: 40px;
+	background-color: var(--btn-bg-default);
+	transition: var(--transition);
+}
+
+.Btn:hover {
+	background-color: var(--btn-bg-another);
+	color: var(--btn-color-hover-active);
+	cursor: pointer;
+}
+@media screen and (min-width: 768px) {
+	.BttonsWrapper {
+		flex-direction: row;
+	}
+}
