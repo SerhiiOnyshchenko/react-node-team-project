@@ -96,6 +96,7 @@ h6 {
 	--color-hover-active: #f59256;
 
 	--bg: #fdf7f2;
+	--bg-input-modal: #fdf7f2;
 
 	--modal-bg: #ffffff;
 
@@ -107,6 +108,43 @@ h6 {
 	--btn-color-hover-active: #ffffff;
 
 	--transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+	--color-link: #181c27;
+	--color-text: #111321;
+	--color-date: rgba(17, 17, 17, 0.6);
+	--color-input: #ffffff;
+	--color-placeholder: #535353;
+	--color-border-input: #f59256;
+	--color-friendCard: #ffffff;
+	--color-text-friends: #000000;
+}
+
+[data-theme="dark"] {
+	--color-main: #fdf7f2;
+	--color-another: #f59256;
+	--color-hover-active: #f59256;
+
+	--bg: #1d1d1d;
+	--bg-input-modal: #161616;
+
+	--modal-bg: #1c1c1c;
+
+	--btn-bg-default: #1d1d1d;
+	--btn-bg-another: #f59256;
+	--btn-bg-hover-active: #f59256;
+
+	--btn-color: #1d1d1d;
+	--btn-color-hover-active: #ffffff;
+
+	--transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+	--color-link: #fdf7f2;
+	--color-text: #dcdcdc;
+	--color-date: rgba(128, 128, 128);
+	/* --color-input: #1c1c1c; */
+	--color-input: #161616;
+	--color-placeholder: #dcdcdc;
+	--color-border-input: #f59256;
+	--color-friendCard: #1c1c1c;
+	--color-text-friends: #ffffff;
 }
 
 body {

@@ -1,12 +1,13 @@
 .Btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: transparent;
-  z-index: 454;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: transparent;
+	z-index: 454;
+	margin-left: auto;
 }
 @media screen and (min-width: 768px) {
-  .Btn {
-    margin-left: 20px;
-  }
+	.Btn {
+		margin-left: 20px;
+	}
 }

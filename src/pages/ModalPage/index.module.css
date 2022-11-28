@@ -33,10 +33,11 @@
 	right: 20px;
 	width: 34px;
 	height: 34px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	background-color: var(--bg);
-	background-image: url(../../images/svg/close.svg);
-	background-repeat: no-repeat;
-	background-position: center;
+	fill: var(--color-main);
 	border-radius: 50%;
 	transition: var(--transition);
 }

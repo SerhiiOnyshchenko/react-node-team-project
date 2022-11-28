@@ -1,0 +1,77 @@
+.toggleThemeBox {
+	margin-left: 20px;
+	display: flex;
+	align-items: center;
+	background-color: var(--bg);
+}
+
+.toggleThemeIconLight {
+	width: 24px;
+	height: 24px;
+	background-color: var(--bg);
+	background-position: center;
+	background-repeat: no-repeat;
+	border-radius: 50px;
+	margin-right: 5px;
+	background-image: url(../../images/sun24.png);
+}
+
+.toggleThemeIconDark {
+	width: 24px;
+	height: 24px;
+	background-color: transparent;
+	background-position: center;
+	background-repeat: no-repeat;
+	border-radius: 50px;
+	margin-right: 5px;
+	background-image: url(../../images/moon.png);
+}
+
+.toggleThemeCheckedBox {
+	position: relative;
+	width: 44px;
+	height: 24px;
+	padding: 2px;
+	/* background: var( --btn-bg-default); */
+	background-color: var(--bg);
+	border: 2px solid #f59256;
+	box-sizing: border-box;
+	border-radius: 50px;
+	cursor: pointer;
+}
+
+.toggleThemeCheckLight,
+.toggleThemeCheckDark {
+	position: absolute;
+	top: 2px;
+	right: 4px;
+	width: 16px;
+	height: 16px;
+	background-color: var(--btn-bg-another);
+	border-radius: 40px;
+	transition: var(--transition);
+}
+.toggleThemeCheckDark {
+	right: 22px;
+}
+@media screen and (max-width: 1439px) {
+	.toggleThemeBox {
+		right: 150px;
+	}
+}
+@media screen and (max-width: 767px) {
+	.toggleThemeBox {
+		right: 120px;
+	}
+}
+@media screen and (min-width: 768px) {
+	.toggleThemeBox {
+		margin-left: 40px;
+	}
+}
+@media screen and (max-width: 424px) {
+	.toggleThemeBox {
+		top: 20px;
+		right: 80px;
+	}
+}

@@ -2,6 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useState } from 'react';
 import * as yup from 'yup';
 import s from './index.module.css';
+import { ReactComponent as Plus } from '../../images/svg/big-plus.svg';
 
 const validationSchema = yup.object({
   image: yup
@@ -18,10 +19,7 @@ const validationSchema = yup.object({
     .string()
     .min(8)
     .max(120)
-    .matches(
-      /^[a-zA-Z0-9 ]*$/,
-      'Only alphanumeric characters and numbers are allowed'
-    )
+    .matches(/\D/g, 'Only alphabetic characters and symbols are allowed')
     .required(),
 });
 const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png'];
@@ -64,7 +62,9 @@ export default function ModalPage2({ next, data, onClose, setFormData, prev }) {
                     alt={fileInput.name}
                   />
                 ) : (
-                  <button type="button" className={s.addPhotoBtn}></button>
+                  <button type="button" className={s.addPhotoBtn}>
+                    <Plus />
+                  </button>
                 )}
                 <input
                   type="file"

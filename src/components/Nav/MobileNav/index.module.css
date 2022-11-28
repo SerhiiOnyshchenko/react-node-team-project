@@ -4,7 +4,7 @@
 	position: fixed;
 	top: 66px;
 	left: 0;
-	z-index: 30;
+	z-index: 50;
 	background-color: var(--bg);
 }
 @media screen and (min-width: 768px) {
@@ -33,13 +33,10 @@
 }
 
 .link {
-	font-family: "Manrope";
-	font-style: normal;
-	font-weight: 500;
 	font-size: 32px;
 	line-height: 44px;
 	letter-spacing: 0.04em;
-	color: #181c27;
+	color: var(--color-main);
 	transition: var(--transition);
 }
 .link:not(:last-child) {
@@ -51,7 +48,7 @@
 .active {
 	font-weight: 700;
 	text-decoration-line: underline;
-	color: #f59256;
+	color: var(--color-hover-active);
 }
 .link:hover,
 .link:focus {

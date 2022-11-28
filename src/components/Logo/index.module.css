@@ -1,14 +1,15 @@
 .logoWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 82px;
-  height: 42px;
-  z-index: 454;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 82px;
+	height: 42px;
+	z-index: 454;
+	fill: var(--color-main);
 }
 @media screen and (min-width: 768px) {
-  .logoWrapper {
-    width: 94px;
-    height: 48px;
-  }
+	.logoWrapper {
+		width: 94px;
+		height: 48px;
+	}
 }

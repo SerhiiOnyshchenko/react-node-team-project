@@ -13,8 +13,7 @@
   font-size: 20px;
   line-height: 27px;
   letter-spacing: 0.04em;
-  color: #181c27;
-
+  color:var(--color-link);
   transition: var(--transition);
 }
 .link:not(:first-child) {

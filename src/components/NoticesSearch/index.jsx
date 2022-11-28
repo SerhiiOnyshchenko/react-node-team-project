@@ -3,6 +3,7 @@ import s from './index.module.css';
 import { useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { noticesOperations } from 'redux/notices';
+import { ReactComponent as Search } from '../../images/svg/search.svg';
 
 export default function NoticesSearch() {
   const [query, setQuery] = useState('');
@@ -52,7 +53,9 @@ export default function NoticesSearch() {
             onInput={e => setQuery(e.target.value)}
             required
           />
-          <button className={s.SearchBtn} type="submit"></button>
+          <button className={s.SearchBtn} type="submit">
+            <Search />
+          </button>
         </form>
       </div>
     </>
