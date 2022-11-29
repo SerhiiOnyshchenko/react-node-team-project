@@ -21,6 +21,7 @@ const validationSchema = yup.object({
     ),
   city: yup
     .string()
+    .required('Address is required')
     .matches(
       /^[a-zA-Z\-’ ]+, [a-zA-Z\-’ ]+$/,
       'Address should be in format: City, Region'
