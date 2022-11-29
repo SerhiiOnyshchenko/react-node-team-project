@@ -2,7 +2,7 @@
   "name": "react-node-team-project",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://serhiionyshchenko.github.io/react-node-team-project/",
+  "homepage": "https://petlyy.netlify.app",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -35,6 +35,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "netlify deploy -p",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint:js": "eslint src/**/*.{js,jsx}"
