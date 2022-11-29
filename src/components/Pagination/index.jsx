@@ -1,13 +1,26 @@
 import { useEffect, useState } from 'react';
 import Pagination from '@mui/material/Pagination';
 import s from './index.module.css';
+import { useLocation } from 'react-router-dom';
 
 export default function AppPagination({ totalHits, pageSize, data, setData }) {
   const [pagination, setPagination] = useState({
     count: 0,
     from: 0,
+    page: 1,
     to: pageSize,
   });
+  const { pathname } = useLocation();
+  useEffect(() => {
+    setPagination({
+      count: 0,
+      from: 0,
+      page: 1,
+      to: pageSize,
+    });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
 
   useEffect(() => {
     const getData = () => {
@@ -36,8 +49,7 @@ export default function AppPagination({ totalHits, pageSize, data, setData }) {
   const handlePageChange = (event, page) => {
     const from = (page - 1) * pageSize;
     const to = (page - 1) * pageSize + pageSize;
-
-    setPagination({ ...pagination, from: from, to: to });
+    setPagination({ ...pagination, from: from, page, to: to });
   };
 
   return (
@@ -45,6 +57,7 @@ export default function AppPagination({ totalHits, pageSize, data, setData }) {
       <Pagination
         className={s.pagination}
         count={Math.ceil(totalHits / pageSize)}
+        page={pagination.page}
         onChange={handlePageChange}
       />
     )

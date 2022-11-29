@@ -12,6 +12,7 @@ import { ReactComponent as Search } from '../../images/svg/search.svg';
 export default function NewsPage() {
   const dispatch = useDispatch();
   const [query, setQuery] = useState('');
+  const [disabledClean, setDisabledClean] = useState(true);
   const news = useSelector(newsSelectors.getNews);
   const [newsSlice, setNewsSlice] = useState([]);
   const status = useSelector(newsSelectors.getStatus);
@@ -22,16 +23,20 @@ export default function NewsPage() {
 
   const onSubmit = e => {
     e.preventDefault();
-    dispatch(getNews(e.target.search.value));
-    setQuery(e.target.search.value);
+    if (query !== '') {
+      dispatch(getNews(query));
+      setDisabledClean(false);
+    }
   };
 
   const changeInput = e => {
-    e.preventDefault();
-    if (e.target.value === '') {
-      dispatch(getNews(e.target.value));
-      setQuery(e.target.value);
-    }
+    setQuery(e.target.value);
+  };
+
+  const handelClean = e => {
+    setQuery('');
+    dispatch(getNews());
+    setDisabledClean(true);
   };
 
   return (
@@ -45,11 +50,20 @@ export default function NewsPage() {
               type="search"
               name="search"
               placeholder="Search"
+              value={query}
               onInput={changeInput}
             />
+            <button type="submit" className={s.btn}>
+              <Search />
+            </button>
           </div>
-          <button type="submit" className={s.btn}>
-            <Search />
+          <button
+            type="button"
+            className={s.BtnCline}
+            onClick={handelClean}
+            disabled={disabledClean}
+          >
+            Clean
           </button>
         </form>
         {!status && newsSlice.length > 0 && (
