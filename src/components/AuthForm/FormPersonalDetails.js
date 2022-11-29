@@ -21,6 +21,7 @@ const validationSchema = yup.object({
     ),
   city: yup
     .string()
+    .required('Address is required')
     .matches(
       /^[a-zA-Z\-’ ]+, [a-zA-Z\-’ ]+$/,
       'Address should be in format: City, Region'
@@ -45,10 +46,15 @@ export const FormPersonalDetails = ({ data, setFormData, next, prev }) => {
   let listCities = useSelector(authSelectors.getCities);
   const getIsLoading = useSelector(authSelectors.getIsLoading);
 
-  const changeInputCity = e => {
+  const changeInputCity = (e, values) => {
     if (/\d/g.test(e.target.value)) return;
     if (e.target.value !== ' ') {
-      setFormData(pre => ({ ...pre, city: e.target.value }));
+      setFormData(pre => ({
+        ...pre,
+        name: values.name,
+        city: e.target.value,
+        phone: values.phone,
+      }));
       if (e.target.value.length >= 3) {
         dispatch(authOperations.searchCity(e.target.value));
         setShowDropList(true);
@@ -64,6 +70,7 @@ export const FormPersonalDetails = ({ data, setFormData, next, prev }) => {
         initialValues={data}
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
+        enableReinitialize={true}
       >
         {({ values }) => (
           <Form className={s.form}>
@@ -82,7 +89,7 @@ export const FormPersonalDetails = ({ data, setFormData, next, prev }) => {
                   margin="normal"
                   autoComplete="of"
                   value={data.city}
-                  onChange={changeInputCity}
+                  onChange={e => changeInputCity(e, values)}
                 />
                 {showDropList && (
                   <DropList
