@@ -85,6 +85,7 @@ export default function ModalNotice({
               type="button"
               className={s.heartBtn}
               onClick={handleFavoriteToggle}
+              name="add favorite/remove favorite"
             >
               {favorite ? (
                 <HeartBtnM className={s.heartItemBtnActive} />

@@ -131,12 +131,16 @@ export const FormPersonalDetails = ({ data, setFormData, next, prev }) => {
                 <button
                   type="submit"
                   className={`${s.button} ${s.buttonActive} ${s.register}`}
+                  name="Register"
+                  aria-label='Register'
                 >
                   Register
                 </button>
               )}
               <button
                 type="button"
+                name="Back"
+                aria-label='Back'
                 className={`${s.button} ${s.buttonDefault} ${s.back}`}
                 onClick={() => {
                   values.city = data.city;

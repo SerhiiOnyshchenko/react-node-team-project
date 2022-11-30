@@ -39,7 +39,12 @@ export default function UserData() {
         </div>
 
         <div className={s.InputWrapper}>
-          <button type="button" className={s.editPhoto}>
+          <button
+            type="button"
+            className={s.editPhoto}
+            name="Edit photo"
+            aria-label="Edit photo"
+          >
             <Logo className={s.editPhotoIcon} />
             Edit photo
           </button>

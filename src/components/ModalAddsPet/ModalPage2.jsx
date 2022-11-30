@@ -62,7 +62,12 @@ export default function ModalPage2({ next, data, onClose, setFormData, prev }) {
                     alt={fileInput.name}
                   />
                 ) : (
-                  <button type="button" className={s.addPhotoBtn}>
+                  <button
+                    type="button"
+                    className={s.addPhotoBtn}
+                    name="add image"
+                    aria-label="add image"
+                  >
                     <Plus />
                   </button>
                 )}
@@ -94,10 +99,21 @@ export default function ModalPage2({ next, data, onClose, setFormData, prev }) {
               </div>
 
               <div className={s.buttonsWrapper}>
-                <button type="submit" className={s.buttonSubmit}>
+                <button
+                  type="submit"
+                  className={s.buttonSubmit}
+                  name="Done"
+                  aria-label="Done"
+                >
                   Done
                 </button>
-                <button type="button" onClick={prev} className={s.buttonSimple}>
+                <button
+                  type="button"
+                  onClick={prev}
+                  className={s.buttonSimple}
+                  name="Back"
+                  aria-label="Back"
+                >
                   Back
                 </button>
               </div>

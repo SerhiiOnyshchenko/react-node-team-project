@@ -133,13 +133,20 @@ export default function ModalPage1({ data, setFormData, next, onClose }) {
             />
 
             <div className={s.buttonsWrapper}>
-              <button type="submit" className={s.buttonSubmit}>
+              <button
+                type="submit"
+                className={s.buttonSubmit}
+                name="next"
+                aria-label="next"
+              >
                 Next
               </button>
               <button
                 type="button"
                 className={s.buttonSimple}
                 onClick={() => onClose()}
+                name="cancel"
+                aria-label="cancel"
               >
                 Cancel
               </button>

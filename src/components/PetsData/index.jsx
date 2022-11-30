@@ -16,7 +16,12 @@ export default function PetsData() {
         <div className={s.header}>
           <h2 className={s.title}>My pets: </h2>
           <div className={s.addPetWrapper}>
-            <button onClick={onAddPetBtnClick} className={s.addPetTitle}>
+            <button
+              onClick={onAddPetBtnClick}
+              className={s.addPetTitle}
+              name="add pet"
+              aria-label="add pet"
+            >
               Add pet
               <span className={s.buttonAddPet}></span>
             </button>

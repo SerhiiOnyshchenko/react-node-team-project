@@ -109,6 +109,8 @@ export default function NoticeItem({ petData }) {
             type="button"
             className={s.learnMoreBtn}
             onClick={handleModalToggle}
+            name="Learn more"
+            aria-label="Learn more"
           >
             Learn more
           </button>
@@ -117,6 +119,8 @@ export default function NoticeItem({ petData }) {
           type="button"
           className={s.heartBtn}
           onClick={handleFavoriteToggle}
+          name="add to favorite"
+          aria-label="add to favorite"
         >
           {favorite ? (
             <HeartBtnM className={s.heartItemBtnActive} />

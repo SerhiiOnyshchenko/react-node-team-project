@@ -200,6 +200,8 @@ const StepTwo = ({ formData, setFormData, prevStep, onClose }) => {
                 type="submit"
                 className={s.submitBtn}
                 onClick={() => setDirection('forward')}
+                name="submit"
+                aria-label="submit"
               >
                 Done
               </button>
@@ -207,6 +209,8 @@ const StepTwo = ({ formData, setFormData, prevStep, onClose }) => {
                 type="submit"
                 className={s.submitBtn}
                 onClick={() => setDirection('back')}
+                name="back"
+                aria-label="back"
               >
                 Back
               </button>

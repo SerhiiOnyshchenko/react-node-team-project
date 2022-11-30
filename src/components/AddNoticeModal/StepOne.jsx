@@ -198,10 +198,21 @@ const StepOne = ({ formData, setFormData, nextStep, onClose }) => {
             />
           </div>
           <div className={s.submitBtnWrapp}>
-            <button type="submit" className={s.submitBtn}>
+            <button
+              type="submit"
+              className={s.submitBtn}
+              name="submit"
+              aria-label="submit"
+            >
               Next
             </button>
-            <button type="button" className={s.submitBtn} onClick={onClose}>
+            <button
+              type="button"
+              className={s.submitBtn}
+              onClick={onClose}
+              name="cancel"
+              aria-label="cancel"
+            >
               Cancel
             </button>
           </div>

@@ -14,7 +14,12 @@ const transition = { duration: 0.39 };
 
 export default function BurgerMenuToggle({ toggle, isOpen }) {
   return (
-    <button onClick={toggle} className={s.Btn}>
+    <button
+      onClick={toggle}
+      className={s.Btn}
+      aria-label="Mobile navigation"
+      name="Mobile navigation"
+    >
       <svg width="30" height="30" viewBox="0 0 23 23">
         <Path
           animate={isOpen ? 'open' : 'closed'}

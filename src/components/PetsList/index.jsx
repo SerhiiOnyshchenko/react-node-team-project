@@ -48,6 +48,8 @@ export default function PetsList() {
                     type="button"
                     onClick={() => setShowModal(true)}
                     className={s.deleteBtn}
+                    name="delete"
+                    aria-label="delete"
                   >
                     <Bin />
                   </button>

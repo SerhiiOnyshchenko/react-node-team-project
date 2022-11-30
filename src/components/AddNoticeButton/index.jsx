@@ -25,7 +25,7 @@ export default function AddNoticeButton() {
     <>
       <div className={s.btnWrapper} onClick={handleClick}>
         {!isMobile && text}
-        <button type="button" className={s.btn}>
+        <button type="button" className={s.btn} name="add" aria-label='add'>
           <Plus className={s.icon} />
           {isMobile && text}
         </button>
