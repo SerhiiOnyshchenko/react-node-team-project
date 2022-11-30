@@ -28,6 +28,7 @@ export default function BtnScrollToTop() {
       onClick={onClickBtn}
       type="button"
       className={s.Btn}
+      name="Mobile navigaton"
     >
       <ArrowUp />
     </button>
