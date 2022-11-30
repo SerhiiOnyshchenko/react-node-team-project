@@ -6,10 +6,14 @@ import { RotatingLines } from 'react-loader-spinner';
 import ModalPage from 'pages/ModalPage';
 import ModalSuccess from 'components/ModalSuccess';
 import { ReactComponent as Bin } from '../../images/svg/bin.svg';
+import { ReactComponent as Logo } from '../../images/svg/edit.svg';
+import EditPetModal from '../EditPetModal'
+
 
 export default function PetsList() {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
+  const [editShowModal, setEditShowModal] = useState(false);
   const petsList = useSelector(petsSelectors.getUserPetsList);
   const isLoadingPets = useSelector(petsSelectors.getIsLoading);
 
@@ -51,6 +55,13 @@ export default function PetsList() {
                   >
                     <Bin />
                   </button>
+                  <button
+                    type="button"
+                    onClick={() => setEditShowModal(true)}
+                    className={s.editBtn}
+                  >
+                    <Logo className={s.logo} />
+                  </button>
                   <img src={pet.image} alt="Pet" className={s.petPhoto} />
                   <div className={s.petInfo}>
                     <p className={s.petInfoCategory}>
@@ -80,6 +91,12 @@ export default function PetsList() {
                       />
                     </ModalPage>
                   )}
+                  {editShowModal && (
+                    <ModalPage onClose={() => setEditShowModal(false)}>
+                      < EditPetModal data={pet} onClose={() => setShowModal(false)} />
+                    </ModalPage>
+                  )}
+
                 </li>
               ))}
             </ul>

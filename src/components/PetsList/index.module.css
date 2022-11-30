@@ -51,6 +51,30 @@
 .deleteBtn:focus {
 	fill: var(--color-hover-active);
 }
+.editBtn{
+	position: absolute;
+
+	top: 20px;
+	right: 70px;
+
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	background-color: transparent;
+	border: 0;
+	fill: var(--color-main);
+	transition: var(--transition);
+}
+
+.logo {
+	width: 40px;
+	height: 40px;
+	fill: var(--color-main);
+}
+.logo:hover,
+.logo:focus {
+	fill: var(--color-hover-active);
+}
 
 .petInfoCategory {
 	margin-bottom: 12px;
@@ -98,6 +122,9 @@
 	}
 
 	.deleteBtn {
+		background-color: var(--bg);
+	}
+	.editBtn{
 		background-color: var(--bg);
 	}
 

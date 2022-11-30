@@ -24,8 +24,8 @@ const validationSchema = yup.object({
 });
 const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png'];
 
-export default function ModalPage2({ next, data, onClose, setFormData, prev }) {
-  const [fileInput, setFileInput] = useState(data.image);
+export default function ModalPage2({ next, data, onClose, setFormData, prev, pet}) {
+  const [fileInput, setFileInput] = useState('');
 
   const handleSubmit = values => {
     next({ ...values, image: fileInput }, true);
@@ -41,7 +41,6 @@ export default function ModalPage2({ next, data, onClose, setFormData, prev }) {
       setFormData(values => ({ ...values, image: file }));
     }
   };
-  console.log('fileInput',fileInput);
 
   return (
     <div className={s.containerPet}>
