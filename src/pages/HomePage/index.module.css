@@ -1,54 +1,62 @@
 .HomePage {
-	margin: 0 auto;
-	padding-left: auto;
-	padding-right: auto;
-	padding-top: 44px;
-	height: calc(100vh - 74px);
-	background-color: transparent;
-	background-image: url(../../images/home/home-bg-1.png), url(../../images/home/home-bg-2.png);
-	background-position: bottom left 50%, bottom -14px left 30%;
-	background-repeat: no-repeat, no-repeat;
-	background-size: 320px 337px, 620px 470px;
-	overflow: hidden;
+  margin: 0 auto;
+  padding-left: auto;
+  padding-right: auto;
+  padding-top: 44px;
+  height: calc(100vh - 74px);
+  background-color: transparent;
+  background-image: url(../../images/home/home-bg-1.webp),
+    url(../../images/home/home-bg-2.webp);
+  background-position: bottom left 50%, bottom -14px left 30%;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 320px 337px, 620px 470px;
+  overflow: hidden;
 }
 
 .Title {
-	font-weight: 700;
-	font-size: 32px;
-	line-height: 1.37;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.37;
 }
 
 @media screen and (min-width: 768px) {
-	.HomePage {
-		width: 768px;
-		padding-top: 72px;
-		height: calc(100vh - 88px);
-		background-image: url(../../images/home/home-bg-1.png), url(../../images/home/home-bg-tablet2.png);
-		background-position: bottom center, bottom center;
-		background-repeat: no-repeat, no-repeat;
-		background-size: auto, auto;
-	}
+  .HomePage {
+    width: 768px;
+    padding-top: 72px;
+    height: calc(100vh - 88px);
+    background-image: url(../../images/home/home-bg-1.webp),
+      url(../../images/home/home-bg-tablet2.webp);
+    background-position: bottom center, bottom center;
+    background-repeat: no-repeat, no-repeat;
+    background-size: auto, auto;
+  }
 
-	.Title {
-		font-size: 68px;
-		line-height: 1.47;
-		width: 588px;
-	}
+  .Title {
+    font-size: 68px;
+    line-height: 1.47;
+    width: 588px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
-	.HomePage {
-		width: 1380px;
-		background-image: url(../../images/home/home-bg-1.png), url(../../images/home/home-bg-2.png),
-			url(../../images/home/home-bg-3.png), url(../../images/home/home-bg-4.png),
-			url(../../images/home/home-bg-heart.png), url(../../images/home/home-bg-circle.png);
-		background-position: bottom right 50px, bottom -514px left -107px, bottom -305px left, bottom right,
-			bottom 509px left 662px, bottom 200px left 374px;
-		background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
-		background-size: 624px 655px, 1091px 826px, 1068px 685px, 511px 393px, 92px 89px, 63px 63px;
-	}
+  .HomePage {
+    width: 1380px;
+    background-image: url(../../images/home/home-bg-1.webp),
+      url(../../images/home/home-bg-2.webp),
+      url(../../images/home/home-bg-3.webp),
+      url(../../images/home/home-bg-4.webp),
+      url(../../images/home/home-bg-heart.webp),
+      url(../../images/home/home-bg-circle.webp);
+    background-position: bottom right 50px, bottom -514px left -107px,
+      bottom -305px left, bottom right, bottom 509px left 662px,
+      bottom 200px left 374px;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat,
+      no-repeat;
+    background-size: 624px 655px, 1091px 826px, 1068px 685px, 511px 393px,
+      92px 89px, 63px 63px;
+  }
 
-	.HomePage::before {
-		display: none;
-	}
+  .HomePage::before {
+    display: none;
+  }
 }
