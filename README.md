@@ -1,91 +1,66 @@
-**Read in other languages: [Русский](README.md), [Polska](README.pl.md),
-[English](README.en.md), [Spanish](README.es.md).**
+# Project to help pets find an owner
 
-# React homework template
+![Home](./assets/Home.png)
 
-Этот проект был создан при помощи
-[Create React App](https://github.com/facebook/create-react-app). Для знакомства
-и настройки дополнительных возможностей
-[обратись к документации](https://facebook.github.io/create-react-app/docs/getting-started).
+![Profile](./assets/Profile.png)
 
-## Подготовка нового проекта
+![Findpet](./assets/Findpet.png)
 
-1. Убедись что на компьютере установлена LTS-версия Node.js.
-   [Скачай и установи](https://nodejs.org/en/) её если необходимо.
-2. Клонируй этот репозиторий.
-3. Измени имя папки с `react-homework-template` на имя своего проекта.
-4. Создай новый пустой репозиторий на GitHub.
-5. Открой проект в VSCode, запусти терминал и свяжи проект с GitHub-репозиторием
-   [по инструкции](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#changing-a-remote-repositorys-url).
-6. Установи базовые зависимости проекта командой `npm install`.
-7. Запусти режим разработки, выполнив команду `npm start`.
-8. Перейди в браузере по адресу [http://localhost:3000](http://localhost:3000).
-   Эта страница будет автоматически перезагружаться после сохранения изменений в
-   файлах проекта.
+## This project was created by:
 
-## Деплой
+- **[Serhii Onyshchenko](https://github.com/SerhiiOnyshchenko)** -Role:Team
+  Lead;
 
-Продакшн версия проекта будет автоматически проходить линтинг, собираться и
-деплоиться на GitHub Pages, в ветку `gh-pages`, каждый раз когда обновляется
-ветка `main`. Например, после прямого пуша или принятого пул-реквеста. Для этого
-необходимо в файле `package.json` отредактировать поле `homepage`, заменив
-`your_username` и `your_repo_name` на свои, и отправить изменения на GitHub.
+- **[Elena Shmetan](https://github.com/shmetanelena)** - Role:Scrum Master;
 
-```json
-"homepage": "https://your_username.github.io/your_repo_name/"
-```
+- **[Kiziev Dmitriy](https://github.com/KizievDmitriy)** - Role:Front End
+  Developer;
 
-Далее необходимо зайти в настройки GitHub-репозитория (`Settings` > `Pages`) и
-выставить раздачу продакшн версии файлов из папки `/root` ветки `gh-pages`, если
-это небыло сделано автоматически.
+- **[Natalia Monasturska](https://github.com/NataliaMonasturska)** - Role:Full
+  Stack Developer;
 
-![GitHub Pages settings](./assets/repo-settings.png)
+- **[Yaroslav Vyshynskyi](https://github.com/YaroslavVyshynskyi)** - Role:Full
+  Stack Developer;
 
-### Статус деплоя
+- **[Kashyrets Ivanna](https://github.com/KashyretsIvanna)** - Role:Full Stack
+  Developer;
 
-Статус деплоя крайнего коммита отображается иконкой возле его идентификатора.
+- **[Dmytro Mykhailov](https://github.com/imavin08)** - Role:Back End Developer;
 
-- **Желтый цвет** - выполняется сборка и деплой проекта.
-- **Зеленый цвет** - деплой завершился успешно.
-- **Красный цвет** - во время линтинга, сборки или деплоя произошла ошибка.
+- **[Alex Borets](https://github.com/alex-borets)** - Role:Front End Developer;
 
-Более детальную информацию о статусе можно посмотреть кликнув по иконке, и в
-выпадающем окне перейти по ссылке `Details`.
+- **[Illia Bekarevych](https://github.com/IlliaBekarevych)** - Role:Front End
+  Developer;
 
-![Deployment status](./assets/status.png)
+- **[Ihor Sharkadi](https://github.com/ihorshark)** - Role:Front End Developer;
 
-### Живая страница
+- **[Gudyma Vitaliy](https://github.com/GudymaVit)** - Role:Front End Developer;
 
-Через какое-то время, обычно пару минут, живую страницу можно будет посмотреть
-по адресу указанному в отредактированном свойстве `homepage`. Например, вот
-ссылка на живую версию для этого репозитория
-[https://goitacademy.github.io/react-homework-template](https://goitacademy.github.io/react-homework-template).
+- **[Martinyk Natalia](https://github.com/Natalia2715)** - Role:Front End
+  Developer;
 
-Если открывается пустая страница, убедись что во вкладке `Console` нет ошибок
-связанных с неправильными путями к CSS и JS файлам проекта (**404**). Скорее
-всего у тебя неправильное значение свойства `homepage` в файле `package.json`.
+- **[Zoryana Fedorovska](https://github.com/zfedorovska)** - Role:Front End
+  Developer;
+- **[Andrii Krupa](https://github.com/andrii248)**- Role:Front End Developer;
 
-### Маршрутизация
+## Trello with command tasks:
 
-Если приложение использует библиотеку `react-router-dom` для маршрутизации,
-необходимо дополнительно настроить компонент `<BrowserRouter>`, передав в пропе
-`basename` точное название твоего репозитория. Слеши в начале и конце строки
-обязательны.
+[link](https://trello.com/b/AQFNc03c/petly)
 
-```jsx
-<BrowserRouter basename="/your_repo_name/">
-  <App />
-</BrowserRouter>
-```
+### Time for work
+
+15 days
+
+### Live page
+
+[link](https://serhiionyshchenko.github.io/react-node-team-project/)
+
+### Back End
+
+[link](https://github.com/SerhiiOnyshchenko/react-node-team-project-backend)
+
+### Swagger
+
+[link](https://team-project-backend.onrender.com/api/docs/)
 
 ## Как это работает
-
-![How it works](./assets/how-it-works.png)
-
-1. После каждого пуша в ветку `main` GitHub-репозитория, запускается специальный
-   скрипт (GitHub Action) из файла `.github/workflows/deploy.yml`.
-2. Все файлы репозитория копируются на сервер, где проект инициализируется и
-   проходит линтинг и сборку перед деплоем.
-3. Если все шаги прошли успешно, собранная продакшн версия файлов проекта
-   отправляется в ветку `gh-pages`. В противном случае, в логе выполнения
-   скрипта будет указано в чем проблема.

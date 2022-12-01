@@ -4,7 +4,12 @@ import { ReactComponent as AccountSvg } from '../../images/svg/account.svg';
 
 export default function UserNav() {
   return (
-    <button type="button" className={s.btnBg}>
+    <button
+      type="button"
+      className={s.btnBg}
+      name="navigation"
+      aria-label="navigation"
+    >
       <NavLink to="/user" className={s.btn}>
         <AccountSvg className={s.icon} />
         Account

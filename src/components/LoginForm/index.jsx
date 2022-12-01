@@ -75,7 +75,7 @@ export default function LoginForm() {
                 />
               </div>
             ) : (
-              <button className={s.button} type="submit">
+              <button className={s.button} type="submit" name='Login' aria-label='Login'>
                 Login
               </button>
             )}

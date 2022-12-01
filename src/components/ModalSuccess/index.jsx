@@ -8,6 +8,8 @@ export default function ModalSuccess({ onDispatch, onClose }) {
       <div className={s.BttonsWrapper}>
         <button
           type="button"
+          name="yes"
+          aria-label="yes"
           className={s.Btn}
           onClick={() => {
             onDispatch();
@@ -16,7 +18,13 @@ export default function ModalSuccess({ onDispatch, onClose }) {
         >
           Yes
         </button>
-        <button type="button" className={s.Btn} onClick={() => onClose()}>
+        <button
+          type="button"
+          className={s.Btn}
+          onClick={() => onClose()}
+          name="no"
+          aria-label="no"
+        >
           No
         </button>
       </div>

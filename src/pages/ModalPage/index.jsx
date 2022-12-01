@@ -26,7 +26,13 @@ export default function ModalPage({ children, onClose }) {
   return createPortal(
     <div className={s.Backdrop} onClick={closeModalEscKey}>
       <div className={s.Content}>
-        <button className={s.Btn_close} type="button" onClick={onClose}>
+        <button
+          className={s.Btn_close}
+          type="button"
+          onClick={onClose}
+          aria-label="close"
+          name="close"
+        >
           <Close />
         </button>
         {children}

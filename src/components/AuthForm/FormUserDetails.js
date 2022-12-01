@@ -184,7 +184,8 @@ export const FormUserDetails = props => {
               </ErrorMessage>
             </div>
             <div className={s.buttonContainer}>
-              <button type="submit" className={`${s.button} ${s.buttonActive}`}>
+              <button type="submit" className={`${s.button} ${s.buttonActive}`}
+                name='Next' aria-label='Next'>
                 Next
               </button>
             </div>

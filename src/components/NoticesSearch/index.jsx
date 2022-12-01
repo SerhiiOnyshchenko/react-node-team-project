@@ -67,7 +67,12 @@ export default function NoticesSearch() {
               value={query}
               onInput={e => setQuery(e.target.value)}
             />
-            <button className={s.SearchBtn} type="submit">
+            <button
+              className={s.SearchBtn}
+              type="submit"
+              name="search"
+              aria-label="search"
+            >
               <Search />
             </button>
           </div>
@@ -76,6 +81,8 @@ export default function NoticesSearch() {
             className={s.BtnCline}
             onClick={handelClean}
             disabled={disabledClean}
+            name="clean search"
+            aria-label="clean search"
           >
             Clean
           </button>

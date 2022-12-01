@@ -53,7 +53,12 @@ export default function NewsPage() {
               value={query}
               onInput={changeInput}
             />
-            <button type="submit" className={s.btn}>
+            <button
+              type="submit"
+              className={s.btn}
+              name="submit"
+              aria-label="submit"
+            >
               <Search />
             </button>
           </div>
@@ -62,6 +67,8 @@ export default function NewsPage() {
             className={s.BtnCline}
             onClick={handelClean}
             disabled={disabledClean}
+            name="clean"
+            aria-label="clean"
           >
             Clean
           </button>

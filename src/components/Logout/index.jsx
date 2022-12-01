@@ -16,6 +16,7 @@ export default function Logout() {
         className={s.button}
         type="button"
         onClick={() => setShowModal(true)}
+        aria-label="Logout"
       >
         <Logo className={s.logo} />
         Logout
